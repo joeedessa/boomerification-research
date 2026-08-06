@@ -1,0 +1,126 @@
+{
+  "_meta": {
+    "description": "The monitoring layer. Every observable named in a limb, with its source, its release cadence, what reading would confirm the limb, and what reading would damage it. This is the file that turns the thesis from an essay into something that can be wrong on a schedule.",
+    "as_of": "2026-08-06",
+    "status_scale": "confirming / neutral / contradicting / not-yet-read",
+    "status_note": "Every indicator ships as not-yet-read. Status is set by hand on review, never by the nightly robot — the robot moves prices, not judgments.",
+    "cadence_note": "Cadence drives the review calendar. Monthly indicators are the working set; annual ones (Trustees, CBO) are scheduled events that deserve a diary entry rather than a dashboard glance."
+  },
+
+  "indicators": [
+    {"id": "part65", "limb": "C", "n": "Labour force participation, 65+", "source": "BLS Current Population Survey", "cadence": "monthly", "priority": 1,
+     "confirms": "Flat or falling — the cohort is genuinely leaving the workforce rather than working longer.",
+     "contradicts": "Sustained rise. People working longer defers the labour shortage, defers the consumption rotation and weakens limb C directly.",
+     "status": "not-yet-read", "note": "The single highest-value indicator in the thesis. It tests limb C's premise and limb D's timing simultaneously."},
+
+    {"id": "immig", "limb": "C", "n": "Net immigration & work visa issuance", "source": "DHS / State Department / Census components of change", "cadence": "quarterly", "priority": 1,
+     "confirms": "Restrictive policy and falling net inflow — the constrained occupations stay constrained.",
+     "contradicts": "A sustained surge, particularly in healthcare support and construction categories. This is the thesis's largest single swing factor.",
+     "status": "not-yet-read", "note": "Read alongside part65. If both move against the thesis at once, limb C is finished and the portfolio-construction conclusion goes with it."},
+
+    {"id": "wagesvc", "limb": "C", "n": "Wage growth: non-tradable services vs goods", "source": "BLS Employment Cost Index; average hourly earnings by sector", "cadence": "monthly / quarterly", "priority": 1,
+     "confirms": "Services wage growth persistently above goods and above the aggregate — the supply-side floor is real.",
+     "contradicts": "Convergence to the aggregate. That would mean the shortage is being cleared by ordinary market adjustment.",
+     "status": "not-yet-read", "note": "The Employment Cost Index is the cleaner read because it controls for composition; average hourly earnings is faster but noisier."},
+
+    {"id": "nurse", "limb": "C", "n": "Nursing school enrolment, completions and applications turned away", "source": "AACN annual survey; state board licensure data", "cadence": "annual", "priority": 2,
+     "confirms": "Qualified applications continuing to exceed available places — capacity, not demand, is the binding constraint.",
+     "contradicts": "Programme capacity expanding faster than the 85+ population. That closes the gap and undermines both the staffing and education positions.",
+     "status": "not-yet-read", "note": "The direct test of the 'capacity lags known demand' mechanism, which is the strongest reason anything here is unpriced."},
+
+    {"id": "trades", "limb": "C", "n": "Apprenticeship registrations & completions in licensed trades", "source": "DOL Registered Apprenticeship data; state licensing boards", "cadence": "annual", "priority": 2,
+     "confirms": "Completions running below retirements in electrical, HVAC and linework.",
+     "contradicts": "A visible surge in completions, or employers successfully de-skilling the work.",
+     "status": "not-yet-read", "note": "Slow-moving but decisive for the contractor positions."},
+
+    {"id": "openings", "limb": "C", "n": "Job openings & quits: healthcare and construction", "source": "BLS JOLTS", "cadence": "monthly", "priority": 2,
+     "confirms": "Openings rates in these sectors staying well above the all-industry rate.",
+     "contradicts": "Convergence to the national rate.",
+     "status": "not-yet-read", "note": "Faster-moving proxy for the annual pipeline data. Use for direction, not for level."},
+
+    {"id": "flows", "limb": "A", "n": "Fund flows by vehicle and investor age", "source": "ICI weekly & monthly; Fed Financial Accounts", "cadence": "weekly / quarterly", "priority": 1,
+     "confirms": "Rotation into income, dividend and defined-outcome products without aggregate equity outflow — composition change, not a supply shock.",
+     "contradicts": "Sustained net equity outflow attributable to the 65+ cohort. That inverts limb A and revives the crude bear case.",
+     "status": "not-yet-read", "note": "The explicit falsifier for limb A. The age attribution is the hard part — Fed Financial Accounts distributional data is the best available cut."},
+
+    {"id": "annuity", "limb": "A", "n": "US annuity sales by product type", "source": "LIMRA quarterly", "cadence": "quarterly", "priority": 1,
+     "confirms": "Continued growth in RILA and fixed indexed sales — the behavioural shift toward contractual income is real and not just a rate artefact.",
+     "contradicts": "Sales tracking the rate cycle only, with no secular trend once rates are controlled for.",
+     "status": "not-yet-read", "note": "The cleanest single read on limb A. Distinguish rate-driven from demography-driven by holding the rate level constant across periods."},
+
+    {"id": "rollover", "limb": "A", "n": "401(k)-to-IRA rollover volumes", "source": "Cerulli; recordkeeper disclosures", "cadence": "annual", "priority": 3,
+     "confirms": "Large and growing rollover flow — the retirement transition is a live, contested asset-gathering event.",
+     "contradicts": "Assets staying in-plan at scale, which would mean the recordkeepers capture the transition and the advisor channel does not.",
+     "status": "not-yet-read", "note": "This indicator adjudicates between the inc vertical and the wt vertical — it tells you which one gets paid."},
+
+    {"id": "rianna", "limb": "B", "n": "RIA and wirehouse net new assets; advisor headcount", "source": "Company reporting; Cerulli channel data", "cadence": "quarterly", "priority": 1,
+     "confirms": "Independent and RIA channels taking persistent share of net new assets and of advisors.",
+     "contradicts": "Wirehouse retention improving and independent recruitment slowing — the share shift stalls and limb B collapses to an AUM beta trade.",
+     "status": "not-yet-read", "note": "LPLA and RJF recruiting disclosures are the fastest read. Cerulli gives the honest denominator."},
+
+    {"id": "advage", "limb": "B", "n": "Average financial advisor age & succession events", "source": "Cerulli; industry surveys", "cadence": "annual", "priority": 2,
+     "confirms": "Advisor age staying high with a rising share of books changing hands — a second, independent source of relationship break points.",
+     "contradicts": "Successful generational hiring across the industry.",
+     "status": "not-yet-read", "note": "The under-discussed half of limb B: the advisor is retiring too, and their book moves when they do."},
+
+    {"id": "wmma", "limb": "B", "n": "Wealth management M&A multiples & deal count", "source": "Echelon / DeVoe transaction reports", "cadence": "quarterly", "priority": 3,
+     "confirms": "Sustained deal volume at firm multiples — private capital agrees the transfer wave is worth paying for.",
+     "contradicts": "Multiple compression as financing costs bite, which breaks the aggregator model regardless of the demography.",
+     "status": "not-yet-read", "note": "Reads the private mark for the listed comps. Also the leading indicator for aggregator equity de-rating."},
+
+    {"id": "pce", "limb": "D", "n": "PCE by category, normalised to age-band population", "source": "BEA PCE; Census population estimates", "cadence": "monthly", "priority": 1,
+     "confirms": "Services and healthcare share of the basket rising faster than the aggregate, with goods and discretionary durables falling.",
+     "contradicts": "Basket composition stable as the population ages — the rotation is not happening.",
+     "status": "not-yet-read", "note": "Must be normalised per capita by band. Raw PCE growth tells you about the economy, not about the relay."},
+
+    {"id": "hh", "limb": "D", "n": "Home health, hospice & SNF admissions and census", "source": "CMS utilisation files; operator reporting", "cadence": "quarterly", "priority": 1,
+     "confirms": "Admissions and census growing at or above the 80+ population growth rate.",
+     "contradicts": "Utilisation per capita flattening — the morbidity compression scenario arriving in the data.",
+     "status": "not-yet-read", "note": "Per-capita is the whole point. Absolute growth is guaranteed by the denominator and proves nothing."},
+
+    {"id": "elective", "limb": "D", "n": "Elective procedure volumes: ortho, cardiac, ophthalmic", "source": "Device company reporting; hospital volume disclosures", "cadence": "quarterly", "priority": 2,
+     "confirms": "Procedure growth outpacing the eligible population — penetration rising on top of demographics.",
+     "contradicts": "Volumes tracking population only, which makes the medtech positions a low-single-digit grower priced as a compounder.",
+     "status": "not-yet-read", "note": "TAVR and premium IOL penetration rates are the two most informative series."},
+
+    {"id": "travel", "limb": "D", "n": "Cruise, travel & RV demand by age cohort", "source": "Operator booking commentary; RVIA shipments", "cadence": "quarterly", "priority": 2,
+     "confirms": "Booking strength decelerating as the go-go band population plateaus — the fade thesis playing out on schedule.",
+     "contradicts": "Continued acceleration, which would mean penetration and spend-per-head are overwhelming the population effect.",
+     "status": "not-yet-read", "note": "The go-go fade is the most falsifiable timing call in the thesis. This is where it gets tested."},
+
+    {"id": "trustee", "limb": "E", "n": "SSA Trustees report — depletion date and revisions", "source": "Social Security & Medicare Trustees Report", "cadence": "annual", "priority": 1,
+     "confirms": "Depletion date holding or moving nearer, keeping legislative pressure on the calendar.",
+     "contradicts": "A material extension of the date, which removes the forcing function and defers the policy discontinuity.",
+     "status": "not-yet-read", "note": "The single scheduled event that most moves limb E. Diary it — the annual release is the reset for the whole fiscal limb."},
+
+    {"id": "marate", "limb": "E", "n": "Medicare Advantage rate notice & risk model changes", "source": "CMS Advance Notice and Rate Announcement", "cadence": "annual", "priority": 1,
+     "confirms": "Rates keeping pace with medical cost trend — the payor positions remain investable.",
+     "contradicts": "Persistent rate-versus-trend shortfall, which is limb E landing directly on the pay vertical.",
+     "status": "not-yet-read", "note": "The Advance Notice in the winter is the tradable event; the final Rate Announcement usually confirms it."},
+
+    {"id": "termp", "limb": "E", "n": "Long-end term premium & 10s30s curve", "source": "Treasury yields; NY Fed ACM term premium estimates", "cadence": "daily", "priority": 2,
+     "confirms": "Term premium widening as issuance rises — the fiscal limb expressing itself in the curve.",
+     "contradicts": "Term premium compressing despite deficits, which would mean limb A's duration demand is dominating limb E's supply.",
+     "status": "not-yet-read", "note": "This is where the internal contradiction between limbs A and E is actually resolved. Watch it as the arbiter, not as a position."},
+
+    {"id": "ratio", "limb": "E", "n": "Worker-to-beneficiary ratio", "source": "SSA", "cadence": "annual", "priority": 3,
+     "confirms": "Continued decline on the projected path.",
+     "contradicts": "Improvement via participation or immigration — which would simultaneously undermine limb C.",
+     "status": "not-yet-read", "note": "Slow and highly predictable. Useful as a framing number, not as a trading signal."},
+
+    {"id": "shocc", "limb": "H", "n": "Senior housing occupancy, rate growth & construction starts", "source": "NIC MAP", "cadence": "quarterly", "priority": 1,
+     "confirms": "Occupancy climbing with starts still depressed — the supply trough thesis intact.",
+     "contradicts": "A construction restart, or occupancy gains failing to convert to margin because of labour cost.",
+     "status": "not-yet-read", "note": "Track occupancy and operating margin together. Occupancy alone will confirm the thesis while the equity disappoints, because limb C is eating the incremental revenue."},
+
+    {"id": "turnover", "limb": "H", "n": "Existing-home turnover in retirement metros", "source": "NAR; Redfin/Zillow metro data", "cadence": "monthly", "priority": 2,
+     "confirms": "Turnover rising in Florida, Arizona and the Carolinas ahead of the national rate — the release beginning where the thesis says it begins.",
+     "contradicts": "Turnover flat despite the cohort aging into transition bands, meaning rate lock-in dominates demography.",
+     "status": "not-yet-read", "note": "Must be read metro by metro. The national number averages the signal away entirely."},
+
+    {"id": "tenure", "limb": "H", "n": "Homeowner tenure by age band; rate distribution of the stock", "source": "AHS; ICE/Black Knight mortgage monitor", "cadence": "annual / monthly", "priority": 3,
+     "confirms": "Tenure lengthening among 65+ — aging in place is the revealed preference, favouring modification over relocation.",
+     "contradicts": "Tenure shortening, which would accelerate the inventory release and the senior housing move-in rate.",
+     "status": "not-yet-read", "note": "Cuts both ways deliberately: the same reading that supports the aging-in-place trade undermines the inventory-release trade."}
+  ]
+}

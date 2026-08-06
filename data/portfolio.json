@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "description": "Positioning. Expressions grouped by conviction cluster, each tagged with the limb it expresses and the falsifier that would retire it. Sizing logic, entry discipline, the deliberate internal hedges, and what is explicitly not owned.",
+    "as_of": "2026-08-06",
+    "status": "Framework and candidate list. Not a live book — no weights, no cost basis, no recommendation.",
+    "review_note": "Every position must name the falsifier that retires it. A position with no falsifier is a view, not a trade."
+  },
+
+  "defining_insight": {
+    "title": "Own the gradient, not the direction",
+    "body": "Everyone knows the population is aging. The consensus expression — senior housing REITs and large-cap medtech — is fully narrativised and priced. The edge, if there is one, sits in three places the consensus flattens. First, the gradient: businesses paid by the 65-74 band face a population that peaks around 2030 and then declines, while those paid by 75+ have a tailwind past 2040, and the market prices them as one theme. Second, the labour limb: nobody is positioned for aging to be inflationary. Third, structure: the same demographics that guarantee healthcare volume make healthcare price the most politically exposed line in the budget, so the entire care book should be built on volume and private-pay rather than on reimbursement rates holding."
+  },
+
+  "clusters": [
+    {
+      "cls": "core",
+      "color": "#DC2626",
+      "title": "Core — highest conviction, thesis-defining",
+      "body": "Positions where the mechanism is strongest, the crowding lowest, or both. Each expresses a limb the consensus is not positioned for.",
+      "items": [
+        "<b>Capacity gap in licensed labour (limb C):</b> ATGE — owns accredited nursing capacity in a pipeline that turns away qualified applicants. The purest way to own limb C's binding constraint rather than its symptom. <i>Falsifier: programme capacity expanding faster than the 85+ population.</i>",
+        "<b>Private-pay age curves (limb D):</b> ALC, SOON.SW — cataract and hearing are biologically inevitable, high-penetration-upside, and structurally outside reimbursement risk. The rarest combination in the universe. <i>Falsifier: OTC or direct-to-consumer channels collapsing the private-pay premium.</i>",
+        "<b>Structural heart (limb D):</b> EW — aortic stenosis prevalence rises steeply past 75 and TAVR converts inoperable into routine. Volume-driven, not price-driven. <i>Falsifier: competitive share loss in structural heart, not demand.</i>",
+        "<b>Care operating competence (limb D):</b> ENSG, ADUS — the demand is arithmetic; the scarce skill is managing care labour at Medicaid rates. Own the operators who have demonstrated it. <i>Falsifier: a Medicaid rate reset, or caregiver wage inflation outrunning rate growth.</i>",
+        "<b>Income manufacturing (limb A):</b> EQH, CRBG, APO — retiree money changes wrapper rather than leaving. Own the wrapper. <i>Falsifier: sustained net equity outflow from the 65+ cohort in the flow data.</i>",
+        "<b>Intermediation shift (limb B):</b> LPLA, MS — two break points per estate plus an aging advisor population. <i>Falsifier: wirehouse retention of heir relationships improving.</i>",
+        "<b>Terminal certainty (limb B/D):</b> SCI — the one demand curve that cannot be deferred, substituted or reformed away, pre-funded by a preneed backlog. <i>Falsifier: cremation mix eroding revenue per case faster than volume grows.</i>"
+      ]
+    },
+    {
+      "cls": "engaged",
+      "color": "#EF9F27",
+      "title": "Engaged — right thesis, waiting on price or evidence",
+      "body": "The mechanism holds but the entry does not, or a key operating metric has yet to confirm. These are the names the alert engine is watching for a drawdown.",
+      "items": [
+        "<b>Skilled-labour contractors:</b> EME, FIX, PWR — the labour-scarcity moat is genuine and durable, but the price embeds a datacentre construction cycle. You are not being paid to take the demographic risk here. <i>Wait for a cycle scare.</i>",
+        "<b>Senior housing supply trough:</b> WELL, VTR, BKD — the cyclical setup is real. The problem is that it is the single most consensus expression of the whole thesis, and limb C eats the incremental revenue. <i>Watch occupancy and operating margin together, never occupancy alone.</i>",
+        "<b>Hearing breadth:</b> DEMANT.CO, AMP.MI, COH.AX — same curve as Sonova at different points on the value chain and the valuation range.",
+        "<b>Orthopaedic volume:</b> SYK, ZBH — volume grows, price per implant erodes. The thesis needs volume to outrun price; a decade of ZBH share loss says execution decides it.",
+        "<b>Pharmacy distribution:</b> MCK, COR — slow, reliable, volume-not-price, structurally insulated from limb E. Boring in the way this thesis should like.",
+        "<b>Net-lease care real estate:</b> CTRE, OHI — being the landlord rather than the operator is the deliberate answer to limb C. Paid to wait, which answers weakness w1.",
+        "<b>Trade training:</b> LINC, UTI — employer-pulled enrolment into the trades shortage. Small, regulatory-exposed, direct."
+      ]
+    },
+    {
+      "cls": "fade",
+      "color": "#0891B2",
+      "title": "Fade — right demography, expiring clock",
+      "body": "Businesses paid by the go-go band. The population supporting them peaks around 2030 and then declines. Fade into strength rather than shorting — earnings roll over after the demography does, not with it, and the interval can be years.",
+      "items": [
+        "<b>VIK</b> — the most precisely targeted business in the universe, serving a band that stops growing. Its competitive advantage is its refusal to serve anyone else, which is exactly the problem.",
+        "<b>RCL, CCL</b> — broader mixes give partial insulation; the core customer still skews to the expiring band, on cycle-peak earnings and multiples.",
+        "<b>THO, BC, GOLF</b> — RVs, boats and golf are go-go behaviours with hard biological limits. Cheap cyclicals, not thesis longs.",
+        "<b>STMN.SW</b> — private-pay and age-driven, but genuinely discretionary. A wealth-effect trade wearing a demographic costume.",
+        "<b>PHM, TMHC</b> — active-adult builders have a real rate-insensitivity advantage from equity-rich buyers, and a visible expiry on the tailwind."
+      ]
+    },
+    {
+      "cls": "hedge",
+      "color": "#7C3AED",
+      "title": "Deliberate internal hedges",
+      "body": "Positions held specifically because they profit if part of the thesis is wrong. These are not diversification — each one is matched to a named falsifier.",
+      "items": [
+        "<b>LLY against limb D's falsifier:</b> the GLP-1 franchise is the most plausible agent of morbidity compression, which is the stated falsifier for the care-volume book. Owning it partially hedges the rest of the D sleeve. <i>Cost: the entry price prices obesity for near-perfection.</i>",
+        "<b>Rate-side offset within the book:</b> REITs in the hou vertical and spread insurers in the inc vertical sit on opposite sides of the limbs A-versus-E rate contradiction. Sized deliberately, that is a partial internal hedge rather than an accident.",
+        "<b>TROW as the limb A control variable:</b> held small, or simply tracked, as the instrument that tells you whether the flow reversal is showing up at all. If TROW's flows stabilise, limb A's premise is weaker than assumed.",
+        "<b>RMD as the market's live GLP-1 pricing:</b> the multiple is the cleanest read on how the market is currently pricing morbidity compression. Watch it whether or not you own it.",
+        "<b>Private-pay weighting as the limb E hedge:</b> the deliberate tilt toward hearing, ophthalmic premium, dental and death care is a structural hedge against reimbursement risk, not a separate theme."
+      ]
+    },
+    {
+      "cls": "avoid",
+      "color": "#475569",
+      "title": "Explicitly not owned",
+      "body": "Named so the omissions are decisions rather than oversights.",
+      "items": [
+        "<b>Anything whose earnings depend on a government-set rate holding:</b> the thesis's own success is the risk. Payors are tracked as limb E instruments, not held as limb D longs.",
+        "<b>Pure labour arbitrage in care:</b> businesses whose model is buying care labour cheaply and billing it dearly are on the wrong side of limb C. HCSG is a monitoring instrument, not a position.",
+        "<b>The 'buy aging' basket:</b> any position describable in three words has no edge in it. Large-cap diversified medtech (MDT) dilutes the demographic signal to nothing.",
+        "<b>Levered senior housing operators as a core holding:</b> BKD is genuinely binary between occupancy recovery and wage inflation. That is a trade, not a core position.",
+        "<b>Raw materials and AI/semis exposure:</b> covered by the sibling hard-assets-research and ai-hardware-research maps. Scope discipline is deliberate."
+      ]
+    }
+  ],
+
+  "sizing": {
+    "title": "Sizing logic",
+    "rules": [
+      {"n": "Pay to wait", "body": "Weakness w1 says demographics are the slowest variable in finance and a correct call can lose to carry for years. Default to expressions that are cash-generative or yielding. The labour-substitution sleeve is the deliberate exception — it is priced for growth and will not pay you to wait, so it is sized as the highest-conviction rather than the largest position."},
+      {"n": "Correlate the immigration bet", "body": "Limb C and the substitution sleeve are one bet on one variable. Size them together as a single exposure to immigration policy, not as two independent positions."},
+      {"n": "Cap reimbursement exposure", "body": "Set an explicit ceiling on the share of the book whose earnings depend on a CMS or state Medicaid rate. Limb E is the reason the D-limb book tilts private-pay."},
+      {"n": "Separate the rate call", "body": "Do not let a net rate view emerge from the sum of the positions. State it, date it, size it separately — see weakness w2."},
+      {"n": "Split the customer", "body": "Run top-decile and median-retiree exposures as separate sleeves with separate theses. A single 'the retiree' framing produces wrong positions for one of them."}
+    ]
+  },
+
+  "entry_windows": {
+    "as_of": "2026-08-06",
+    "intro": "Where the thesis is right and the price is not. Ranked by the gap between structural conviction and current crowding. These are watch conditions, not orders — the nightly robot flags when a drawdown threshold is crossed.",
+    "windows": [
+      {"rank": 1, "ticker": "EME", "setup": "Labour-scarcity moat is durable and independent of the construction cycle; the price is not.", "watch": "A datacentre capex scare that takes the whole contractor complex down together.", "risk": "The cycle and the demographics are genuinely entangled here — a construction downturn hurts earnings even though the labour scarcity is intact."},
+      {"rank": 2, "ticker": "WELL", "setup": "Best asset in the supply-trough trade, permanently expensive.", "watch": "A rate back-up that hits REITs indiscriminately, or a labour-cost quarter that spooks the operating-portfolio structure.", "risk": "It may simply never get cheap. The quality is real."},
+      {"rank": 3, "ticker": "ATGE", "setup": "Owns the binding constraint in limb C; has already re-rated on recognition of it.", "watch": "Title IV or for-profit-education regulatory headlines, which are bimodal and recurrent.", "risk": "The regulatory tail is genuinely fat — size for it rather than hoping around it."},
+      {"rank": 4, "ticker": "SOON.SW", "setup": "Cleanest private-pay age curve available; under-owned relative to reimbursed medtech.", "watch": "An OTC hearing-aid scare that hits the whole complex, which has historically overshot.", "risk": "Low-end commoditisation is a real long-run threat, not just a headline."},
+      {"rank": 5, "ticker": "AMN", "setup": "Structural nursing shortage intact; the equity was destroyed by the post-pandemic bill-rate normalisation.", "watch": "Evidence that hospital float-pool insourcing has stopped taking share.", "risk": "The structural argument can be right and the equity still wrong if hospitals have permanently internalised the function."},
+      {"rank": 6, "ticker": "ZBH", "setup": "Cheapest way to own joint-replacement volume, discounted for genuine reasons.", "watch": "Evidence that volume growth is finally outrunning price erosion, or a credible share stabilisation.", "risk": "A decade of share loss is a pattern, not a discount."}
+    ],
+    "avoid": {
+      "title": "Not a window",
+      "body": "FIX, PWR and IESC are all high-quality expressions of limb C trading at prices that assume the construction cycle does not roll over. The thesis is intact in all three; there is no margin of safety in any of them. A drawdown in these names would be a cycle event, not a thesis event — which is exactly what makes it the entry, and exactly why it has not happened yet."
+    }
+  },
+
+  "catalyst_table": [
+    {"id": "trustee", "n": "SSA Trustees report", "c": "#7C3AED", "cats": "Annual. Resets the depletion date and with it the entire limb E policy clock. The one scheduled event that most moves the fiscal limb."},
+    {"id": "marate", "n": "CMS Medicare Advantage Advance Notice", "c": "#7C3AED", "cats": "Annual, winter. The tradable event for the payor vertical; the final Rate Announcement usually confirms it."},
+    {"id": "nic", "n": "NIC MAP senior housing data", "c": "#16A34A", "cats": "Quarterly. Occupancy, rate and starts — the direct read on limb H's supply-trough thesis. Read margin alongside occupancy."},
+    {"id": "limra", "n": "LIMRA annual/quarterly annuity sales", "c": "#4F46E5", "cats": "Quarterly. The cleanest single confirmation or refutation of limb A's behavioural shift."},
+    {"id": "aacn", "n": "AACN nursing enrolment survey", "c": "#DC2626", "cats": "Annual. Tests the capacity-gap mechanism directly — applications turned away is the number that matters."},
+    {"id": "jolts", "n": "JOLTS: healthcare & construction openings", "c": "#DC2626", "cats": "Monthly. Fast proxy for the labour shortage; use for direction only."},
+    {"id": "part", "n": "BLS participation rate, 65+", "c": "#DC2626", "cats": "Monthly. The highest-value single indicator in the thesis — tests limb C's premise and limb D's timing at once."},
+    {"id": "cerulli", "n": "Cerulli channel & advisor data", "c": "#0891B2", "cats": "Annual. Adjudicates limb B: whether the independent channel is actually taking share at the transfer break points."},
+    {"id": "pce", "n": "BEA PCE by category", "c": "#EF9F27", "cats": "Monthly. The consumption rotation, but only informative when normalised per capita by age band."},
+    {"id": "census", "n": "Census population projections vintage", "c": "#64748B", "cats": "Irregular. Refreshes the cohort clock itself — the master time axis every other panel indexes to."}
+  ],
+
+  "four_questions": [
+    {"q": "What has to be true for this to work?", "a": "That the age-band spending relay holds its historical shape, and that the labour pipeline stays capacity-constrained for longer than the market's implied adjustment period. Everything else is second order."},
+    {"q": "What would make you exit entirely?", "a": "A sustained immigration surge combined with 65+ participation continuing to climb. That is one coherent scenario and it neutralises limb C, most of limb D's cost-driven pricing, and the portfolio-construction conclusion in a single move."},
+    {"q": "Where is the crowd already?", "a": "Senior housing REITs and large-cap medtech — both fully narrativised. The crowd is thin in the labour limb, the intermediation limb and the median-retiree segment. Position sizing should reflect that, not the conviction ranking alone."},
+    {"q": "What does this cost to hold?", "a": "Most expressions are cash-generative or yielding by design. The labour-substitution sleeve is the exception and will not pay you to wait — hold it as the highest-conviction rather than the largest position."}
+  ]
+}

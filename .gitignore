@@ -1,0 +1,13 @@
+.DS_Store
+*.DS_Store
+.env
+node_modules/
+*.log
+__pycache__/
+*.pyc
+
+# Local dev server config — not part of the published dashboard
+.claude/
+
+# Source research inputs (memos, notes, paid research) — PROPRIETARY, keep OUT of the public repo
+memos/

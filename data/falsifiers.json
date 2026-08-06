@@ -1,0 +1,131 @@
+{
+  "_meta": {
+    "description": "Tripwires. Each falsifier names the limb it kills, the observable condition that would trip it, the positions it retires, and its current state. A thesis without these is a narrative.",
+    "as_of": "2026-08-06",
+    "state_scale": "armed = watching, no evidence yet / warming = partial evidence accumulating / tripped = condition met, positions must be retired",
+    "discipline_note": "The point of writing the exit in advance is that it is written before the money is at risk. A falsifier that gets renegotiated when it trips was never a falsifier."
+  },
+
+  "falsifiers": [
+    {
+      "id": "f1",
+      "limb": "C",
+      "n": "Immigration surge relieves the constrained occupations",
+      "sev": 3,
+      "state": "armed",
+      "condition": "Sustained net immigration growth, concentrated in healthcare support, construction trades and personal care, held for more than four consecutive quarters — combined with visible deceleration in services wage growth relative to goods.",
+      "kills": "Limb C outright, and with it the portfolio-construction conclusion. Also repairs limb D's and limb H's cost problem, which paradoxically helps the care operators while destroying the labour thesis.",
+      "retires": ["EME", "FIX", "PWR", "MYRG", "AMN", "ATGE", "LINC", "UTI", "ROK", "EMR", "6954.T", "SYM"],
+      "watch": ["immig", "wagesvc", "openings"],
+      "note": "The single largest swing factor in the thesis. It is also the reason limb C and the substitution sleeve must be sized as one correlated bet rather than two positions."
+    },
+    {
+      "id": "f2",
+      "limb": "C",
+      "n": "The cohort simply works longer",
+      "sev": 3,
+      "state": "armed",
+      "condition": "Labour force participation among 65+ continuing to rise rather than flattening, sustained across a full business cycle rather than a single tight-labour episode.",
+      "kills": "Limb C's premise and limb D's timing simultaneously — the labour does not leave, and the consumption rotation is deferred with it.",
+      "retires": ["The labour sleeve entirely, plus the timing on the limb D relay — the go-go fade would need to be pushed right by however long participation keeps rising."],
+      "watch": ["part65"],
+      "note": "The highest-value single indicator on the dashboard, because it tests two limbs at once. Read it together with f1: if both move against the thesis simultaneously, the labour argument is finished."
+    },
+    {
+      "id": "f3",
+      "limb": "D",
+      "n": "Morbidity compression — the care curve moves right",
+      "sev": 3,
+      "state": "warming",
+      "condition": "Health utilisation per capita in the 75+ bands flattening or falling on a sustained basis, with GLP-1 and successor therapies visibly reducing the chronic disease burden that drives care intensity.",
+      "kills": "Limb D's volume assumption. Lengthens the go-go band — which would rescue the experience-economy names this thesis is fading — and shortens the high-cost tail that limb H and the care operators depend on.",
+      "retires": ["ENSG", "ADUS", "BKD", "DVA", "portions of the WELL/VTR occupancy case", "RGA's longevity book takes a loss"],
+      "watch": ["hh", "pce", "elective"],
+      "note": "Marked warming rather than armed because the evidence is genuinely accumulating — GLP-1 effects on the elderly disease burden are real, if slower and more nuanced than the initial market reaction assumed. LLY is held partly as the internal hedge against this. Watch ResMed's multiple as the market's live pricing of it."
+    },
+    {
+      "id": "f4",
+      "limb": "A",
+      "n": "The crude decumulation story turns out to be right",
+      "sev": 2,
+      "state": "armed",
+      "condition": "Sustained net equity outflow attributable to the 65+ cohort showing up in flow-of-funds data, without an offsetting inflow elsewhere — a genuine supply shock rather than a composition change.",
+      "kills": "Limb A's benign reading, and inverts it. The composition trade becomes a directional bear case on equity multiples.",
+      "retires": ["The entire income-manufacturing framing", "and would argue for reducing gross equity exposure across every other limb"],
+      "watch": ["flows", "annuity"],
+      "note": "Low probability on the evidence to date — wealth concentration and reinvestment of RMDs have historically overwhelmed this — but very high impact, because it would change the thesis from a rotation into a de-risking."
+    },
+    {
+      "id": "f5",
+      "limb": "B",
+      "n": "Incumbents hold the heirs",
+      "sev": 2,
+      "state": "armed",
+      "condition": "Retention data showing wirehouses and incumbent advisors keeping heir relationships at high rates, alongside slowing independent-channel recruitment and share gain.",
+      "kills": "Limb B's share-shift argument. What remains is a levered bet on AUM beta wearing a demographic costume.",
+      "retires": ["LPLA", "SF", "SEIC", "and reduces MS and RJF to ordinary quality-franchise holdings"],
+      "watch": ["rianna", "advage", "rollover"],
+      "note": "Cerulli channel data is the honest adjudicator here; company recruiting disclosures are the fast but self-serving read."
+    },
+    {
+      "id": "f6",
+      "limb": "D",
+      "n": "Reimbursement reset",
+      "sev": 3,
+      "state": "armed",
+      "condition": "A structural reduction in Medicare or Medicaid rates for post-acute, home health or skilled nursing — or a Medicare Advantage benchmark reset that persistently runs below medical cost trend.",
+      "kills": "The reimbursed half of limb D. Does not touch volume, which is the point of the whole private-pay tilt.",
+      "retires": ["The direct-rate-exposure tier in the reimbursement map, sized down or out — payors first, then the Medicaid-dependent operators"],
+      "watch": ["marate", "trustee"],
+      "note": "This is the falsifier the portfolio is already built around rather than one that would surprise it. The private-pay tilt exists precisely so that this event is survivable rather than fatal."
+    },
+    {
+      "id": "f7",
+      "limb": "H",
+      "n": "Lock-in beats demography",
+      "sev": 2,
+      "state": "armed",
+      "condition": "Existing-home turnover in retirement metros staying suppressed even as the cohort ages through the transition bands, with homeowner tenure among 65+ continuing to lengthen.",
+      "kills": "The inventory-release half of limb H, and defers senior housing move-in rates.",
+      "retires": ["Reduces the BKD occupancy case and the silver-inventory framing; leaves the aging-in-place trade intact and arguably strengthens it"],
+      "watch": ["turnover", "tenure", "shocc"],
+      "note": "Deliberately cuts both ways — the same reading that damages the inventory thesis supports the home-modification and in-home-care positions. Not a portfolio-level event."
+    },
+    {
+      "id": "f8",
+      "limb": "C",
+      "n": "Capacity responds faster than expected",
+      "sev": 2,
+      "state": "armed",
+      "condition": "Nursing programme places, apprenticeship completions and residency slots expanding faster than the 85+ population — the capacity gap closing rather than widening.",
+      "kills": "The strongest 'why isn't this priced' mechanism in the thesis. Without it, limbs C and H lose their pricing-power argument and become ordinary cyclicals.",
+      "retires": ["ATGE", "LOPE", "LINC", "UTI", "and removes the durable-moat premium from the contractor names"],
+      "watch": ["nurse", "trades"],
+      "note": "Slow-moving and highly measurable — applications turned away is the single number that matters. This is the most checkable falsifier on the list and deserves an annual diary entry."
+    },
+    {
+      "id": "f9",
+      "limb": "E",
+      "n": "Credible entitlement reform",
+      "sev": 2,
+      "state": "armed",
+      "condition": "Legislation that materially extends trust-fund solvency — benefit formula change, means-testing, retirement age adjustment or a payroll tax cap change — passing with durable political support.",
+      "kills": "Limb E's step-function risk, in a way that is mostly good for the rest of the book.",
+      "retires": ["Nothing directly. It would compress the reimbursement risk premium embedded in the limb D book, which argues for increasing rather than reducing exposure to the direct-rate tier."],
+      "watch": ["trustee", "ratio"],
+      "note": "The one falsifier whose triggering would improve most of the portfolio. Included because a thesis should name the scenarios where it is wrong in a profitable direction too."
+    },
+    {
+      "id": "f10",
+      "limb": "all",
+      "n": "It was priced all along",
+      "sev": 3,
+      "state": "armed",
+      "condition": "The 'why isn't this priced' test in the thesis failing limb by limb — capacity responding, no policy discontinuity materialising, institutional lag closing, and relative valuations already reflecting the forward earnings gradient.",
+      "kills": "The premise of the entire dashboard. Demographics being forecastable is the reason to be sceptical of demographic theses, including this one.",
+      "retires": ["Everything. This is the exit, not a rotation."],
+      "watch": ["nurse", "shocc", "rianna", "trades"],
+      "note": "The honest master falsifier. If the four mechanisms in the not-priced test all fail, the correct conclusion is that a forty-year-old known fact is in the price and the edge was imagined. Review this one deliberately rather than letting it be absorbed by the individual limb reviews."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "description": "Sequencing and innings. Where each vertical sits in its demographic cycle, when its band peaks, and whether the wind is behind it or turning. This is the timing layer of limb D's relay argument applied to the whole universe.",
+    "as_of": "2026-08-06",
+    "fields": {"inn": "Inning 1-9. Early = demand curve still ahead. Late = the paying band is peaking or shrinking.", "struct": "Structural demand durability 0-100", "capex": "Supply response — is capacity being added against the demand? 0-100, high = supply is responding, which erodes the setup", "bc": "Bandwagon/crowding 0-100", "verdict": "The stance"},
+    "reading": "The two columns that matter together are inning and crowding. Early inning with low crowding is where the work pays. Late inning with high crowding is the fade list."
+  },
+
+  "consensus_check": {
+    "title": "The gradient the market flattens",
+    "body": "Every row below is described by the market as 'the aging trade'. Six of them have a paying population that grows past 2040. Three have one that peaks around 2030 and then declines. They trade on the same narrative and the same multiple expansion. That divergence is the single most exploitable feature of this thesis, and it requires nothing more exotic than reading the population table correctly."
+  },
+
+  "cycles": [
+    {"id": "lab", "n": "Labour scarcity — trades & clinical", "c": "#DC2626", "inn": 3, "struct": 90, "capex": 25, "bc": 40,
+     "peak_band": "Supply-side; peaks as the pre-retirement band exits through 2035",
+     "verdict": "Early. The retirement of licensed workers is arithmetic and the training pipeline cannot respond in time — capacity score of 25 is the whole thesis. Crowding is moderate only because the market reads these as construction-cycle names rather than demographic ones.",
+     "vc": "#16A34A"},
+
+    {"id": "care", "n": "Care delivery", "c": "#EF9F27", "inn": 3, "struct": 92, "capex": 40, "bc": 50,
+     "peak_band": "Slow-go and no-go; grows past 2040",
+     "verdict": "Early-to-middle. Demand is the 85+ arithmetic and runs for two decades. The constraint is not demand or even capital — it is caregiver labour and Medicaid rates, which is why capacity can respond only partially.",
+     "vc": "#16A34A"},
+
+    {"id": "eol", "n": "End-of-life & legacy", "c": "#475569", "inn": 3, "struct": 95, "capex": 20, "bc": 30,
+     "peak_band": "No-go; the most certain curve on the board",
+     "verdict": "Early. Deaths in the cohort cannot be deferred, substituted or reformed away, and nobody is building new cemeteries in supply-constrained metros. The only real risk is revenue mix, not volume.",
+     "vc": "#16A34A"},
+
+    {"id": "wt", "n": "Wealth transfer & intermediation", "c": "#0891B2", "inn": 3, "struct": 85, "capex": 55, "bc": 45,
+     "peak_band": "No-go; transfer events cluster past 2030 and run into the 2040s",
+     "verdict": "Early on the assets, middle on the fee pool. The intermediation share shift is happening now, years ahead of the asset movement. Capacity is responding — every aggregator is buying books — which is what the 55 reflects.",
+     "vc": "#16A34A"},
+
+    {"id": "dev", "n": "Age-driven medtech", "c": "#D97706", "inn": 5, "struct": 88, "capex": 60, "bc": 65,
+     "peak_band": "Slow-go; peaks around 2035",
+     "verdict": "Middle. The demand curve runs another decade but the sector is thoroughly discovered and priced. Private-pay subcategories (hearing, premium ophthalmics) are earlier and less crowded than the reimbursed ones.",
+     "vc": "#EF9F27"},
+
+    {"id": "hou", "n": "Senior housing & aging in place", "c": "#16A34A", "inn": 4, "struct": 85, "capex": 35, "bc": 75,
+     "peak_band": "No-go for facilities, slow-go for modification",
+     "verdict": "Middle on fundamentals, late on price. The supply trough is genuine and starts have not recovered — capacity score of 35 is real. But this is the most consensus expression of the entire thesis, and limb C's wage inflation eats the occupancy gain.",
+     "vc": "#EF9F27"},
+
+    {"id": "inc", "n": "Income & retirement", "c": "#4F46E5", "inn": 5, "struct": 82, "capex": 70, "bc": 60,
+     "peak_band": "Pre-retirement; the flow runs through the 2030s as Gen X arrives",
+     "verdict": "Middle. The behavioural shift is real and ongoing, but capital has flooded into annuity origination and insurance-affiliated private credit — capacity score of 70 says the spread is being competed down.",
+     "vc": "#EF9F27"},
+
+    {"id": "aut", "n": "Labour substitution", "c": "#E11D48", "inn": 4, "struct": 80, "capex": 65, "bc": 65,
+     "peak_band": "Employer-driven; tracks the labour shortage, not a retiree band",
+     "verdict": "Middle, and the hardest to time. The structural argument is strong but orders have been reliably cyclical whenever tested, so the demographic signal keeps getting overwritten by the capex cycle.",
+     "vc": "#EF9F27"},
+
+    {"id": "pay", "n": "Payors & Medicare Advantage", "c": "#7C3AED", "inn": 6, "struct": 78, "capex": 80, "bc": 40,
+     "peak_band": "Enrolment steps up at 65 and grows through 2035",
+     "verdict": "Middle-to-late despite growing enrolment — because the constraint is not demand. Capacity score of 80 reflects the last cycle of aggressive competition for members; profitability is set by CMS and by a cost trend that limb C is pushing up.",
+     "vc": "#EF9F27"},
+
+    {"id": "csm-exp", "n": "Experience economy (cruise, RV, golf, marine)", "c": "#DB2777", "inn": 8, "struct": 45, "capex": 75, "bc": 80,
+     "peak_band": "Go-go; population peaks around 2030 and then declines",
+     "verdict": "Late. The paying band stops growing within the thesis horizon while the industry is adding capacity into it — capacity 75 against structural 45 is the worst combination on the board. Fade into strength; do not short a good business early.",
+     "vc": "#DC2626"},
+
+    {"id": "csm-stap", "n": "Age staples (hygiene, pharmacy distribution, value retail)", "c": "#DB2777", "inn": 3, "struct": 85, "capex": 45, "bc": 25,
+     "peak_band": "Slow-go and no-go; grows past 2040",
+     "verdict": "Early and almost entirely un-narrativised. Same vertical as the row above, opposite gradient, a quarter of the crowding. This pair is the cleanest single illustration of why the sequencing argument matters.",
+     "vc": "#16A34A"},
+
+    {"id": "act", "n": "Active adult housing", "c": "#22C55E", "inn": 7, "struct": 55, "capex": 60, "bc": 45,
+     "peak_band": "Go-go; expires with the same clock as the experience economy",
+     "verdict": "Late-middle. The equity-rich buyer's rate insensitivity is a genuine advantage in a high-rate market, but the demographic tailwind has a visible expiry around 2030 and builders are adding communities into it.",
+     "vc": "#EF9F27"}
+  ],
+
+  "crowding_monitor": {
+    "as_of": "2026-08-06",
+    "headline": "The consensus trade is fully priced; the un-consensus limbs are not",
+    "stance": "Rotate within the thesis rather than out of it. Senior housing and large-cap medtech carry the narrative premium; the labour limb, the median-retiree segment and age staples carry almost none.",
+    "signals": [
+      {"tag": "crowded", "t": "Senior housing REITs", "d": "The single most cited expression of boomerification. Premium compounder multiples on an operating business whose largest cost input is limb C.", "v": "high"},
+      {"tag": "crowded", "t": "Skilled-labour contractors", "d": "Re-rated on the AI-datacentre construction narrative rather than on the demographic one. Right thesis, borrowed catalyst, no margin of safety.", "v": "high"},
+      {"tag": "crowded", "t": "Large-cap medtech", "d": "BSX, ISRG, SYK all execute superbly and price it fully. Nothing about the demographics is undiscovered.", "v": "high"},
+      {"tag": "moderate", "t": "Wealth platforms", "d": "The transfer narrative is well known; the advisor-attrition mechanism inside it is less so. Cash-sweep rate sensitivity creates entry points unrelated to the thesis.", "v": "mid"},
+      {"tag": "thin", "t": "Private-pay age curves", "d": "Hearing and premium ophthalmics have the cleanest demographic exposure in the universe and trade without a demographic premium — partly because the leaders are listed outside the US.", "v": "low"},
+      {"tag": "thin", "t": "Median-retiree exposure", "d": "The largest cohort segment by headcount and the least served by scaled operators. Almost entirely absent from the consensus version of this trade.", "v": "low"},
+      {"tag": "thin", "t": "Age staples", "d": "Incontinence, pharmacy distribution and fixed-income value retail. Unglamorous, volume-driven, structurally insulated from reimbursement, un-narrativised.", "v": "low"},
+      {"tag": "inverted", "t": "The experience economy", "d": "Priced on peak bookings from the band that is about to stop growing. The only place in the universe where the crowd and the demography point in opposite directions.", "v": "short"}
+    ]
+  }
+}

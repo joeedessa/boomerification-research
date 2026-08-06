@@ -1,0 +1,103 @@
+{
+  "_meta": {
+    "description": "The universe matrix. Dimension A: the ten verticals against the four age bands of the cohort clock — where the demand actually comes from and when. Dimension B: the five cross-cutting forces that hit every vertical, three of which are internal contradictions in the thesis rather than external risks.",
+    "as_of": "2026-08-06",
+    "intensity_scale": "0 = no exposure, 1 = incidental, 2 = material, 3 = the primary driver",
+    "gradient_note": "The gradient column is the point of the matrix. A vertical paid by the go-go band is trading against a population that peaks around 2030; a vertical paid by slow-go or no-go has a tailwind that runs past 2040. The market prices both as 'aging'."
+  },
+
+  "cols": [
+    {"id": "pre", "n": "Pre-retirement", "sub": "55–64", "c": "#64748B"},
+    {"id": "gogo", "n": "Go-go", "sub": "65–74", "c": "#EF9F27"},
+    {"id": "slowgo", "n": "Slow-go", "sub": "75–84", "c": "#D97706"},
+    {"id": "nogo", "n": "No-go", "sub": "85+", "c": "#DC2626"}
+  ],
+
+  "rows": [
+    {"id": "inc", "n": "Income & retirement", "limb": "A", "c": "#4F46E5", "gradient": "flat", "cells": [3, 2, 1, 1],
+     "note": "Paid at the transition, not in retirement. The product is bought in the pre-retirement band and the in-force block runs off for decades after — which is why limb A is gradual rather than a step change.",
+     "tickers": ["EQH", "CRBG", "APO", "JXN", "CNO"]},
+
+    {"id": "wt", "n": "Wealth transfer & intermediation", "limb": "B", "c": "#0891B2", "gradient": "rising", "cells": [2, 2, 2, 3],
+     "note": "The fee pool moves at the transfer events, which cluster in the no-go band — first to a surviving spouse, then to heirs. The intermediation share shift front-runs both by years.",
+     "tickers": ["MS", "LPLA", "NTRS", "RJF", "SEIC"]},
+
+    {"id": "lab", "n": "Labour scarcity", "limb": "C", "c": "#DC2626", "gradient": "rising", "cells": [3, 1, 2, 3],
+     "note": "Two separate mechanisms in one row. The pre-retirement band supplies the labour that is leaving; the no-go band consumes the care hours that create the shortage. Both directions push the same way.",
+     "tickers": ["EME", "ATGE", "APG", "AMN", "MYRG"]},
+
+    {"id": "aut", "n": "Labour substitution", "limb": "C", "c": "#E11D48", "gradient": "rising", "cells": [3, 0, 1, 2],
+     "note": "Capex response to the row above. Demand comes from the employers losing workers, not from the retirees — which is why the age-band mapping looks odd and why this is the highest-carry sleeve in the book.",
+     "tickers": ["ROK", "EMR", "6861.T", "ISRG", "6954.T"]},
+
+    {"id": "care", "n": "Care delivery", "limb": "D", "c": "#EF9F27", "gradient": "steep", "cells": [0, 1, 3, 3],
+     "note": "The core of the thesis and the steepest gradient on the matrix. Effectively nothing in the go-go band, everything from 75 onward. Care hours scale with the 85+ population, which roughly doubles by 2040.",
+     "tickers": ["ENSG", "ADUS", "EHC", "CHE", "OPCH"]},
+
+    {"id": "dev", "n": "Age-driven medtech", "limb": "D", "c": "#D97706", "gradient": "steep", "cells": [0, 2, 3, 2],
+     "note": "Peaks in the slow-go band rather than the no-go band — procedures require a patient well enough to undergo them. Cataract, TAVR, joints and hearing all cluster in 70–85.",
+     "tickers": ["EW", "ALC", "SOON.SW", "SYK", "BSX"]},
+
+    {"id": "pay", "n": "Payors & risk-bearing", "limb": "E", "c": "#7C3AED", "gradient": "rising", "cells": [0, 3, 3, 2],
+     "note": "Enrolment starts at 65 exactly — the sharpest step function on the matrix. Profitability is set annually by CMS, not by the demography, which is the whole limb E argument.",
+     "tickers": ["UNH", "HUM", "ALHC", "ELV", "EVH"]},
+
+    {"id": "csm", "n": "Consumption & staples", "limb": "D", "c": "#DB2777", "gradient": "split", "cells": [1, 3, 2, 2],
+     "note": "The only genuinely split row. Experiences (cruise, RV, golf) are paid by the go-go band and fade after 2030; hygiene, pharmacy distribution and value retail are paid by slow-go and no-go and do not. Same vertical, opposite gradients — the reason the matrix exists.",
+     "tickers": ["VIK", "ESSITY-B.ST", "MCK", "8113.T", "KMB"]},
+
+    {"id": "hou", "n": "Housing & aging in place", "limb": "H", "c": "#16A34A", "gradient": "split", "cells": [1, 3, 2, 3],
+     "note": "Two housing decisions, twenty years apart. The go-go band buys active-adult; the no-go band enters senior housing or releases the stock. The middle band modifies the existing home and stays.",
+     "tickers": ["WELL", "PHM", "HD", "BKD", "ELS"]},
+
+    {"id": "eol", "n": "End-of-life & legacy", "limb": "B", "c": "#475569", "gradient": "rising", "cells": [1, 0, 1, 3],
+     "note": "The most mathematically certain demand curve in the universe, and the terminal event that triggers the limb B transfer. Preneed sales pull a slice of the revenue forward into the go-go band.",
+     "tickers": ["SCI", "CSV", "CHE", "MATW", "NTRS"]}
+  ],
+
+  "dim_b": {
+    "label": "Dimension B — cross-cutting forces. Three of these are internal contradictions in the thesis, not external risks: the same demographics that create the demand create the cost, the policy exposure and the rate conflict.",
+    "forces": [
+      {
+        "id": "wage",
+        "n": "Care-labour cost",
+        "kind": "internal",
+        "body": "Limb C's wage inflation lands directly on limb D's and limb H's cost base. Care delivery, senior housing and skilled nursing are labour businesses — the force creating the demand compresses the margin on serving it.",
+        "hits": {"care": 3, "hou": 3, "lab": 1, "dev": 1, "pay": 2, "csm": 0, "inc": 0, "wt": 0, "aut": 0, "eol": 2},
+        "mitigation": "Prefer asset-light, technology-levered, net-lease or private-pay exposures within care. CTRE over an operator; PRVA over an employer; ALC over a facility."
+      },
+      {
+        "id": "reimb",
+        "n": "Reimbursement & policy",
+        "kind": "internal",
+        "body": "Limb E says healthcare price is the most politically exposed line in the federal budget precisely because limb D guarantees the volume. Any position whose earnings depend on a government-set rate carries the thesis's own success as its main risk.",
+        "hits": {"pay": 3, "care": 3, "dev": 1, "hou": 2, "csm": 1, "eol": 0, "inc": 1, "wt": 0, "lab": 1, "aut": 0},
+        "mitigation": "Build the D-limb book on volume and cost-takeout, not rate. Private-pay categories — hearing, premium intraocular lenses, dental, death care — are the structural escape from this force."
+      },
+      {
+        "id": "immig",
+        "n": "Immigration policy",
+        "kind": "external",
+        "body": "The single largest swing factor in the thesis. A sustained immigration surge relieves the constrained occupations, neutralises limb C, and simultaneously repairs limb D's and limb H's cost problem. It is the one variable that flips several limbs at once.",
+        "hits": {"lab": 3, "aut": 3, "care": 3, "hou": 2, "csm": 0, "dev": 0, "pay": 1, "inc": 0, "wt": 0, "eol": 1},
+        "mitigation": "Unhedgeable within the equity book. Size limbs C and its substitution sleeve as a single correlated bet on this variable rather than as two positions."
+      },
+      {
+        "id": "rates",
+        "n": "Rates & term premium",
+        "kind": "internal",
+        "body": "Limbs C and E argue for a higher neutral rate and a wider term premium. Limb A argues for structural demand for duration and contractual cash flow. These do not net out — the rate view must be argued separately and explicitly, not inherited from the other limbs.",
+        "hits": {"inc": 3, "hou": 3, "wt": 2, "care": 2, "aut": 1, "dev": 1, "pay": 1, "csm": 1, "lab": 2, "eol": 1},
+        "mitigation": "Hold the rate view as a dated, separately-sized call. Note that REITs (hou) and spread insurers (inc) sit on opposite sides of it, which is a partial internal hedge if sized deliberately."
+      },
+      {
+        "id": "glp1",
+        "n": "Morbidity compression / GLP-1",
+        "kind": "external",
+        "body": "Limb D's stated falsifier in its live form. A healthier elderly population pushes the entire care curve to the right, lengthens the go-go band and shortens the high-cost tail. Would damage care volumes and longevity reinsurance while extending the experience-economy trade this thesis is fading.",
+        "hits": {"care": 2, "dev": 2, "pay": 2, "csm": 1, "hou": 1, "inc": 2, "eol": 1, "lab": 1, "wt": 0, "aut": 0},
+        "mitigation": "Holding LLY inside the book is a partial internal hedge against the rest of it. Track ResMed's multiple as the market's live pricing of this risk."
+      }
+    ]
+  }
+}

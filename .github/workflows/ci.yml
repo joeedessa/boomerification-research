@@ -1,0 +1,56 @@
+name: CI — validate data & app
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate all data JSON
+        run: |
+          python - <<'EOF'
+          import json, glob
+          files = sorted(glob.glob('data/*.json'))
+          for f in files:
+              json.load(open(f))
+          print(f'{len(files)} data files valid')
+          EOF
+      - name: Check thesis referential integrity
+        run: |
+          python - <<'EOF'
+          import json
+          thesis = json.load(open('data/thesis.json'))
+          comp   = json.load(open('data/companies.json'))
+          limbs  = {l['id'] for l in thesis['limbs']}
+          verts  = {v['id'] for v in comp['_meta']['verticals']}
+          reg    = {t['id'] for t in comp['_meta']['themes_registry']}
+          bad = []
+          for c in comp['companies']:
+              if c['limb'] not in limbs:     bad.append(f"{c['ticker']}: limb {c['limb']}")
+              if c['vertical'] not in verts: bad.append(f"{c['ticker']}: vertical {c['vertical']}")
+              for t in c.get('themes', []):
+                  if t not in reg:           bad.append(f"{c['ticker']}: theme {t}")
+          # Falsifiers and indicators must point at real limbs
+          for fl in json.load(open('data/falsifiers.json'))['falsifiers']:
+              if fl['limb'] not in limbs | {'all'}: bad.append(f"falsifier {fl['id']}: limb {fl['limb']}")
+          for i in json.load(open('data/indicators.json'))['indicators']:
+              if i['limb'] not in limbs:            bad.append(f"indicator {i['id']}: limb {i['limb']}")
+          assert not bad, 'referential integrity failures:\n' + '\n'.join(bad)
+          print(f"{len(comp['companies'])} companies, {len(limbs)} limbs — all references resolve")
+          EOF
+      - name: Syntax-check dashboard JavaScript
+        run: |
+          python - <<'EOF'
+          import re
+          html = open('index.html').read()
+          scripts = re.findall(r'<script>(.*?)</script>', html, re.S)
+          assert scripts, 'no script blocks found'
+          for i, s in enumerate(scripts):
+              open(f'/tmp/w{i}.js', 'w').write(s)
+          print(f'{len(scripts)} script block(s) extracted')
+          EOF
+          for f in /tmp/w*.js; do node --check "$f" && echo "$f OK"; done

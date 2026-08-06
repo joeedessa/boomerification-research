@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boomerification Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Fraunces:ital,opsz,wght@0,9..144,500..600;1,9..144,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ── Design tokens (shared house system with hard-assets-research / ai-hardware-research) ── */
+:root{
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+  --color-text-primary:#16181D;
+  --color-text-secondary:#3D424D;
+  --color-text-tertiary:#70757F;
+  --color-text-info:#3730C9;
+  --color-background-primary:#FFFFFF;
+  --color-background-secondary:#F5F5F2;
+  --color-background-info:#EEEEFB;
+  --color-border-tertiary:#E7E6E1;
+  --color-border-secondary:#D3D2CC;
+  --color-border-info:#C7C5F4;
+  --accent:#4F46E5;
+  --paper:#FBFAF7;
+  --lift:1;
+  --fl-red-bg:#FCEBEB;    --fl-red-fg:#791F1F;
+  --fl-amber-bg:#FAEEDA;  --fl-amber-fg:#633806;
+  --fl-green-bg:#E1F5EE;  --fl-green-fg:#085041;
+  --fl-indigo-bg:#EEEDFE; --fl-indigo-fg:#3C3489;
+  --shadow-1:0 1px 2px rgba(22,24,29,.05);
+  --shadow-2:0 4px 16px rgba(22,24,29,.08),0 1px 3px rgba(22,24,29,.05);
+  --shadow-3:0 12px 40px rgba(22,24,29,.16),0 2px 8px rgba(22,24,29,.08);
+}
+:root[data-theme="dark"]{
+  --color-text-primary:#EDEDE8;
+  --color-text-secondary:#C2C4C9;
+  --color-text-tertiary:#8B8E96;
+  --color-text-info:#A5B4FC;
+  --color-background-primary:#1E2025;
+  --color-background-secondary:#26282E;
+  --color-background-info:#26284A;
+  --color-border-tertiary:#33363D;
+  --color-border-secondary:#454850;
+  --color-border-info:#4A4D8A;
+  --accent:#8B85F0;
+  --paper:#17181C;
+  --lift:1.55;
+  --fl-red-bg:#E24B4A26;    --fl-red-fg:#F2A7A7;
+  --fl-amber-bg:#EF9F2726;  --fl-amber-fg:#F0C88A;
+  --fl-green-bg:#16A34A26;  --fl-green-fg:#86DCAE;
+  --fl-indigo-bg:#8B85F026; --fl-indigo-fg:#BDB8F7;
+  --shadow-1:0 1px 2px rgba(0,0,0,.4);
+  --shadow-2:0 4px 16px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.4);
+  --shadow-3:0 12px 40px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --color-text-primary:#EDEDE8;
+    --color-text-secondary:#C2C4C9;
+    --color-text-tertiary:#8B8E96;
+    --color-text-info:#A5B4FC;
+    --color-background-primary:#1E2025;
+    --color-background-secondary:#26282E;
+    --color-background-info:#26284A;
+    --color-border-tertiary:#33363D;
+    --color-border-secondary:#454850;
+    --color-border-info:#4A4D8A;
+    --accent:#8B85F0;
+    --paper:#17181C;
+    --lift:1.55;
+    --fl-red-bg:#E24B4A26;    --fl-red-fg:#F2A7A7;
+    --fl-amber-bg:#EF9F2726;  --fl-amber-fg:#F0C88A;
+    --fl-green-bg:#16A34A26;  --fl-green-fg:#86DCAE;
+    --fl-indigo-bg:#8B85F026; --fl-indigo-fg:#BDB8F7;
+    --shadow-1:0 1px 2px rgba(0,0,0,.4);
+    --shadow-2:0 4px 16px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.4);
+    --shadow-3:0 12px 40px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;padding:12px 14px;background:var(--paper);color:var(--color-text-primary);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:#4F46E522}
+#loading{font-size:15px;color:#70757F;padding:20px;text-align:center}
+.w{padding:.4rem 0}
+
+/* ── Masthead ── */
+.mast{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:2px 2px 10px;flex-wrap:wrap}
+.mast-title{font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.mast-title em{font-style:italic;font-weight:500;color:var(--accent)}
+.mast-sub{font-size:11px;color:var(--color-text-tertiary);margin-top:3px}
+.mast-sub b{color:var(--color-text-secondary);font-weight:600;font-variant-numeric:tabular-nums}
+.mast-mkt{display:flex;gap:9px;flex-wrap:wrap;font-size:10.5px;font-variant-numeric:tabular-nums;color:var(--color-text-tertiary)}
+.mast-mkt b{color:var(--color-text-secondary);font-weight:600}
+.mast-clock{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:500;color:#B45309;background:#EF9F2710;border:.5px solid #EF9F2740;border-radius:20px;padding:3px 10px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.mast-clock:hover{background:#EF9F271C;box-shadow:var(--shadow-1)}
+.clock-pulse{width:6px;height:6px;border-radius:50%;background:#EF9F27;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.theme-btn{border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);border-radius:20px;font-size:12px;padding:2px 9px;cursor:pointer;color:var(--color-text-secondary);line-height:1.4}
+.theme-btn:hover{border-color:var(--accent)}
+
+/* ── Tabs ── */
+.tabs{display:flex;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:8px;overflow-x:auto;overflow-y:hidden;position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding-bottom:2px}
+.tabs,.mxs,[style*="overflow-x:auto"]{scrollbar-width:thin;scrollbar-color:var(--color-border-secondary) transparent}
+.tabs::-webkit-scrollbar,.mxs::-webkit-scrollbar,[style*="overflow-x:auto"]::-webkit-scrollbar{height:9px;-webkit-appearance:none}
+.tabs::-webkit-scrollbar-thumb,.mxs::-webkit-scrollbar-thumb,[style*="overflow-x:auto"]::-webkit-scrollbar-thumb{background:var(--color-border-secondary);border-radius:20px;border:2px solid transparent;background-clip:content-box}
+.tab{padding:6px 11px;font-size:12px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-.5px;white-space:nowrap;border-radius:6px 6px 0 0;transition:color .12s,background .12s}
+.tab:hover{color:var(--color-text-primary);background:var(--color-background-secondary)}
+.tab.on{color:var(--color-text-primary);border-bottom-color:var(--accent);font-weight:600}
+.tab-badge{display:inline-block;margin-left:5px;font-size:9px;font-weight:600;background:var(--fl-red-bg);color:var(--fl-red-fg);border-radius:20px;padding:0 5px;vertical-align:1px}
+.tab-group-sep{width:1px;background:var(--color-border-tertiary);margin:4px 4px 0;flex-shrink:0}
+.view{display:none}.view.on{display:block}
+
+/* ── Shared atoms ── */
+.note{font-size:11px;color:var(--color-text-tertiary);background:var(--color-background-secondary);border-left:3px solid var(--color-border-secondary);border-radius:4px 7px 7px 4px;padding:5px 9px;margin-bottom:7px;line-height:1.55}
+.note b{color:var(--color-text-secondary);font-weight:500}
+.pills{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px}
+.pill{padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;border:.5px solid var(--color-border-secondary);color:var(--color-text-secondary);background:transparent;transition:all .12s;font-family:inherit}
+.pill:hover{border-color:var(--accent)}
+.pill.on{background:var(--color-background-info);color:var(--color-text-info);border-color:var(--color-border-info)}
+.card{border-radius:7px;padding:9px 11px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary);margin-bottom:6px}
+.ctitle{font-family:var(--font-display);font-size:14.5px;font-weight:600;color:var(--color-text-primary);margin-bottom:3px;line-height:1.25}
+.cbody{font-size:11.5px;line-height:1.6;color:var(--color-text-secondary)}
+.cbody p{margin:0 0 6px}
+.klabel{font-size:8.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--color-text-tertiary);margin:7px 0 2px}
+.ticklink{color:var(--color-text-info);cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px;border-radius:2px;padding:0 1px;font-family:var(--font-mono);font-size:.92em}
+.ticklink:hover{background:var(--color-background-info)}
+.privtag{font-size:.9em;font-style:italic;color:var(--color-text-tertiary);border-bottom:1px dotted var(--color-border-secondary);cursor:help}
+.vfy{display:inline-block;font-size:8.5px;font-weight:600;letter-spacing:.04em;background:var(--fl-amber-bg);color:var(--fl-amber-fg);border-radius:3px;padding:1px 4px;margin-left:5px;vertical-align:1px;cursor:help}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:6px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px}
+.sf{font-size:9.5px;font-weight:500;padding:1px 5px;border-radius:3px;display:inline-block;margin:1px 2px 1px 0}
+.limbchip{font-size:9px;font-weight:600;padding:1px 6px;border-radius:20px;color:#fff;display:inline-block;letter-spacing:.02em}
+.bar{height:5px;border-radius:3px;background:var(--color-background-secondary);overflow:hidden;margin-top:3px}
+.bar > i{display:block;height:100%;border-radius:3px}
+.metarow{display:flex;gap:10px;flex-wrap:wrap;font-size:9.5px;color:var(--color-text-tertiary);font-variant-numeric:tabular-nums;margin-top:4px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(12px);background:var(--color-text-primary);color:var(--paper);font-size:11.5px;padding:7px 14px;border-radius:20px;opacity:0;pointer-events:none;transition:all .2s;z-index:200}
+#toast.on{opacity:1;transform:translateX(-50%)}
+
+/* ── Alert strip ── */
+#alert-strip{display:flex;gap:6px;overflow-x:auto;margin-bottom:8px;padding-bottom:3px}
+.al{flex:0 0 auto;max-width:340px;font-size:10.5px;line-height:1.45;border-radius:6px;padding:5px 9px;border:.5px solid;cursor:pointer}
+.al-window{background:var(--fl-green-bg);color:var(--fl-green-fg);border-color:#16A34A44}
+.al-move{background:var(--fl-indigo-bg);color:var(--fl-indigo-fg);border-color:var(--color-border-info)}
+.al-fade{background:var(--fl-amber-bg);color:var(--fl-amber-fg);border-color:#EF9F2744}
+.al-froth{background:var(--fl-red-bg);color:var(--fl-red-fg);border-color:#E24B4A44}
+
+/* ── Cohort clock ── */
+.clockwrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px;margin-bottom:8px}
+.bandcard{border-radius:7px;padding:8px 10px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary);border-top:3px solid}
+.band-n{font-family:var(--font-display);font-size:14px;font-weight:600}
+.band-ages{font-family:var(--font-mono);font-size:10.5px;color:var(--color-text-tertiary)}
+.band-lbl{font-size:10.5px;font-weight:500;color:var(--color-text-secondary);margin:3px 0}
+.band-b{font-size:10.5px;line-height:1.5;color:var(--color-text-tertiary)}
+.edges{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:5px;margin-bottom:8px}
+.edge{border-radius:6px;padding:6px 9px;background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary)}
+.edge-a{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--accent);line-height:1}
+.edge-l{font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--color-text-tertiary);margin-top:2px}
+.edge-n{font-size:10px;line-height:1.45;color:var(--color-text-tertiary);margin-top:3px}
+.relay{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:6px}
+
+/* ── Matrix ── */
+.mxs{overflow-x:auto}
+.mxg{display:grid;gap:2px;min-width:820px}
+.mch{border-radius:3px 3px 0 0;padding:4px 3px;text-align:center;font-size:10px;font-weight:600;line-height:1.2;color:#fff}
+.mch small{display:block;font-weight:400;opacity:.85;font-family:var(--font-mono);font-size:9px}
+.mrl{font-size:10.5px;font-weight:500;color:var(--color-text-secondary);display:flex;align-items:center;gap:5px;padding-right:5px;line-height:1.2;cursor:pointer;border-radius:4px;transition:background .12s}
+.mrl:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.mrl i{width:8px;height:8px;border-radius:2px;flex-shrink:0;display:inline-block}
+.mc{border-radius:3px;padding:4px 3px;border:.5px solid var(--color-border-tertiary);min-height:30px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;font-variant-numeric:tabular-nums;cursor:pointer;transition:all .1s}
+.mc:hover{border-color:var(--accent)}
+.grad{font-size:9px;font-weight:600;padding:1px 6px;border-radius:20px;white-space:nowrap}
+.g-steep{background:var(--fl-green-bg);color:var(--fl-green-fg)}
+.g-rising{background:var(--fl-green-bg);color:var(--fl-green-fg)}
+.g-flat{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
+.g-split{background:var(--fl-amber-bg);color:var(--fl-amber-fg)}
+.g-late{background:var(--fl-red-bg);color:var(--fl-red-fg)}
+.det-box{margin-top:6px;border-radius:6px;padding:9px 11px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);font-size:11.5px;line-height:1.6;color:var(--color-text-secondary);display:none}
+.det-box.on{display:block}
+
+/* ── Companies ── */
+.cofilters{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:7px}
+.srch{flex:1 1 210px;min-width:170px;padding:5px 10px;border-radius:20px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);font-size:12px;font-family:inherit}
+.srch:focus{outline:none;border-color:var(--accent)}
+.cocard{border-radius:7px;padding:8px 11px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary);margin-bottom:5px;border-left:3px solid}
+.co-h{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.co-tk{font-family:var(--font-mono);font-size:12.5px;font-weight:600;color:var(--color-text-primary)}
+.co-nm{font-size:12.5px;font-weight:500;color:var(--color-text-secondary)}
+.co-role{font-size:10px;color:var(--color-text-tertiary);margin-left:auto;text-align:right}
+.co-th{font-size:11.5px;line-height:1.6;color:var(--color-text-secondary);margin-top:4px}
+.co-fn{font-size:10.5px;line-height:1.5;color:var(--color-text-tertiary);margin-top:4px;padding-left:8px;border-left:2px solid var(--fl-amber-bg)}
+.chip{font-size:9.5px;padding:1px 6px;border-radius:20px;background:var(--color-background-secondary);color:var(--color-text-tertiary);cursor:pointer;border:.5px solid transparent}
+.chip:hover{border-color:var(--accent);color:var(--color-text-primary)}
+.q{font-family:var(--font-mono);font-size:10px;font-variant-numeric:tabular-nums}
+.up{color:#15803D}.dn{color:#B32B2A}
+:root[data-theme="dark"] .up{color:#4ADE80}:root[data-theme="dark"] .dn{color:#F87171}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .up{color:#4ADE80}:root:not([data-theme="light"]) .dn{color:#F87171}}
+
+/* ── Limbs / falsifiers / indicators ── */
+.limbcard{border-radius:8px;padding:11px 13px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary);margin-bottom:7px;border-left:4px solid}
+.limb-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.limb-n{font-family:var(--font-display);font-size:16px;font-weight:600}
+.limb-sub{font-size:11px;color:var(--color-text-tertiary);font-style:italic}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:4px 9px;margin-top:7px;font-size:11.5px;line-height:1.55}
+.kv dt{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);padding-top:2px}
+.kv dd{margin:0;color:var(--color-text-secondary)}
+.obs{display:flex;gap:4px;flex-wrap:wrap;margin-top:2px}
+.obs span{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-tertiary)}
+.fal{border-radius:7px;padding:9px 11px;border:.5px solid;margin-bottom:6px}
+.f-armed{background:var(--color-background-primary);border-color:var(--color-border-tertiary)}
+.f-warming{background:#EF9F2708;border-color:#EF9F2755}
+.f-tripped{background:var(--fl-red-bg);border-color:#E24B4A66}
+.state{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:20px}
+.s-armed{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
+.s-warming{background:var(--fl-amber-bg);color:var(--fl-amber-fg)}
+.s-tripped{background:var(--fl-red-bg);color:var(--fl-red-fg)}
+.sev{display:inline-flex;gap:2px;vertical-align:middle}
+.sev i{width:5px;height:5px;border-radius:50%;background:var(--color-border-secondary);display:inline-block}
+.sev i.on{background:#E24B4A}
+table.tbl{width:100%;border-collapse:collapse;font-size:11px}
+table.tbl th{text-align:left;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);padding:4px 7px;border-bottom:.5px solid var(--color-border-secondary);white-space:nowrap}
+table.tbl td{padding:6px 7px;border-bottom:.5px solid var(--color-border-tertiary);vertical-align:top;line-height:1.5;color:var(--color-text-secondary)}
+table.tbl tr:hover td{background:var(--color-background-secondary)}
+
+/* ── News ── */
+.nw{border-radius:6px;padding:6px 9px;border:.5px solid var(--color-border-tertiary);background:var(--color-background-primary);margin-bottom:4px}
+.nw a{color:var(--color-text-primary);text-decoration:none;font-size:12px;line-height:1.45;font-weight:500}
+.nw a:hover{color:var(--accent);text-decoration:underline}
+.nw-m{font-size:9.5px;color:var(--color-text-tertiary);margin-top:3px;display:flex;gap:8px;flex-wrap:wrap}
+footer{margin-top:22px;padding-top:10px;border-top:.5px solid var(--color-border-tertiary);font-size:10px;color:var(--color-text-tertiary);line-height:1.6}
+footer a{color:var(--color-text-info)}
+</style>
+</head>
+<body>
+<script>(function(){var t=localStorage.getItem('boom-theme');if(t)document.documentElement.dataset.theme=t;})()</script>
+<div id="loading">Loading boomerification research data…</div>
+<div class="w" id="app" style="display:none">
+
+<header class="mast">
+  <div>
+    <div class="mast-title">Boomer<em>ification</em></div>
+    <div class="mast-sub" id="updated-stamp"></div>
+  </div>
+  <div class="mast-mkt" id="mast-mkt" style="display:none"></div>
+  <span class="mast-clock" id="mast-clock" style="display:none"><span class="clock-pulse"></span><span id="mast-clock-txt"></span></span>
+  <button class="theme-btn" title="Toggle light / dark" onclick="toggleTheme()">◐</button>
+</header>
+
+<div id="alert-strip" style="display:none"></div>
+
+<div class="tabs" id="tabs">
+  <div class="tab on" onclick="ST('bk',this)" id="tab-bk">Act now<span class="tab-badge" id="act-badge" style="display:none"></span></div>
+  <div class="tab" onclick="ST('sh',this)">Orientation</div>
+  <div class="tab" onclick="ST('ck',this)">Cohort clock</div>
+  <div class="tab-group-sep"></div>
+  <div class="tab" onclick="ST('lb',this)">The limbs</div>
+  <div class="tab" onclick="ST('mx',this)">Universe matrix</div>
+  <div class="tab" onclick="ST('co',this)">Companies</div>
+  <div class="tab" onclick="ST('th',this)">Demand themes</div>
+  <div class="tab" onclick="ST('cy',this)">Sequencing</div>
+  <div class="tab" onclick="ST('nw',this)">News</div>
+  <div class="tab-group-sep"></div>
+  <div class="tab" onclick="ST('np',this)">Why not priced</div>
+  <div class="tab" onclick="ST('fa',this)">Falsifiers</div>
+  <div class="tab" onclick="ST('in',this)">Indicators</div>
+  <div class="tab" onclick="ST('pol',this)">Policy &amp; fiscal</div>
+  <div class="tab-group-sep"></div>
+  <div class="tab" onclick="ST('pf',this)">Positioning</div>
+  <div class="tab" onclick="ST('gl',this)">Glossary</div>
+  <div class="tab" onclick="ST('sr',this)">Sources</div>
+  <div class="tab" onclick="ST('xc',this)">Excluded</div>
+</div>
+
+<div class="view on" id="view-bk"><div id="bk-cont"></div></div>
+<div class="view" id="view-sh"><div id="sh-cont"></div></div>
+<div class="view" id="view-ck"><div id="ck-cont"></div></div>
+<div class="view" id="view-lb"><div id="lb-cont"></div></div>
+<div class="view" id="view-mx">
+  <div class="note"><b>Dimension A</b> — ten verticals against the four age bands of the cohort clock. The cell is exposure intensity; the <b>gradient</b> column is the point. Click any row for the reasoning. <b>Dimension B</b> below: the five cross-cutting forces, three of which are internal contradictions rather than external risks.</div>
+  <div class="mxs"><div class="mxg" id="mxg"></div></div>
+  <div class="det-box" id="mx-det"></div>
+  <div id="mx-dimb"></div>
+</div>
+<div class="view" id="view-co">
+  <div class="note">Browse all <b id="co-count-total"></b> names. Search across ticker, name, thesis and role. Filter by limb, vertical, conviction, theme or age band. Every record names the limb it expresses and the band that pays it.</div>
+  <div id="co-cont"></div>
+</div>
+<div class="view" id="view-th"><div id="th-cont"></div></div>
+<div class="view" id="view-cy"><div id="cy-cont"></div></div>
+<div class="view" id="view-nw"><div id="nw-cont"></div></div>
+<div class="view" id="view-np"><div id="np-cont"></div></div>
+<div class="view" id="view-fa"><div id="fa-cont"></div></div>
+<div class="view" id="view-in"><div id="in-cont"></div></div>
+<div class="view" id="view-pol"><div id="pol-cont"></div></div>
+<div class="view" id="view-pf"><div id="pf-cont"></div></div>
+<div class="view" id="view-gl"><div id="gl-cont"></div></div>
+<div class="view" id="view-sr"><div id="sr-cont"></div></div>
+<div class="view" id="view-xc"><div id="xc-cont"></div></div>
+
+<footer>
+  <b>Boomerification Research</b> — personal investment research, <b>not investment advice</b>. Nothing here is a recommendation to buy or sell any security.<br>
+  Sibling maps: <a href="https://github.com/joeedessa/hard-assets-research">hard-assets-research</a> · <a href="https://github.com/joeedessa/ai-hardware-research">ai-hardware-research</a>.
+  Market data from free public feeds, refreshed nightly by GitHub Actions, and not guaranteed accurate.
+  Figures marked <span class="vfy">verify</span> are entered from memory and are queued for sourcing — see the Sources tab.
+</footer>
+
+</div><!-- end #app -->
+
+<script>
+/* Data source: local ./data/ when served over http, GitHub raw when opened from file://. */
+const BASE = location.protocol === 'file:'
+  ? 'https://raw.githubusercontent.com/joeedessa/boomerification-research/main/data/'
+  : 'data/';
+
+let THESIS, CLOCK, MATRIX, COMPANIES, CO_META, THEMES, PORTFOLIO,
+    INDICATORS, FALSIFIERS, POLICY, CYCLE, GLOSSARY, SOURCES, EXCLUDED;
+let QUOTES, IDX, NEWS, ALERTS, PERF;
+let LIMB = {}, VERT = {}, THEME_REG = {}, TICKER_MAP = {}, NAME_MAP = {}, PRIVATE_MAP = {}, TICKER_RE = null;
+let CO_STATE = {q:'', limb:null, vert:null, conv:null, theme:null, band:null, sort:'conv'};
+let GL_STATE = {q:'', cat:null};
+
+const built = {bk:0,sh:0,ck:0,lb:0,mx:0,co:0,th:0,cy:0,nw:0,np:0,fa:0,in:0,pol:0,pf:0,gl:0,sr:0,xc:0};
+
+/* ── Utilities ── */
+function mk(t,c){const e=document.createElement(t);if(c)e.className=c;return e;}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function toggleTheme(){
+  const cur=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  const next=cur==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next;
+  localStorage.setItem('boom-theme',next);
+}
+let TOAST_T;
+function toast(msg){
+  let el=document.getElementById('toast');
+  if(!el){el=mk('div');el.id='toast';document.body.appendChild(el);}
+  el.textContent=msg; el.classList.add('on');
+  clearTimeout(TOAST_T); TOAST_T=setTimeout(()=>el.classList.remove('on'),2600);
+}
+/* Render a machine timestamp (ISO, UTC) in the viewer's local time. */
+function fmtTS(iso){
+  if(!iso) return '';
+  const d=new Date(iso);
+  if(isNaN(d)||String(iso).length<=10) return String(iso).slice(0,10);
+  return d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+/* Our ticker convention maps 1:1 to Yahoo's for this universe — the hook stays
+   so a convention change has one place to live, mirroring fetch_market.py. */
+const YH_SPECIAL={};
+function yahooSymbol(t){ return (t && YH_SPECIAL[t]) || t || ''; }
+const yahooQuote=t=>'https://finance.yahoo.com/quote/'+encodeURIComponent(yahooSymbol(t));
+/* Linkify ticker mentions in prose so they open the Companies tab filtered. */
+function linkifyTickers(s){
+  if(!s||!TICKER_RE) return esc(s||'');
+  return esc(s).replace(TICKER_RE, m =>
+    Object.prototype.hasOwnProperty.call(TICKER_MAP,m)
+      ? `<span class="ticklink" data-tk="${m}" title="Open ${m} — ${esc(TICKER_MAP[m])}">${m}</span>`
+      : m);
+}
+/* Prose in the research files uses <b>/<i> deliberately; keep those, linkify the rest. */
+function rich(s){
+  if(!s) return '';
+  const parts=String(s).split(/(<\/?[bi]>)/);
+  return parts.map(p=>/^<\/?[bi]>$/.test(p)?p:linkifyTickers(p)).join('');
+}
+function verifyMark(why){ return `<span class="vfy" title="${esc(why||'Entered from memory — queued for sourcing. See the Sources tab.')}">verify</span>`; }
+function limbChip(id){
+  const l=LIMB[id];
+  if(!l) return '';
+  return `<span class="limbchip" style="background:${l.c}" title="${esc(l.n)}">Limb ${id}</span>`;
+}
+function sevDots(n){ return '<span class="sev">'+[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')+'</span>'; }
+function bar(pct,color){ return `<div class="bar"><i style="width:${Math.max(0,Math.min(100,pct))}%;background:${color}"></i></div>`; }
+function qBadge(tk){
+  const q=QUOTES&&QUOTES[tk];
+  if(!q) return '';
+  const d=q.d1==null?'':`<span class="${q.d1>=0?'up':'dn'}">${q.d1>=0?'+':''}${q.d1}%</span>`;
+  const dd=q.dd==null?'':` · ${q.dd}% off high`;
+  return `<span class="q">${q.p!=null?q.p:''} ${d}${dd}</span>`;
+}
+
+/* ── Tab switching (lazy build) ── */
+function ST(id, el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  if(el) el.classList.add('on');
+  document.getElementById('view-'+id).classList.add('on');
+  if(!built[id]){ BUILD[id](); built[id]=1; }
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function goTab(id){
+  const tabs=[...document.querySelectorAll('.tab')];
+  const el=tabs.find(t=>(t.getAttribute('onclick')||'').includes(`'${id}'`));
+  ST(id, el);
+}
+
+/* ══════════ Act now ══════════ */
+function buildBreaking(){
+  const c=document.getElementById('bk-cont'); c.innerHTML='';
+  const now=CLOCK.now;
+  c.innerHTML += `<div class="card" style="border-left:4px solid var(--accent)">
+    <div class="ctitle">${esc(now.headline)}</div>
+    <div class="cbody">${rich(now.body)}</div></div>`;
+
+  c.innerHTML += `<div class="card">
+    <div class="ctitle">${esc(THESIS.headline.title)}</div>
+    <div class="cbody">${rich(THESIS.headline.body)}</div></div>`;
+
+  /* Live entry windows the tape has flagged */
+  const w=PORTFOLIO.entry_windows;
+  let wh=`<div class="klabel">Entry windows — where the thesis is right and the price is not</div>
+    <div class="note">${rich(w.intro)}</div><div class="grid2">`;
+  w.windows.forEach(x=>{
+    wh+=`<div class="card"><div class="co-h">
+      <span class="co-tk ticklink" data-tk="${x.ticker}">${x.ticker}</span>
+      <span class="co-nm">${esc((COMPANIES.find(c2=>c2.ticker===x.ticker)||{}).name||'')}</span>
+      <span class="co-role">#${x.rank} ${qBadge(x.ticker)}</span></div>
+      <div class="cbody" style="margin-top:4px"><b>Setup.</b> ${rich(x.setup)}<br>
+      <b>Watch.</b> ${rich(x.watch)}<br>
+      <span style="color:var(--color-text-tertiary)"><b>Risk.</b> ${rich(x.risk)}</span></div></div>`;
+  });
+  wh+=`</div><div class="note" style="margin-top:6px"><b>${esc(w.avoid.title)}.</b> ${rich(w.avoid.body)}</div>`;
+  c.innerHTML+=wh;
+
+  /* Alerts from the nightly robot */
+  let ah=`<div class="klabel">Tape alerts — the dashboard's own judgments checked against live prices</div>`;
+  if(ALERTS && ALERTS.alerts && ALERTS.alerts.length){
+    ah+='<div class="grid2">';
+    ALERTS.alerts.slice(0,24).forEach(a=>{
+      ah+=`<div class="al al-${a.type}" onclick="openTicker('${a.tk}')">${esc(a.msg)}</div>`;
+    });
+    ah+='</div>';
+  } else {
+    ah+=`<div class="note">No alerts yet — the nightly refresh (weekdays ~21:30 UTC) has not run since this dashboard shipped, or the fetch failed. Alerts appear automatically once <b>data/alerts.json</b> is committed by the GitHub Action.</div>`;
+  }
+  c.innerHTML+=ah;
+
+  /* Falsifiers not in the armed state deserve front-page treatment */
+  const hot=(FALSIFIERS.falsifiers||[]).filter(f=>f.state!=='armed');
+  if(hot.length){
+    let fh=`<div class="klabel">Falsifiers off the armed state</div>`;
+    hot.forEach(f=>{
+      fh+=`<div class="fal f-${f.state}"><div class="co-h">
+        <span class="state s-${f.state}">${f.state}</span> ${limbChip(f.limb)}
+        <b style="font-size:12.5px">${esc(f.n)}</b></div>
+        <div class="cbody" style="margin-top:4px">${rich(f.note)}</div></div>`;
+    });
+    c.innerHTML+=fh;
+  }
+}
+
+/* ══════════ Orientation ══════════ */
+function buildStartHere(){
+  const c=document.getElementById('sh-cont');
+  let h=`<div class="card" style="border-left:4px solid #DC2626">
+    <div class="ctitle">${esc(THESIS.premise_problem.title)}</div>
+    <div class="cbody">${rich(THESIS.premise_problem.body)}</div></div>`;
+
+  h+=`<div class="klabel">Variant perceptions — where this differs from the consensus</div><div class="grid2">`;
+  THESIS.variant.forEach(v=>{
+    h+=`<div class="card" style="border-left:3px solid ${LIMB[v.limb]?LIMB[v.limb].c:'#4F46E5'}">
+      <div class="co-h">${limbChip(v.limb)}<b style="font-size:13px">${esc(v.tag)}</b>
+      <span class="co-role">conviction ${v.conviction}/3</span></div>
+      <div class="klabel">Consensus</div><div class="cbody" style="color:var(--color-text-tertiary)">${rich(v.consensus)}</div>
+      <div class="klabel">This dashboard</div><div class="cbody">${rich(v.thesis)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="note"><b>On the name.</b> ${rich(THESIS.codename_note)}</div>`;
+
+  h+=`<div class="klabel">The stated weaknesses</div>
+    <div class="note">Listed up front. The thesis is more credible with them than without, and two of them constrain how positions are built rather than merely qualifying the argument.</div>`;
+  THESIS.weaknesses.forEach(w=>{
+    h+=`<div class="card"><div class="co-h">${sevDots(w.sev)}<b style="font-size:12.5px">${esc(w.n)}</b>
+      <span class="co-role q">${w.id}</span></div>
+      <div class="cbody" style="margin-top:3px">${rich(w.body)}</div></div>`;
+  });
+
+  h+=`<div class="klabel">How to read this dashboard</div><div class="grid2">
+    <div class="card"><div class="ctitle">Start with the clock</div><div class="cbody">The cohort clock is the master time axis. Every other panel indexes to it. The single most important number on the dashboard is that the median boomer is 71 — right at the go-go / slow-go boundary.</div></div>
+    <div class="card"><div class="ctitle">Then read the gradient</div><div class="cbody">The universe matrix shows which verticals are paid by a growing band and which by a shrinking one. The market prices them as one theme. That divergence is the exploitable part.</div></div>
+    <div class="card"><div class="ctitle">Check the not-priced test</div><div class="cbody">Every limb has to answer why a forty-year-old known fact is not already in the price. A limb that fails all four mechanisms is a slide, not a trade.</div></div>
+    <div class="card"><div class="ctitle">Know the exit before the entry</div><div class="cbody">The falsifiers tab names the observable condition that retires each position. A falsifier renegotiated when it trips was never a falsifier.</div></div>
+  </div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ Cohort clock ══════════ */
+function buildClock(){
+  const c=document.getElementById('ck-cont');
+  let h=`<div class="note">${rich(CLOCK._meta.source_note)} ${verifyMark(CLOCK._meta.source_note)}</div>`;
+
+  h+=`<div class="card" style="border-left:4px solid var(--accent)">
+    <div class="ctitle">${esc(CLOCK.now.headline)}</div>
+    <div class="cbody">${rich(CLOCK.now.body)}</div></div>`;
+
+  h+=`<div class="klabel">Where the cohort actually is — ${CLOCK.now.year}</div><div class="edges">`;
+  CLOCK.cohort_edges.forEach(e=>{
+    h+=`<div class="edge"><div class="edge-a">${e.age_2026}</div>
+      <div class="edge-l">${esc(e.lbl)} · b.${e.birth}</div>
+      <div class="edge-n">${rich(e.note)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  /* Projection chart */
+  h+=`<div class="klabel">Age-band population, millions ${verifyMark('Census-projection-shaped estimates entered from memory. The shape is robust; the levels are queued for sourcing.')}</div>`;
+  h+=`<div class="card">${clockChart()}</div>`;
+
+  h+=`<div class="grid2">`;
+  CLOCK.projection.reading.forEach(r=>{
+    h+=`<div class="card"><div class="ctitle" style="font-size:13px">${esc(r.tag)}</div><div class="cbody">${rich(r.body)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="klabel">The bands</div><div class="clockwrap">`;
+  CLOCK.bands.forEach(b=>{
+    h+=`<div class="bandcard" style="border-top-color:${b.c}">
+      <div class="co-h"><span class="band-n">${esc(b.n)}</span><span class="band-ages">${esc(b.ages)}</span>
+      <span class="co-role">spend idx ${b.spend_idx}</span></div>
+      <div class="band-lbl">${esc(b.label)}</div>
+      <div class="band-b">${rich(b.behaviour)}</div>
+      <div style="margin-top:5px">${(b.pays||[]).map(limbChip).join(' ')}</div>
+      <div class="band-b" style="margin-top:5px;font-style:italic">${rich(b.note)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="klabel">The relay — who gets paid, and when</div><div class="relay">`;
+  CLOCK.relay.forEach(r=>{
+    const b=CLOCK.bands.find(x=>x.id===r.band)||{c:'#888'};
+    h+=`<div class="card" style="border-left:3px solid ${b.c}">
+      <div class="co-h"><b style="font-size:12.5px">${esc(r.n)}</b><span class="co-role q">${esc(r.window)}</span></div>
+      <div class="klabel">Beneficiaries</div><div class="cbody">${rich(r.beneficiaries)}</div>
+      <div class="klabel">Stance</div><div class="cbody"><b>${rich(r.stance)}</b></div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="klabel">Two customers, not one</div>
+    <div class="note">${rich(CLOCK.wealth_split.note)}</div><div class="grid2">`;
+  CLOCK.wealth_split.segments.forEach(s=>{
+    h+=`<div class="card"><div class="co-h"><b style="font-size:13px">${esc(s.n)}</b>
+      <span class="co-role">${(s.limbs||[]).map(limbChip).join(' ')}</span></div>
+      <div class="cbody" style="margin-top:3px"><i>${esc(s.share_note)}</i></div>
+      <div class="klabel">Problem</div><div class="cbody">${rich(s.problem)}</div>
+      <div class="klabel">Serves</div><div class="cbody">${rich(s.serves)}</div></div>`;
+  });
+  h+=`</div>`;
+  c.innerHTML=h;
+}
+
+/* Inline SVG stacked-bar of the age-band projection. No libraries — the CSP on
+   the sibling repos forbids external scripts and this keeps them consistent. */
+function clockChart(){
+  const P=CLOCK.projection, years=P.years, W=760, H=260, PADL=34, PADB=26, PADT=10;
+  const bandsById={}; CLOCK.bands.forEach(b=>bandsById[b.id]=b);
+  const totals=years.map((_,i)=>P.series.reduce((s,ser)=>s+ser.vals[i],0));
+  const max=Math.ceil(Math.max(...totals)/20)*20;
+  const bw=(W-PADL-10)/years.length*0.56, step=(W-PADL-10)/years.length;
+  const y=v=>PADT+(H-PADT-PADB)*(1-v/max);
+  let s=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;overflow:visible" role="img" aria-label="US population by age band, 2020 to 2040">`;
+  for(let g=0; g<=max; g+=20){
+    s+=`<line x1="${PADL}" y1="${y(g)}" x2="${W-6}" y2="${y(g)}" stroke="var(--color-border-tertiary)" stroke-width="1"/>`;
+    s+=`<text x="${PADL-6}" y="${y(g)+3}" text-anchor="end" font-size="9" fill="var(--color-text-tertiary)" font-family="var(--font-mono)">${g}</text>`;
+  }
+  years.forEach((yr,i)=>{
+    const x=PADL+step*i+(step-bw)/2;
+    let acc=0;
+    P.series.forEach(ser=>{
+      const v=ser.vals[i], b=bandsById[ser.band];
+      const top=y(acc+v), bot=y(acc), hgt=Math.max(0,bot-top);
+      s+=`<rect x="${x}" y="${top}" width="${bw}" height="${hgt}" fill="${b.c}" opacity="0.88">`
+       + `<title>${b.n} (${b.ages}) — ${yr}: ${v}M</title></rect>`;
+      acc+=v;
+    });
+    s+=`<text x="${x+bw/2}" y="${H-PADB+14}" text-anchor="middle" font-size="10" fill="var(--color-text-secondary)" font-family="var(--font-mono)">${yr}</text>`;
+    s+=`<text x="${x+bw/2}" y="${y(acc)-5}" text-anchor="middle" font-size="9" fill="var(--color-text-tertiary)" font-family="var(--font-mono)">${acc.toFixed(0)}</text>`;
+  });
+  s+=`</svg>`;
+  let leg='<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;font-size:10px;color:var(--color-text-tertiary)">';
+  CLOCK.bands.forEach(b=>{
+    leg+=`<span><i style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${b.c};margin-right:4px;vertical-align:-1px"></i>${esc(b.n)} <span class="q">${esc(b.ages)}</span></span>`;
+  });
+  leg+='</div>';
+  return s+leg;
+}
+
+/* ══════════ The limbs ══════════ */
+function buildLimbs(){
+  const c=document.getElementById('lb-cont');
+  let h=`<div class="note">Six limbs. Each carries a mechanism, the observables that test it, the expression, and the falsifier that retires it — the structure is deliberately also the dashboard's specification. Conviction is <b>${THESIS._meta.conviction_scale}</b>.</div>`;
+  THESIS.limbs.forEach(l=>{
+    h+=`<div class="limbcard" style="border-left-color:${l.c}">
+      <div class="limb-h">${limbChip(l.id)}<span class="limb-n">${esc(l.n)}</span>
+        <span class="co-role">conviction ${l.conviction}/3</span></div>
+      <div class="limb-sub">${esc(l.sub)}</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:6px">
+        <div style="flex:1 1 150px"><div class="klabel">Structural ${l.struct}</div>${bar(l.struct,l.c)}</div>
+        <div style="flex:1 1 150px"><div class="klabel">Near-term ${l.near}</div>${bar(l.near,l.c)}</div>
+      </div>
+      <dl class="kv">
+        <dt>Mechanism</dt><dd>${rich(l.mechanism)}</dd>
+        <dt>Why now</dt><dd>${rich(l.why_now)}</dd>
+        <dt>Expression</dt><dd>${rich(l.expression)}</dd>
+        <dt>Risk</dt><dd>${rich(l.risk)}</dd>
+        <dt>Falsifier</dt><dd style="color:var(--fl-red-fg)">${rich(l.falsifier)}</dd>
+        <dt>Observables</dt><dd><div class="obs">${(l.observables||[]).map(o=>`<span>${esc(o)}</span>`).join('')}</div></dd>
+      </dl>`;
+    if(l.verify) l.verify.forEach(v=>{
+      h+=`<div class="note" style="margin-top:6px"><b>${esc(v.claim)}</b> ${verifyMark(v.why)} — ${esc(v.why)}</div>`;
+    });
+    h+=`</div>`;
+  });
+  c.innerHTML=h;
+}
+
+/* ══════════ Universe matrix ══════════ */
+function buildMatrix(){
+  const g=document.getElementById('mxg');
+  const cols=MATRIX.cols;
+  g.style.gridTemplateColumns=`210px repeat(${cols.length},1fr) 92px`;
+  let h=`<div></div>`;
+  cols.forEach(cl=>{ h+=`<div class="mch" style="background:${cl.c}">${esc(cl.n)}<small>${esc(cl.sub)}</small></div>`; });
+  h+=`<div class="mch" style="background:var(--color-text-tertiary)">Gradient</div>`;
+  MATRIX.rows.forEach(r=>{
+    h+=`<div class="mrl" onclick="mxDetail('${r.id}')"><i style="background:${r.c}"></i>${esc(r.n)}</div>`;
+    r.cells.forEach((v,i)=>{
+      const bg=v===0?'transparent':`color-mix(in srgb, ${cols[i].c} ${v*22}%, transparent)`;
+      /* Tinting with the column colour then writing in it reads poorly at high
+         intensity in both themes — step the text to primary once the cell is filled. */
+      const fg=v>=2?'var(--color-text-primary)':'var(--color-text-tertiary)';
+      h+=`<div class="mc" style="background:${bg};color:${fg}" onclick="mxDetail('${r.id}')" title="${esc(r.n)} × ${esc(cols[i].n)}: intensity ${v}/3">${v||'·'}</div>`;
+    });
+    const gk={steep:'g-steep',rising:'g-rising',flat:'g-flat',split:'g-split',late:'g-late'}[r.gradient]||'g-flat';
+    h+=`<div class="mc" style="border:none"><span class="grad ${gk}">${esc(r.gradient)}</span></div>`;
+  });
+  g.innerHTML=h;
+  document.getElementById('mx-det').innerHTML=`<div class="cbody"><b>Click any row.</b> ${rich(MATRIX._meta.gradient_note)}</div>`;
+  document.getElementById('mx-det').classList.add('on');
+
+  /* Dimension B */
+  const d=MATRIX.dim_b;
+  let b=`<div class="klabel">Dimension B — cross-cutting forces</div><div class="note">${rich(d.label)}</div>`;
+  d.forces.forEach(f=>{
+    const hits=Object.entries(f.hits).filter(([,v])=>v>=2)
+      .map(([k,v])=>{const row=MATRIX.rows.find(r=>r.id===k);return row?`<span class="sf" style="background:${row.c}22;color:${row.c}">${esc(row.n)} ${v}</span>`:'';}).join('');
+    b+=`<div class="card" style="border-left:3px solid ${f.kind==='internal'?'#EF9F27':'#DC2626'}">
+      <div class="co-h"><b style="font-size:13px">${esc(f.n)}</b>
+        <span class="sf" style="background:${f.kind==='internal'?'var(--fl-amber-bg)':'var(--fl-red-bg)'};color:${f.kind==='internal'?'var(--fl-amber-fg)':'var(--fl-red-fg)'}">${f.kind==='internal'?'internal contradiction':'external risk'}</span></div>
+      <div class="cbody" style="margin-top:3px">${rich(f.body)}</div>
+      <div class="klabel">Hits hardest</div><div>${hits}</div>
+      <div class="klabel">Mitigation</div><div class="cbody">${rich(f.mitigation)}</div></div>`;
+  });
+  document.getElementById('mx-dimb').innerHTML=b;
+}
+function mxDetail(id){
+  const r=MATRIX.rows.find(x=>x.id===id); if(!r) return;
+  const el=document.getElementById('mx-det');
+  el.innerHTML=`<div class="co-h">${limbChip(r.limb)}<b style="font-size:13.5px">${esc(r.n)}</b>
+    <span class="co-role"><span class="grad ${'g-'+r.gradient}">${esc(r.gradient)}</span></span></div>
+    <div class="cbody" style="margin-top:5px">${rich(r.note)}</div>
+    <div class="klabel">Representative names</div>
+    <div>${r.tickers.map(t=>`<span class="sf ticklink" data-tk="${t}" style="background:${r.c}18;color:${r.c}">${t}</span>`).join('')}</div>
+    <div style="margin-top:7px"><span class="pill" onclick="filterVert('${r.id}')">Show all ${esc(r.n)} names →</span></div>`;
+  el.classList.add('on');
+}
+function filterVert(v){ CO_STATE={...CO_STATE, vert:v, limb:null, q:''}; goTab('co'); renderCompanies(); }
+
+/* ══════════ Companies ══════════ */
+function buildCompanies(){
+  const c=document.getElementById('co-cont');
+  document.getElementById('co-count-total').textContent=COMPANIES.length;
+  c.innerHTML=`<div class="cofilters">
+      <input id="co-q" class="srch" placeholder="Search ticker, name, thesis, role…" oninput="CO_STATE.q=this.value;renderCompanies()">
+      <span class="pill" onclick="CO_STATE={q:'',limb:null,vert:null,conv:null,theme:null,band:null,sort:'conv'};document.getElementById('co-q').value='';renderCompanies()">Reset</span>
+    </div>
+    <div class="pills" id="co-limbs"></div>
+    <div class="pills" id="co-verts"></div>
+    <div class="pills" id="co-misc"></div>
+    <div id="co-list"></div>`;
+
+  let lh=`<span style="font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);align-self:center;margin-right:2px">Limb</span>`;
+  THESIS.limbs.forEach(l=>{ lh+=`<button class="pill" data-limb="${l.id}" onclick="setCO('limb','${l.id}')">${l.id} · ${esc(l.n.split('—')[0].trim())}</button>`; });
+  document.getElementById('co-limbs').innerHTML=lh;
+
+  let vh=`<span style="font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);align-self:center;margin-right:2px">Vertical</span>`;
+  CO_META.verticals.forEach(v=>{ vh+=`<button class="pill" data-vert="${v.id}" onclick="setCO('vert','${v.id}')">${esc(v.n)}</button>`; });
+  document.getElementById('co-verts').innerHTML=vh;
+
+  let mh=`<span style="font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);align-self:center;margin-right:2px">Conviction</span>`;
+  [3,2,1].forEach(n=>{ mh+=`<button class="pill" data-conv="${n}" onclick="setCO('conv',${n})">${n}</button>`; });
+  mh+=`<span style="font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-tertiary);align-self:center;margin:0 2px 0 8px">Paid by band</span>`;
+  [['gogo','Go-go'],['slowgo','Slow-go'],['nogo','No-go'],['pre','Pre-ret'],['all','All']].forEach(([k,l])=>{
+    mh+=`<button class="pill" data-band="${k}" onclick="setCO('band','${k}')">${l}</button>`; });
+  document.getElementById('co-misc').innerHTML=mh;
+
+  renderCompanies();
+}
+function setCO(k,v){ CO_STATE[k] = CO_STATE[k]===v ? null : v; renderCompanies(); }
+function openTicker(tk){ CO_STATE={q:tk,limb:null,vert:null,conv:null,theme:null,band:null,sort:'conv'}; goTab('co'); const i=document.getElementById('co-q'); if(i)i.value=tk; renderCompanies(); }
+
+function renderCompanies(){
+  ['limb','vert','conv','band'].forEach(k=>{
+    document.querySelectorAll(`[data-${k}]`).forEach(el=>{
+      el.classList.toggle('on', String(CO_STATE[k])===el.getAttribute('data-'+k));
+    });
+  });
+  const q=(CO_STATE.q||'').toLowerCase().trim();
+  let list=COMPANIES.filter(c=>{
+    if(CO_STATE.limb && c.limb!==CO_STATE.limb) return false;
+    if(CO_STATE.vert && c.vertical!==CO_STATE.vert) return false;
+    if(CO_STATE.conv && c.conviction!==CO_STATE.conv) return false;
+    if(CO_STATE.band && c.band!==CO_STATE.band) return false;
+    if(CO_STATE.theme && !(c.themes||[]).includes(CO_STATE.theme)) return false;
+    if(q){
+      const hay=(c.ticker+' '+c.name+' '+c.chain_layer+' '+c.thesis_note+' '+(c.themes||[]).join(' ')).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  list.sort((a,b)=> b.conviction-a.conviction || (a.froth||0)-(b.froth||0) || a.ticker.localeCompare(b.ticker));
+
+  const wrap=document.getElementById('co-list');
+  let h=`<div class="note">Showing <b>${list.length}</b> of ${COMPANIES.length}.
+    ${CO_STATE.theme?`Theme filter: <b>${esc((THEME_REG[CO_STATE.theme]||{}).label||CO_STATE.theme)}</b> — <span class="pill" onclick="CO_STATE.theme=null;renderCompanies()">clear</span>`:''}
+    Conviction ${esc(CO_META.conviction_scale)}. Froth ${esc(CO_META.froth_scale)}.</div>`;
+  if(!list.length) h+=`<div class="card"><div class="cbody">Nothing matches. Reset the filters.</div></div>`;
+  list.forEach(c=>{
+    const v=VERT[c.vertical]||{c:'#888',n:c.vertical};
+    const frothTag=c.froth?`<span class="sf" style="background:${['','var(--fl-green-bg)','var(--fl-amber-bg)','var(--fl-red-bg)'][c.froth]};color:${['','var(--fl-green-fg)','var(--fl-amber-fg)','var(--fl-red-fg)'][c.froth]}">froth ${c.froth}</span>`:'';
+    h+=`<div class="cocard" style="border-left-color:${v.c}">
+      <div class="co-h">
+        <a class="co-tk" href="${yahooQuote(c.ticker)}" target="_blank" rel="noopener" title="Open ${esc(c.ticker)} on Yahoo Finance">${esc(c.ticker)}</a>
+        <span class="co-nm">${esc(c.name)}</span>
+        ${limbChip(c.limb)}
+        <span class="sf" style="background:var(--color-background-secondary);color:var(--color-text-tertiary)">conv ${c.conviction}</span>
+        ${frothTag}
+        <span class="co-role">${esc(c.chain_layer)} · ${esc(c.geo)}<br>${qBadge(c.ticker)}</span>
+      </div>
+      <div class="co-th">${rich(c.thesis_note)}</div>
+      ${c.froth_note?`<div class="co-fn"><b>Froth.</b> ${rich(c.froth_note)}</div>`:''}
+      <div class="metarow">
+        <span>paid by <b>${esc(c.band)}</b></span><span>serves <b>${esc(c.cust)}</b></span>
+        <span>${(c.themes||[]).map(t=>`<span class="chip" onclick="CO_STATE.theme='${t}';renderCompanies()">${esc((THEME_REG[t]||{}).label||t)}</span>`).join(' ')}</span>
+      </div></div>`;
+  });
+  wrap.innerHTML=h;
+}
+
+/* ══════════ Demand themes ══════════ */
+function buildThemes(){
+  const c=document.getElementById('th-cont');
+  let h=`<div class="note">${rich(THEMES._meta.read_note)}</div>`;
+  const sorted=[...THEMES.themes].sort((a,b)=>(b.struct-b.bc)-(a.struct-a.bc));
+  sorted.forEach(t=>{
+    const edge=t.struct-t.bc;
+    h+=`<div class="card" style="border-left:4px solid ${t.c}">
+      <div class="co-h"><b style="font-family:var(--font-display);font-size:15px">${esc(t.n)}</b>
+        ${(t.limbs||[]).map(limbChip).join(' ')}
+        <span class="co-role">edge <b style="color:${edge>40?'#15803D':edge>20?'#B45309':'#B32B2A'}">${edge>0?'+':''}${edge}</b></span></div>
+      <div class="limb-sub">${esc(t.sub)}</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin:6px 0">
+        <div style="flex:1 1 130px"><div class="klabel">Structural ${t.struct}</div>${bar(t.struct,t.c)}</div>
+        <div style="flex:1 1 130px"><div class="klabel">Near-term ${t.near}</div>${bar(t.near,t.c)}</div>
+        <div style="flex:1 1 130px"><div class="klabel">Crowding ${t.bc}</div>${bar(t.bc,'#B32B2A')}</div>
+      </div>
+      <div class="cbody">${rich(t.thesis)}</div>
+      <table class="tbl" style="margin-top:7px"><thead><tr><th>Expression</th><th>Names</th><th>Why</th></tr></thead><tbody>`;
+    t.items.forEach(i=>{
+      h+=`<tr><td><b>${esc(i.lbl)}</b></td><td class="q">${rich(i.ticks)}</td><td>${rich(i.why)}</td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  });
+  c.innerHTML=h;
+}
+
+/* ══════════ Sequencing & innings ══════════ */
+function buildCycle(){
+  const c=document.getElementById('cy-cont');
+  let h=`<div class="card" style="border-left:4px solid #DC2626">
+    <div class="ctitle">${esc(CYCLE.consensus_check.title)}</div>
+    <div class="cbody">${rich(CYCLE.consensus_check.body)}</div></div>`;
+  h+=`<div class="note">${rich(CYCLE._meta.reading)}</div>`;
+  h+=`<div style="overflow-x:auto"><table class="tbl"><thead><tr>
+      <th>Vertical</th><th>Inn.</th><th>Struct</th><th>Supply resp.</th><th>Crowding</th><th>Paying band</th><th>Verdict</th>
+      </tr></thead><tbody>`;
+  [...CYCLE.cycles].sort((a,b)=>a.inn-b.inn).forEach(cy=>{
+    h+=`<tr>
+      <td><b style="color:${cy.c}">${esc(cy.n)}</b></td>
+      <td><span class="sf" style="background:${cy.vc}22;color:${cy.vc}">${cy.inn}/9</span></td>
+      <td class="q">${cy.struct}${bar(cy.struct,cy.c)}</td>
+      <td class="q">${cy.capex}${bar(cy.capex,'#70757F')}</td>
+      <td class="q">${cy.bc}${bar(cy.bc,'#B32B2A')}</td>
+      <td style="font-size:10.5px">${esc(cy.peak_band)}</td>
+      <td>${rich(cy.verdict)}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  const m=CYCLE.crowding_monitor;
+  h+=`<div class="klabel">Crowding monitor</div>
+    <div class="card" style="border-left:4px solid #B32B2A">
+      <div class="ctitle">${esc(m.headline)}</div>
+      <div class="cbody"><b>Stance.</b> ${rich(m.stance)}</div></div><div class="grid2">`;
+  const vcol={high:'#B32B2A',mid:'#B45309',low:'#15803D',short:'#7C3AED'};
+  m.signals.forEach(s=>{
+    h+=`<div class="card" style="border-left:3px solid ${vcol[s.v]||'#888'}">
+      <div class="co-h"><span class="sf" style="background:${vcol[s.v]}18;color:${vcol[s.v]}">${esc(s.tag)}</span>
+      <b style="font-size:12.5px">${esc(s.t)}</b></div>
+      <div class="cbody" style="margin-top:3px">${rich(s.d)}</div></div>`;
+  });
+  h+=`</div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ Why not priced ══════════ */
+function buildNotPriced(){
+  const c=document.getElementById('np-cont');
+  let h=`<div class="card" style="border-left:4px solid var(--accent)">
+    <div class="ctitle">The test every limb has to pass</div>
+    <div class="cbody">Demographics are the most forecastable variable in finance. A thesis built on them is only investable if it can say why the market has not already priced a fact it has had forty years to price. Four candidate mechanisms, ranked by how much they are worth trusting. <b>If none of these hold for a given limb, that limb is a slide, not a trade.</b></div></div>`;
+  THESIS.not_priced.forEach(n=>{
+    const tc={strongest:'#15803D',strong:'#639922',moderate:'#B45309',weakest:'#B32B2A'}[n.trust]||'#888';
+    h+=`<div class="card" style="border-left:4px solid ${tc}">
+      <div class="co-h"><span class="sf" style="background:${tc}18;color:${tc}">#${n.rank} · ${esc(n.trust)}</span>
+        <b style="font-family:var(--font-display);font-size:15px">${esc(n.n)}</b>
+        <span class="co-role">${(n.limbs||[]).map(limbChip).join(' ')}</span></div>
+      <div class="cbody" style="margin-top:4px">${rich(n.body)}</div></div>`;
+  });
+
+  /* Per-limb scorecard */
+  h+=`<div class="klabel">Scorecard — which mechanism carries which limb</div>
+    <div class="note">Read down the columns. A limb supported only by the weakest mechanism is a limb to size small.</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Limb</th>`;
+  THESIS.not_priced.forEach(n=>{ h+=`<th>${esc(n.n)}</th>`; });
+  h+=`</tr></thead><tbody>`;
+  THESIS.limbs.forEach(l=>{
+    h+=`<tr><td>${limbChip(l.id)} <b>${esc(l.n)}</b></td>`;
+    THESIS.not_priced.forEach(n=>{
+      const on=(n.limbs||[]).includes(l.id);
+      const tc={strongest:'#15803D',strong:'#639922',moderate:'#B45309',weakest:'#B32B2A'}[n.trust];
+      h+=`<td style="text-align:center">${on?`<span class="sf" style="background:${tc}22;color:${tc}">✓</span>`:'<span style="color:var(--color-border-secondary)">·</span>'}</td>`;
+    });
+    h+=`</tr>`;
+  });
+  h+=`</tbody></table></div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ Falsifiers ══════════ */
+function buildFalsifiers(){
+  const c=document.getElementById('fa-cont');
+  let h=`<div class="note">${rich(FALSIFIERS._meta.discipline_note)} States: <b>armed</b> = watching, no evidence · <b>warming</b> = partial evidence accumulating · <b>tripped</b> = condition met, positions must be retired.</div>`;
+  const order={tripped:0,warming:1,armed:2};
+  [...FALSIFIERS.falsifiers].sort((a,b)=>order[a.state]-order[b.state]||b.sev-a.sev).forEach(f=>{
+    h+=`<div class="fal f-${f.state}">
+      <div class="co-h"><span class="state s-${f.state}">${f.state}</span>
+        ${f.limb==='all'?'<span class="limbchip" style="background:#16181D">All limbs</span>':limbChip(f.limb)}
+        <b style="font-family:var(--font-display);font-size:14.5px">${esc(f.n)}</b>
+        <span class="co-role">${sevDots(f.sev)} <span class="q">${f.id}</span></span></div>
+      <dl class="kv">
+        <dt>Condition</dt><dd>${rich(f.condition)}</dd>
+        <dt>Kills</dt><dd>${rich(f.kills)}</dd>
+        <dt>Retires</dt><dd>${(f.retires||[]).map(r=>/^[A-Z0-9.]{1,12}$/.test(r)?`<span class="sf ticklink" data-tk="${r}" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">${r}</span>`:`<div style="margin:2px 0">${rich(r)}</div>`).join(' ')}</dd>
+        <dt>Watch</dt><dd>${(f.watch||[]).map(w=>{const i=(INDICATORS.indicators||[]).find(x=>x.id===w);return `<span class="chip" onclick="goTab('in')">${esc(i?i.n:w)}</span>`;}).join(' ')}</dd>
+        <dt>Note</dt><dd style="color:var(--color-text-tertiary)">${rich(f.note)}</dd>
+      </dl></div>`;
+  });
+  c.innerHTML=h;
+}
+
+/* ══════════ Indicators ══════════ */
+function buildIndicators(){
+  const c=document.getElementById('in-cont');
+  let h=`<div class="note">${rich(INDICATORS._meta.status_note)} ${rich(INDICATORS._meta.cadence_note)}</div>`;
+  const byLimb={};
+  INDICATORS.indicators.forEach(i=>{ (byLimb[i.limb]=byLimb[i.limb]||[]).push(i); });
+  THESIS.limbs.forEach(l=>{
+    const list=byLimb[l.id]; if(!list) return;
+    h+=`<div class="klabel">${limbChip(l.id)} ${esc(l.n)}</div>
+      <div style="overflow-x:auto"><table class="tbl"><thead><tr>
+      <th style="width:23%">Indicator</th><th>Source</th><th>Cadence</th><th>Confirms</th><th>Contradicts</th><th>Status</th>
+      </tr></thead><tbody>`;
+    list.sort((a,b)=>a.priority-b.priority).forEach(i=>{
+      h+=`<tr>
+        <td><b>${esc(i.n)}</b>${i.priority===1?' <span class="sf" style="background:var(--fl-indigo-bg);color:var(--fl-indigo-fg)">P1</span>':''}
+            <div style="color:var(--color-text-tertiary);font-size:10px;margin-top:2px">${rich(i.note)}</div></td>
+        <td style="font-size:10.5px">${esc(i.source)}</td>
+        <td class="q">${esc(i.cadence)}</td>
+        <td style="color:#15803D">${rich(i.confirms)}</td>
+        <td style="color:#B32B2A">${rich(i.contradicts)}</td>
+        <td><span class="state s-armed">${esc(i.status)}</span></td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  });
+  c.innerHTML=h;
+}
+
+/* ══════════ Policy & fiscal ══════════ */
+function buildPolicy(){
+  const c=document.getElementById('pol-cont');
+  let h=`<div class="card" style="border-left:4px solid #7C3AED">
+    <div class="ctitle">${esc(POLICY.headline.title)}</div>
+    <div class="cbody">${rich(POLICY.headline.body)}</div></div>`;
+  h+=`<div class="note">${rich(POLICY._meta.verify_note)} ${verifyMark(POLICY._meta.verify_note)}</div>`;
+
+  h+=`<div class="klabel">The arithmetic</div><div class="grid2">`;
+  POLICY.arithmetic.forEach(a=>{
+    h+=`<div class="card"><div class="co-h"><b style="font-size:12.5px">${esc(a.n)}</b>
+      ${a.verify?verifyMark():''}
+      <span class="co-role">${esc(a.state)}</span></div>
+      <div class="cbody" style="margin-top:3px">${rich(a.body)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="klabel">Step functions — markets price these late and abruptly</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Event</th><th>Cadence</th><th>Impact</th><th>Limbs</th><th>Why it matters</th></tr></thead><tbody>`;
+  POLICY.step_functions.forEach(s=>{
+    const ic={'very high':'#B32B2A',high:'#D85A30',medium:'#B45309'}[s.impact]||'#888';
+    h+=`<tr><td><b>${esc(s.n)}</b></td><td class="q">${esc(s.cadence)}</td>
+      <td><span class="sf" style="background:${ic}18;color:${ic}">${esc(s.impact)}</span></td>
+      <td>${(s.limbs||[]).map(limbChip).join(' ')}</td><td>${rich(s.body)}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  const rm=POLICY.reimbursement_map;
+  h+=`<div class="klabel">${esc(rm.title)}</div><div class="note">${rich(rm.intro)}</div>`;
+  rm.tiers.forEach(t=>{
+    h+=`<div class="card" style="border-left:4px solid ${t.c}">
+      <div class="co-h"><b style="font-size:13px">${esc(t.tier)}</b>${sevDots(t.risk)}</div>
+      <div style="margin:5px 0">${t.names.split(', ').map(n=>`<span class="sf ticklink" data-tk="${n.split(' ')[0]}" style="background:${t.c}18;color:${t.c}">${esc(n)}</span>`).join('')}</div>
+      <div class="cbody">${rich(t.note)}</div></div>`;
+  });
+
+  h+=`<div class="card" style="border-left:4px solid #16181D">
+    <div class="ctitle">${esc(POLICY.political_economy.title)}</div>
+    <div class="cbody">${rich(POLICY.political_economy.body)}</div></div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ Positioning ══════════ */
+function buildPortfolio(){
+  const c=document.getElementById('pf-cont');
+  let h=`<div class="note"><b>Status.</b> ${rich(PORTFOLIO._meta.status)} ${rich(PORTFOLIO._meta.review_note)}</div>`;
+  h+=`<div class="card" style="border-left:4px solid var(--accent)">
+    <div class="ctitle">${esc(PORTFOLIO.defining_insight.title)}</div>
+    <div class="cbody">${rich(PORTFOLIO.defining_insight.body)}</div></div>`;
+
+  PORTFOLIO.clusters.forEach(cl=>{
+    h+=`<div class="card" style="border-left:4px solid ${cl.color}">
+      <div class="ctitle" style="color:${cl.color}">${esc(cl.title)}</div>
+      <div class="cbody" style="font-style:italic;color:var(--color-text-tertiary)">${rich(cl.body)}</div>
+      <ul style="margin:6px 0 0;padding-left:17px">`;
+    cl.items.forEach(i=>{ h+=`<li class="cbody" style="margin-bottom:5px">${rich(i)}</li>`; });
+    h+=`</ul></div>`;
+  });
+
+  h+=`<div class="klabel">${esc(PORTFOLIO.sizing.title)}</div><div class="grid2">`;
+  PORTFOLIO.sizing.rules.forEach(r=>{
+    h+=`<div class="card"><div class="ctitle" style="font-size:13px">${esc(r.n)}</div><div class="cbody">${rich(r.body)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="klabel">Catalyst calendar</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Catalyst</th><th>What it does</th></tr></thead><tbody>`;
+  PORTFOLIO.catalyst_table.forEach(x=>{
+    h+=`<tr><td><b style="color:${x.c}">${esc(x.n)}</b></td><td>${rich(x.cats)}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  h+=`<div class="klabel">The four questions</div><div class="grid2">`;
+  PORTFOLIO.four_questions.forEach(q=>{
+    h+=`<div class="card"><div class="ctitle" style="font-size:13px">${esc(q.q)}</div><div class="cbody">${rich(q.a)}</div></div>`;
+  });
+  h+=`</div>`;
+
+  if(PERF){
+    h+=`<div class="klabel">Performance — scored only from the date the judgment was made</div>
+      <div class="note">${esc((PERF._meta||{}).note||'')}</div>
+      <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Basket</th><th>n</th><th>Since inception</th><th>Trailing 1m</th></tr></thead><tbody>`;
+    const rows=[['Conviction 3',PERF.conviction3]].concat(Object.entries(PERF.by_limb||{}).map(([k,v])=>[`Limb ${k} — ${(LIMB[k]||{}).n||''}`,v]));
+    rows.forEach(([n,v])=>{ if(!v)return;
+      h+=`<tr><td><b>${esc(n)}</b></td><td class="q">${v.n||''}</td>
+        <td class="q ${v.since_inception>=0?'up':'dn'}">${v.since_inception==null?'—':v.since_inception+'%'}</td>
+        <td class="q ${v.trailing_1m>=0?'up':'dn'}">${v.trailing_1m==null?'—':v.trailing_1m+'%'}</td></tr>`; });
+    Object.entries(PERF.benchmarks||{}).forEach(([k,v])=>{
+      h+=`<tr><td style="color:var(--color-text-tertiary)">${esc(k)} (benchmark)</td><td>—</td>
+        <td class="q">${v.since_inception==null?'—':v.since_inception+'%'}</td>
+        <td class="q">${v.trailing_1m==null?'—':v.trailing_1m+'%'}</td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  }
+  c.innerHTML=h;
+}
+
+/* ══════════ Glossary ══════════ */
+function buildGlossary(){
+  const c=document.getElementById('gl-cont');
+  c.innerHTML=`<div class="note">Every term of art used across the dashboard — <b>${GLOSSARY.terms.length}</b> entries. Written so the research reads without a second window open.</div>
+    <div class="cofilters"><input id="gl-q" class="srch" placeholder="Search terms…" oninput="GL_STATE.q=this.value;renderGlossary()"></div>
+    <div class="pills" id="gl-cats"></div><div id="gl-list"></div>`;
+  let ch='';
+  GLOSSARY._meta.categories.forEach(k=>{ ch+=`<button class="pill" data-glcat="${k.id}" onclick="GL_STATE.cat=GL_STATE.cat==='${k.id}'?null:'${k.id}';renderGlossary()">${esc(k.n)}</button>`; });
+  document.getElementById('gl-cats').innerHTML=ch;
+  renderGlossary();
+}
+function renderGlossary(){
+  document.querySelectorAll('[data-glcat]').forEach(el=>el.classList.toggle('on', GL_STATE.cat===el.getAttribute('data-glcat')));
+  const q=(GL_STATE.q||'').toLowerCase().trim();
+  const cats={}; GLOSSARY._meta.categories.forEach(k=>cats[k.id]=k);
+  const list=GLOSSARY.terms.filter(t=>{
+    if(GL_STATE.cat && t.cat!==GL_STATE.cat) return false;
+    if(q && !(t.t+' '+t.d).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  let h=`<div class="note">Showing <b>${list.length}</b> of ${GLOSSARY.terms.length}.</div><div class="grid2">`;
+  list.forEach(t=>{
+    const k=cats[t.cat]||{c:'#888',n:t.cat};
+    h+=`<div class="card" style="border-left:3px solid ${k.c}">
+      <div class="co-h"><b style="font-size:12.5px">${esc(t.t)}</b>
+        <span class="co-role"><span class="sf" style="background:${k.c}18;color:${k.c}">${esc(k.n)}</span></span></div>
+      <div class="cbody" style="margin-top:3px">${rich(t.d)}</div>
+      ${(t.see||[]).length?`<div class="metarow">see also: ${t.see.map(s=>`<span class="chip" onclick="GL_STATE.q='${esc(s).replace(/'/g,"")}';document.getElementById('gl-q').value='${esc(s).replace(/'/g,"")}';renderGlossary()">${esc(s)}</span>`).join(' ')}</div>`:''}
+    </div>`;
+  });
+  h+=`</div>`;
+  document.getElementById('gl-list').innerHTML=h;
+}
+
+/* ══════════ Sources ══════════ */
+function buildSources(){
+  const c=document.getElementById('sr-cont');
+  let h=`<div class="note"><b>Honesty note.</b> ${rich(SOURCES._meta.honesty_note)}</div>`;
+
+  h+=`<div class="klabel">Verification queue — every claim currently entered from memory</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Claim</th><th>Current basis</th><th>Needed</th><th>P</th><th>What it affects</th></tr></thead><tbody>`;
+  [...SOURCES.verification_queue].sort((a,b)=>a.priority-b.priority).forEach(v=>{
+    h+=`<tr><td><b>${esc(v.claim)}</b></td><td style="color:var(--color-text-tertiary)">${esc(v.current)}</td>
+      <td>${esc(v.needed)}</td><td><span class="sf" style="background:${v.priority===1?'var(--fl-red-bg)':'var(--fl-amber-bg)'};color:${v.priority===1?'var(--fl-red-fg)':'var(--fl-amber-fg)'}">${v.priority}</span></td>
+      <td>${rich(v.affects)}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  h+=`<div class="klabel">Primary sources</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Source</th><th>Use</th><th>Cadence</th><th>Automatable</th><th>Limbs</th></tr></thead><tbody>`;
+  SOURCES.primary.forEach(s=>{
+    h+=`<tr><td><a href="${esc(s.url)}" target="_blank" rel="noopener"><b>${esc(s.n)}</b></a></td>
+      <td>${rich(s.use)}</td><td class="q">${esc(s.cadence)}</td>
+      <td><span class="sf" style="background:${s.auto==='yes'?'var(--fl-green-bg)':s.auto==='partial'?'var(--fl-amber-bg)':'var(--color-background-secondary)'};color:${s.auto==='yes'?'var(--fl-green-fg)':s.auto==='partial'?'var(--fl-amber-fg)':'var(--color-text-tertiary)'}">${esc(s.auto)}</span></td>
+      <td>${(s.limbs||[]).map(l=>l==='all'?'<span class="limbchip" style="background:#16181D">all</span>':limbChip(l)).join(' ')}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  h+=`<div class="klabel">Industry sources</div>
+    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Source</th><th>Use</th><th>Access</th><th>Limbs</th></tr></thead><tbody>`;
+  SOURCES.industry.forEach(s=>{
+    h+=`<tr><td><b>${esc(s.n)}</b></td><td>${rich(s.use)}</td><td class="q">${esc(s.access)}</td>
+      <td>${(s.limbs||[]).map(limbChip).join(' ')}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  h+=`<div class="klabel">Sibling maps</div><div class="grid2">`;
+  SOURCES.sibling_maps.forEach(s=>{
+    h+=`<div class="card"><div class="ctitle" style="font-size:13px"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.n)}</a></div>
+      <div class="cbody">${rich(s.note)}</div></div>`;
+  });
+  h+=`</div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ Excluded ══════════ */
+function buildExcluded(){
+  const c=document.getElementById('xc-cont');
+  let h=`<div class="note">Names and categories deliberately left out. Scope discipline made explicit — an omission recorded here is a decision, not an oversight.</div>`;
+  EXCLUDED.categories.forEach(cat=>{
+    h+=`<div class="card" style="border-left:4px solid ${cat.c}">
+      <div class="ctitle">${esc(cat.n)}</div>
+      <div class="cbody" style="font-style:italic;color:var(--color-text-tertiary)">${rich(cat.body)}</div>
+      <table class="tbl" style="margin-top:6px"><tbody>`;
+    cat.items.forEach(i=>{ h+=`<tr><td style="width:32%"><b>${esc(i.n)}</b></td><td>${rich(i.why)}</td></tr>`; });
+    h+=`</tbody></table></div>`;
+  });
+  const g=EXCLUDED.coverage_gaps;
+  h+=`<div class="card" style="border-left:4px solid #B32B2A">
+    <div class="ctitle">${esc(g.title)}</div>
+    <div class="cbody">${rich(g.intro)}</div>
+    <ul style="margin:6px 0 0;padding-left:17px">`;
+  g.gaps.forEach(x=>{ h+=`<li class="cbody" style="margin-bottom:4px">${rich(x)}</li>`; });
+  h+=`</ul></div>`;
+  c.innerHTML=h;
+}
+
+/* ══════════ News ══════════ */
+function buildNews(){
+  const c=document.getElementById('nw-cont');
+  if(!NEWS){
+    c.innerHTML=`<div class="note">No news data yet — the nightly refresh (weekdays ~21:30 UTC) has not run since this dashboard shipped, or the fetch failed. Headlines appear automatically once <b>data/news.json</b> is committed by the GitHub Action.</div>`;
+    return;
+  }
+  let h=`<div class="note">Headlines matched to the thesis's own search terms, plus long-form from the demographic, retirement-economics and healthcare-policy feeds. Refreshed nightly. As of <b>${fmtTS((NEWS._meta||{}).as_of)}</b>.</div>`;
+  h+=`<div class="klabel">Tagged headlines</div>`;
+  (NEWS.news||[]).forEach(n=>{
+    h+=`<div class="nw"><a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}</a>
+      <div class="nw-m"><span>${esc(n.src)}</span><span class="q">${esc(n.d)}</span>
+      <span>${(n.tk||[]).map(t=>`<span class="chip" onclick="openTicker('${esc(t)}')">${esc(t)}</span>`).join(' ')}</span>
+      <span style="color:var(--color-border-secondary)">${esc(n.q)}</span></div></div>`;
+  });
+  if((NEWS.voices||[]).length){
+    h+=`<div class="klabel">Long-form</div>`;
+    NEWS.voices.forEach(n=>{
+      h+=`<div class="nw"><a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(n.t)}</a>
+        <div class="nw-m"><span><b>${esc(n.src)}</b></span><span class="q">${esc(n.d)}</span></div></div>`;
+    });
+  }
+  c.innerHTML=h;
+}
+
+const BUILD={bk:buildBreaking,sh:buildStartHere,ck:buildClock,lb:buildLimbs,mx:buildMatrix,
+             co:buildCompanies,th:buildThemes,cy:buildCycle,nw:buildNews,np:buildNotPriced,
+             fa:buildFalsifiers,in:buildIndicators,pol:buildPolicy,pf:buildPortfolio,
+             gl:buildGlossary,sr:buildSources,xc:buildExcluded};
+
+/* ══════════ Boot ══════════ */
+(async function boot(){
+  const Q='?v='+Date.now();
+  const J=n=>fetch(BASE+n+Q).then(r=>{ if(!r.ok) throw new Error(n+' '+r.status); return r.json(); });
+  try{
+    const [thesis,clock,matrix,companies,themes,portfolio,indicators,falsifiers,policy,cycle,glossary,sources,excluded]
+      = await Promise.all(['thesis','clock','matrix','companies','themes','portfolio','indicators',
+                           'falsifiers','policy','cycle','glossary','sources','excluded'].map(n=>J(n+'.json')));
+    THESIS=thesis; CLOCK=clock; MATRIX=matrix; THEMES=themes; PORTFOLIO=portfolio;
+    INDICATORS=indicators; FALSIFIERS=falsifiers; POLICY=policy; CYCLE=cycle;
+    GLOSSARY=glossary; SOURCES=sources; EXCLUDED=excluded;
+    COMPANIES=companies.companies; CO_META=companies._meta;
+  }catch(e){
+    document.getElementById('loading').innerHTML=
+      'Could not load research data — '+esc(e.message)+
+      '<br><span style="font-size:12px">If you opened this file directly, serve it over http (e.g. <code>python3 -m http.server</code>) or use the hosted dashboard.</span>';
+    return;
+  }
+
+  THESIS.limbs.forEach(l=>LIMB[l.id]=l);
+  CO_META.verticals.forEach(v=>VERT[v.id]=v);
+  CO_META.themes_registry.forEach(t=>THEME_REG[t.id]=t);
+  COMPANIES.forEach(c=>{ TICKER_MAP[c.ticker]=c.name; NAME_MAP[c.name]=c.ticker; });
+  (CO_META.private_companies||[]).forEach(p=>PRIVATE_MAP[p.n]=p.note);
+  /* Longest-first so 'ESSITY-B.ST' wins over 'SF'; word-bounded so prose is untouched. */
+  const tks=Object.keys(TICKER_MAP).sort((a,b)=>b.length-a.length)
+    .map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+  TICKER_RE=new RegExp('(?<![A-Za-z0-9.\\-])(?:'+tks.join('|')+')(?![A-Za-z0-9\\-])','g');
+
+  /* Machine data — optional, never fatal */
+  const soft=n=>J(n).catch(()=>null);
+  const [q,i,n,a,p]=await Promise.all([soft('quotes.json'),soft('indices.json'),soft('news.json'),
+                                       soft('alerts.json'),soft('performance.json')]);
+  QUOTES=q&&q.quotes; IDX=i&&i.symbols; NEWS=n; ALERTS=a; PERF=p;
+
+  /* Masthead */
+  const stamp=document.getElementById('updated-stamp');
+  const mq=q&&q._meta?` · prices <b>${fmtTS(q._meta.as_of)}</b> (${esc(q._meta.coverage)})`:' · <b>no market data yet</b>';
+  stamp.innerHTML=`Research as of <b>${esc(THESIS._meta.as_of)}</b> · <b>${COMPANIES.length}</b> names · <b>${THESIS.limbs.length}</b> limbs${mq}`;
+
+  const clockEl=document.getElementById('mast-clock');
+  document.getElementById('mast-clock-txt').textContent=`Median boomer is ${CLOCK.cohort_edges.find(e=>e.lbl==='Median').age_2026} — crossing into slow-go`;
+  clockEl.style.display=''; clockEl.onclick=()=>goTab('ck');
+
+  if(IDX){
+    const want=['SPY','XLV','IHI','XLRE','^TNX','SPREAD_10_30'];
+    const el=document.getElementById('mast-mkt');
+    el.innerHTML=want.filter(s=>IDX[s]).map(s=>{
+      const x=IDX[s], d=x.d1==null?'':`<span class="${x.d1>=0?'up':'dn'}">${x.d1>=0?'+':''}${x.d1}%</span>`;
+      return `<span title="${esc(x.n)}">${esc(s.replace('^','').replace('SPREAD_10_30','10s30s'))} <b>${x.p}</b> ${d}</span>`;
+    }).join('');
+    el.style.display='';
+  }
+
+  if(ALERTS&&ALERTS.alerts&&ALERTS.alerts.length){
+    const b=document.getElementById('act-badge');
+    b.textContent=ALERTS.alerts.length; b.style.display='';
+    const strip=document.getElementById('alert-strip');
+    strip.innerHTML=ALERTS.alerts.slice(0,8).map(x=>
+      `<div class="al al-${x.type}" onclick="openTicker('${x.tk}')">${esc(x.msg)}</div>`).join('');
+    strip.style.display='';
+  }
+
+  /* Ticker chips anywhere in the app open the Companies tab filtered. */
+  document.getElementById('app').addEventListener('click',ev=>{
+    const t=ev.target.closest('.ticklink[data-tk]');
+    if(t){ ev.preventDefault(); openTicker(t.getAttribute('data-tk')); }
+  });
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('app').style.display='';
+  BUILD.bk(); built.bk=1;
+})();
+</script>
+</body>
+</html>

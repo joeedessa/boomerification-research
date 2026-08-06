@@ -1,0 +1,62 @@
+{
+  "_meta": {
+    "description": "Limb E in operational form. The fiscal arithmetic, the scheduled policy events, the step functions markets price late, and the reimbursement exposure map that constrains how the limb D book is built.",
+    "as_of": "2026-08-06",
+    "verify": true,
+    "verify_note": "Trust-fund dates, ratios and projections move with every Trustees report and CBO outlook. Everything in the arithmetic block is entered from memory and marked for verification — refresh against the current vintage before treating any of it as fact."
+  },
+
+  "headline": {
+    "title": "The thesis's own hedge",
+    "body": "The same demographics that guarantee healthcare volume make healthcare price the most politically exposed line in the federal budget. That is why limb E sits in the same dashboard as limb D rather than in a risk appendix — it is not an external shock to the thesis, it is a consequence of the thesis succeeding. Every position in the care book should be constructed so that an adverse reimbursement decision is survivable."
+  },
+
+  "arithmetic": [
+    {"id": "ratio", "n": "Worker-to-beneficiary ratio", "state": "Declining on a projected path", "verify": true,
+     "body": "Fewer contributing workers per beneficiary each year, mechanically, as the cohort claims and the trailing edge stops contributing. This is the cleanest arithmetic in the thesis and the least contestable — it is the same population table the cohort clock is built from, read from the fiscal side."},
+    {"id": "oasi", "n": "OASI trust fund depletion", "state": "Mid-2030s on current projections", "verify": true,
+     "body": "The forcing function. Depletion does not mean benefits stop — it means benefits become payable only from incoming receipts, which implies an automatic cut absent legislation. That is a date-certain political event inside the thesis horizon, which is exactly the kind of step function markets price late and abruptly."},
+    {"id": "issuance", "n": "Long-end issuance & term premium", "state": "Rising pressure", "verify": false,
+     "body": "Mandatory spending growth against a shrinking relative contribution base means more borrowing, weighted long. This is where limb E collides with limb A: heavier long-end supply against a decumulating cohort's structural demand for duration. The term premium is where that argument gets settled, which is why it is on the indicator list as an arbiter rather than a position."},
+    {"id": "medicare", "n": "Medicare cost growth", "state": "Enrolment growth plus cost trend", "verify": false,
+     "body": "Enrolment is the cohort clock. Cost trend per beneficiary is partly limb C — care wages are the dominant input. The two compound, which is why healthcare is the line item under the most sustained pressure and why reimbursement risk is structural rather than cyclical."},
+    {"id": "medicaid", "n": "Medicaid & state budgets", "state": "The first place the squeeze lands", "verify": false,
+     "body": "Long-term care is largely Medicaid-funded and Medicaid is a state budget line without a federal printing press behind it. State fiscal stress arrives as rate pressure on skilled nursing and personal care operators years before any federal entitlement legislation. This is the most underrated near-term policy risk in the universe."}
+  ],
+
+  "step_functions": [
+    {"id": "trustee", "n": "Annual Trustees report", "cadence": "Annual", "impact": "high", "limbs": ["E"],
+     "body": "Resets the depletion date and the political clock with it. The single scheduled event that most moves limb E. Diary it rather than watching for it."},
+    {"id": "advnotice", "n": "CMS Medicare Advantage Advance Notice", "cadence": "Annual, winter", "impact": "high", "limbs": ["E", "D"],
+     "body": "Sets the following year's benchmark rates and risk-model parameters. The tradable event for the payor vertical — the final Rate Announcement usually confirms the Advance Notice rather than departing from it."},
+    {"id": "pfs", "n": "Medicare Physician Fee Schedule", "cadence": "Annual", "impact": "medium", "limbs": ["D"],
+     "body": "Grinds down per-service reimbursement for outpatient providers, therapy and imaging year after year. Slow, cumulative, and the structural headwind under several otherwise attractive volume stories."},
+    {"id": "snfpps", "n": "SNF & home health payment rules", "cadence": "Annual", "impact": "high", "limbs": ["D", "H"],
+     "body": "Directly sets the revenue line for skilled nursing and home health operators. Combined with state Medicaid rates, this is the entire margin question for the care vertical."},
+    {"id": "reform", "n": "Entitlement reform legislation", "cadence": "Unpredictable", "impact": "very high", "limbs": ["E", "D", "A"],
+     "body": "Benefit formula changes, means-testing, retirement age adjustment, payroll tax cap changes. Unforecastable in timing, transformative in effect, and the stated falsifier for limb E. A credible reform package repaths the fiscal limb and changes the reimbursement risk premium embedded across the whole care book."},
+    {"id": "immig", "n": "Immigration policy",  "cadence": "Continuous, with discrete legislative moments", "impact": "very high", "limbs": ["C", "D", "H"],
+     "body": "Sits in this file because it is policy, but it is the largest swing factor in the entire thesis rather than a fiscal item. A sustained surge relieves the constrained occupations, neutralises limb C and simultaneously repairs limb D's and limb H's cost problem — flipping several limbs at once."}
+  ],
+
+  "reimbursement_map": {
+    "title": "Reimbursement exposure — the constraint on position construction",
+    "intro": "Sorted by how much of the earnings stream depends on a rate set by government. This map is why the limb D book tilts toward private-pay and volume rather than toward the largest addressable market.",
+    "tiers": [
+      {"tier": "Direct rate exposure", "risk": 3, "c": "#DC2626",
+       "names": "UNH, HUM, ALHC, ELV, CVS, ENSG, ADUS, AVAH, NHC, CHE, EHC, OHI, CTRE, SBRA",
+       "note": "Earnings depend on a CMS benchmark or a state Medicaid rate. Own only where operating competence is genuinely differentiated, and cap the aggregate share of the book."},
+      {"tier": "Partial exposure", "risk": 2, "c": "#EF9F27",
+       "names": "SYK, ZBH, BSX, EW, MDT, GMED, USPH, RDNT, LH, OPCH, WELL, VTR, BKD",
+       "note": "Procedure or facility revenue is reimbursed, but volume growth and mix can outrun rate erosion. The thesis needs volume to win that race — track it as an operating metric, not an assumption."},
+      {"tier": "Structurally insulated", "risk": 1, "c": "#16A34A",
+       "names": "ALC (premium IOL), SOON.SW, DEMANT.CO, AMP.MI, COH.AX, STMN.SW, SCI, CSV, MATW, MCK, COR, CAH, KMB, ESSITY-B.ST, 8113.T",
+       "note": "Private-pay, or volume-and-mix distribution with no drug-price exposure. This tier is the deliberate structural hedge against limb E and the reason the private-pay theme scores as highly as it does."}
+    ]
+  },
+
+  "political_economy": {
+    "title": "Why the price risk and not the volume risk",
+    "body": "The cohort is the most reliable voting bloc in the country, which makes benefit cuts to beneficiaries politically expensive and payments to providers politically cheap. The historical pattern is consistent: when the fiscal squeeze arrives, it lands on provider reimbursement and on the payors administering the programmes long before it lands on the benefit itself. That asymmetry is the single most useful thing to know when constructing the limb D book — it says the volume is safe and the price is not, and it points the whole portfolio toward businesses paid by patients rather than by programmes."
+  }
+}
