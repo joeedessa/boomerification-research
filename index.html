@@ -416,7 +416,7 @@ function buildBreaking(){
     wh+=`<div class="card"><div class="co-h">
       <span class="co-tk ticklink" data-tk="${x.ticker}">${x.ticker}</span>
       <span class="co-nm">${esc((COMPANIES.find(c2=>c2.ticker===x.ticker)||{}).name||'')}</span>
-      <span class="co-role">#${x.rank} ${qBadge(x.ticker)}</span></div>
+      <span class="co-role">#${x.rank}${QUOTES&&QUOTES[x.ticker]?' &middot; '+qBadge(x.ticker):''}</span></div>
       <div class="cbody" style="margin-top:4px"><b>Setup.</b> ${rich(x.setup)}<br>
       <b>Watch.</b> ${rich(x.watch)}<br>
       <span style="color:var(--color-text-tertiary)"><b>Risk.</b> ${rich(x.risk)}</span></div></div>`;
