@@ -1,140 +1,334 @@
 {
-  "_meta": {
-    "description": "Where the data comes from. Primary sources (free, authoritative, automatable), industry sources, and the resolution log for every claim that was originally entered from memory.",
-    "as_of": "2026-08-07",
-    "honesty_note": "v1 shipped with no figure pulled from a primary source. On 2026-08-07 the entire verification queue was worked: eight claims resolved, of which five confirmed, one confirmed with a material correction, one was wrong, and one turned out to be genuinely contested. Four of the eight are now refreshed automatically by scripts/fetch_reference.py rather than being re-checked by hand. What remains unsourced is listed at the bottom and is not small."
+ "_meta": {
+  "description": "Where the data comes from. Primary sources (free, authoritative, automatable), industry sources, and the resolution log for every claim that was originally entered from memory.",
+  "as_of": "2026-08-07",
+  "honesty_note": "v1 shipped with no figure pulled from a primary source. On 2026-08-07 the entire verification queue was worked: eight claims resolved, of which five confirmed, one confirmed with a material correction, one was wrong, and one turned out to be genuinely contested. Four of the eight are now refreshed automatically by scripts/fetch_reference.py rather than being re-checked by hand. What remains unsourced is listed at the bottom and is not small."
+ },
+ "resolution_log": [
+  {
+   "claim": "US age-band population projections",
+   "verdict": "confirmed with correction",
+   "v1": "Census-projection-shaped estimates entered from memory",
+   "sourced": "US Census Bureau, 2023 National Population Projections, main series, Table 3 (released Nov 2023; 2022 base). Now auto-refreshed into reference.json.",
+   "finding": "The v1 levels were close for 2025 but wrong in two ways that matter. The go-go band peaks at 38.0M in 2030 and drifts only ~8% off that peak before recovering by 2050 — v1 implied a meaningful decline. And the 55–64 band contracts to 38.5M by 2035 before recovering, where v1 had it rising throughout. The slow-go (+36% 2025→2035) and 85+ (+96% by 2040, +149% by 2050) claims held.",
+   "affects": "The fade call was narrowed from 'the customer disappears' to 'the customer stops growing'. See clock.json corrections c1 and c3.",
+   "auto": true
   },
-
-  "resolution_log": [
-    {
-      "claim": "US age-band population projections",
-      "verdict": "confirmed with correction",
-      "v1": "Census-projection-shaped estimates entered from memory",
-      "sourced": "US Census Bureau, 2023 National Population Projections, main series, Table 3 (released Nov 2023; 2022 base). Now auto-refreshed into reference.json.",
-      "finding": "The v1 levels were close for 2025 but wrong in two ways that matter. The go-go band peaks at 38.0M in 2030 and drifts only ~8% off that peak before recovering by 2050 — v1 implied a meaningful decline. And the 55–64 band contracts to 38.5M by 2035 before recovering, where v1 had it rising throughout. The slow-go (+36% 2025→2035) and 85+ (+96% by 2040, +149% by 2050) claims held.",
-      "affects": "The fade call was narrowed from 'the customer disappears' to 'the customer stops growing'. See clock.json corrections c1 and c3.",
-      "auto": true
-    },
-    {
-      "claim": "OASI trust fund depletion in the mid-2030s",
-      "verdict": "wrong",
-      "v1": "From memory: mid-2030s",
-      "sourced": "2026 Social Security Trustees Report, released 9 June 2026",
-      "finding": "OASI reserve depletion is projected for 2032 (Q4), with combined OASDI at 2034 and 78% of scheduled benefits payable thereafter. The 75-year deficit widened from 3.82% to 4.42% of taxable payroll in one year, driven by a fertility assumption cut from 1.90 to 1.75, lower assumed immigration, and OBBBA reducing tax revenue on benefits.",
-      "affects": "The largest single correction in the sourcing pass. Limb E's forcing function is roughly three years nearer than assumed, moving it inside the horizon of most positions rather than beyond it. The immigration assumption cut also reads as supporting evidence for limb C.",
-      "auto": false
-    },
-    {
-      "claim": "$80–100T wealth transfer over roughly two decades",
-      "verdict": "contested",
-      "v1": "From memory, as a range",
-      "sourced": "Cerulli Associates ($124T through 2048) versus Visa Business and Economic Insights (~$36T over 20 years)",
-      "finding": "Cerulli: $124T through 2048, $105T to heirs and $18T to charity, ~81% from boomers and older; Gen X ~$39T, millennials ~$46T, Gen Z ~$15T. Crucially, $62T — more than half — comes from the 2% of households that are HNW/UHNW. Visa's estimate is roughly a third of Cerulli's. The gap is methodological: longevity, end-of-life and long-term care costs consuming estates, and compounding asset-price assumptions.",
-      "affects": "The dashboard now declines to pick a number and positions on transfer-event mechanics instead, which depend on the count of events rather than their aggregate value. The concentration finding materially strengthens the top-decile / median-retiree split.",
-      "auto": false
-    },
-    {
-      "claim": "55+ households hold roughly 70%+ of US household net worth",
-      "verdict": "confirmed",
-      "v1": "From memory",
-      "sourced": "Federal Reserve Distributional Financial Accounts, 2026:Q1. Now auto-refreshed.",
-      "finding": "55+ hold 73.9% of household net worth. Better still, the generational cut: boomers alone hold 51.6% of net worth and 53.9% of corporate equities. Boomer share peaked at 57.6% in 2016:Q3 and has declined since — the transfer is already visible in the data rather than purely prospective.",
-      "affects": "Replaced the age-band claim with the sharper generational one as the thesis headline.",
-      "auto": true
-    },
-    {
-      "claim": "Spending index by age band (go-go 93, slow-go 76, no-go 62)",
-      "verdict": "wrong",
-      "v1": "Illustrative shape entered from memory",
-      "sourced": "BLS Consumer Expenditure Survey 2024, by age of reference person. Now auto-refreshed.",
-      "finding": "Against a 55–64 base of 100, the 65–74 band indexes at 77 — not 93. Spending falls 23% at the go-go transition, far more sharply than v1 assumed. 75+ indexes at 66; BLS does not split 75–84 from 85+, so the v1 distinction between those two bands is unmeasured. Healthcare's share of the basket rises 7.9% → 11.8% → 14.2%, and transportation falls from $15,085 to $6,855.",
-      "affects": "Strengthens the rotation argument — the basket shrinks and re-weights at once — and kills any version of the thesis leaning on aggregate retiree spending holding up. See clock.json correction c2.",
-      "auto": true
-    },
-    {
-      "claim": "Nursing programmes turn away qualified applicants for lack of faculty and clinical placements",
-      "verdict": "confirmed",
-      "v1": "From memory",
-      "sourced": "AACN annual survey, released 7 May 2026 (998 schools, 89.5% response rate)",
-      "finding": "93,000 qualified applications turned away in 2025 — 75,255 entry-level baccalaureate, ~17,000 graduate. Cited barriers: clinical placement sites, budget cuts, faculty, preceptor and classroom shortages. The graduate number is the compounding detail: faculty roles require graduate degrees, so the bottleneck reproduces itself.",
-      "affects": "Directly confirms the capacity-gap mechanism — the strongest 'why isn't this priced' argument in the thesis and the basis for the ATGE position.",
-      "auto": false
-    },
-    {
-      "claim": "Senior housing construction starts collapsed 2020–2023",
-      "verdict": "confirmed with caveat",
-      "v1": "From memory",
-      "sourced": "NIC MAP, Q1 2026",
-      "finding": "Occupancy 89.5% in Q1 2026, up from 89.1%, a 19th consecutive quarterly gain; occupied units 637,000. Units under construction at their lowest since 2012, inventory growth at a record-low 0.4%, Q3 2025 starts of 1,076 units across 31 primary markets — the weakest quarter since Q2 2009. But NIC's head of research attributes the shortfall primarily to capital availability, not absent demand.",
-      "affects": "The supply trough is real and supports limb H, but it is a financing constraint rather than a demographic one — and financing constraints can reverse much faster. Recorded against the WELL/VTR/BKD case.",
-      "auto": false
-    },
-    {
-      "claim": "Unicharm sells more adult incontinence product than baby nappies in Japan",
-      "verdict": "confirmed",
-      "v1": "From memory; 'over a decade ago'",
-      "sourced": "Widely reported; crossover stated by the company in 2011",
-      "finding": "Crossover occurred in 2011. Adult products are now roughly a third of Japanese net sales, up from an estimated quarter in 2018, in a category growing 6–10% annually at price points up to 2.5x infant equivalents.",
-      "affects": "The Japan-template theme's headline illustration, now dated and quantified.",
-      "auto": false
-    }
-  ],
-
-  "bonus_findings": [
-    {
-      "n": "65+ labour force participation is falling",
-      "detail": "18.7% (June 2026) against a 2019 annual peak of 20.2% and a 2024 average of 19.5%. Participation peaked before the pandemic and has not recovered.",
-      "src": "BLS CPS series LNU01300097 — now auto-refreshed",
-      "why": "Not in the original queue, but it is the highest-value single indicator in the thesis: it tests limb C's premise (the labour is leaving) and limb D's timing (the consumption rotation is happening) simultaneously. It currently reads confirming on both."
-    },
-    {
-      "n": "Federal actuaries cut their immigration assumption",
-      "detail": "One of three revisions widening the 75-year Social Security deficit by 16% in the 2026 report.",
-      "src": "2026 Trustees Report",
-      "why": "Limb C's principal falsifier is a sustained immigration surge. This is an assumption change rather than an outturn, so it is suggestive rather than decisive — but it moves against the falsifier."
-    }
-  ],
-
-  "still_unsourced": {
-    "note": "What the sourcing pass did NOT reach. This list matters more than the resolution log, because five of five indicators read confirming and the ones that were cheapest to source are not a random sample. A run of supportive evidence on self-selected data is how a thesis talks itself into being right.",
-    "items": [
-      {"n": "Health utilisation per capita in the 75+ bands", "why": "The direct test of falsifier f3 (morbidity compression), which is the falsifier most likely to be quietly true while everything cheaper reads confirming. CMS utilisation files are not trivially machine-readable.", "priority": 1},
-      {"n": "Fund flows by investor age", "why": "Limb A's explicit falsifier. ICI publishes flows by vehicle but the age attribution needs Fed distributional data cross-cut against it — real work, not a fetch.", "priority": 1},
-      {"n": "Annuity sales by product type", "why": "The cleanest single read on limb A's behavioural shift. LIMRA headline releases are free but the product-level detail is paid.", "priority": 1},
-      {"n": "RIA / wirehouse channel share and advisor age", "why": "Limb B's adjudicator. Cerulli channel data is paid, and company disclosures are the fast but self-serving read.", "priority": 1},
-      {"n": "Services vs goods wage growth", "why": "Limb C's inflation claim. BLS ECI is available via the same API already in use — this is the most easily closed gap on the list and should be next.", "priority": 2},
-      {"n": "Apprenticeship completions in licensed trades", "why": "The trades half of the capacity-gap mechanism. Only nursing was sourced; the contractor positions rest on the untested half.", "priority": 2},
-      {"n": "Existing-home turnover in retirement metros", "why": "Limb H's inventory-release test. Needs metro-level data; the national figure averages the signal away.", "priority": 3}
-    ]
+  {
+   "claim": "OASI trust fund depletion in the mid-2030s",
+   "verdict": "wrong",
+   "v1": "From memory: mid-2030s",
+   "sourced": "2026 Social Security Trustees Report, released 9 June 2026",
+   "finding": "OASI reserve depletion is projected for 2032 (Q4), with combined OASDI at 2034 and 78% of scheduled benefits payable thereafter. The 75-year deficit widened from 3.82% to 4.42% of taxable payroll in one year, driven by a fertility assumption cut from 1.90 to 1.75, lower assumed immigration, and OBBBA reducing tax revenue on benefits.",
+   "affects": "The largest single correction in the sourcing pass. Limb E's forcing function is roughly three years nearer than assumed, moving it inside the horizon of most positions rather than beyond it. The immigration assumption cut also reads as supporting evidence for limb C.",
+   "auto": false
   },
-
-  "primary": [
-    {"n": "US Census Bureau — 2023 National Population Projections", "use": "The cohort clock. Age-band populations, 2022–2050, main series Table 3.", "url": "https://www2.census.gov/programs-surveys/popproj/tables/2023/2023-summary-tables/np2023-t3.xlsx", "cadence": "Annual vintage", "auto": "yes", "limbs": ["all"]},
-    {"n": "BLS — Consumer Expenditure Survey", "use": "Spending by age of reference person and category. The rotation argument's quantitative basis.", "url": "https://www.bls.gov/cex/", "cadence": "Annual", "auto": "yes", "limbs": ["D"]},
-    {"n": "BLS — Current Population Survey", "use": "Labour force participation by age band. The highest-value single indicator in the thesis.", "url": "https://www.bls.gov/cps/", "cadence": "Monthly", "auto": "yes", "limbs": ["C"]},
-    {"n": "Federal Reserve — Distributional Financial Accounts", "use": "Household net worth and asset shares by generation and age band.", "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/", "cadence": "Quarterly", "auto": "yes", "limbs": ["A", "B"]},
-    {"n": "SSA — Trustees Report", "use": "Trust fund depletion dates, actuarial deficit, demographic assumptions. Limb E's forcing function.", "url": "https://www.ssa.gov/oact/tr/", "cadence": "Annual", "auto": "no", "limbs": ["E"]},
-    {"n": "BLS — Employment Cost Index", "use": "Services versus goods wage growth, composition-controlled. Limb C's inflation claim.", "url": "https://www.bls.gov/eci/", "cadence": "Quarterly", "auto": "no", "limbs": ["C"]},
-    {"n": "BLS — JOLTS", "use": "Job openings and quits in healthcare and construction.", "url": "https://www.bls.gov/jlt/", "cadence": "Monthly", "auto": "no", "limbs": ["C"]},
-    {"n": "BEA — Personal Consumption Expenditures", "use": "Consumption basket by category, normalised per capita by age band.", "url": "https://www.bea.gov/data/consumer-spending/main", "cadence": "Monthly", "auto": "no", "limbs": ["D"]},
-    {"n": "CBO — Long-Term Budget Outlook", "use": "Mandatory spending trajectory and debt path.", "url": "https://www.cbo.gov/topics/budget", "cadence": "Annual", "auto": "no", "limbs": ["E"]},
-    {"n": "CMS — rate notices, fee schedules & utilisation files", "use": "MA benchmarks, fee schedules, SNF and home health rules, per-capita utilisation.", "url": "https://www.cms.gov/", "cadence": "Annual rules, periodic data", "auto": "no", "limbs": ["D", "E"]},
-    {"n": "NY Fed — ACM term premium estimates", "use": "The arbiter between limb A's duration demand and limb E's issuance pressure.", "url": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs", "cadence": "Daily", "auto": "no", "limbs": ["A", "E"]},
-    {"n": "DOL — Registered Apprenticeship data", "use": "Trade pipeline completions against retirements.", "url": "https://www.apprenticeship.gov/data-and-statistics", "cadence": "Annual", "auto": "no", "limbs": ["C"]}
-  ],
-
-  "industry": [
-    {"n": "AACN annual nursing education survey", "use": "Qualified applications turned away — the direct test of the capacity gap. Sourced 2026-08-07.", "access": "Free annual summary", "limbs": ["C"]},
-    {"n": "NIC MAP", "use": "Senior housing occupancy, rate growth and construction starts. Sourced 2026-08-07.", "access": "Paid; headline figures published quarterly", "limbs": ["H"]},
-    {"n": "Cerulli Associates", "use": "Wealth transfer projections, advisor channel share, advisor age, rollover volumes.", "access": "Paid; press releases free", "limbs": ["B"]},
-    {"n": "LIMRA", "use": "US annuity sales by product type. Limb A's cleanest confirmation.", "access": "Headline releases free; detail paid", "limbs": ["A"]},
-    {"n": "ICI — fund flow data", "use": "Weekly and monthly flows by vehicle. Limb A's falsifier test.", "access": "Free", "limbs": ["A"]},
-    {"n": "Echelon / DeVoe — wealth management M&A", "use": "Private marks for the listed aggregator comps.", "access": "Free quarterly reports", "limbs": ["B"]},
-    {"n": "NAR / Redfin / Zillow — metro turnover", "use": "Existing-home turnover in retirement metros, read metro by metro.", "access": "Free", "limbs": ["H"]}
-  ],
-
-  "sibling_maps": [
-    {"n": "hard-assets-research", "url": "https://github.com/joeedessa/hard-assets-research", "note": "Real assets, energy, critical minerals. Raw materials are deliberately out of scope here."},
-    {"n": "ai-hardware-research", "url": "https://github.com/joeedessa/ai-hardware-research", "note": "AI, semiconductor, robotics and optical supply chain. Overlap point: the automation names in this dashboard's labour-substitution sleeve are covered end-to-end there."}
+  {
+   "claim": "$80–100T wealth transfer over roughly two decades",
+   "verdict": "contested",
+   "v1": "From memory, as a range",
+   "sourced": "Cerulli Associates ($124T through 2048) versus Visa Business and Economic Insights (~$36T over 20 years)",
+   "finding": "Cerulli: $124T through 2048, $105T to heirs and $18T to charity, ~81% from boomers and older; Gen X ~$39T, millennials ~$46T, Gen Z ~$15T. Crucially, $62T — more than half — comes from the 2% of households that are HNW/UHNW. Visa's estimate is roughly a third of Cerulli's. The gap is methodological: longevity, end-of-life and long-term care costs consuming estates, and compounding asset-price assumptions.",
+   "affects": "The dashboard now declines to pick a number and positions on transfer-event mechanics instead, which depend on the count of events rather than their aggregate value. The concentration finding materially strengthens the top-decile / median-retiree split.",
+   "auto": false
+  },
+  {
+   "claim": "55+ households hold roughly 70%+ of US household net worth",
+   "verdict": "confirmed",
+   "v1": "From memory",
+   "sourced": "Federal Reserve Distributional Financial Accounts, 2026:Q1. Now auto-refreshed.",
+   "finding": "55+ hold 73.9% of household net worth. Better still, the generational cut: boomers alone hold 51.6% of net worth and 53.9% of corporate equities. Boomer share peaked at 57.6% in 2016:Q3 and has declined since — the transfer is already visible in the data rather than purely prospective.",
+   "affects": "Replaced the age-band claim with the sharper generational one as the thesis headline.",
+   "auto": true
+  },
+  {
+   "claim": "Spending index by age band (go-go 93, slow-go 76, no-go 62)",
+   "verdict": "wrong",
+   "v1": "Illustrative shape entered from memory",
+   "sourced": "BLS Consumer Expenditure Survey 2024, by age of reference person. Now auto-refreshed.",
+   "finding": "Against a 55–64 base of 100, the 65–74 band indexes at 77 — not 93. Spending falls 23% at the go-go transition, far more sharply than v1 assumed. 75+ indexes at 66; BLS does not split 75–84 from 85+, so the v1 distinction between those two bands is unmeasured. Healthcare's share of the basket rises 7.9% → 11.8% → 14.2%, and transportation falls from $15,085 to $6,855.",
+   "affects": "Strengthens the rotation argument — the basket shrinks and re-weights at once — and kills any version of the thesis leaning on aggregate retiree spending holding up. See clock.json correction c2.",
+   "auto": true
+  },
+  {
+   "claim": "Nursing programmes turn away qualified applicants for lack of faculty and clinical placements",
+   "verdict": "confirmed",
+   "v1": "From memory",
+   "sourced": "AACN annual survey, released 7 May 2026 (998 schools, 89.5% response rate)",
+   "finding": "93,000 qualified applications turned away in 2025 — 75,255 entry-level baccalaureate, ~17,000 graduate. Cited barriers: clinical placement sites, budget cuts, faculty, preceptor and classroom shortages. The graduate number is the compounding detail: faculty roles require graduate degrees, so the bottleneck reproduces itself.",
+   "affects": "Directly confirms the capacity-gap mechanism — the strongest 'why isn't this priced' argument in the thesis and the basis for the ATGE position.",
+   "auto": false
+  },
+  {
+   "claim": "Senior housing construction starts collapsed 2020–2023",
+   "verdict": "confirmed with caveat",
+   "v1": "From memory",
+   "sourced": "NIC MAP, Q1 2026",
+   "finding": "Occupancy 89.5% in Q1 2026, up from 89.1%, a 19th consecutive quarterly gain; occupied units 637,000. Units under construction at their lowest since 2012, inventory growth at a record-low 0.4%, Q3 2025 starts of 1,076 units across 31 primary markets — the weakest quarter since Q2 2009. But NIC's head of research attributes the shortfall primarily to capital availability, not absent demand.",
+   "affects": "The supply trough is real and supports limb H, but it is a financing constraint rather than a demographic one — and financing constraints can reverse much faster. Recorded against the WELL/VTR/BKD case.",
+   "auto": false
+  },
+  {
+   "claim": "Unicharm sells more adult incontinence product than baby nappies in Japan",
+   "verdict": "confirmed",
+   "v1": "From memory; 'over a decade ago'",
+   "sourced": "Widely reported; crossover stated by the company in 2011",
+   "finding": "Crossover occurred in 2011. Adult products are now roughly a third of Japanese net sales, up from an estimated quarter in 2018, in a category growing 6–10% annually at price points up to 2.5x infant equivalents.",
+   "affects": "The Japan-template theme's headline illustration, now dated and quantified.",
+   "auto": false
+  },
+  {
+   "claim": "Health utilisation per capita in the 75+ bands",
+   "verdict": "contradicting",
+   "v1": "Unsourced. The thesis assumed care volumes scale with the 85+ population and never tested whether utilisation per head was constant.",
+   "sourced": "CMS Medicare Geographic Variation PUF (national FFS 65+, 2014-2024) and CMS Program Statistics — Medicare Skilled Nursing Facility. Both keyless, now auto-refreshed into reference.json.",
+   "finding": "Two results pulling opposite ways. The age gradient is confirmed and steeper than assumed: SNF days per 1,000 run 634 at 65-74, 1,712 at 75-84 and 4,460 at 85+ (7.0x). But per-capita institutional utilisation fell hard over the decade — SNF days -31%, home health visits -32%, inpatient days -18% — while ambulatory contact rose (E&M +16%, imaging +12%). Hospice was the sole per-capita gainer at +21%.",
+   "affects": "Limb D keeps its direction and loses its magnitude. Compounding the observed per-capita decline against 85+ population growth gives ~+12% aggregate SNF days to 2040 rather than the +96% population implies. Carried as new falsifier f11; repriced the book away from institutional operators toward ambulatory, hospice and private-pay. Also partially disconfirms f3 as stated: rising ambulatory contact is inconsistent with genuine morbidity compression, so the mechanism looks like site-of-care shift and payment policy instead.",
+   "auto": true
+  }
+ ],
+ "bonus_findings": [
+  {
+   "n": "65+ labour force participation is falling",
+   "detail": "18.7% (June 2026) against a 2019 annual peak of 20.2% and a 2024 average of 19.5%. Participation peaked before the pandemic and has not recovered.",
+   "src": "BLS CPS series LNU01300097 — now auto-refreshed",
+   "why": "Not in the original queue, but it is the highest-value single indicator in the thesis: it tests limb C's premise (the labour is leaving) and limb D's timing (the consumption rotation is happening) simultaneously. It currently reads confirming on both."
+  },
+  {
+   "n": "Federal actuaries cut their immigration assumption",
+   "detail": "One of three revisions widening the 75-year Social Security deficit by 16% in the 2026 report.",
+   "src": "2026 Trustees Report",
+   "why": "Limb C's principal falsifier is a sustained immigration surge. This is an assumption change rather than an outturn, so it is suggestive rather than decisive — but it moves against the falsifier."
+  }
+ ],
+ "still_unsourced": {
+  "note": "What the sourcing pass has NOT reached. This list matters more than the resolution log. The first deliberately-adversarial item — health utilisation per capita — came back contradicting and produced the largest single revision to the thesis so far, which is the argument for working the rest of this list rather than the easy confirmations.",
+  "items": [
+   {
+    "n": "Fund flows by investor age",
+    "why": "Limb A's explicit falsifier. ICI publishes flows by vehicle but the age attribution needs Fed distributional data cross-cut against it — real work, not a fetch.",
+    "priority": 1
+   },
+   {
+    "n": "Annuity sales by product type",
+    "why": "The cleanest single read on limb A's behavioural shift. LIMRA headline releases are free but the product-level detail is paid.",
+    "priority": 1
+   },
+   {
+    "n": "RIA / wirehouse channel share and advisor age",
+    "why": "Limb B's adjudicator. Cerulli channel data is paid, and company disclosures are the fast but self-serving read.",
+    "priority": 1
+   },
+   {
+    "n": "Services vs goods wage growth",
+    "why": "Limb C's inflation claim. BLS ECI is available via the same API already in use — this is the most easily closed gap on the list and should be next.",
+    "priority": 2
+   },
+   {
+    "n": "Apprenticeship completions in licensed trades",
+    "why": "The trades half of the capacity-gap mechanism. Only nursing was sourced; the contractor positions rest on the untested half.",
+    "priority": 2
+   },
+   {
+    "n": "Existing-home turnover in retirement metros",
+    "why": "Limb H's inventory-release test. Needs metro-level data; the national figure averages the signal away.",
+    "priority": 3
+   }
   ]
+ },
+ "primary": [
+  {
+   "n": "US Census Bureau — 2023 National Population Projections",
+   "use": "The cohort clock. Age-band populations, 2022–2050, main series Table 3.",
+   "url": "https://www2.census.gov/programs-surveys/popproj/tables/2023/2023-summary-tables/np2023-t3.xlsx",
+   "cadence": "Annual vintage",
+   "auto": "yes",
+   "limbs": [
+    "all"
+   ]
+  },
+  {
+   "n": "BLS — Consumer Expenditure Survey",
+   "use": "Spending by age of reference person and category. The rotation argument's quantitative basis.",
+   "url": "https://www.bls.gov/cex/",
+   "cadence": "Annual",
+   "auto": "yes",
+   "limbs": [
+    "D"
+   ]
+  },
+  {
+   "n": "BLS — Current Population Survey",
+   "use": "Labour force participation by age band. The highest-value single indicator in the thesis.",
+   "url": "https://www.bls.gov/cps/",
+   "cadence": "Monthly",
+   "auto": "yes",
+   "limbs": [
+    "C"
+   ]
+  },
+  {
+   "n": "Federal Reserve — Distributional Financial Accounts",
+   "use": "Household net worth and asset shares by generation and age band.",
+   "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
+   "cadence": "Quarterly",
+   "auto": "yes",
+   "limbs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "n": "SSA — Trustees Report",
+   "use": "Trust fund depletion dates, actuarial deficit, demographic assumptions. Limb E's forcing function.",
+   "url": "https://www.ssa.gov/oact/tr/",
+   "cadence": "Annual",
+   "auto": "no",
+   "limbs": [
+    "E"
+   ]
+  },
+  {
+   "n": "BLS — Employment Cost Index",
+   "use": "Services versus goods wage growth, composition-controlled. Limb C's inflation claim.",
+   "url": "https://www.bls.gov/eci/",
+   "cadence": "Quarterly",
+   "auto": "no",
+   "limbs": [
+    "C"
+   ]
+  },
+  {
+   "n": "BLS — JOLTS",
+   "use": "Job openings and quits in healthcare and construction.",
+   "url": "https://www.bls.gov/jlt/",
+   "cadence": "Monthly",
+   "auto": "no",
+   "limbs": [
+    "C"
+   ]
+  },
+  {
+   "n": "BEA — Personal Consumption Expenditures",
+   "use": "Consumption basket by category, normalised per capita by age band.",
+   "url": "https://www.bea.gov/data/consumer-spending/main",
+   "cadence": "Monthly",
+   "auto": "no",
+   "limbs": [
+    "D"
+   ]
+  },
+  {
+   "n": "CBO — Long-Term Budget Outlook",
+   "use": "Mandatory spending trajectory and debt path.",
+   "url": "https://www.cbo.gov/topics/budget",
+   "cadence": "Annual",
+   "auto": "no",
+   "limbs": [
+    "E"
+   ]
+  },
+  {
+   "n": "CMS — rate notices, fee schedules & utilisation files",
+   "use": "MA benchmarks, fee schedules, SNF and home health rules, per-capita utilisation.",
+   "url": "https://www.cms.gov/",
+   "cadence": "Annual rules, periodic data",
+   "auto": "no",
+   "limbs": [
+    "D",
+    "E"
+   ]
+  },
+  {
+   "n": "NY Fed — ACM term premium estimates",
+   "use": "The arbiter between limb A's duration demand and limb E's issuance pressure.",
+   "url": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
+   "cadence": "Daily",
+   "auto": "no",
+   "limbs": [
+    "A",
+    "E"
+   ]
+  },
+  {
+   "n": "DOL — Registered Apprenticeship data",
+   "use": "Trade pipeline completions against retirements.",
+   "url": "https://www.apprenticeship.gov/data-and-statistics",
+   "cadence": "Annual",
+   "auto": "no",
+   "limbs": [
+    "C"
+   ]
+  }
+ ],
+ "industry": [
+  {
+   "n": "AACN annual nursing education survey",
+   "use": "Qualified applications turned away — the direct test of the capacity gap. Sourced 2026-08-07.",
+   "access": "Free annual summary",
+   "limbs": [
+    "C"
+   ]
+  },
+  {
+   "n": "NIC MAP",
+   "use": "Senior housing occupancy, rate growth and construction starts. Sourced 2026-08-07.",
+   "access": "Paid; headline figures published quarterly",
+   "limbs": [
+    "H"
+   ]
+  },
+  {
+   "n": "Cerulli Associates",
+   "use": "Wealth transfer projections, advisor channel share, advisor age, rollover volumes.",
+   "access": "Paid; press releases free",
+   "limbs": [
+    "B"
+   ]
+  },
+  {
+   "n": "LIMRA",
+   "use": "US annuity sales by product type. Limb A's cleanest confirmation.",
+   "access": "Headline releases free; detail paid",
+   "limbs": [
+    "A"
+   ]
+  },
+  {
+   "n": "ICI — fund flow data",
+   "use": "Weekly and monthly flows by vehicle. Limb A's falsifier test.",
+   "access": "Free",
+   "limbs": [
+    "A"
+   ]
+  },
+  {
+   "n": "Echelon / DeVoe — wealth management M&A",
+   "use": "Private marks for the listed aggregator comps.",
+   "access": "Free quarterly reports",
+   "limbs": [
+    "B"
+   ]
+  },
+  {
+   "n": "NAR / Redfin / Zillow — metro turnover",
+   "use": "Existing-home turnover in retirement metros, read metro by metro.",
+   "access": "Free",
+   "limbs": [
+    "H"
+   ]
+  }
+ ],
+ "sibling_maps": [
+  {
+   "n": "hard-assets-research",
+   "url": "https://github.com/joeedessa/hard-assets-research",
+   "note": "Real assets, energy, critical minerals. Raw materials are deliberately out of scope here."
+  },
+  {
+   "n": "ai-hardware-research",
+   "url": "https://github.com/joeedessa/ai-hardware-research",
+   "note": "AI, semiconductor, robotics and optical supply chain. Overlap point: the automation names in this dashboard's labour-substitution sleeve are covered end-to-end there."
+  }
+ ]
 }

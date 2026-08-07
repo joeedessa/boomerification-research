@@ -78,7 +78,7 @@
     "elective"
    ],
    "note": "Marked warming rather than armed because the evidence is genuinely accumulating — GLP-1 effects on the elderly disease burden are real, if slower and more nuanced than the initial market reaction assumed. LLY is held partly as the internal hedge against this. Watch ResMed's multiple as the market's live pricing of it.",
-   "evidence": "EVIDENCE 2026-08-07: unchanged at warming. Not re-read this round — utilisation-per-capita data was not sourced. This is the gap in the current evidence set and it matters, because f3 is the falsifier most likely to be quietly true while the cheaper indicators all read confirming.",
+   "evidence": "EVIDENCE 2026-08-07 (CMS Geographic Variation PUF, 2014-2024): tested directly and NOT confirmed as stated. Per-capita institutional utilisation among FFS 65+ did fall hard — SNF days/1k -31%, home health visits -32%, inpatient days -18% — which looks superficially like compression. But ambulatory contact rose over the same window: E&M visits/1k +16%, imaging +12%, procedures +5%. A healthier elderly population would see doctors LESS, not more. The pattern is site-of-care shift plus payment policy (SNF PDPM 2019, home health PDGM 2020), not people getting well. f3 as written therefore remains unproven — but the testing surfaced a different and larger risk, carried as f11.",
    "last_read": "2026-08-07"
   },
   {
@@ -213,6 +213,25 @@
     "trades"
    ],
    "note": "The honest master falsifier. If the four mechanisms in the not-priced test all fail, the correct conclusion is that a forty-year-old known fact is in the price and the edge was imagined. Review this one deliberately rather than letting it be absorbed by the individual limb reviews."
+  },
+  {
+   "id": "f11",
+   "limb": "D",
+   "n": "The per-capita offset consumes the population arithmetic",
+   "sev": 3,
+   "state": "warming",
+   "condition": "Per-capita institutional utilisation continuing to decline at anything close to its 2014-2024 rate — SNF days/1k -3.6% a year, home health visits -3.8% a year — such that aggregate volume growth stays in the low single digits despite the 85+ population compounding at ~4.6% a year.",
+   "kills": "Not limb D's direction, but the naive version of its magnitude. The demographic tailwind is real and the age gradient is steeper than assumed (SNF days/1k: 7.0x at 85+ versus 65-74). What it kills is the assumption that population growth passes through to volumes. Institutional operators are where that error is most expensive.",
+   "retires": [
+    "Reprices rather than retires. Reduces institutional and facility-based exposure — ENSG, NHC, EHC, and the SNF net-lease REITs OHI, CTRE, SBRA — in favour of ambulatory, hospice and private-pay, where per-capita utilisation is flat to rising."
+   ],
+   "watch": [
+    "hh",
+    "elective"
+   ],
+   "note": "Discovered on 2026-08-07 while testing f3, and larger than the falsifier that prompted the test. This is the first genuinely unanticipated risk the sourcing programme has produced — the v1 thesis multiplied population growth straight through to care volumes and never asked whether utilisation per head was constant. It was not.",
+   "evidence": "EVIDENCE 2026-08-07: partially realised, not hypothetical. Compounding the observed -3.6% a year per-capita SNF decline against +4.6% a year 85+ population growth gives roughly +12% aggregate SNF days over 2025-2040, versus the +96% population alone implies. Hospice is the exception at +21% per capita over the decade. Caveat in both directions: the decline is partly payment-policy driven and cannot continue indefinitely (there is a floor), while MA selection and rising average age both bias the measured decline toward understatement.",
+   "last_read": "2026-08-07"
   }
  ]
 }

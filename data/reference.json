@@ -186,9 +186,302 @@
   "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
   "retrieved": "2026-08-07"
  },
+ "utilisation": {
+  "years": [
+   "2014",
+   "2015",
+   "2016",
+   "2017",
+   "2018",
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024"
+  ],
+  "population": "Original Medicare (fee-for-service) beneficiaries aged 65+",
+  "units": "events or days per 1,000 beneficiaries per year",
+  "trend": {
+   "Inpatient admissions": {
+    "values": [
+     268.7,
+     266.3,
+     260.2,
+     261.0,
+     253.8,
+     249.7,
+     212.4,
+     210.9,
+     211.7,
+     216.9,
+     220.1
+    ],
+    "change_pct": -18.1,
+    "cagr_pct": -1.98
+   },
+   "Inpatient days": {
+    "values": [
+     1401.4,
+     1383.3,
+     1330.8,
+     1316.4,
+     1281.0,
+     1254.2,
+     1139.5,
+     1168.6,
+     1165.3,
+     1141.8,
+     1144.8
+    ],
+    "change_pct": -18.3,
+    "cagr_pct": -2.0
+   },
+   "ER visits": {
+    "values": [
+     563.1,
+     577.5,
+     579.3,
+     589.7,
+     582.8,
+     582.2,
+     472.5,
+     505.9,
+     530.4,
+     544.2,
+     555.3
+    ],
+    "change_pct": -1.4,
+    "cagr_pct": -0.14
+   },
+   "SNF days": {
+    "values": [
+     2081.6,
+     2031.8,
+     1882.6,
+     1798.6,
+     1710.4,
+     1615.7,
+     1563.3,
+     1485.3,
+     1601.9,
+     1482.1,
+     1436.8
+    ],
+    "change_pct": -31.0,
+    "cagr_pct": -3.64
+   },
+   "Home health visits": {
+    "values": [
+     3225.9,
+     3208.1,
+     3142.5,
+     3051.5,
+     3016.8,
+     2939.0,
+     2501.0,
+     2366.4,
+     2220.0,
+     2211.1,
+     2201.8
+    ],
+    "change_pct": -31.7,
+    "cagr_pct": -3.75
+   },
+   "Hospice days": {
+    "values": [
+     2164.7,
+     2166.6,
+     2218.1,
+     2257.5,
+     2324.6,
+     2424.3,
+     2473.3,
+     2415.3,
+     2430.7,
+     2529.3,
+     2619.8
+    ],
+    "change_pct": 21.0,
+    "cagr_pct": 1.93
+   },
+   "Imaging events": {
+    "values": [
+     4142.4,
+     4168.6,
+     4201.2,
+     4263.4,
+     4274.7,
+     4363.7,
+     3736.8,
+     4187.9,
+     4322.4,
+     4500.5,
+     4622.6
+    ],
+    "change_pct": 11.6,
+    "cagr_pct": 1.1
+   },
+   "Procedures": {
+    "values": [
+     2917.6,
+     2940.0,
+     2988.9,
+     3041.3,
+     3068.0,
+     3134.4,
+     2627.3,
+     2967.0,
+     3045.5,
+     2970.3,
+     3049.9
+    ],
+    "change_pct": 4.5,
+    "cagr_pct": 0.44
+   },
+   "Tests": {
+    "values": [
+     6136.4,
+     6000.2,
+     5895.3,
+     5845.0,
+     5795.5,
+     5782.5,
+     5255.0,
+     5776.4,
+     5866.5,
+     6284.9,
+     5925.0
+    ],
+    "change_pct": -3.4,
+    "cagr_pct": -0.35
+   },
+   "E&M visits": {
+    "values": [
+     13350.5,
+     13403.0,
+     13488.9,
+     13414.0,
+     13468.3,
+     13646.1,
+     12383.6,
+     13232.9,
+     13558.4,
+     14056.6,
+     15511.8
+    ],
+    "change_pct": 16.2,
+    "cagr_pct": 1.51
+   }
+  },
+  "context": {
+   "ma_participation_pct": [
+    32.1,
+    33.9,
+    34.9,
+    36.7,
+    38.6,
+    40.6,
+    43.5,
+    47.0,
+    50.0,
+    52.8,
+    54.8
+   ],
+   "ffs_benes_65plus_m": [
+    27.6,
+    27.8,
+    28.4,
+    28.4,
+    28.4,
+    28.5,
+    28.1,
+    27.2,
+    26.4,
+    25.6,
+    25.2
+   ],
+   "avg_age": [
+    71.0,
+    71.0,
+    71.0,
+    72.0,
+    72.0,
+    72.0,
+    72.0,
+    72.0,
+    73.0,
+    73.0,
+    73.0
+   ],
+   "stdzd_pymt_per_capita": [
+    9002,
+    9266,
+    9312,
+    9527,
+    9843,
+    10151,
+    9647,
+    10493,
+    10941,
+    11792,
+    12467
+   ]
+  },
+  "snf_age_gradient": {
+   "55-64 Years": {
+    "enrollees": 1737502,
+    "admits_per_1k": 51.6,
+    "days_per_1k": 1463,
+    "vs_65_74": 2.3
+   },
+   "65-74 Years": {
+    "enrollees": 17223233,
+    "admits_per_1k": 23.4,
+    "days_per_1k": 634,
+    "vs_65_74": 1.0
+   },
+   "75-84 Years": {
+    "enrollees": 9666928,
+    "admits_per_1k": 64.6,
+    "days_per_1k": 1712,
+    "vs_65_74": 2.7
+   },
+   "85-94 Years": {
+    "enrollees": 3188185,
+    "admits_per_1k": 157.6,
+    "days_per_1k": 4277,
+    "vs_65_74": 6.7
+   },
+   "95 Years and Over": {
+    "enrollees": 447894,
+    "admits_per_1k": 206.4,
+    "days_per_1k": 5761,
+    "vs_65_74": 9.1
+   },
+   "85+": {
+    "enrollees": 3636079,
+    "admits_per_1k": 163.6,
+    "days_per_1k": 4460,
+    "vs_65_74": 7.0
+   }
+  },
+  "gradient_year_note": "Latest CMS Program Statistics SNF release; single year, not a trend",
+  "caveats": [
+   "FFS only. Medicare Advantage beneficiaries are excluded, and MA participation rose from 32% to 55% across this window. Healthier beneficiaries select into MA, so the residual FFS population should be getting sicker \u2014 which biases measured per-capita utilisation UP. Declines observed despite that bias are therefore understated, not overstated.",
+   "Average beneficiary age rose over the window, which also biases utilisation up.",
+   "2020-21 are COVID-distorted; read 2014-2019 and 2022-2024 as the clean segments.",
+   "Payment-model changes are confounded with the volume trend: SNF PDPM (Oct 2019) and home health PDGM (Jan 2020) both explicitly reduced volume incentives.",
+   "Excludes Medicaid-funded long-term and personal care entirely, which is the largest single category of aging-in-place spend and the core of ADUS."
+  ],
+  "source": "CMS Medicare Geographic Variation PUF (national, FFS 65+) and CMS Program Statistics \u2014 Medicare Skilled Nursing Facility",
+  "url": "https://data.cms.gov/data-api/v1/dataset/6219697b-8f6c-4164-bed4-cd9317c58ebc/data",
+  "gradient_url": "https://data.cms.gov/sites/default/files/2026-01/7fb9cae0-38c4-4062-9915-ce7c6e9788da/MDCR%20SNF_CPS06USN_2023.zip",
+  "retrieved": "2026-08-07"
+ },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T04:45:24+00:00",
+  "as_of": "2026-08-07T05:09:31+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }

@@ -195,6 +195,36 @@ Goods → services. Discretionary durables → healthcare, home services, and
 care. This is limb C's demand-side mirror, and it follows the age-band clock in
 §2 with a lag you can nearly calendar.
 
+> **Correction — the magnitude, not the direction.** Sourced 2026-08-07 against
+> CMS data. Two results, pulling opposite ways.
+>
+> The **age gradient is confirmed and steeper than assumed.** SNF days per 1,000
+> Medicare beneficiaries: **634 at 65–74, 1,712 at 75–84 (2.7x), 4,460 at 85+
+> (7.0x)**, reaching 5,761 at 95+. Care hours genuinely scale with the 85+ band.
+>
+> But **per-capita utilisation is falling, and the thesis never asked whether it
+> was constant.** Among FFS beneficiaries 65+, 2014–2024: SNF days/1k **−31%**,
+> home health visits **−32%**, inpatient days **−18%**, admissions **−18%**.
+> Two compositional forces bias that measure *up* — Medicare Advantage went 32%
+> → 55% and healthier lives select into MA, leaving a sicker FFS residual, while
+> average beneficiary age also rose. The declines happened anyway.
+>
+> **The offset arithmetic.** SNF days/1k compounded at −3.6% a year. The 85+
+> population compounds at +4.6% a year to 2040. Together: **≈ +12% aggregate
+> over fifteen years, against the +96% population alone implies.** The tailwind
+> is real; multiplying it straight through to volumes is wrong.
+>
+> **And it is probably not morbidity compression.** Ambulatory contact *rose*
+> over the same window — E&M visits **+16%**, imaging **+12%**, procedures
+> **+5%**. A healthier population sees doctors less, not more. This is
+> site-of-care shift plus payment policy (SNF PDPM 2019, home health PDGM 2020).
+> So falsifier f3 stays unproven — but the test surfaced a larger risk, carried
+> as **f11**, and repriced the book: down institutional operators and SNF
+> net-lease, up hospice, ambulatory and private-pay. **Hospice was the only
+> category where per-capita use rose, +21%.**
+>
+> Position changes: **ENSG 3→2** on magnitude not quality; **CHE 2→3**.
+
 **Observables:** PCE by category vs. age-band population; Medicare enrollment and
 utilization; home-health and hospice volumes; travel/cruise bookings by age
 cohort; auto and durable-goods purchase rates by age.
@@ -322,11 +352,16 @@ The framing above dictates the build:
 
 ## 7. Evidence status
 
-Sourced on 2026-08-07. Five indicators read, all five confirming — see the
-confirmation-risk caveat in §5.
+Sourced on 2026-08-07. Six indicators read: five confirming, **one
+contradicting**. The contradicting read was found by deliberately testing the
+item most likely to be unsupportive, and it produced the largest revision to the
+thesis so far — which is the argument for working the rest of §8 rather than the
+easy confirmations.
 
 | Reading | Source | Verdict |
 |---|---|---|
+| Per-capita institutional utilisation **−18% to −32%** over 2014–2024, while ambulatory rose | CMS Geographic Variation PUF | **Contradicting** — limb D keeps its direction, loses its magnitude (see §3D, f11) |
+| SNF days/1k **634 → 1,712 → 4,460** across 65–74 / 75–84 / 85+ | CMS Program Statistics | Confirming — the age gradient is steeper than assumed |
 | 65+ labour force participation **18.7%** (Jun 2026), below the 2019 peak of 20.2% | BLS CPS | Confirming — the cohort is not working longer |
 | **93,000** qualified nursing applications turned away in 2025, ~17,000 of them graduate | AACN, May 2026 | Confirming — the capacity bottleneck reproduces itself |
 | Senior housing occupancy **89.5%**, 19th consecutive quarterly gain; construction lowest since 2012 | NIC MAP Q1 2026 | Confirming, with a caveat: NIC attributes the shortfall to *capital*, not demand |
@@ -344,19 +379,17 @@ its own premises.
 
 This list matters more than §7, for the reason given in §5.
 
-1. **Health utilisation per capita, 75+** — the direct test of the
-   morbidity-compression falsifier. The highest-value gap on the list.
-2. **Fund flows by investor age** — limb A's explicit falsifier.
-3. **Annuity sales by product type** — limb A's cleanest confirmation (LIMRA
+1. **Fund flows by investor age** — limb A's explicit falsifier.
+2. **Annuity sales by product type** — limb A's cleanest confirmation (LIMRA
    detail is paid).
-4. **RIA/wirehouse channel share and advisor age** — limb B's adjudicator
+3. **RIA/wirehouse channel share and advisor age** — limb B's adjudicator
    (Cerulli is paid).
-5. **Services vs goods wage growth** — limb C's inflation claim. Available on the
+4. **Services vs goods wage growth** — limb C's inflation claim. Available on the
    BLS API already in use; the most easily closed gap and should be next.
-6. **Apprenticeship completions in licensed trades** — only the nursing half of
+5. **Apprenticeship completions in licensed trades** — only the nursing half of
    the capacity-gap mechanism was sourced; the contractor positions rest on the
    untested half.
-7. **Existing-home turnover in retirement metros** — limb H's release test.
+6. **Existing-home turnover in retirement metros** — limb H's release test.
 
 ---
 

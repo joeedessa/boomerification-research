@@ -518,6 +518,53 @@ function buildClock(){
   });
   h+=`</div>`;
 
+  /* Utilisation — does care demand actually scale the way the clock assumes?
+     Two answers pulling opposite ways, so both are shown together. */
+  const U=REF&&REF.utilisation;
+  if(U){
+    h+=`<div class="klabel">Does care demand actually scale with the clock?</div>`;
+    const g=U.snf_age_gradient||{};
+    const gk=['65-74 Years','75-84 Years','85-94 Years','95 Years and Over'].filter(k=>g[k]);
+    if(gk.length){
+      const max=Math.max(...gk.map(k=>g[k].days_per_1k));
+      h+=`<div class="card" style="border-left:4px solid #15803D">
+        <div class="co-h"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">confirms</span>
+          <b style="font-size:13px">The age gradient is steeper than the thesis assumed</b></div>
+        <div class="cbody" style="margin-top:3px">Skilled nursing days per 1,000 Medicare beneficiaries, by age band. Care hours scale with the 85+ band, not with the 65+ total.</div>
+        <div style="margin-top:7px">`;
+      gk.forEach(k=>{
+        const v=g[k];
+        h+=`<div style="display:grid;grid-template-columns:120px 1fr 92px;gap:8px;align-items:center;margin-bottom:4px">
+          <span class="q">${esc(k.replace(' Years',''))}</span>
+          <div class="bar" style="height:13px">${`<i style="width:${v.days_per_1k/max*100}%;background:#D97706"></i>`}</div>
+          <span class="q"><b>${v.days_per_1k.toLocaleString()}</b> ${v.vs_65_74?`<span style="color:var(--color-text-tertiary)">${v.vs_65_74}x</span>`:''}</span>
+        </div>`;
+      });
+      h+=`</div><div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(U.source)}</span></div></div>`;
+    }
+    const T=U.trend||{};
+    const tk=Object.keys(T).sort((a,b)=>T[a].change_pct-T[b].change_pct);
+    if(tk.length){
+      h+=`<div class="card" style="border-left:4px solid #B32B2A">
+        <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">contradicts</span>
+          <b style="font-size:13px">But utilisation per head is falling, not constant</b></div>
+        <div class="cbody" style="margin-top:3px">Per-capita Medicare utilisation, ${esc(U.years[0])}–${esc(U.years[U.years.length-1])}, ${esc(U.population)}. The thesis multiplied population growth straight through to volumes and never asked whether this was flat. It is not.</div>
+        <div style="overflow-x:auto;margin-top:6px"><table class="tbl"><thead><tr><th>Measure</th><th style="text-align:right">Change</th><th style="text-align:right">CAGR</th><th></th></tr></thead><tbody>`;
+      tk.forEach(k=>{
+        const v=T[k], up=v.change_pct>=0;
+        h+=`<tr><td>${esc(k)}</td>
+          <td style="text-align:right"><b class="${up?'up':'dn'}">${up?'+':''}${v.change_pct}%</b></td>
+          <td style="text-align:right" class="q">${up?'+':''}${v.cagr_pct}%</td>
+          <td style="width:38%"><div class="bar"><i style="width:${Math.min(100,Math.abs(v.change_pct)*2.2)}%;background:${up?'#15803D':'#B32B2A'}"></i></div></td></tr>`;
+      });
+      h+=`</tbody></table></div>
+        <div class="co-fn"><b>Read it carefully.</b> Ambulatory contact rose while institutional use fell — a genuinely healthier population would see doctors less, not more. This is site-of-care shift and payment policy, not morbidity compression. Hospice is the only category where per-capita use rose.</div>
+        <div class="klabel">Caveats</div><ul style="margin:0;padding-left:17px">`;
+      (U.caveats||[]).forEach(c=>{ h+=`<li class="cbody" style="margin-bottom:3px;color:var(--color-text-tertiary)">${rich(c)}</li>`; });
+      h+=`</ul></div>`;
+    }
+  }
+
   /* Corrections — what sourcing changed. Kept visible rather than silently overwritten. */
   if((CLOCK.corrections||[]).length){
     h+=`<div class="klabel">What sourcing changed</div>
@@ -646,6 +693,12 @@ function buildLimbs(){
           <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(s.src)}</span></div>
           ${s.note?`<div class="co-fn"><b>Read.</b> ${rich(s.note)}</div>`:''}</div>`;
       });
+    }
+    if(l.arithmetic_warning){
+      h+=`<div class="card" style="border-left:3px solid #B32B2A;margin-bottom:4px;background:var(--fl-red-bg)">
+        <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">magnitude warning</span>
+          <b style="font-size:13px">${esc(l.arithmetic_warning.title)}</b></div>
+        <div class="cbody" style="margin-top:3px">${rich(l.arithmetic_warning.body)}</div></div>`;
     }
     if(l.dispute){
       h+=`<div class="card" style="border-left:3px solid #B45309;margin-bottom:4px">
@@ -992,6 +1045,24 @@ function buildPortfolio(){
     <div class="ctitle">${esc(PORTFOLIO.defining_insight.title)}</div>
     <div class="cbody">${rich(PORTFOLIO.defining_insight.body)}</div></div>`;
 
+  if(PORTFOLIO.repricing){
+    const R=PORTFOLIO.repricing;
+    h+=`<div class="card" style="border-left:4px solid #B32B2A">
+      <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">repriced</span>
+        <b style="font-family:var(--font-display);font-size:15px">${esc(R.title)}</b></div>
+      <div class="cbody" style="margin-top:4px;color:var(--color-text-tertiary)"><b>Trigger.</b> ${rich(R.trigger)}</div>
+      <div class="cbody" style="margin-top:4px">${rich(R.body)}</div>
+      <div style="overflow-x:auto;margin-top:7px"><table class="tbl"><thead><tr><th></th><th>Group</th><th>Names</th><th>Why</th></tr></thead><tbody>`;
+    R.moves.forEach(m=>{
+      const up=m.dir==='up';
+      h+=`<tr><td><span class="sf" style="background:${up?'var(--fl-green-bg)':'var(--fl-red-bg)'};color:${up?'var(--fl-green-fg)':'var(--fl-red-fg)'}">${up?'▲ raise':'▼ reduce'}</span></td>
+        <td><b>${esc(m.n)}</b></td>
+        <td>${m.names.map(t=>`<span class="sf ticklink" data-tk="${t}" style="background:var(--color-background-secondary);color:var(--color-text-secondary)">${t}</span>`).join(' ')}</td>
+        <td>${rich(m.why)}</td></tr>`;
+    });
+    h+=`</tbody></table></div>
+      <div class="co-fn"><b>Unchanged.</b> ${rich(R.unchanged)}</div></div>`;
+  }
   PORTFOLIO.clusters.forEach(cl=>{
     h+=`<div class="card" style="border-left:4px solid ${cl.color}">
       <div class="ctitle" style="color:${cl.color}">${esc(cl.title)}</div>

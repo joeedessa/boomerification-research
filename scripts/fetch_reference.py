@@ -14,6 +14,10 @@ Writes data/reference.json:
   - participation: labour force participation rate, 65+, BLS CPS (API)
   - wealth       : share of household net worth by generation and by age band,
                    Federal Reserve Distributional Financial Accounts
+  - utilisation  : per-capita Medicare utilisation, 2014-2024 trend (CMS
+                   Geographic Variation PUF) plus the SNF age gradient (CMS
+                   Program Statistics). This is the block that tests whether
+                   care demand actually scales the way limb D assumes.
 
 Every block carries its source, citation and retrieval date. Anything that fails
 to fetch leaves the previous block untouched rather than writing a hole — same
@@ -33,6 +37,30 @@ CENSUS_T3 = ('https://www2.census.gov/programs-surveys/popproj/tables/2023/'
              '2023-summary-tables/np2023-t3.xlsx')
 DFA_ZIP = 'https://www.federalreserve.gov/releases/z1/dataviz/download/zips/dfa.zip'
 BLS_API = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
+CMS_CATALOG = 'https://data.cms.gov/data.json'
+# Medicare Geographic Variation, National/State/County — the only free series that
+# gives per-capita Medicare utilisation annually over a long enough window to see
+# a trend. FFS only, which is the block's central caveat.
+CMS_GV_API = ('https://data.cms.gov/data-api/v1/dataset/'
+              '6219697b-8f6c-4164-bed4-cd9317c58ebc/data')
+
+# Per-1,000-beneficiary measures. Deliberately volume, not dollars: CMS
+# "standardized" payments still carry annual rate updates, so dollars would
+# conflate price with utilisation and the whole point here is utilisation.
+GV_METRICS = {
+    'IP_CVRD_STAYS_PER_1000_BENES': 'Inpatient admissions',
+    'IP_CVRD_DAYS_PER_1000_BENES': 'Inpatient days',
+    'ER_VISITS_PER_1000_BENES': 'ER visits',
+    'SNF_CVRD_DAYS_PER_1000_BENES': 'SNF days',
+    'HH_VISITS_PER_1000_BENES': 'Home health visits',
+    'HOSPC_CVRD_DAYS_PER_1000_BENES': 'Hospice days',
+    'IMGNG_EVNTS_PER_1000_BENES': 'Imaging events',
+    'PRCDR_EVNTS_PER_1000_BENES': 'Procedures',
+    'TESTS_EVNTS_PER_1000_BENES': 'Tests',
+    'EM_EVNTS_PER_1000_BENES': 'E&M visits',
+}
+SNF_AGE_BANDS = ['55-64 Years', '65-74 Years', '75-84 Years',
+                 '85-94 Years', '95 Years and Over']
 
 # Bands are defined once here and everywhere else in the dashboard refers to them.
 BANDS = {
@@ -177,6 +205,138 @@ def dfa_wealth():
     return out
 
 
+def _xlsx_rows(blob, sheet):
+    """Minimal xlsx reader — stdlib only, so this runs in a bare Actions container."""
+    NS = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+    z = zipfile.ZipFile(io.BytesIO(blob))
+    shared = [''.join(t.text or '' for t in si.iter(NS + 't'))
+              for si in ET.fromstring(z.read('xl/sharedStrings.xml')).findall(NS + 'si')]
+    root = ET.fromstring(z.read(f'xl/worksheets/{sheet}'))
+    out = []
+    for row in root.iter(NS + 'row'):
+        cells = []
+        for c in row.findall(NS + 'c'):
+            v = c.find(NS + 'v')
+            cells.append('' if v is None else
+                         (shared[int(v.text)] if c.get('t') == 's' else v.text))
+        out.append(cells)
+    return out
+
+
+def utilisation():
+    """Two questions, two sources.
+
+    Trend: is per-capita Medicare utilisation rising or falling? This is the
+    direct test of falsifier f3 and, as it turns out, of limb D's volume
+    assumption generally.
+
+    Gradient: does utilisation actually compound with age the way the cohort
+    clock assumes? The GV PUF only splits <65 / >=65, so the age detail comes
+    from CMS Program Statistics instead.
+    """
+    rows = json.loads(get(CMS_GV_API + '?filter[BENE_GEO_LVL]=National&size=200'))
+    by = {(r['YEAR'], r['BENE_AGE_LVL']): r for r in rows}
+    years = sorted({r['YEAR'] for r in rows})
+    if len(years) < 5:
+        raise RuntimeError(f'GV PUF returned only {len(years)} years')
+
+    def num(y, k):
+        v = (by.get((y, '>=65')) or {}).get(k)
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
+    trend = {}
+    for col, label in GV_METRICS.items():
+        vals = [num(y, col) for y in years]
+        if not any(vals):
+            continue
+        first, last = vals[0], vals[-1]
+        trend[label] = {
+            'values': [round(v, 1) if v is not None else None for v in vals],
+            'change_pct': round((last / first - 1) * 100, 1) if first and last else None,
+            'cagr_pct': round(((last / first) ** (1 / (len(years) - 1)) - 1) * 100, 2)
+            if first and last else None,
+        }
+
+    context = {
+        'ma_participation_pct': [round(float(by[(y, 'All')]['MA_PRTCPTN_RATE']) * 100, 1)
+                                 for y in years],
+        'ffs_benes_65plus_m': [round(float(by[(y, '>=65')]['BENES_OM_CNT']) / 1e6, 1)
+                               for y in years],
+        'avg_age': [round(float(by[(y, 'All')]['BENE_AVG_AGE']), 1) for y in years],
+        'stdzd_pymt_per_capita': [round(float(by[(y, '>=65')]['TOT_MDCR_STDZD_PYMT_PC']))
+                                  for y in years],
+    }
+
+    # SNF age gradient. Discover the newest year's file from the catalogue so a
+    # CMS re-publish is picked up without a code change.
+    gradient, grad_src = {}, None
+    try:
+        cat = json.loads(get(CMS_CATALOG))
+        cands = []
+        for ds in cat.get('dataset', []):
+            if ds.get('title', '').startswith('CMS Program Statistics - Medicare Skilled Nursing'):
+                for d in ds.get('distribution', []):
+                    u = d.get('downloadURL') or ''
+                    if u.endswith('.zip'):
+                        cands.append((d.get('title', ''), u))
+        cands.sort(key=lambda x: x[0], reverse=True)     # titles carry the year
+        grad_src = cands[0][1]
+        z = zipfile.ZipFile(io.BytesIO(get(grad_src)))
+        xlsx = [n for n in z.namelist() if n.endswith('.xlsx')][0]
+        # sheet3 is "by Demographic Characteristics"
+        rws = _xlsx_rows(z.read(xlsx), 'sheet3.xml')
+        agg = {'enrollees': 0.0, 'admits': 0.0, 'days': 0.0}
+        for r in rws:
+            if not r or r[0] not in SNF_AGE_BANDS:
+                continue
+            benes, adm, days = float(r[1]), float(r[3]), float(r[7])
+            gradient[r[0]] = {'enrollees': int(benes),
+                              'admits_per_1k': round(adm / benes * 1000, 1),
+                              'days_per_1k': round(days / benes * 1000)}
+            if r[0] in ('85-94 Years', '95 Years and Over'):
+                agg['enrollees'] += benes; agg['admits'] += adm; agg['days'] += days
+        if agg['enrollees']:
+            gradient['85+'] = {'enrollees': int(agg['enrollees']),
+                               'admits_per_1k': round(agg['admits'] / agg['enrollees'] * 1000, 1),
+                               'days_per_1k': round(agg['days'] / agg['enrollees'] * 1000)}
+        base = gradient.get('65-74 Years', {}).get('days_per_1k')
+        if base:
+            for k in gradient:
+                gradient[k]['vs_65_74'] = round(gradient[k]['days_per_1k'] / base, 1)
+    except Exception as e:
+        print(f'utilisation: SNF age gradient failed ({e}) — trend still written', file=sys.stderr)
+
+    return {
+        'years': years,
+        'population': 'Original Medicare (fee-for-service) beneficiaries aged 65+',
+        'units': 'events or days per 1,000 beneficiaries per year',
+        'trend': trend,
+        'context': context,
+        'snf_age_gradient': gradient,
+        'gradient_year_note': 'Latest CMS Program Statistics SNF release; single year, not a trend',
+        'caveats': [
+            'FFS only. Medicare Advantage beneficiaries are excluded, and MA participation '
+            'rose from 32% to 55% across this window. Healthier beneficiaries select into MA, '
+            'so the residual FFS population should be getting sicker — which biases measured '
+            'per-capita utilisation UP. Declines observed despite that bias are therefore '
+            'understated, not overstated.',
+            'Average beneficiary age rose over the window, which also biases utilisation up.',
+            '2020-21 are COVID-distorted; read 2014-2019 and 2022-2024 as the clean segments.',
+            'Payment-model changes are confounded with the volume trend: SNF PDPM (Oct 2019) '
+            'and home health PDGM (Jan 2020) both explicitly reduced volume incentives.',
+            'Excludes Medicaid-funded long-term and personal care entirely, which is the '
+            'largest single category of aging-in-place spend and the core of ADUS.',
+        ],
+        'source': 'CMS Medicare Geographic Variation PUF (national, FFS 65+) and '
+                  'CMS Program Statistics — Medicare Skilled Nursing Facility',
+        'url': CMS_GV_API,
+        'gradient_url': grad_src,
+    }
+
+
 def main():
     prev = {}
     if os.path.exists(OUT):
@@ -184,7 +344,8 @@ def main():
             prev = json.load(f)
 
     blocks = {'population': census_population, 'spending': cex_spending,
-              'participation': participation, 'wealth': dfa_wealth}
+              'participation': participation, 'wealth': dfa_wealth,
+              'utilisation': utilisation}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

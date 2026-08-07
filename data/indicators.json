@@ -3,7 +3,7 @@
   "description": "The monitoring layer. Every observable named in a limb, with its source, its release cadence, what reading would confirm the limb, and what reading would damage it. This is the file that turns the thesis from an essay into something that can be wrong on a schedule.",
   "as_of": "2026-08-07",
   "status_scale": "confirming / neutral / contradicting / not-yet-read",
-  "status_note": "Status is set by hand on review, never by the robot — the robot moves prices and reference series, not judgments. Five indicators were read against primary sources on 2026-08-07 and all five read confirming; the remaining eighteen are unread. Note the selection risk in that: the five that were cheapest to source are not a random sample, and a run of confirming reads on self-selected evidence is exactly how a thesis talks itself into being right.",
+  "status_note": "Status is set by hand on review, never by the robot — the robot moves prices and reference series, not judgments. Six indicators read against primary sources: five confirming, one contradicting. The contradicting read (hh) was found by deliberately testing the item most likely to be unsupportive, which is why the selection-risk caveat below matters less than it did before — but seventeen indicators remain unread.",
   "cadence_note": "Cadence drives the review calendar. Monthly indicators are the working set; annual ones (Trustees, CBO) are scheduled events that deserve a diary entry rather than a dashboard glance."
  },
  "indicators": [
@@ -175,8 +175,9 @@
    "priority": 1,
    "confirms": "Admissions and census growing at or above the 80+ population growth rate.",
    "contradicts": "Utilisation per capita flattening — the morbidity compression scenario arriving in the data.",
-   "status": "not-yet-read",
-   "note": "Per-capita is the whole point. Absolute growth is guaranteed by the denominator and proves nothing."
+   "status": "contradicting",
+   "note": "READ 2026-08-07 (CMS Geographic Variation PUF, 2014-2024): per-capita utilisation is FALLING, not tracking population. SNF days/1k -31%, home health visits/1k -32%, inpatient days/1k -18%. Hospice is the lone exception at +21%. This is the first indicator to read against the thesis. It does not overturn limb D's direction — the age gradient is confirmed and steeper than assumed (SNF days/1k 7.0x at 85+ vs 65-74) — but it breaks the assumption that population growth passes through to volumes. Carried as falsifier f11. Caveats: FFS only (MA is now 55% of beneficiaries and excluded), payment-model changes are confounded, and Medicaid personal care is out of scope.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "elective",
@@ -188,7 +189,7 @@
    "confirms": "Procedure growth outpacing the eligible population — penetration rising on top of demographics.",
    "contradicts": "Volumes tracking population only, which makes the medtech positions a low-single-digit grower priced as a compounder.",
    "status": "not-yet-read",
-   "note": "TAVR and premium IOL penetration rates are the two most informative series."
+   "note": "TAVR and premium IOL penetration rates are the two most informative series. Partially read 2026-08-07: Medicare procedures/1k +5% and imaging/1k +12% over 2014-2024, i.e. ambulatory volumes are growing modestly ahead of population — the counterpoint to the institutional decline in the hh row."
   },
   {
    "id": "travel",
