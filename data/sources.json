@@ -85,6 +85,15 @@
    "finding": "Two results pulling opposite ways. The age gradient is confirmed and steeper than assumed: SNF days per 1,000 run 634 at 65-74, 1,712 at 75-84 and 4,460 at 85+ (7.0x). But per-capita institutional utilisation fell hard over the decade — SNF days -31%, home health visits -32%, inpatient days -18% — while ambulatory contact rose (E&M +16%, imaging +12%). Hospice was the sole per-capita gainer at +21%.",
    "affects": "Limb D keeps its direction and loses its magnitude. Compounding the observed per-capita decline against 85+ population growth gives ~+12% aggregate SNF days to 2040 rather than the +96% population implies. Carried as new falsifier f11; repriced the book away from institutional operators toward ambulatory, hospice and private-pay. Also partially disconfirms f3 as stated: rising ambulatory contact is inconsistent with genuine morbidity compression, so the mechanism looks like site-of-care shift and payment policy instead.",
    "auto": true
+  },
+  {
+   "claim": "Services vs goods wage growth",
+   "verdict": "contested",
+   "v1": "Unsourced. Limb C claimed a 'structural floor under services wage inflation' without testing it.",
+   "sourced": "BLS Employment Cost Index, wages and salaries, seasonally adjusted, 2019Q4-2026Q2, read from the BLS flat files (no API key, no quota). Now auto-refreshed.",
+   "finding": "Split. Service occupations +37.5% cumulative (+9.2pp vs baseline, fastest cut in the index); health care & social assistance +3.3pp; installation/maintenance/repair +3.0pp. But construction & extraction occupations -0.7pp and the construction industry -1.6pp, both below baseline and behind manufacturing. The services-vs-goods aggregate actually specified by the indicator is only +1.3pp over six and a half years.",
+   "affects": "Limb C splits in two. The care half is now the best-evidenced part of the thesis; the construction-trades half is unevidenced and carried as falsifier f12. Repriced: down EME/PWR/MYRG/IESC, hold FIX/APG/LMB (maintenance-weighted), up ATGE/AMN/LOPE, down the care operators on the cost side. Also converts the matrix's 'care-labour cost' internal contradiction from an argument into a measurement.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -118,11 +127,6 @@
     "n": "RIA / wirehouse channel share and advisor age",
     "why": "Limb B's adjudicator. Cerulli channel data is paid, and company disclosures are the fast but self-serving read.",
     "priority": 1
-   },
-   {
-    "n": "Services vs goods wage growth",
-    "why": "Limb C's inflation claim. BLS ECI is available via the same API already in use — this is the most easily closed gap on the list and should be next.",
-    "priority": 2
    },
    {
     "n": "Apprenticeship completions in licensed trades",

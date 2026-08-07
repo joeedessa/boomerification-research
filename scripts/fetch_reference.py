@@ -18,6 +18,10 @@ Writes data/reference.json:
                    Geographic Variation PUF) plus the SNF age gradient (CMS
                    Program Statistics). This is the block that tests whether
                    care demand actually scales the way limb D assumes.
+  - wages        : Employment Cost Index by industry and occupation, from the
+                   BLS flat files rather than the API — the API caps at 25
+                   queries a day and this needs none of them. Tests limb C's
+                   claim that non-tradable services wages are running hot.
 
 Every block carries its source, citation and retrieval date. Anything that fails
 to fetch leaves the previous block untouched rather than writing a hole — same
@@ -25,13 +29,15 @@ failure policy as the market robot.
 
 These series move annually or quarterly, not nightly. Weekly is generous.
 """
-import io, json, os, re, sys, urllib.request, zipfile
+import io, json, os, re, sys, time, urllib.error, urllib.request, zipfile
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 
 ROOT = os.path.join(os.path.dirname(__file__), '..', 'data')
 OUT = os.path.join(ROOT, 'reference.json')
 UA = {'User-Agent': 'boomerification-research/1.0 (+https://github.com/joeedessa/boomerification-research)'}
+# BLS rejects any User-Agent containing a URL with a 403; the contact-email form passes.
+BLS_UA = {'User-Agent': 'boomerification-research/1.0 (joe.edessa@gmail.com)'}
 
 CENSUS_T3 = ('https://www2.census.gov/programs-surveys/popproj/tables/2023/'
              '2023-summary-tables/np2023-t3.xlsx')
@@ -62,6 +68,24 @@ GV_METRICS = {
 SNF_AGE_BANDS = ['55-64 Years', '65-74 Years', '75-84 Years',
                  '85-94 Years', '95 Years and Over']
 
+# ECI, wages and salaries, current-dollar index, seasonally adjusted. Read from
+# the BLS flat file: the public API caps at 25 queries a day and would make this
+# block compete with the CPS and CEX pulls for the same budget.
+ECI_FILE = 'https://download.bls.gov/pub/time.series/ci/ci.data.0.Current'
+ECI_SERIES = {
+    'CIS1020000000000I': ('All civilian', 'baseline'),
+    'CIS102S000000000I': ('Service-providing (industry)', 'industry'),
+    'CIS102G000000000I': ('Goods-producing (industry)', 'industry'),
+    'CIS1026200000000I': ('Health care & social assistance (industry)', 'industry'),
+    'CIS2022300000000I': ('Construction (industry, private)', 'industry'),
+    'CIS1023000000000I': ('Manufacturing (industry)', 'industry'),
+    'CIS2020000300000I': ('Service occupations', 'occupation'),
+    'CIS2020000405000I': ('Construction & extraction (occupation)', 'occupation'),
+    'CIS2020000430000I': ('Installation, maintenance & repair (occupation)', 'occupation'),
+    'CIS2020000510000I': ('Production (occupation)', 'occupation'),
+}
+ECI_BASE = (2019, 'Q04')   # pre-pandemic anchor
+
 # Bands are defined once here and everywhere else in the dashboard refers to them.
 BANDS = {
     'pre':    ['55 to 59 years', '60 to 64 years'],
@@ -78,19 +102,51 @@ CEX_CATS = {'TOTALEXP': 'Total expenditures', 'HEALTH': 'Healthcare',
 PARTICIPATION_65 = 'LNU01300097'   # Labour force participation rate, 65 years and over, NSA
 
 
-def get(url, timeout=120):
-    return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout).read()
+def get(url, timeout=120, tries=4):
+    """Fetch with backoff.
+
+    Two BLS-specific quirks, both learned the hard way. download.bls.gov returns
+    403 for any User-Agent containing a URL but accepts the contact-email form,
+    so BLS hosts get their own header. And BLS returns 503 during its own
+    maintenance windows often enough that a single-shot fetch will fail a
+    scheduled run for no good reason — hence the retry.
+    """
+    hdrs = BLS_UA if 'bls.gov' in url else UA
+    last = None
+    for i in range(tries):
+        try:
+            return urllib.request.urlopen(
+                urllib.request.Request(url, headers=hdrs), timeout=timeout).read()
+        except urllib.error.HTTPError as e:
+            last = e
+            if e.code not in (429, 500, 502, 503, 504):
+                raise
+        except Exception as e:
+            last = e
+        if i < tries - 1:
+            time.sleep(3 * (i + 1))
+    raise last
 
 
-def bls(series, startyear, endyear):
+def bls(series, startyear, endyear, tries=4):
+    """Same retry policy as get() — the BLS API 503s during its own maintenance
+    windows, and a scheduled weekly run should not fail because of one."""
     body = json.dumps({'seriesid': series, 'startyear': str(startyear),
                        'endyear': str(endyear)}).encode()
-    req = urllib.request.Request(BLS_API, data=body,
-                                 headers={'Content-Type': 'application/json', **UA})
-    r = json.load(urllib.request.urlopen(req, timeout=120))
-    if r.get('status') != 'REQUEST_SUCCEEDED':
-        raise RuntimeError(f"BLS: {r.get('status')} {r.get('message')}")
-    return r['Results']['series']
+    last = None
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(BLS_API, data=body,
+                                         headers={'Content-Type': 'application/json', **BLS_UA})
+            r = json.load(urllib.request.urlopen(req, timeout=120))
+            if r.get('status') != 'REQUEST_SUCCEEDED':
+                raise RuntimeError(f"BLS: {r.get('status')} {r.get('message')}")
+            return r['Results']['series']
+        except Exception as e:
+            last = e
+            if i < tries - 1:
+                time.sleep(3 * (i + 1))
+    raise last
 
 
 def census_population():
@@ -337,6 +393,65 @@ def utilisation():
     }
 
 
+def wages():
+    """Limb C claims non-tradable services wages carry a structural floor. ECI is
+    the right instrument because it holds composition constant — a mix shift toward
+    better-paid workers does not show up as wage pressure, which is what you want
+    when the question is scarcity rather than upgrading."""
+    raw = get(ECI_FILE).decode('utf-8', 'replace').splitlines()
+    series = {}
+    for line in raw[1:]:
+        p = [x.strip() for x in line.split('\t')]
+        if len(p) < 4 or p[0] not in ECI_SERIES or not p[2].startswith('Q'):
+            continue
+        try:
+            series.setdefault(p[0], []).append((int(p[1]), p[2], float(p[3])))
+        except ValueError:
+            continue
+    if not series:
+        raise RuntimeError('ECI flat file returned no matching series')
+
+    cuts, latest = {}, None
+    for sid, (label, kind) in ECI_SERIES.items():
+        v = sorted(series.get(sid, []))
+        if not v:
+            continue
+        base = next((x[2] for x in v if (x[0], x[1]) == ECI_BASE), v[0][2])
+        last = v[-1]
+        yrs = (last[0] + int(last[1][2:]) / 4) - (ECI_BASE[0] + int(ECI_BASE[1][2:]) / 4)
+        cuts[label] = {
+            'series_id': sid, 'kind': kind,
+            'cum_pct': round((last[2] / base - 1) * 100, 1),
+            'ann_pct': round(((last[2] / base) ** (1 / yrs) - 1) * 100, 2) if yrs > 0 else None,
+        }
+        latest = f'{last[0]}{last[1]}'
+
+    base_cum = cuts.get('All civilian', {}).get('cum_pct')
+    if base_cum is not None:
+        for c in cuts.values():
+            c['vs_baseline_pp'] = round(c['cum_pct'] - base_cum, 1)
+
+    return {
+        'measure': 'Employment Cost Index, wages and salaries, current-dollar index, '
+                   'seasonally adjusted',
+        'base_period': f'{ECI_BASE[0]}{ECI_BASE[1]}',
+        'latest_period': latest,
+        'cuts': cuts,
+        'caveats': [
+            'ECI holds occupational and industry composition constant by design. That is '
+            'the right control for a scarcity question, but it means a shift toward more '
+            'skilled workers within a trade does not register as wage pressure.',
+            'The construction industry cut blends licensed journeymen with general '
+            'labourers, so it may understate scarcity in the licensed subset. The '
+            'construction-and-extraction occupational cut is the sharper read and tells '
+            'the same story.',
+            'Anchored to 2019Q4 to strip the pandemic wage distortion out of the base.',
+        ],
+        'source': 'BLS Employment Cost Index (flat files, no API key or quota)',
+        'url': ECI_FILE,
+    }
+
+
 def main():
     prev = {}
     if os.path.exists(OUT):
@@ -345,7 +460,7 @@ def main():
 
     blocks = {'population': census_population, 'spending': cex_spending,
               'participation': participation, 'wealth': dfa_wealth,
-              'utilisation': utilisation}
+              'utilisation': utilisation, 'wages': wages}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

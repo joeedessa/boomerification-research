@@ -174,6 +174,46 @@ higher neutral rate than the 2010s, and — critically — **duration that hedge
 equity risk less reliably than it did in 2010–2020.** If this limb is right, it
 changes portfolio construction, not just sector selection.
 
+> **Correction — this is two limbs, and only one survives.** Sourced 2026-08-07
+> against BLS Employment Cost Index, wages and salaries, 2019Q4–2026Q2. ECI is
+> the right instrument because it holds composition constant, so a mix shift
+> toward better-paid workers does not masquerade as scarcity.
+>
+> | Cut | Cumulative | vs baseline |
+> |---|---|---|
+> | Service occupations | +37.5% | **+9.2pp** |
+> | Production occupations | +31.7% | +3.4pp |
+> | Health care & social assistance | +31.6% | +3.3pp |
+> | Installation, maintenance & repair | +31.3% | +3.0pp |
+> | Service-providing (industry) | +28.5% | +0.2pp |
+> | *All civilian (baseline)* | *+28.3%* | *—* |
+> | Construction & extraction (occupation) | +27.6% | **−0.7pp** |
+> | Manufacturing | +27.4% | −0.9pp |
+> | Goods-producing | +27.2% | −1.1pp |
+> | Construction (industry) | +26.7% | **−1.6pp** |
+>
+> **Care labour: confirmed, emphatically.** Service occupations — the category
+> containing home health aides, nursing assistants and personal care workers —
+> is the fastest-rising cut in the entire index. This is now the best-evidenced
+> part of the thesis, and it independently confirms the matrix's "care-labour
+> cost" internal contradiction, which is no longer an argument but a measurement.
+>
+> **Construction trades: not confirmed.** Construction occupations run *below*
+> the all-civilian baseline and behind manufacturing; the construction industry
+> is the slowest of ten cuts. If licensed trade labour were genuinely
+> irreplaceable it should command a rising relative wage. It does not. Carried as
+> falsifier **f12**; EME, PWR, MYRG and IESC reduced. FIX, APG and LMB survive
+> because their mix leans to installation/maintenance/repair, which *is* running
+> +3.0pp hot.
+>
+> **And the aggregate claim overclaims.** Services vs goods is only +1.3pp over
+> six and a half years — real, but nothing like a "structural floor."
+>
+> *Confound, stated because it favours the thesis:* construction demand was soft
+> over part of this window, so weak construction wages may be a demand signal
+> rather than evidence against supply scarcity. That is why f12 sits at *warming*
+> rather than tripped — it is not a licence to dismiss the reading.
+
 **Observables:** participation rate by age band (65+ especially); job openings and
 quits in health care and construction trades; apprenticeship and nursing-school
 completions; wage growth in non-tradable services vs. goods; net immigration.
@@ -352,8 +392,8 @@ The framing above dictates the build:
 
 ## 7. Evidence status
 
-Sourced on 2026-08-07. Six indicators read: five confirming, **one
-contradicting**. The contradicting read was found by deliberately testing the
+Sourced on 2026-08-07. Seven indicators read: five confirming, **one
+contradicting, one split**. The contradicting read was found by deliberately testing the
 item most likely to be unsupportive, and it produced the largest revision to the
 thesis so far — which is the argument for working the rest of §8 rather than the
 easy confirmations.
@@ -361,6 +401,7 @@ easy confirmations.
 | Reading | Source | Verdict |
 |---|---|---|
 | Per-capita institutional utilisation **−18% to −32%** over 2014–2024, while ambulatory rose | CMS Geographic Variation PUF | **Contradicting** — limb D keeps its direction, loses its magnitude (see §3D, f11) |
+| Care wages **+9.2pp** above baseline since 2019; construction wages **−0.7pp** | BLS Employment Cost Index | **Split** — limb C's care half confirmed, trades half unevidenced (see §3C, f12) |
 | SNF days/1k **634 → 1,712 → 4,460** across 65–74 / 75–84 / 85+ | CMS Program Statistics | Confirming — the age gradient is steeper than assumed |
 | 65+ labour force participation **18.7%** (Jun 2026), below the 2019 peak of 20.2% | BLS CPS | Confirming — the cohort is not working longer |
 | **93,000** qualified nursing applications turned away in 2025, ~17,000 of them graduate | AACN, May 2026 | Confirming — the capacity bottleneck reproduces itself |
@@ -384,12 +425,10 @@ This list matters more than §7, for the reason given in §5.
    detail is paid).
 3. **RIA/wirehouse channel share and advisor age** — limb B's adjudicator
    (Cerulli is paid).
-4. **Services vs goods wage growth** — limb C's inflation claim. Available on the
-   BLS API already in use; the most easily closed gap and should be next.
-5. **Apprenticeship completions in licensed trades** — only the nursing half of
+4. **Apprenticeship completions in licensed trades** — only the nursing half of
    the capacity-gap mechanism was sourced; the contractor positions rest on the
    untested half.
-6. **Existing-home turnover in retirement metros** — limb H's release test.
+5. **Existing-home turnover in retirement metros** — limb H's release test.
 
 ---
 

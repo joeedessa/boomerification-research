@@ -237,65 +237,118 @@
    "a": "Most expressions are cash-generative or yielding by design. The labour-substitution sleeve is the exception and will not pay you to wait — hold it as the highest-conviction rather than the largest position."
   }
  ],
- "repricing": {
-  "title": "Repriced 2026-08-07 — the per-capita utilisation finding",
-  "trigger": "CMS data showed per-capita institutional utilisation falling 18-32% over 2014-2024 while ambulatory rose. See falsifier f11.",
-  "body": "This does not change limb D's direction and it does not touch the age gradient, which came back steeper than assumed. It changes where inside limb D the money should sit. A business whose revenue is institutional days or admissions is levered to population growth MINUS a per-capita decline running at 3-4% a year. A business paid per ambulatory encounter, per hospice day, or by the patient directly is not.",
-  "moves": [
-   {
-    "dir": "down",
-    "n": "Institutional and facility-based operators",
-    "names": [
-     "ENSG",
-     "NHC",
-     "EHC",
-     "PNTG"
-    ],
-    "why": "Revenue is admissions and days — precisely the measures in structural per-capita decline. Ensign remains the best operator in the sector and the operating-competence argument is untouched; what changes is that its end market grows far slower than the population chart suggests. Conviction on ENSG goes from 3 to 2 on magnitude, not on quality."
-   },
-   {
-    "dir": "down",
-    "n": "SNF net-lease REITs",
-    "names": [
-     "OHI",
-     "CTRE",
-     "SBRA"
-    ],
-    "why": "Rent coverage depends on tenant volumes. The landlord structure still insulates against limb C's wage inflation, which was the reason for owning them — but a slow-growing tenant end market weakens the long-run escalator story."
-   },
-   {
-    "dir": "up",
-    "n": "Hospice and end-of-life",
-    "names": [
-     "CHE",
-     "SCI",
-     "CSV"
-    ],
-    "why": "Hospice was the ONLY care category where per-capita utilisation rose over the decade, +21%. Terminal demand cannot be redirected to a cheaper site of care, deferred by better health management, or managed down by a payment model. That is exactly the property the rest of the care book has just been shown to lack."
-   },
-   {
-    "dir": "up",
-    "n": "Ambulatory, diagnostic and physician enablement",
-    "names": [
-     "RDNT",
-     "PRVA",
-     "USPH",
-     "OPCH"
-    ],
-    "why": "E&M visits +16%, imaging +12%, procedures +5% per capita. Care is not disappearing, it is moving to the settings these businesses operate in. The site-of-care shift that hurts the institutional book is the same force that helps this one."
-   },
-   {
-    "dir": "up",
-    "n": "Private-pay age curves",
-    "names": [
-     "ALC",
-     "SOON.SW",
-     "DEMANT.CO",
-     "STMN.SW"
-    ],
-    "why": "Unaffected by the finding entirely — no reimbursement rate, no payment model, no site-of-care substitution. The private-pay tilt was adopted as a hedge against limb E policy risk; it turns out to hedge this too. Raise its weight."
-   }
-  ],
-  "unchanged": "The aging-in-place and personal-care names (ADUS, AVAH) sit largely outside this dataset — Medicaid-funded personal care is not in Medicare FFS utilisation at all. Their exposure is untested rather than confirmed safe, and that gap is now on the unsourced list."
- }
+ "repricings": [
+  {
+   "title": "Repriced 2026-08-07 — the per-capita utilisation finding",
+   "trigger": "CMS data showed per-capita institutional utilisation falling 18-32% over 2014-2024 while ambulatory rose. See falsifier f11.",
+   "body": "This does not change limb D's direction and it does not touch the age gradient, which came back steeper than assumed. It changes where inside limb D the money should sit. A business whose revenue is institutional days or admissions is levered to population growth MINUS a per-capita decline running at 3-4% a year. A business paid per ambulatory encounter, per hospice day, or by the patient directly is not.",
+   "moves": [
+    {
+     "dir": "down",
+     "n": "Institutional and facility-based operators",
+     "names": [
+      "ENSG",
+      "NHC",
+      "EHC",
+      "PNTG"
+     ],
+     "why": "Revenue is admissions and days — precisely the measures in structural per-capita decline. Ensign remains the best operator in the sector and the operating-competence argument is untouched; what changes is that its end market grows far slower than the population chart suggests. Conviction on ENSG goes from 3 to 2 on magnitude, not on quality."
+    },
+    {
+     "dir": "down",
+     "n": "SNF net-lease REITs",
+     "names": [
+      "OHI",
+      "CTRE",
+      "SBRA"
+     ],
+     "why": "Rent coverage depends on tenant volumes. The landlord structure still insulates against limb C's wage inflation, which was the reason for owning them — but a slow-growing tenant end market weakens the long-run escalator story."
+    },
+    {
+     "dir": "up",
+     "n": "Hospice and end-of-life",
+     "names": [
+      "CHE",
+      "SCI",
+      "CSV"
+     ],
+     "why": "Hospice was the ONLY care category where per-capita utilisation rose over the decade, +21%. Terminal demand cannot be redirected to a cheaper site of care, deferred by better health management, or managed down by a payment model. That is exactly the property the rest of the care book has just been shown to lack."
+    },
+    {
+     "dir": "up",
+     "n": "Ambulatory, diagnostic and physician enablement",
+     "names": [
+      "RDNT",
+      "PRVA",
+      "USPH",
+      "OPCH"
+     ],
+     "why": "E&M visits +16%, imaging +12%, procedures +5% per capita. Care is not disappearing, it is moving to the settings these businesses operate in. The site-of-care shift that hurts the institutional book is the same force that helps this one."
+    },
+    {
+     "dir": "up",
+     "n": "Private-pay age curves",
+     "names": [
+      "ALC",
+      "SOON.SW",
+      "DEMANT.CO",
+      "STMN.SW"
+     ],
+     "why": "Unaffected by the finding entirely — no reimbursement rate, no payment model, no site-of-care substitution. The private-pay tilt was adopted as a hedge against limb E policy risk; it turns out to hedge this too. Raise its weight."
+    }
+   ],
+   "unchanged": "The aging-in-place and personal-care names (ADUS, AVAH) sit largely outside this dataset — Medicaid-funded personal care is not in Medicare FFS utilisation at all. Their exposure is untested rather than confirmed safe, and that gap is now on the unsourced list."
+  },
+  {
+   "title": "Repriced 2026-08-07 (ii) — the wage split",
+   "trigger": "BLS ECI showed care-labour wages running 3-9pp above baseline since 2019 while construction wages run below it. See falsifier f12.",
+   "body": "Limb C was written as one claim and the data says it is two. Care labour scarcity is confirmed emphatically — service occupations, the category containing home health aides and nursing assistants, is the fastest-rising cut in the entire index at +9.2pp above baseline. Skilled construction trades are not confirmed at all: construction occupations run 0.7pp BELOW baseline and the construction industry 1.6pp below, both behind manufacturing. Two consequences, pulling opposite ways.",
+   "moves": [
+    {
+     "dir": "down",
+     "n": "Construction contractors",
+     "names": [
+      "EME",
+      "PWR",
+      "MYRG",
+      "IESC"
+     ],
+     "why": "The moat argument is that these firms own licensed labour that cannot be hired at any price. If that were binding, construction wages should be outpacing. They are the slowest cut on the board. These names were already froth-3 with no margin of safety on price; now the mechanism underneath them is unevidenced. Confound acknowledged: construction demand was soft over part of the window, so this could be a demand signal — but the thesis does not get to assume the reading that favours it."
+    },
+    {
+     "dir": "hold",
+     "n": "Maintenance-weighted contractors",
+     "names": [
+      "FIX",
+      "APG",
+      "LMB"
+     ],
+     "why": "Installation, maintenance and repair occupations run +3.0pp above baseline — the trades scarcity IS visible here, just not in construction. These three lean toward recurring service and maintenance rather than project construction, which is why they survive the finding while the pure construction names do not."
+    },
+    {
+     "dir": "up",
+     "n": "Care-labour supply",
+     "names": [
+      "ATGE",
+      "AMN",
+      "LOPE"
+     ],
+     "why": "Service occupations +9.2pp and health care & social assistance +3.3pp above baseline. Whoever supplies or trains this labour has pricing power, and the capacity gap that creates it was independently confirmed by AACN's 93,000 turned-away applicants. This is now the best-evidenced part of the entire thesis."
+    },
+    {
+     "dir": "down",
+     "n": "Care operators — the cost side",
+     "names": [
+      "ENSG",
+      "BKD",
+      "HCSG",
+      "NHC",
+      "WELL"
+     ],
+     "why": "Compounds iteration 1. These businesses face falling per-capita volumes AND the fastest-rising labour costs in the economy at once. The internal contradiction the matrix flagged as force 'wage' is no longer theoretical — it is measured, and it is the largest cost line in each of these P&Ls."
+    }
+   ],
+   "unchanged": "Private-pay names are untouched again. Neither the utilisation finding nor the wage finding reaches ALC, SOON.SW, DEMANT.CO or STMN.SW, because none of them sells labour-intensive institutional care under a government rate."
+  }
+ ]
 }

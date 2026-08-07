@@ -100,3 +100,79 @@ list as item 7.
    should extend to ADUS/AVAH or stop at the Medicare-funded names.
 
 ---
+
+## Iteration 2 — 2026-08-07 — Services vs goods wage growth
+
+**Why this over SEC XBRL:** limb C became load-bearing the moment limb D lost its
+magnitude, and its central claim — a structural floor under non-tradable services
+wages — had never been tested. Testing the limb the thesis now leans on beats
+adding evidence under names whose limb might not hold.
+
+**Source.** BLS Employment Cost Index, wages and salaries, seasonally adjusted,
+2019Q4–2026Q2. Read from the **flat files**, not the API: the public API caps at
+25 queries a day and would have made this block compete with the CPS and CEX
+pulls. ECI is the right instrument because it holds composition constant, so a
+mix shift toward better-paid workers cannot masquerade as scarcity.
+
+Two BLS quirks cost time and are now encoded in `get()`: `download.bls.gov`
+returns **403 for any User-Agent containing a URL** but accepts the
+contact-email form, and BLS **503s during its own maintenance windows** — which
+happened mid-iteration and correctly triggered the keep-previous-snapshot
+fallback. Both the flat-file fetch and the API path now retry with backoff.
+
+**What I found — a split verdict, along a line the thesis never drew.**
+
+| Cut | Cumulative since 2019Q4 | vs baseline |
+|---|---|---|
+| Service occupations | +37.5% | **+9.2pp** |
+| Health care & social assistance | +31.6% | +3.3pp |
+| Installation, maintenance & repair | +31.3% | +3.0pp |
+| *All civilian (baseline)* | *+28.3%* | *—* |
+| Construction & extraction (occupation) | +27.6% | **−0.7pp** |
+| Construction (industry) | +26.7% | **−1.6pp** |
+
+*Care labour: confirmed emphatically.* Service occupations — home health aides,
+nursing assistants, personal care — is the **fastest-rising cut in the entire
+index**. This is now the best-evidenced part of the thesis.
+
+*Construction trades: not confirmed at all.* Construction runs below the
+all-civilian baseline and behind manufacturing. If licensed trade labour were
+irreplaceable it should command a rising relative wage. It does not.
+
+*And the aggregate overclaims.* Services vs goods is +1.3pp over six and a half
+years — real, but nothing like a "structural floor."
+
+**What it changed.** Limb C splits in two and only one half survives. New
+falsifier **f12** (state `warming`, not tripped — construction demand was soft
+over part of the window, which is a confound that happens to favour the thesis,
+so it is stated rather than leaned on). Indicator `wagesvc` set to **mixed**; a
+status the scale did not previously have.
+
+**Second repricing shipped**, kept as a list alongside the first so the trail of
+which evidence moved which position stays visible:
+- **Down** EME, PWR, MYRG, IESC — already froth-3 with no margin of safety on
+  price; now the mechanism underneath them is unevidenced too.
+- **Hold** FIX, APG, LMB — maintenance-weighted, and installation/maintenance
+  /repair *is* running +3.0pp hot. The distinction is the finding.
+- **Up** ATGE, AMN, LOPE — care-labour supply, now double-confirmed by ECI wages
+  and by AACN's 93,000 turned-away applicants.
+- **Down** ENSG, BKD, HCSG, NHC, WELL on the cost side. This **compounds
+  iteration 1**: falling per-capita volumes *and* the fastest-rising labour costs
+  in the economy, hitting the same P&Ls.
+
+The matrix's "care-labour cost" internal contradiction is no longer an argument;
+it is a measurement, and it is now sourced.
+
+**Next three, re-ranked:**
+1. **SEC XBRL fundamentals.** Now clearly top. Two iterations have moved six
+   position groups on macro evidence alone, without once checking whether the
+   companies' own filings support the calls. That gap is widening with each
+   repricing.
+2. **Apprenticeship completions (DOL).** Promoted by f12 — it is the independent
+   second read on whether trades scarcity is real. If completions are also
+   healthy, f12 moves toward tripped and the contractor sleeve should go, not
+   shrink.
+3. **Medicaid personal care utilisation.** Still open; still the untested half of
+   the aging-in-place book.
+
+---

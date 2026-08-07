@@ -110,8 +110,8 @@
  "participation": {
   "series_id": "LNU01300097",
   "latest": {
-   "period": "June 2026",
-   "value": 18.7
+   "period": "July 2026",
+   "value": 18.5
   },
   "annual_average": {
    "2019": 20.2,
@@ -479,9 +479,94 @@
   "gradient_url": "https://data.cms.gov/sites/default/files/2026-01/7fb9cae0-38c4-4062-9915-ce7c6e9788da/MDCR%20SNF_CPS06USN_2023.zip",
   "retrieved": "2026-08-07"
  },
+ "wages": {
+  "measure": "Employment Cost Index, wages and salaries, current-dollar index, seasonally adjusted",
+  "base_period": "2019Q04",
+  "latest_period": "2026Q02",
+  "cuts": {
+   "All civilian": {
+    "series_id": "CIS1020000000000I",
+    "kind": "baseline",
+    "cum_pct": 28.3,
+    "ann_pct": 3.9,
+    "vs_baseline_pp": 0.0
+   },
+   "Service-providing (industry)": {
+    "series_id": "CIS102S000000000I",
+    "kind": "industry",
+    "cum_pct": 28.5,
+    "ann_pct": 3.93,
+    "vs_baseline_pp": 0.2
+   },
+   "Goods-producing (industry)": {
+    "series_id": "CIS102G000000000I",
+    "kind": "industry",
+    "cum_pct": 27.2,
+    "ann_pct": 3.77,
+    "vs_baseline_pp": -1.1
+   },
+   "Health care & social assistance (industry)": {
+    "series_id": "CIS1026200000000I",
+    "kind": "industry",
+    "cum_pct": 31.6,
+    "ann_pct": 4.31,
+    "vs_baseline_pp": 3.3
+   },
+   "Construction (industry, private)": {
+    "series_id": "CIS2022300000000I",
+    "kind": "industry",
+    "cum_pct": 26.7,
+    "ann_pct": 3.71,
+    "vs_baseline_pp": -1.6
+   },
+   "Manufacturing (industry)": {
+    "series_id": "CIS1023000000000I",
+    "kind": "industry",
+    "cum_pct": 27.4,
+    "ann_pct": 3.79,
+    "vs_baseline_pp": -0.9
+   },
+   "Service occupations": {
+    "series_id": "CIS2020000300000I",
+    "kind": "occupation",
+    "cum_pct": 37.5,
+    "ann_pct": 5.02,
+    "vs_baseline_pp": 9.2
+   },
+   "Construction & extraction (occupation)": {
+    "series_id": "CIS2020000405000I",
+    "kind": "occupation",
+    "cum_pct": 27.6,
+    "ann_pct": 3.82,
+    "vs_baseline_pp": -0.7
+   },
+   "Installation, maintenance & repair (occupation)": {
+    "series_id": "CIS2020000430000I",
+    "kind": "occupation",
+    "cum_pct": 31.3,
+    "ann_pct": 4.28,
+    "vs_baseline_pp": 3.0
+   },
+   "Production (occupation)": {
+    "series_id": "CIS2020000510000I",
+    "kind": "occupation",
+    "cum_pct": 31.7,
+    "ann_pct": 4.32,
+    "vs_baseline_pp": 3.4
+   }
+  },
+  "caveats": [
+   "ECI holds occupational and industry composition constant by design. That is the right control for a scarcity question, but it means a shift toward more skilled workers within a trade does not register as wage pressure.",
+   "The construction industry cut blends licensed journeymen with general labourers, so it may understate scarcity in the licensed subset. The construction-and-extraction occupational cut is the sharper read and tells the same story.",
+   "Anchored to 2019Q4 to strip the pandemic wage distortion out of the base."
+  ],
+  "source": "BLS Employment Cost Index (flat files, no API key or quota)",
+  "url": "https://download.bls.gov/pub/time.series/ci/ci.data.0.Current",
+  "retrieved": "2026-08-07"
+ },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T05:15:53+00:00",
+  "as_of": "2026-08-07T12:32:12+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }

@@ -2,7 +2,7 @@
  "_meta": {
   "description": "The monitoring layer. Every observable named in a limb, with its source, its release cadence, what reading would confirm the limb, and what reading would damage it. This is the file that turns the thesis from an essay into something that can be wrong on a schedule.",
   "as_of": "2026-08-07",
-  "status_scale": "confirming / neutral / contradicting / not-yet-read",
+  "status_scale": "confirming / mixed / neutral / contradicting / not-yet-read",
   "status_note": "Status is set by hand on review, never by the robot — the robot moves prices and reference series, not judgments. Six indicators read against primary sources: five confirming, one contradicting. The contradicting read (hh) was found by deliberately testing the item most likely to be unsupportive, which is why the selection-risk caveat below matters less than it did before — but seventeen indicators remain unread.",
   "cadence_note": "Cadence drives the review calendar. Monthly indicators are the working set; annual ones (Trustees, CBO) are scheduled events that deserve a diary entry rather than a dashboard glance."
  },
@@ -42,8 +42,9 @@
    "priority": 1,
    "confirms": "Services wage growth persistently above goods and above the aggregate — the supply-side floor is real.",
    "contradicts": "Convergence to the aggregate. That would mean the shortage is being cleared by ordinary market adjustment.",
-   "status": "not-yet-read",
-   "note": "The Employment Cost Index is the cleaner read because it controls for composition; average hourly earnings is faster but noisier."
+   "status": "mixed",
+   "note": "READ 2026-08-07 (BLS ECI, 2019Q4-2026Q2, seasonally adjusted). SPLIT verdict. Confirming for care: service occupations +37.5% cumulative, +9.2pp above the all-civilian baseline and the fastest-rising cut in the index — that category contains home health aides, nursing assistants and personal care workers. Health care & social assistance +3.3pp. Installation/maintenance/repair +3.0pp. CONTRADICTING for construction: construction & extraction occupations -0.7pp and the construction industry -1.6pp, both below baseline and below manufacturing. The services-vs-goods aggregate the indicator actually specified is only +1.3pp, which is real but far weaker than 'structural floor' implies. Confound worth stating: construction demand was soft over part of this window, so weak construction wages may be demand-side rather than evidence against supply scarcity — but the thesis does not get to lean on that without testing it.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "nurse",

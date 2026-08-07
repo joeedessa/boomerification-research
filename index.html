@@ -694,6 +694,30 @@ function buildLimbs(){
           ${s.note?`<div class="co-fn"><b>Read.</b> ${rich(s.note)}</div>`:''}</div>`;
       });
     }
+    /* Limb C's wage claim, measured. Rendered here rather than as its own tab —
+       it only means anything next to the limb it tests. */
+    if(l.id==='C' && REF && REF.wages){
+      const W=REF.wages, cuts=Object.entries(W.cuts).sort((a,b)=>b[1].cum_pct-a[1].cum_pct);
+      const max=Math.max(...cuts.map(c=>c[1].cum_pct));
+      h+=`<div class="card" style="border-left:3px solid #B45309;margin-bottom:4px">
+        <div class="co-h"><span class="sf" style="background:var(--fl-amber-bg);color:var(--fl-amber-fg)">split verdict</span>
+          <b style="font-size:13px">Wage growth since ${esc(W.base_period)} — care yes, construction no</b>
+          <span class="co-role q">latest ${esc(W.latest_period)}</span></div>
+        <div class="cbody" style="margin-top:3px">${esc(W.measure)}. Bars show cumulative growth; the figure on the right is the gap against the all-civilian baseline.</div>
+        <div style="margin-top:7px">`;
+      cuts.forEach(([n,v])=>{
+        const base=v.kind==='baseline', above=(v.vs_baseline_pp||0)>0.5, below=(v.vs_baseline_pp||0)<-0.5;
+        const col=base?'#70757F':above?'#15803D':below?'#B32B2A':'#B45309';
+        h+=`<div style="display:grid;grid-template-columns:1fr 150px 72px;gap:8px;align-items:center;margin-bottom:3px">
+          <span style="font-size:10.5px;${base?'font-weight:600':''}">${esc(n)}</span>
+          <div class="bar" style="height:11px"><i style="width:${v.cum_pct/max*100}%;background:${col}"></i></div>
+          <span class="q"><b>${v.cum_pct}%</b> <span style="color:${col}">${base?'—':(v.vs_baseline_pp>0?'+':'')+v.vs_baseline_pp+'pp'}</span></span>
+        </div>`;
+      });
+      h+=`</div>
+        <div class="co-fn"><b>Read it carefully.</b> Service occupations — home health aides, nursing assistants, personal care — is the fastest-rising cut in the entire index. Construction is the slowest, behind manufacturing. The limb was written as one claim; the data says it is two, and only one is supported.</div>
+        <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(W.source)}</span></div></div>`;
+    }
     if(l.arithmetic_warning){
       h+=`<div class="card" style="border-left:3px solid #B32B2A;margin-bottom:4px;background:var(--fl-red-bg)">
         <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">magnitude warning</span>
@@ -986,7 +1010,7 @@ function buildIndicators(){
         <td class="q">${esc(i.cadence)}</td>
         <td style="color:#15803D">${rich(i.confirms)}</td>
         <td style="color:#B32B2A">${rich(i.contradicts)}</td>
-        <td><span class="state ${i.status==='confirming'?'s-conf':i.status==='contradicting'?'s-tripped':'s-armed'}">${esc(i.status)}</span>
+        <td><span class="state ${i.status==='confirming'?'s-conf':i.status==='contradicting'?'s-tripped':i.status==='mixed'?'s-warming':'s-armed'}">${esc(i.status)}</span>
             ${i.last_read?`<div class="metarow">read ${esc(i.last_read)}</div>`:''}</td></tr>`;
     });
     h+=`</tbody></table></div>`;
@@ -1045,8 +1069,13 @@ function buildPortfolio(){
     <div class="ctitle">${esc(PORTFOLIO.defining_insight.title)}</div>
     <div class="cbody">${rich(PORTFOLIO.defining_insight.body)}</div></div>`;
 
-  if(PORTFOLIO.repricing){
-    const R=PORTFOLIO.repricing;
+  /* Repricings are kept as a list, newest last, so the trail of what evidence
+     moved which position stays visible rather than being overwritten. */
+  const REPS=PORTFOLIO.repricings||(PORTFOLIO.repricing?[PORTFOLIO.repricing]:[]);
+  const DIR={up:['▲ raise','var(--fl-green-bg)','var(--fl-green-fg)'],
+             down:['▼ reduce','var(--fl-red-bg)','var(--fl-red-fg)'],
+             hold:['◆ hold','var(--fl-amber-bg)','var(--fl-amber-fg)']};
+  REPS.forEach(R=>{
     h+=`<div class="card" style="border-left:4px solid #B32B2A">
       <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">repriced</span>
         <b style="font-family:var(--font-display);font-size:15px">${esc(R.title)}</b></div>
@@ -1054,15 +1083,15 @@ function buildPortfolio(){
       <div class="cbody" style="margin-top:4px">${rich(R.body)}</div>
       <div style="overflow-x:auto;margin-top:7px"><table class="tbl"><thead><tr><th></th><th>Group</th><th>Names</th><th>Why</th></tr></thead><tbody>`;
     R.moves.forEach(m=>{
-      const up=m.dir==='up';
-      h+=`<tr><td><span class="sf" style="background:${up?'var(--fl-green-bg)':'var(--fl-red-bg)'};color:${up?'var(--fl-green-fg)':'var(--fl-red-fg)'}">${up?'▲ raise':'▼ reduce'}</span></td>
+      const d=DIR[m.dir]||DIR.hold;
+      h+=`<tr><td><span class="sf" style="background:${d[1]};color:${d[2]}">${d[0]}</span></td>
         <td><b>${esc(m.n)}</b></td>
         <td>${m.names.map(t=>`<span class="sf ticklink" data-tk="${t}" style="background:var(--color-background-secondary);color:var(--color-text-secondary)">${t}</span>`).join(' ')}</td>
         <td>${rich(m.why)}</td></tr>`;
     });
     h+=`</tbody></table></div>
       <div class="co-fn"><b>Unchanged.</b> ${rich(R.unchanged)}</div></div>`;
-  }
+  });
   PORTFOLIO.clusters.forEach(cl=>{
     h+=`<div class="card" style="border-left:4px solid ${cl.color}">
       <div class="ctitle" style="color:${cl.color}">${esc(cl.title)}</div>
