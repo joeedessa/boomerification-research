@@ -70,6 +70,23 @@
     "US annuity sales by type (FIA, RILA, SPIA)",
     "401(k)-to-IRA rollover volumes",
     "Household cash and T-bill balances by age band"
+   ],
+   "sourced": [
+    {
+     "claim": "Boomers are not selling. Their equity holdings went $10.89tn (2016:Q1) to $29.71tn (2026:Q1), and their SHARE of all household corporate equities and mutual fund shares moved only 54.9% to 53.9% — down 1.0pp in a decade, and 2.7pp from a 2020 peak of 56.6%.",
+     "src": "Federal Reserve Distributional Financial Accounts, generation levels and shares",
+     "note": "Share is the right measure because valuation moves every holder alike. A cohort whose share barely budges while the market triples is not a net seller. This is the direct test of limb A's central claim and it confirms it."
+    },
+    {
+     "claim": "The Silent generation shows what a completed cycle looks like: equity share 83.9% (1990:Q1) to 15.0% (2026:Q1) — 68.9pp over thirty-six years.",
+     "src": "Same source",
+     "note": "Roughly 2pp a year, driven by mortality and transfer rather than by selling. If boomers follow the same path they have three decades of runway, which is the strongest available argument that the 'asset meltdown' is a category error about timescale rather than a wrong direction."
+    },
+    {
+     "claim": "And the RMD-reinvestment mechanism is visible: DC pension entitlements grew $5.45tn to $6.93tn (+27%) while taxable equity holdings grew 173% over the same decade.",
+     "src": "Same source",
+     "note": "Money leaving the tax-deferred wrapper faster than it leaves the market is exactly what the limb predicted."
+    }
    ]
   },
   {
@@ -397,14 +414,14 @@
     "id": "A",
     "n": "Decumulation & the flow question",
     "conviction": 2,
-    "grade": "D",
+    "grade": "B",
     "names": 16,
     "indicators_defined": 3,
-    "indicators_read": 0,
-    "confirming": 0,
+    "indicators_read": 1,
+    "confirming": 1,
     "contradicting": 0,
     "mixed": 0,
-    "sourced_claims": 0,
+    "sourced_claims": 3,
     "falsifiers_tripped": 0,
     "falsifiers_warming": 0
    },
@@ -484,7 +501,7 @@
     "falsifiers_warming": 0
    }
   ],
-  "finding": "Seven iterations of evidence have landed almost entirely on limbs C and D. Limb A carries 16 names at conviction 2 with ZERO indicators read and zero sourced claims — grade D. Limb B carries 17 names with zero indicators read. Between them that is 33 of 126 names, a quarter of the universe, resting on assertions that have never been checked. The programme has been testing where testing was interesting rather than where exposure was largest, and this scorecard exists to stop that being invisible.",
-  "action": "Limbs A and B are the next two iterations regardless of what looks interesting. Neither limb has its conviction cut on these grounds — absence of evidence is not evidence of absence — but neither should be read as validated, and the grade now says so on the face of the dashboard."
+  "finding": "Updated after iteration 9. Limb A has moved from grade D to B: boomer equity share fell only 1.0pp over the decade while holdings rose 173%, which confirms the \"dies holding\" claim directly. Limb B is now the sole untested limb — 17 names, zero indicators read. Coverage is no longer wildly lopsided, but it is not yet even.",
+  "action": "Limb B is the last blind spot: the transfer mechanics rest on advisor-attrition and channel-share claims whose adjudicating data (Cerulli) is paywalled. Any test has to be built from free proxies rather than fetched, and that constraint should be stated on the dashboard rather than left as a silent gap."
  }
 }

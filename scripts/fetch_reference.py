@@ -296,6 +296,28 @@ def dfa_wealth():
             hist = [(r['Date'], float(r['Net worth'])) for r in rows if r['Category'] == 'BabyBoom']
             peak = max(hist, key=lambda x: x[1])
             out['boomer_net_worth_peak'] = {'period': peak[0], 'value': peak[1]}
+            # Limb A's whole argument is that the cohort does not sell. Equity
+            # SHARE is the right measure — valuation moves every holder alike, so
+            # a share that barely budges while the market triples is not a seller.
+            EQ = 'Corporate equities and mutual fund shares'
+            eq = [(r['Date'], float(r[EQ])) for r in rows
+                  if r['Category'] == 'BabyBoom' and r['Date'].endswith('Q1')]
+            sil = [(r['Date'], float(r[EQ])) for r in rows
+                   if r['Category'] == 'Silent' and r['Date'].endswith('Q1')]
+            if eq:
+                pk = max(eq, key=lambda x: x[1])
+                out['boomer_equity_share'] = {
+                    'series': {d: v for d, v in eq[-11:]},
+                    'peak': {'period': pk[0], 'value': pk[1]},
+                    'latest': {'period': eq[-1][0], 'value': eq[-1][1]},
+                    'change_from_peak_pp': round(eq[-1][1] - pk[1], 1)}
+            if sil:
+                spk = max(sil, key=lambda x: x[1])
+                out['silent_equity_share'] = {
+                    'peak': {'period': spk[0], 'value': spk[1]},
+                    'latest': {'period': sil[-1][0], 'value': sil[-1][1]},
+                    'note': 'The completed cycle. A cohort sheds its equity share over decades '
+                            'via mortality and transfer, not over years via selling.'}
     age = out['by_age']
     out['share_55plus'] = round(sum(age[k]['net_worth'] for k in age
                                     if k in ('age55to69', 'age70plus')), 1)

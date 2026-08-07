@@ -468,3 +468,38 @@ where testing was interesting rather than where exposure was largest.
 Conviction is not cut on these grounds — absence of evidence is not evidence of
 absence — but the grade now says so on the face of the dashboard, and limbs A and
 B are the next two iterations regardless of what looks more interesting.
+
+## Iteration 9 — 2026-08-07 — Limb A, the grade-D limb
+
+**Why:** the scorecard said go here regardless of what looked interesting. Limb A
+carried 16 names at conviction 2 with zero indicators read.
+
+**Source.** Fed Distributional Financial Accounts, generation-level equity
+holdings and shares — already downloaded for the wealth block, never used for
+this question.
+
+**Confirming, and cleanly.** Limb A's central claim is that the cohort dies
+holding rather than decumulating.
+
+- Boomer equity holdings **$10.89tn (2016:Q1) → $29.71tn (2026:Q1), +173%**
+- Boomer equity **share 54.9% → 53.9% — down 1.0pp in a decade**, 2.7pp off a
+  2020 peak of 56.6%
+
+Share is the right measure because valuation moves every holder alike. A cohort
+whose share barely budges while the market triples is not a net seller.
+
+**The Silent generation supplies the completed cycle:** equity share **83.9%
+(1990) → 15.0% (2026)** — 68.9pp over thirty-six years, roughly 2pp a year, via
+mortality and transfer rather than selling. If boomers follow that path they have
+three decades of runway. That is the strongest available argument that the "asset
+meltdown" is a category error about *timescale*, not a wrong direction.
+
+**And the RMD mechanism is visible:** DC pension entitlements grew 27% while
+taxable equity holdings grew 173% — money leaving the tax-deferred wrapper faster
+than it leaves the market, exactly as the limb predicted.
+
+**Honest limitation:** DFA cannot separate flows from valuation, so f4 as
+literally written — net outflow in fund-flow data — cannot be tested at zero
+cost. This is a strong proxy, not the thing itself, and the indicator says so.
+
+**Limb A moves D → B.** Limb B is now the sole untested limb.

@@ -93,8 +93,9 @@
    "priority": 1,
    "confirms": "Rotation into income, dividend and defined-outcome products without aggregate equity outflow — composition change, not a supply shock.",
    "contradicts": "Sustained net equity outflow attributable to the 65+ cohort. That inverts limb A and revives the crude bear case.",
-   "status": "not-yet-read",
-   "note": "The explicit falsifier for limb A. The age attribution is the hard part — Fed Financial Accounts distributional data is the best available cut."
+   "status": "confirming",
+   "note": "READ 2026-08-07 (Fed DFA). Boomer equity share 54.9% to 53.9% over the decade, -2.7pp from a 2020 peak, while absolute holdings rose 173%. Not a supply shock. The Silent generation shed 68.9pp over 36 years — roughly 2pp annually, via mortality and transfer. Caveat: DFA cannot separate flows from valuation, so this is a proxy for the fund-flow test the indicator specifies, not the test itself. That test needs ICI data cross-cut by age, which is not free.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "annuity",

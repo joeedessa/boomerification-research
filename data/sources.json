@@ -130,6 +130,15 @@
    "finding": "The sleeve that had survived every finding tests worst. Median revenue CAGR 4.2% and median operating margin -1.3pp, against 9.9% median revenue growth in US care delivery. Sonova, a conviction-3 core position, is shrinking at -1.2%.",
    "affects": "SOON.SW cut 3 to 2. Private-pay theme structural score cut 88 to 78. The theme's apparent invulnerability was an artefact of never having been measured — which is the clearest single illustration of why the unsourced list matters more than the resolution log.",
    "auto": true
+  },
+  {
+   "claim": "Fund flows by investor age",
+   "verdict": "confirmed with caveat",
+   "v1": "Limb A's explicit falsifier, untested through seven iterations. Limb A was graded D.",
+   "sourced": "Federal Reserve Distributional Financial Accounts — generation-level equity holdings and shares, 1989 to 2026:Q1.",
+   "finding": "Boomers are not selling. Equity share 54.9% to 53.9% over the decade against a 173% rise in absolute holdings; 2.7pp off a 2020 peak. The Silent generation's completed cycle ran 83.9% to 15.0% over 36 years — about 2pp a year, via mortality and transfer rather than selling. DC pension entitlements grew 27% while taxable equities grew 173%, which is the RMD-reinvestment mechanism made visible.",
+   "affects": "Limb A's central claim — that the cohort dies holding rather than decumulating — is confirmed, and falsifier f4 moves further from tripping. Limb A's evidence grade rises from D. Caveat: DFA cannot separate flows from valuation, so the fund-flow test as specified remains impossible at zero cost; this is a strong proxy, not the thing itself.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -149,11 +158,6 @@
  "still_unsourced": {
   "note": "What the sourcing pass has NOT reached. This list matters more than the resolution log. The first deliberately-adversarial item — health utilisation per capita — came back contradicting and produced the largest single revision to the thesis so far, which is the argument for working the rest of this list rather than the easy confirmations.",
   "items": [
-   {
-    "n": "Fund flows by investor age",
-    "why": "Limb A's explicit falsifier. ICI publishes flows by vehicle but the age attribution needs Fed distributional data cross-cut against it — real work, not a fetch.",
-    "priority": 1
-   },
    {
     "n": "Annuity sales by product type",
     "why": "The cleanest single read on limb A's behavioural shift. LIMRA headline releases are free but the product-level detail is paid.",

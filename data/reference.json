@@ -159,6 +159,41 @@
    "period": "2016:Q3",
    "value": 57.6
   },
+  "boomer_equity_share": {
+   "series": {
+    "2016:Q1": 54.9,
+    "2017:Q1": 55.3,
+    "2018:Q1": 55.1,
+    "2019:Q1": 55.3,
+    "2020:Q1": 56.6,
+    "2021:Q1": 53.9,
+    "2022:Q1": 53.7,
+    "2023:Q1": 54.4,
+    "2024:Q1": 54.0,
+    "2025:Q1": 53.8,
+    "2026:Q1": 53.9
+   },
+   "peak": {
+    "period": "2020:Q1",
+    "value": 56.6
+   },
+   "latest": {
+    "period": "2026:Q1",
+    "value": 53.9
+   },
+   "change_from_peak_pp": -2.7
+  },
+  "silent_equity_share": {
+   "peak": {
+    "period": "1990:Q1",
+    "value": 83.9
+   },
+   "latest": {
+    "period": "2026:Q1",
+    "value": 15.0
+   },
+   "note": "The completed cycle. A cohort sheds its equity share over decades via mortality and transfer, not over years via selling."
+  },
   "by_age": {
    "age70plus": {
     "net_worth": 32.7,
@@ -902,7 +937,7 @@
  },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T15:52:43+00:00",
+  "as_of": "2026-08-07T15:59:06+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }
