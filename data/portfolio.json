@@ -16,7 +16,7 @@
    "title": "Core — highest conviction, thesis-defining",
    "body": "Positions where the mechanism is strongest, the crowding lowest, or both. Each expresses a limb the consensus is not positioned for.",
    "items": [
-    "<b>Capacity gap in licensed labour (limb C):</b> ATGE — owns accredited nursing capacity in a pipeline that turns away qualified applicants. The purest way to own limb C's binding constraint rather than its symptom. <i>Falsifier: programme capacity expanding faster than the 85+ population.</i>",
+    "<b>Capacity gap in licensed labour (limb C):</b> CVSA — owns accredited nursing capacity in a pipeline that turns away qualified applicants. The purest way to own limb C's binding constraint rather than its symptom. <i>Falsifier: programme capacity expanding faster than the 85+ population.</i>",
     "<b>Private-pay age curves (limb D):</b> ALC, SOON.SW — cataract and hearing are biologically inevitable, high-penetration-upside, and structurally outside reimbursement risk. The rarest combination in the universe. <i>Falsifier: OTC or direct-to-consumer channels collapsing the private-pay premium.</i>",
     "<b>Structural heart (limb D):</b> EW — aortic stenosis prevalence rises steeply past 75 and TAVR converts inoperable into routine. Volume-driven, not price-driven. <i>Falsifier: competitive share loss in structural heart, not demand.</i>",
     "<b>Care operating competence (limb D):</b> ENSG, ADUS — the demand is arithmetic; the scarce skill is managing care labour at Medicaid rates. Own the operators who have demonstrated it. <i>Falsifier: a Medicaid rate reset, or caregiver wage inflation outrunning rate growth.</i>",
@@ -106,15 +106,15 @@
   ]
  },
  "entry_windows": {
-  "as_of": "2026-08-06",
-  "intro": "Where the thesis is right and the price is not. Ranked by the gap between structural conviction and current crowding. These are watch conditions, not orders — the nightly robot flags when a drawdown threshold is crossed.",
+  "as_of": "2026-08-07",
+  "intro": "Where the thesis is right and the price is not. Ranked by the gap between structural conviction and current crowding. These are watch conditions, not orders — the nightly robot flags when a drawdown threshold is crossed. Revised 2026-08-07: AMN removed after the filings showed revenue halved from peak and operating margin negative — a name cut to conviction 1 cannot simultaneously be an entry candidate.",
   "windows": [
    {
     "rank": 1,
     "ticker": "EME",
-    "setup": "Labour-scarcity moat is durable and independent of the construction cycle; the price is not.",
+    "setup": "Margins say pricing power — +5.1pp over CY2019-CY2025 on 10.8% revenue growth — even though ECI wages show no construction-trades scarcity. The moat looks like contractor capacity rather than labour cost.",
     "watch": "A datacentre capex scare that takes the whole contractor complex down together.",
-    "risk": "The cycle and the demographics are genuinely entangled here — a construction downturn hurts earnings even though the labour scarcity is intact."
+    "risk": "Two mechanisms are now entangled: a genuine capacity moat and a datacentre construction cycle. The filings cannot separate them, and the price assumes both persist."
    },
    {
     "rank": 2,
@@ -125,7 +125,7 @@
    },
    {
     "rank": 3,
-    "ticker": "ATGE",
+    "ticker": "CVSA",
     "setup": "Owns the binding constraint in limb C; has already re-rated on recognition of it.",
     "watch": "Title IV or for-profit-education regulatory headlines, which are bimodal and recurrent.",
     "risk": "The regulatory tail is genuinely fat — size for it rather than hoping around it."
@@ -139,13 +139,6 @@
    },
    {
     "rank": 5,
-    "ticker": "AMN",
-    "setup": "Structural nursing shortage intact; the equity was destroyed by the post-pandemic bill-rate normalisation.",
-    "watch": "Evidence that hospital float-pool insourcing has stopped taking share.",
-    "risk": "The structural argument can be right and the equity still wrong if hospitals have permanently internalised the function."
-   },
-   {
-    "rank": 6,
     "ticker": "ZBH",
     "setup": "Cheapest way to own joint-replacement volume, discounted for genuine reasons.",
     "watch": "Evidence that volume growth is finally outrunning price erosion, or a credible share stabilisation.",
@@ -329,7 +322,7 @@
      "dir": "up",
      "n": "Care-labour supply",
      "names": [
-      "ATGE",
+      "CVSA",
       "AMN",
       "LOPE"
      ],
@@ -349,6 +342,61 @@
     }
    ],
    "unchanged": "Private-pay names are untouched again. Neither the utilisation finding nor the wage finding reaches ALC, SOON.SW, DEMANT.CO or STMN.SW, because none of them sells labour-intensive institutional care under a government rate."
+  },
+  {
+   "title": "Repriced 2026-08-07 (iii) — the filings correct me twice",
+   "trigger": "SEC XBRL fundamentals for 110 of 126 names, CY2019-CY2025. Two of the previous four days' calls do not survive contact with the filed numbers.",
+   "body": "This is the first iteration whose main output is reversing earlier work rather than adding to it. Both reversals come from the same mistake: reasoning from a correct macro finding straight to a company conclusion without checking whether the company behaved the way the sector did.",
+   "moves": [
+    {
+     "dir": "up",
+     "n": "REVERSAL — care operating competence",
+     "names": [
+      "ENSG"
+     ],
+     "why": "Downgraded 3->2 in iteration 1 because per-capita SNF days are falling. The filings say Ensign compounded revenue 16.4% a year and expanded operating margin 2.1pp through exactly that decade. A consolidator in a fragmented sector can outgrow a shrinking per-capita market and this one did. Restored to 3; the utilisation finding is re-labelled a market-size warning."
+    },
+    {
+     "dir": "down",
+     "n": "REVERSAL — care-labour staffing",
+     "names": [
+      "AMN",
+      "CCRN"
+     ],
+     "why": "Raised in iteration 2 on the logic that whoever supplies scarce labour has pricing power. False for agencies. AMN revenue fell from a $5.24bn peak to $2.73bn and operating margin swung 10pp into negative territory; CCRN -6.1pp and now filing to deregister. The shortage is real and it accrued to the employers, not the intermediaries. AMN cut to conviction 1."
+    },
+    {
+     "dir": "hold",
+     "n": "Contractors — reduction softened",
+     "names": [
+      "EME",
+      "FIX",
+      "APG",
+      "IESC",
+      "LMB"
+     ],
+     "why": "Iteration 2 cut these because ECI wages showed no trades scarcity. Margins say otherwise: a median +5.1pp expansion on 10-42% revenue growth is pricing power however the wages behaved. The moat may be contractor capacity rather than labour cost. Reduction stands for the pure-construction names on valuation, but not on 'the mechanism is absent'."
+    },
+    {
+     "dir": "up",
+     "n": "Care-labour TRAINING, as distinct from supply",
+     "names": [
+      "CVSA"
+     ],
+     "why": "The one care-labour name the filings support: +9.9% revenue CAGR with margin +3.7pp. Owning accredited capacity behaves completely differently from renting out staff. Note the ticker — Adtalem renamed to Covista in 2026 and the universe was carrying the stale symbol until this run caught it."
+    },
+    {
+     "dir": "down",
+     "n": "Labour substitution — not delivering",
+     "names": [
+      "ROK",
+      "EMR",
+      "ZBRA"
+     ],
+     "why": "The automation sleeve is the highest-carry position in the book, explicitly priced for growth and explicitly not paying you to wait. Median revenue CAGR is 3.7%, the weakest of ten verticals, with margins slightly down. Six years is long enough that 'the substitution capex is coming' needs evidence, and there is none in the filings."
+    }
+   ],
+   "unchanged": "Private-pay again untouched — but note that most of that sleeve (SOON.SW, DEMANT.CO, ALC, STMN.SW) files outside the US and therefore cannot be tested this way at all. Sixteen names have no SEC filings; their calls remain judgment-only."
   }
  ]
 }

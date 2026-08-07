@@ -1,0 +1,2884 @@
+{
+ "_meta": {
+  "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
+  "as_of": "2026-08-07T14:18:12+00:00",
+  "years": [
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "coverage": "110/127 universe names with revenue data",
+  "dropped_partial_periods": [
+   "FIX CY2025"
+  ],
+  "unmapped": [
+   "GWO.TO",
+   "6861.T",
+   "6954.T",
+   "SOON.SW",
+   "DEMANT.CO",
+   "AMP.MI",
+   "COH.AX",
+   "STMN.SW",
+   "7817.T",
+   "ESSITY-B.ST",
+   "8113.T"
+  ],
+  "unmapped_note": "Non-US filers have no SEC XBRL. This is a structural gap, not a fetch failure \u2014 the Japanese, Swiss, Danish, Italian, Australian, Swedish and Canadian names cannot be covered here.",
+  "source": "SEC EDGAR XBRL frames API (data.sec.gov), keyless",
+  "caveats": [
+   "Revenue tagging varies by filer; three us-gaap tags are tried in order and the first hit wins, so cross-company revenue levels are indicative rather than strictly comparable.",
+   "CY frames align non-calendar fiscal years to the nearest annual period.",
+   "Operating margin is OperatingIncomeLoss over revenue as filed \u2014 no adjustment for one-offs, impairments or accounting changes.",
+   "REITs, insurers and asset managers do not report a meaningful operating margin on this definition; read the margin column for operators only.",
+   "Terminal years that collapse to under 55% of the prior year are dropped as partial-period tagging artifacts and listed in dropped_partial_periods.",
+   "Revenue growth conflates organic volume, price and acquisition. In a consolidating sector a share-gainer can outgrow a shrinking market, which is exactly what the care operators did \u2014 see the utilisation finding."
+  ]
+ },
+ "corporate_actions": {
+  "AMED": {
+   "kind": "gone",
+   "severity": "high",
+   "detail": "SEC lists no active ticker for this filer; last periodic filing 2025-07-30",
+   "cik": 896262,
+   "sec_name": "AMEDISYS INC",
+   "current_tickers": [],
+   "former_names": []
+  },
+  "APO": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-07-31 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 1858681,
+   "sec_name": "Apollo Global Management, Inc.",
+   "current_tickers": [
+    "APO",
+    "APO-PA",
+    "APOS"
+   ],
+   "former_names": [
+    "Tango Holdings, Inc."
+   ]
+  },
+  "ATGE": {
+   "kind": "ticker-change",
+   "severity": "high",
+   "detail": "universe carries ATGE; SEC lists CVSA",
+   "cik": 730464,
+   "sec_name": "Covista Inc.",
+   "current_tickers": [
+    "CVSA"
+   ],
+   "former_names": [
+    "Adtalem Global Education Inc.",
+    "Adtalem Global Education",
+    "DEVRY EDUCATION GROUP INC."
+   ]
+  },
+  "BC": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2025-12-01 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 14930,
+   "sec_name": "BRUNSWICK CORP",
+   "current_tickers": [
+    "BC",
+    "BC-PC"
+   ],
+   "former_names": []
+  },
+  "BK": {
+   "kind": "ticker-change",
+   "severity": "high",
+   "detail": "universe carries BK; SEC lists BNY",
+   "cik": 1390777,
+   "sec_name": "Bank of New York Mellon Corp",
+   "current_tickers": [
+    "BNY",
+    "BNY-PK"
+   ],
+   "former_names": []
+  },
+  "CCRN": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "15-12G filed 2026-07-27 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 1141103,
+   "sec_name": "CROSS COUNTRY HEALTHCARE INC",
+   "current_tickers": [
+    "CCRN"
+   ],
+   "former_names": [
+    "CROSS COUNTRY INC"
+   ]
+  },
+  "EMR": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2025-10-15 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 32604,
+   "sec_name": "EMERSON ELECTRIC CO",
+   "current_tickers": [
+    "EMR"
+   ],
+   "former_names": []
+  },
+  "LLY": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-06-02 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 59478,
+   "sec_name": "ELI LILLY & Co",
+   "current_tickers": [
+    "LLY"
+   ],
+   "former_names": [
+    "LILLY ELI & CO",
+    "LILLY ELI & CO ET AL"
+   ]
+  },
+  "MCK": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2025-11-17 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 927653,
+   "sec_name": "MCKESSON CORP",
+   "current_tickers": [
+    "MCK"
+   ],
+   "former_names": [
+    "MCKESSON HBOC INC"
+   ]
+  },
+  "MDT": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2025-10-15 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 1613103,
+   "sec_name": "Medtronic plc",
+   "current_tickers": [
+    "MDT"
+   ],
+   "former_names": [
+    "Medtronic Ltd",
+    "Medtronic Holdings Ltd"
+   ]
+  },
+  "MS": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-02-23 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 895421,
+   "sec_name": "MORGAN STANLEY",
+   "current_tickers": [
+    "MS",
+    "MS-PK",
+    "MS-PE",
+    "MS-PA",
+    "MS-PF",
+    "MS-PI",
+    "MS-PL",
+    "MS-PO",
+    "MS-PP",
+    "MS-PQ"
+   ],
+   "former_names": [
+    "MORGAN STANLEY",
+    "MORGAN STANLEY",
+    "MORGAN STANLEY DEAN WITTER & CO"
+   ]
+  },
+  "RGA": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-06-15 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 898174,
+   "sec_name": "REINSURANCE GROUP OF AMERICA INC",
+   "current_tickers": [
+    "RGA",
+    "RZC"
+   ],
+   "former_names": []
+  },
+  "RJF": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-01-02 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 720005,
+   "sec_name": "RAYMOND JAMES FINANCIAL INC",
+   "current_tickers": [
+    "RJF"
+   ],
+   "former_names": []
+  },
+  "TMHC": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "15-12G filed 2026-08-04 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 1562476,
+   "sec_name": "Taylor Morrison Home Corp",
+   "current_tickers": [
+    "TMHC"
+   ],
+   "former_names": []
+  },
+  "TRI": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-05-14 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 1075124,
+   "sec_name": "THOMSON REUTERS CORP /CAN/",
+   "current_tickers": [
+    "TRI",
+    "TMSOF"
+   ],
+   "former_names": [
+    "THOMSON CORP /CAN/"
+   ]
+  }
+ },
+ "companies": {
+  "EQH": {
+   "cik": 1333986,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 9619000000,
+    "2020": 12415000000,
+    "2021": 7614000000,
+    "2022": 12644000000,
+    "2023": 10460000000,
+    "2024": 12425000000,
+    "2025": 11665000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 3.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "CRBG": {
+   "cik": 1889539,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2020": 15062000000,
+    "2021": 23257000000,
+    "2022": 24697000000,
+    "2023": 18800000000,
+    "2024": 18707000000,
+    "2025": 18481000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 4.2,
+   "revenue_span": "CY2020-CY2025"
+  },
+  "JXN": {
+   "cik": 1822993,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 3478000000,
+    "2020": 3546000000,
+    "2021": 6360000000,
+    "2022": 9848000000,
+    "2023": 3083000000,
+    "2024": 3271000000,
+    "2025": 6683000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 11.5,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "VOYA": {
+   "cik": 1535929,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 7478000000,
+    "2020": 7649000000,
+    "2021": 4174000000,
+    "2022": 5930000000,
+    "2023": 7348000000,
+    "2024": 8050000000,
+    "2025": 8189000000
+   },
+   "operating_margin_pct": {
+    "2023": 12.5,
+    "2024": 10.8,
+    "2025": 12.7
+   },
+   "revenue_cagr_pct": 1.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.2,
+   "margin_span": "CY2023-CY2025"
+  },
+  "PFG": {
+   "cik": 1126328,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 16222100000,
+    "2020": 14741700000,
+    "2021": 14427800000,
+    "2022": 17536100000,
+    "2023": 13665800000,
+    "2024": 16127700000,
+    "2025": 15625500000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": -0.6,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "APO": {
+   "cik": 1858681,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2020": 2354000000,
+    "2021": 5951000000,
+    "2022": 10968000000,
+    "2023": 32644000000,
+    "2024": 26114000000,
+    "2025": 32049000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 68.6,
+   "revenue_span": "CY2020-CY2025"
+  },
+  "KKR": {
+   "cik": 1404912,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 4220900000,
+    "2020": 4230891000,
+    "2021": 16226040000,
+    "2022": 5704180000,
+    "2023": 14499312000,
+    "2024": 21878698000,
+    "2025": 19464307000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 29.0,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "ARES": {
+   "cik": 1176948,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 1433126000,
+    "2020": 1753729000,
+    "2021": 2288876000,
+    "2022": 2880007000,
+    "2023": 3236285000,
+    "2024": 3690668000,
+    "2025": 4755618000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 22.1,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BX": {
+   "cik": 1393818,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 7338270000,
+    "2020": 6101927000,
+    "2021": 22577148000,
+    "2022": 8517673000,
+    "2023": 8022841000,
+    "2024": 13229968000,
+    "2025": 14450265000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 12.0,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "OWL": {
+   "cik": 1823945,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 190850000,
+    "2020": 249815000,
+    "2021": 823878000,
+    "2022": 233993000,
+    "2023": 387346000,
+    "2024": 527859000,
+    "2025": 567754000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 19.9,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "RGA": {
+   "cik": 898174,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 14300000000,
+    "2020": 14596000000,
+    "2021": 16667000000,
+    "2022": 16227000000,
+    "2023": 18567000000,
+    "2024": 22107000000,
+    "2025": 23698000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 8.8,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BLK": {
+   "cik": 2012383,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2022": 11061000000,
+    "2023": 11012000000,
+    "2024": 12794000000,
+    "2025": 24216000000
+   },
+   "operating_margin_pct": {
+    "2022": 57.7,
+    "2023": 57.0,
+    "2024": 59.2,
+    "2025": 29.1
+   },
+   "revenue_cagr_pct": 29.8,
+   "revenue_span": "CY2022-CY2025",
+   "margin_delta_pp": -28.6,
+   "margin_span": "CY2022-CY2025"
+  },
+  "TROW": {
+   "cik": 1113169,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 5617900000,
+    "2020": 6206700000,
+    "2021": 7671900000,
+    "2022": 6488400000,
+    "2023": 6460500000,
+    "2024": 7093600000,
+    "2025": 7314800000
+   },
+   "operating_margin_pct": {
+    "2019": 42.5,
+    "2020": 44.2,
+    "2021": 48.4,
+    "2022": 36.6,
+    "2023": 30.7,
+    "2024": 32.9,
+    "2025": 29.9
+   },
+   "revenue_cagr_pct": 4.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -12.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CNO": {
+   "cik": 1224608,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 4015800000,
+    "2020": 3821100000,
+    "2021": 4122200000,
+    "2022": 3576800000,
+    "2023": 4146800000,
+    "2024": 4449500000,
+    "2025": 4487400000
+   },
+   "operating_margin_pct": {
+    "2019": 9.2,
+    "2020": 12.1,
+    "2021": 12.5,
+    "2022": 13.0,
+    "2023": 11.1,
+    "2024": 12.4,
+    "2025": 12.3
+   },
+   "revenue_cagr_pct": 1.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "UNM": {
+   "cik": 5513,
+   "vertical": "inc",
+   "limb": "A",
+   "revenue": {
+    "2019": 11998900000,
+    "2020": 13162100000,
+    "2021": 12007800000,
+    "2022": 11984100000,
+    "2023": 12385900000,
+    "2024": 12887300000,
+    "2025": 13075500000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 1.4,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "MS": {
+   "cik": 895421,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "LPLA": {
+   "cik": 1397911,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 5624856000,
+    "2020": 5871640000,
+    "2021": 7720830000,
+    "2022": 8600825000,
+    "2023": 10052848000,
+    "2024": 12385107000,
+    "2025": 16989479000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 20.2,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "RJF": {
+   "cik": 720005,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 8023000000,
+    "2020": 8168000000,
+    "2021": 9910000000,
+    "2022": 11308000000,
+    "2023": 12992000000,
+    "2024": 14923000000,
+    "2025": 15912000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 12.1,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "SCHW": {
+   "cik": 316709,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 10721000000,
+    "2020": 11691000000,
+    "2021": 18520000000,
+    "2022": 20762000000,
+    "2023": 18837000000,
+    "2024": 19606000000,
+    "2025": 23921000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 14.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "AMP": {
+   "cik": 820027,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 13103000000,
+    "2020": 11958000000,
+    "2021": 13389000000,
+    "2022": 14334000000,
+    "2023": 16096000000,
+    "2024": 17926000000,
+    "2025": 18911000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 6.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "SF": {
+   "cik": 720672,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 3514961000,
+    "2020": 3817839000,
+    "2021": 4783086000,
+    "2022": 4592826000,
+    "2023": 5159280000,
+    "2024": 5951686000,
+    "2025": 6347533000
+   },
+   "operating_margin_pct": {
+    "2022": 19.3,
+    "2023": 13.7,
+    "2024": 15.6
+   },
+   "revenue_cagr_pct": 10.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.7,
+   "margin_span": "CY2022-CY2024"
+  },
+  "NTRS": {
+   "cik": 73124,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 6073100000,
+    "2020": 6100800000,
+    "2021": 6464500000,
+    "2022": 6761200000,
+    "2023": 6773500000,
+    "2024": 8290400000,
+    "2025": 8086400000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 4.9,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BK": {
+   "cik": 1390777,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 16462000000,
+    "2020": 15808000000,
+    "2021": 15931000000,
+    "2022": 16529000000,
+    "2023": 17697000000,
+    "2024": 18619000000,
+    "2025": 20080000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 3.4,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "SEIC": {
+   "cik": 350894,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 1649885000,
+    "2020": 1684058000,
+    "2021": 1918309000,
+    "2022": 1991037000,
+    "2023": 1919793000,
+    "2024": 2125151000,
+    "2025": 2297381000
+   },
+   "operating_margin_pct": {
+    "2019": 27.9,
+    "2020": 26.5,
+    "2021": 28.8,
+    "2022": 23.9,
+    "2023": 22.1,
+    "2024": 26.0,
+    "2025": 27.3
+   },
+   "revenue_cagr_pct": 5.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "MORN": {
+   "cik": 1289419,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 1179000000,
+    "2020": 1389500000,
+    "2021": 1699300000,
+    "2022": 1870600000,
+    "2023": 2038600000,
+    "2024": 2275100000,
+    "2025": 2445500000
+   },
+   "operating_margin_pct": {
+    "2019": 16.1,
+    "2020": 15.5,
+    "2021": 15.1,
+    "2022": 9.0,
+    "2023": 11.3,
+    "2024": 21.3,
+    "2025": 21.5
+   },
+   "revenue_cagr_pct": 12.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 5.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "INTU": {
+   "cik": 896878,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 6784000000,
+    "2020": 7679000000,
+    "2021": 9633000000,
+    "2022": 12726000000,
+    "2023": 14368000000,
+    "2024": 16285000000,
+    "2025": 18831000000
+   },
+   "operating_margin_pct": {
+    "2019": 27.3,
+    "2020": 28.3,
+    "2021": 26.0,
+    "2022": 20.2,
+    "2023": 21.9,
+    "2024": 22.3,
+    "2025": 26.1
+   },
+   "revenue_cagr_pct": 18.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -1.2,
+   "margin_span": "CY2019-CY2025"
+  },
+  "TRI": {
+   "cik": 1075124,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "UBS": {
+   "cik": 1610520,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "IBKR": {
+   "cik": 1381197,
+   "vertical": "wt",
+   "limb": "B",
+   "revenue": {
+    "2019": 2580000000,
+    "2020": 1287000000,
+    "2021": 1568000000,
+    "2022": 1506000000,
+    "2023": 1557000000,
+    "2024": 1977000000,
+    "2025": 2440000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": -0.9,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "AMN": {
+   "cik": 1142750,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 2222107000,
+    "2020": 2393714000,
+    "2021": 3984235000,
+    "2022": 5243242000,
+    "2023": 3789254000,
+    "2024": 2983781000,
+    "2025": 2730429000
+   },
+   "operating_margin_pct": {
+    "2019": 8.0,
+    "2020": 6.2,
+    "2021": 12.0,
+    "2022": 12.3,
+    "2023": 8.9,
+    "2024": -3.4,
+    "2025": -2.0
+   },
+   "revenue_cagr_pct": 3.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -10.0,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CCRN": {
+   "cik": 1141103,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 822224000,
+    "2020": 836417000,
+    "2021": 1676652000,
+    "2022": 2803381000,
+    "2023": 2019728000,
+    "2024": 1344004000,
+    "2025": 1054293000
+   },
+   "operating_margin_pct": {
+    "2019": -1.9,
+    "2020": -1.1,
+    "2021": 8.3,
+    "2022": 9.6,
+    "2023": 5.6,
+    "2024": -1.3,
+    "2025": -8.0
+   },
+   "revenue_cagr_pct": 4.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -6.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "EME": {
+   "cik": 105634,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 9174611000,
+    "2020": 8797061000,
+    "2021": 9903580000,
+    "2022": 11076120000,
+    "2023": 12582873000,
+    "2024": 14566116000,
+    "2025": 16986422000
+   },
+   "operating_margin_pct": {
+    "2019": 5.0,
+    "2020": 2.9,
+    "2021": 5.4,
+    "2022": 5.1,
+    "2023": 7.0,
+    "2024": 9.2,
+    "2025": 10.1
+   },
+   "revenue_cagr_pct": 10.8,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 5.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "FIX": {
+   "cik": 1035983,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 2615277000,
+    "2020": 2856659000,
+    "2021": 3073636000,
+    "2022": 4140364000,
+    "2023": 5206760000,
+    "2024": 7027476000
+   },
+   "operating_margin_pct": {
+    "2019": 6.3,
+    "2020": 6.7,
+    "2021": 6.1,
+    "2022": 6.1,
+    "2023": 8.0,
+    "2024": 10.7
+   },
+   "revenue_cagr_pct": 21.9,
+   "revenue_span": "CY2019-CY2024",
+   "margin_delta_pp": 4.4,
+   "margin_span": "CY2019-CY2024"
+  },
+  "MYRG": {
+   "cik": 700923,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 2071159000,
+    "2020": 2247392000,
+    "2021": 2498289000,
+    "2022": 3008542000,
+    "2023": 3643905000,
+    "2024": 3362290000,
+    "2025": 3657889000
+   },
+   "operating_margin_pct": {
+    "2019": 2.8,
+    "2020": 3.9,
+    "2021": 4.7,
+    "2022": 3.8,
+    "2023": 3.5,
+    "2024": 1.6,
+    "2025": 4.6
+   },
+   "revenue_cagr_pct": 9.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.8,
+   "margin_span": "CY2019-CY2025"
+  },
+  "PWR": {
+   "cik": 1050915,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 12112153000,
+    "2020": 11202672000,
+    "2021": 12980213000,
+    "2022": 17073903000,
+    "2023": 20882206000,
+    "2024": 23672795000,
+    "2025": 28479697000
+   },
+   "operating_margin_pct": {
+    "2019": 4.6,
+    "2020": 5.5,
+    "2021": 5.1,
+    "2022": 5.1,
+    "2023": 5.4,
+    "2024": 5.7,
+    "2025": 5.7
+   },
+   "revenue_cagr_pct": 15.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "IESC": {
+   "cik": 1048268,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 1076996000,
+    "2020": 1190856000,
+    "2021": 1536493000,
+    "2022": 2166808000,
+    "2023": 2377227000,
+    "2024": 2884358000,
+    "2025": 3371468000
+   },
+   "operating_margin_pct": {
+    "2019": 3.9,
+    "2020": 4.2,
+    "2021": 5.6,
+    "2022": 2.6,
+    "2023": 6.7,
+    "2024": 10.4,
+    "2025": 11.4
+   },
+   "revenue_cagr_pct": 20.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 7.5,
+   "margin_span": "CY2019-CY2025"
+  },
+  "APG": {
+   "cik": 1796209,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 985000000,
+    "2020": 3587000000,
+    "2021": 3940000000,
+    "2022": 6558000000,
+    "2023": 6928000000,
+    "2024": 7018000000,
+    "2025": 7911000000
+   },
+   "operating_margin_pct": {
+    "2019": -16.3,
+    "2020": -4.6,
+    "2021": 3.5,
+    "2022": 2.5,
+    "2023": 5.2,
+    "2024": 6.9,
+    "2025": 7.0
+   },
+   "revenue_cagr_pct": 41.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 23.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LMB": {
+   "cik": 1606163,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 553334000,
+    "2020": 568209000,
+    "2021": 490351000,
+    "2022": 496782000,
+    "2023": 516350000,
+    "2024": 518781000,
+    "2025": 646804000
+   },
+   "operating_margin_pct": {
+    "2019": 1.5,
+    "2020": 3.0,
+    "2021": 2.9,
+    "2022": 2.4,
+    "2023": 5.7,
+    "2024": 7.4,
+    "2025": 7.6
+   },
+   "revenue_cagr_pct": 2.6,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 6.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ATGE": {
+   "cik": 730464,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 1013843000,
+    "2020": 866427000,
+    "2021": 899248000,
+    "2022": 1381842000,
+    "2023": 1450826000,
+    "2024": 1584652000,
+    "2025": 1788290000
+   },
+   "operating_margin_pct": {
+    "2019": 15.4,
+    "2020": 12.7,
+    "2021": 12.3,
+    "2022": 5.6,
+    "2023": 11.6,
+    "2024": 13.7,
+    "2025": 19.1
+   },
+   "revenue_cagr_pct": 9.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.7,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LOPE": {
+   "cik": 1434588,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 778643000,
+    "2020": 844096000,
+    "2021": 896564000,
+    "2022": 911306000,
+    "2023": 960899000,
+    "2024": 1033002000,
+    "2025": 1106070000
+   },
+   "operating_margin_pct": {
+    "2019": 34.1,
+    "2020": 32.9,
+    "2021": 31.5,
+    "2022": 26.1,
+    "2023": 25.9,
+    "2024": 26.7,
+    "2025": 24.0
+   },
+   "revenue_cagr_pct": 6.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -10.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LINC": {
+   "cik": 1286613,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 273342000,
+    "2020": 293095000,
+    "2021": 335336000,
+    "2022": 348287000,
+    "2023": 378070000,
+    "2024": 440064000,
+    "2025": 518241000
+   },
+   "operating_margin_pct": {
+    "2019": 1.9,
+    "2020": 5.0,
+    "2021": 14.7,
+    "2022": 4.7,
+    "2023": 8.8,
+    "2024": 3.4,
+    "2025": 5.8
+   },
+   "revenue_cagr_pct": 11.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "UTI": {
+   "cik": 1261654,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 331504000,
+    "2020": 300761000,
+    "2021": 335083000,
+    "2022": 418765000,
+    "2023": 607408000,
+    "2024": 732687000,
+    "2025": 835616000
+   },
+   "operating_margin_pct": {
+    "2019": -2.4,
+    "2020": -1.3,
+    "2021": 4.5,
+    "2022": 5.3,
+    "2023": 3.5,
+    "2024": 8.0,
+    "2025": 10.0
+   },
+   "revenue_cagr_pct": 16.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 12.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "KFY": {
+   "cik": 56679,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 1977330000,
+    "2020": 1819946000,
+    "2021": 2643455000,
+    "2022": 2863836000,
+    "2023": 2795505000,
+    "2024": 2761086000,
+    "2025": 2938641000
+   },
+   "operating_margin_pct": {
+    "2019": 8.9,
+    "2020": 8.6,
+    "2021": 17.8,
+    "2022": 11.0,
+    "2023": 7.6,
+    "2024": 12.5,
+    "2025": 12.8
+   },
+   "revenue_cagr_pct": 6.8,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "HCSG": {
+   "cik": 731012,
+   "vertical": "lab",
+   "limb": "C",
+   "revenue": {
+    "2019": 1840778000,
+    "2020": 1760303000,
+    "2021": 1641959000,
+    "2022": 1690176000,
+    "2023": 1671389000,
+    "2024": 1715682000,
+    "2025": 1837173000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": -0.0,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "ROK": {
+   "cik": 1024478,
+   "vertical": "aut",
+   "limb": "C",
+   "revenue": {
+    "2019": 6694800000,
+    "2020": 6329800000,
+    "2021": 6997400000,
+    "2022": 7760400000,
+    "2023": 9058000000,
+    "2024": 8264000000,
+    "2025": 8342000000
+   },
+   "operating_margin_pct": {
+    "2023": 21.3,
+    "2024": 19.3,
+    "2025": 20.4
+   },
+   "revenue_cagr_pct": 3.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.9,
+   "margin_span": "CY2023-CY2025"
+  },
+  "EMR": {
+   "cik": 32604,
+   "vertical": "aut",
+   "limb": "C",
+   "revenue": {
+    "2019": 18372000000,
+    "2020": 16785000000,
+    "2021": 12932000000,
+    "2022": 1660000000,
+    "2023": 15165000000,
+    "2024": 17492000000,
+    "2025": 18016000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": -0.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "SYM": {
+   "cik": 1837240,
+   "vertical": "aut",
+   "limb": "C",
+   "revenue": {
+    "2020": 92086000,
+    "2021": 251913000,
+    "2022": 593312000,
+    "2023": 1176891000,
+    "2024": 1788179000,
+    "2025": 2246922000
+   },
+   "operating_margin_pct": {
+    "2020": -119.9,
+    "2021": -2.6,
+    "2022": -23.7,
+    "2023": -19.0,
+    "2024": -6.5,
+    "2025": -5.1
+   },
+   "revenue_cagr_pct": 89.4,
+   "revenue_span": "CY2020-CY2025",
+   "margin_delta_pp": 114.8,
+   "margin_span": "CY2020-CY2025"
+  },
+  "ISRG": {
+   "cik": 1035267,
+   "vertical": "aut",
+   "limb": "C",
+   "revenue": {
+    "2019": 4478500000,
+    "2020": 4358400000,
+    "2021": 5710100000,
+    "2022": 6222200000,
+    "2023": 7124100000,
+    "2024": 8352100000,
+    "2025": 10064700000
+   },
+   "operating_margin_pct": {
+    "2019": 30.7,
+    "2020": 24.1,
+    "2021": 31.9,
+    "2022": 25.3,
+    "2023": 24.8,
+    "2024": 28.1,
+    "2025": 29.3
+   },
+   "revenue_cagr_pct": 14.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -1.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ZBRA": {
+   "cik": 877212,
+   "vertical": "aut",
+   "limb": "C",
+   "revenue": {
+    "2019": 4485000000,
+    "2020": 4448000000,
+    "2021": 5627000000,
+    "2022": 5781000000,
+    "2023": 4584000000,
+    "2024": 4981000000,
+    "2025": 5396000000
+   },
+   "operating_margin_pct": {
+    "2019": 15.4,
+    "2020": 14.6,
+    "2021": 17.4,
+    "2022": 9.2,
+    "2023": 10.5,
+    "2024": 14.9,
+    "2025": 13.0
+   },
+   "revenue_cagr_pct": 3.1,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -2.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ENSG": {
+   "cik": 1125376,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 2036524000,
+    "2020": 2402596000,
+    "2021": 2627461000,
+    "2022": 3025468000,
+    "2023": 3729355000,
+    "2024": 4260485000,
+    "2025": 5057841000
+   },
+   "operating_margin_pct": {
+    "2019": 6.3,
+    "2020": 9.3,
+    "2021": 9.9,
+    "2022": 9.8,
+    "2023": 6.8,
+    "2024": 8.4,
+    "2025": 8.4
+   },
+   "revenue_cagr_pct": 16.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 2.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ADUS": {
+   "cik": 1468328,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 648791000,
+    "2020": 764775000,
+    "2021": 864499000,
+    "2022": 951120000,
+    "2023": 1058651000,
+    "2024": 1154599000,
+    "2025": 1422530000
+   },
+   "operating_margin_pct": {
+    "2019": 5.4,
+    "2020": 5.8,
+    "2021": 7.6,
+    "2022": 7.2,
+    "2023": 8.6,
+    "2024": 8.9,
+    "2025": 9.7
+   },
+   "revenue_cagr_pct": 14.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 4.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "AMED": {
+   "cik": 896262,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2022": 2223199000,
+    "2023": 2236382000,
+    "2024": 2348324000
+   },
+   "operating_margin_pct": {
+    "2022": 8.1,
+    "2023": 7.0,
+    "2024": 4.0
+   },
+   "revenue_cagr_pct": 2.8,
+   "revenue_span": "CY2022-CY2024",
+   "margin_delta_pp": -4.1,
+   "margin_span": "CY2022-CY2024"
+  },
+  "AVAH": {
+   "cik": 1832332,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 1384065000,
+    "2020": 1495105000,
+    "2021": 1678618000,
+    "2022": 1787645000,
+    "2023": 1895209000,
+    "2024": 2024506000,
+    "2025": 2433199000
+   },
+   "operating_margin_pct": {
+    "2019": 2.8,
+    "2020": -0.2,
+    "2021": -2.2,
+    "2022": -35.9,
+    "2023": 0.4,
+    "2024": 6.9,
+    "2025": 10.5
+   },
+   "revenue_cagr_pct": 9.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 7.7,
+   "margin_span": "CY2019-CY2025"
+  },
+  "BTSG": {
+   "cik": 1865782,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2022": 6637456000,
+    "2023": 7691016000,
+    "2024": 10072214000,
+    "2025": 12910564000
+   },
+   "operating_margin_pct": {
+    "2022": 1.8,
+    "2023": 0.8,
+    "2024": 1.1,
+    "2025": 2.3
+   },
+   "revenue_cagr_pct": 24.8,
+   "revenue_span": "CY2022-CY2025",
+   "margin_delta_pp": 0.5,
+   "margin_span": "CY2022-CY2025"
+  },
+  "CHE": {
+   "cik": 19584,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 1938555000,
+    "2020": 2079583000,
+    "2021": 2139261000,
+    "2022": 2134963000,
+    "2023": 2264417000,
+    "2024": 2431287000,
+    "2025": 2529978000
+   },
+   "operating_margin_pct": {
+    "2019": 13.3,
+    "2020": 18.7,
+    "2021": 16.0,
+    "2022": 16.1,
+    "2023": 15.0,
+    "2024": 15.1,
+    "2025": 13.4
+   },
+   "revenue_cagr_pct": 4.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "EHC": {
+   "cik": 785161,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 4605000000,
+    "2020": 3566300000,
+    "2021": 4014900000,
+    "2022": 4348600000,
+    "2023": 4801200000,
+    "2024": 5373200000,
+    "2025": 5935200000
+   },
+   "operating_margin_pct": {
+    "2019": 13.3,
+    "2020": 15.8,
+    "2021": 13.9,
+    "2022": 12.4
+   },
+   "revenue_cagr_pct": 4.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.9,
+   "margin_span": "CY2019-CY2022"
+  },
+  "USPH": {
+   "cik": 885978,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 481969000,
+    "2020": 422969000,
+    "2021": 495022000,
+    "2022": 553144000,
+    "2023": 604802000,
+    "2024": 671345000,
+    "2025": 780990000
+   },
+   "operating_margin_pct": {
+    "2019": 14.0,
+    "2020": 12.4,
+    "2021": 14.3,
+    "2022": 10.3,
+    "2023": 8.4,
+    "2024": 9.4,
+    "2025": 11.1
+   },
+   "revenue_cagr_pct": 8.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -2.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "OPCH": {
+   "cik": 1014739,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 2310417000,
+    "2020": 3032610000,
+    "2021": 3438640000,
+    "2022": 3944735000,
+    "2023": 4302324000,
+    "2024": 4998202000,
+    "2025": 5649519000
+   },
+   "operating_margin_pct": {
+    "2019": -0.0,
+    "2020": 3.7,
+    "2021": 5.5,
+    "2022": 6.1,
+    "2023": 7.3,
+    "2024": 6.4,
+    "2025": 6.0
+   },
+   "revenue_cagr_pct": 16.1,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 6.0,
+   "margin_span": "CY2019-CY2025"
+  },
+  "DVA": {
+   "cik": 927066,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 11388479000,
+    "2020": 11550604000,
+    "2021": 11618797000,
+    "2022": 11609894000,
+    "2023": 12140147000,
+    "2024": 12815550000,
+    "2025": 13643069000
+   },
+   "operating_margin_pct": {
+    "2019": 14.4,
+    "2020": 14.7,
+    "2021": 15.5,
+    "2022": 11.5,
+    "2023": 13.2,
+    "2024": 16.3,
+    "2025": 15.0
+   },
+   "revenue_cagr_pct": 3.1,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "RDNT": {
+   "cik": 790526,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 1154179000,
+    "2020": 1071840000,
+    "2021": 1315077000,
+    "2022": 1430061000,
+    "2023": 1616630000,
+    "2024": 1829664000,
+    "2025": 2040210000
+   },
+   "operating_margin_pct": {
+    "2019": 6.1,
+    "2020": 3.3,
+    "2021": 6.3,
+    "2022": 3.2,
+    "2023": 6.1,
+    "2024": 5.7,
+    "2025": 3.0
+   },
+   "revenue_cagr_pct": 10.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LH": {
+   "cik": 920148,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 11554800000,
+    "2020": 13978500000,
+    "2021": 13136100000,
+    "2022": 11863900000,
+    "2023": 12161600000,
+    "2024": 13008900000,
+    "2025": 13951700000
+   },
+   "operating_margin_pct": {
+    "2019": 11.5,
+    "2020": 17.5,
+    "2021": 23.2,
+    "2022": 12.1,
+    "2023": 6.0,
+    "2024": 8.4,
+    "2025": 9.9
+   },
+   "revenue_cagr_pct": 3.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -1.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "PRVA": {
+   "cik": 1759655,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 786360000,
+    "2020": 817075000,
+    "2021": 966220000,
+    "2022": 1356660000,
+    "2023": 1657737000,
+    "2024": 1736390000,
+    "2025": 2122842000
+   },
+   "operating_margin_pct": {
+    "2019": 2.0,
+    "2020": 3.1,
+    "2021": -22.5,
+    "2022": -1.4,
+    "2023": 1.2,
+    "2024": 1.0,
+    "2025": 1.6
+   },
+   "revenue_cagr_pct": 18.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ASTH": {
+   "cik": 1083446,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 560618000,
+    "2020": 687180000,
+    "2021": 773915000,
+    "2022": 1144163000,
+    "2023": 1386661000,
+    "2024": 2034540000,
+    "2025": 3181769000
+   },
+   "operating_margin_pct": {
+    "2019": 5.8,
+    "2020": 11.7,
+    "2021": 12.7,
+    "2022": 9.1,
+    "2023": 6.1,
+    "2024": 4.4,
+    "2025": 2.5
+   },
+   "revenue_cagr_pct": 33.6,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "PNTG": {
+   "cik": 1766400,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 338531000,
+    "2020": 390953000,
+    "2021": 439694000,
+    "2022": 473241000,
+    "2023": 544891000,
+    "2024": 695240000,
+    "2025": 947705000
+   },
+   "operating_margin_pct": {
+    "2019": 1.7,
+    "2020": 4.8,
+    "2021": 1.1,
+    "2022": 2.7,
+    "2023": 4.6,
+    "2024": 5.5,
+    "2025": 5.5
+   },
+   "revenue_cagr_pct": 18.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.8,
+   "margin_span": "CY2019-CY2025"
+  },
+  "NHC": {
+   "cik": 1047335,
+   "vertical": "care",
+   "limb": "D",
+   "revenue": {
+    "2019": 996383000,
+    "2020": 1028217000,
+    "2021": 1074302000,
+    "2022": 1085738000,
+    "2023": 1141544000,
+    "2024": 1307382000,
+    "2025": 1517781000
+   },
+   "operating_margin_pct": {
+    "2019": 4.9,
+    "2020": 4.7,
+    "2021": 4.7,
+    "2022": 2.9,
+    "2023": 5.0,
+    "2024": 6.9,
+    "2025": 8.5
+   },
+   "revenue_cagr_pct": 7.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "UNH": {
+   "cik": 731766,
+   "vertical": "pay",
+   "limb": "E",
+   "revenue": {
+    "2019": 242155000000,
+    "2020": 257141000000,
+    "2021": 287597000000,
+    "2022": 324162000000,
+    "2023": 371622000000,
+    "2024": 400278000000,
+    "2025": 447567000000
+   },
+   "operating_margin_pct": {
+    "2019": 8.1,
+    "2020": 8.7,
+    "2021": 8.3,
+    "2022": 8.8,
+    "2023": 8.7,
+    "2024": 8.1,
+    "2025": 4.2
+   },
+   "revenue_cagr_pct": 10.8,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "HUM": {
+   "cik": 49071,
+   "vertical": "pay",
+   "limb": "E",
+   "revenue": {
+    "2019": 64888000000,
+    "2020": 77155000000,
+    "2021": 83064000000,
+    "2022": 92870000000,
+    "2023": 106374000000,
+    "2024": 117761000000,
+    "2025": 129664000000
+   },
+   "operating_margin_pct": {
+    "2019": 4.9,
+    "2020": 6.5,
+    "2021": 3.8,
+    "2022": 4.1,
+    "2023": 3.8,
+    "2024": 2.2,
+    "2025": 2.1
+   },
+   "revenue_cagr_pct": 12.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -2.8,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ALHC": {
+   "cik": 1832466,
+   "vertical": "pay",
+   "limb": "E",
+   "revenue": {
+    "2019": 756961000,
+    "2020": 959222000,
+    "2021": 1167773000,
+    "2022": 1434159000,
+    "2023": 1823630000,
+    "2024": 2703561000,
+    "2025": 3948719000
+   },
+   "operating_margin_pct": {
+    "2019": -3.9,
+    "2020": -0.5,
+    "2021": -15.2,
+    "2022": -9.0,
+    "2023": -7.0,
+    "2024": -3.8,
+    "2025": 0.4
+   },
+   "revenue_cagr_pct": 31.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 4.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ELV": {
+   "cik": 1156039,
+   "vertical": "pay",
+   "limb": "E",
+   "revenue": {
+    "2019": 104213000000,
+    "2020": 121867000000,
+    "2021": 138639000000,
+    "2022": 156595000000,
+    "2023": 171340000000,
+    "2024": 177011000000,
+    "2025": 199125000000
+   },
+   "operating_margin_pct": {
+    "2019": 5.8,
+    "2020": 5.2,
+    "2021": 5.5,
+    "2022": 5.3,
+    "2023": 5.0,
+    "2024": 4.4,
+    "2025": 3.6
+   },
+   "revenue_cagr_pct": 11.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -2.2,
+   "margin_span": "CY2019-CY2025"
+  },
+  "EVH": {
+   "cik": 1628908,
+   "vertical": "pay",
+   "limb": "E",
+   "revenue": {
+    "2019": 687122000,
+    "2020": 924639000,
+    "2021": 907957000,
+    "2022": 1352013000,
+    "2023": 1963896000,
+    "2024": 2554741000,
+    "2025": 1876229000
+   },
+   "operating_margin_pct": {
+    "2019": -45.0,
+    "2020": -28.4,
+    "2021": -4.7,
+    "2022": 0.3,
+    "2023": -3.6,
+    "2024": -1.6,
+    "2025": -21.9
+   },
+   "revenue_cagr_pct": 18.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 23.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "EW": {
+   "cik": 1099800,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 4348000000,
+    "2020": 4386300000,
+    "2021": 5232500000,
+    "2022": 4464000000,
+    "2023": 5010000000,
+    "2024": 5439500000,
+    "2025": 6067600000
+   },
+   "operating_margin_pct": {
+    "2019": 26.4,
+    "2020": 20.5,
+    "2021": 32.3,
+    "2022": 33.6,
+    "2023": 26.1,
+    "2024": 25.3,
+    "2025": 20.8
+   },
+   "revenue_cagr_pct": 5.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -5.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "SYK": {
+   "cik": 310764,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 14884000000,
+    "2020": 14351000000,
+    "2021": 17108000000,
+    "2022": 18449000000,
+    "2023": 20498000000,
+    "2024": 22595000000,
+    "2025": 25116000000
+   },
+   "operating_margin_pct": {
+    "2019": 18.2,
+    "2020": 15.5,
+    "2021": 15.1,
+    "2022": 15.4,
+    "2023": 19.0,
+    "2024": 16.3,
+    "2025": 19.5
+   },
+   "revenue_cagr_pct": 9.1,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "ZBH": {
+   "cik": 1136869,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 6960600000,
+    "2020": 6127500000,
+    "2021": 6827300000,
+    "2022": 6939900000,
+    "2023": 7394200000,
+    "2024": 7678600000,
+    "2025": 8231500000
+   },
+   "operating_margin_pct": {
+    "2019": 16.0,
+    "2020": 1.4,
+    "2021": 12.6,
+    "2022": 10.0,
+    "2023": 17.3,
+    "2024": 16.7,
+    "2025": 13.3
+   },
+   "revenue_cagr_pct": 2.8,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -2.7,
+   "margin_span": "CY2019-CY2025"
+  },
+  "GMED": {
+   "cik": 1237831,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 785368000,
+    "2020": 789042000,
+    "2021": 958102000,
+    "2022": 1022843000,
+    "2023": 1568476000,
+    "2024": 2519355000,
+    "2025": 2938931000
+   },
+   "operating_margin_pct": {
+    "2019": 21.9,
+    "2020": 14.1,
+    "2021": 17.9,
+    "2022": 22.3,
+    "2023": 8.5,
+    "2024": 6.6,
+    "2025": 16.3
+   },
+   "revenue_cagr_pct": 24.6,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -5.6,
+   "margin_span": "CY2019-CY2025"
+  },
+  "SNN": {
+   "cik": 845982,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "ALC": {
+   "cik": 1167379,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "BLCO": {
+   "cik": 1860742,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2020": 3412000000,
+    "2021": 3765000000,
+    "2022": 3768000000,
+    "2023": 4146000000,
+    "2024": 4791000000,
+    "2025": 5101000000
+   },
+   "operating_margin_pct": {
+    "2020": 7.6,
+    "2021": 8.7,
+    "2022": 5.5,
+    "2023": 3.1,
+    "2024": 3.4,
+    "2025": 2.2
+   },
+   "revenue_cagr_pct": 8.4,
+   "revenue_span": "CY2020-CY2025",
+   "margin_delta_pp": -5.4,
+   "margin_span": "CY2020-CY2025"
+  },
+  "RMD": {
+   "cik": 943819,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 2606572000,
+    "2020": 2957013000,
+    "2021": 3196825000,
+    "2022": 3578127000,
+    "2023": 4222993000,
+    "2024": 4685297000,
+    "2025": 5146327000
+   },
+   "operating_margin_pct": {
+    "2019": 22.2,
+    "2020": 27.4,
+    "2021": 28.3,
+    "2022": 28.0,
+    "2023": 26.8,
+    "2024": 28.2,
+    "2025": 32.7
+   },
+   "revenue_cagr_pct": 12.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 10.5,
+   "margin_span": "CY2019-CY2025"
+  },
+  "DXCM": {
+   "cik": 1093557,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 1476000000,
+    "2020": 1926700000,
+    "2021": 2448500000,
+    "2022": 2909800000,
+    "2023": 3622300000,
+    "2024": 4033000000,
+    "2025": 4662000000
+   },
+   "operating_margin_pct": {
+    "2019": 9.6,
+    "2020": 15.5,
+    "2021": 10.9,
+    "2022": 13.4,
+    "2023": 16.5,
+    "2024": 14.9,
+    "2025": 19.6
+   },
+   "revenue_cagr_pct": 21.1,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 10.0,
+   "margin_span": "CY2019-CY2025"
+  },
+  "BSX": {
+   "cik": 885725,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 10735000000,
+    "2020": 9913000000,
+    "2021": 11888000000,
+    "2022": 12682000000,
+    "2023": 14240000000,
+    "2024": 16747000000,
+    "2025": 20074000000
+   },
+   "operating_margin_pct": {
+    "2019": 14.1,
+    "2020": -0.8,
+    "2021": 10.1,
+    "2022": 13.0,
+    "2023": 16.5,
+    "2024": 15.5,
+    "2025": 18.0
+   },
+   "revenue_cagr_pct": 11.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "MDT": {
+   "cik": 1613103,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 28913000000,
+    "2020": 30117000000,
+    "2021": 31686000000,
+    "2022": 31227000000,
+    "2023": 32364000000,
+    "2024": 33537000000,
+    "2025": 36364000000
+   },
+   "operating_margin_pct": {
+    "2019": 16.6,
+    "2020": 14.9,
+    "2021": 18.2,
+    "2022": 17.6,
+    "2023": 15.9,
+    "2024": 17.8,
+    "2025": 17.8
+   },
+   "revenue_cagr_pct": 3.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.2,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LLY": {
+   "cik": 59478,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 22319500000,
+    "2020": 24539800000,
+    "2021": 28318400000,
+    "2022": 28541400000,
+    "2023": 34124000000,
+    "2024": 45043000000,
+    "2025": 65179000000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 19.6,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BIIB": {
+   "cik": 875045,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 14377900000,
+    "2020": 13444600000,
+    "2021": 10981700000,
+    "2022": 10173400000,
+    "2023": 9835600000,
+    "2024": 9675900000,
+    "2025": 9890600000
+   },
+   "operating_margin_pct": {
+    "2019": 49.0,
+    "2020": 33.8,
+    "2021": 25.9
+   },
+   "revenue_cagr_pct": -6.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -23.1,
+   "margin_span": "CY2019-CY2021"
+  },
+  "REGN": {
+   "cik": 872589,
+   "vertical": "dev",
+   "limb": "D",
+   "revenue": {
+    "2019": 6557600000,
+    "2020": 8497100000,
+    "2021": 16071700000,
+    "2022": 12172900000,
+    "2023": 13117200000,
+    "2024": 14202000000,
+    "2025": 14342900000
+   },
+   "operating_margin_pct": {
+    "2019": 33.7,
+    "2020": 42.1,
+    "2021": 55.7,
+    "2022": 38.9,
+    "2023": 30.9,
+    "2024": 28.1,
+    "2025": 24.9
+   },
+   "revenue_cagr_pct": 13.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -8.8,
+   "margin_span": "CY2019-CY2025"
+  },
+  "WELL": {
+   "cik": 766704,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 5121306000,
+    "2020": 4605967000,
+    "2021": 4742115000,
+    "2022": 5860615000,
+    "2023": 6637995000,
+    "2024": 7991118000,
+    "2025": 10838034000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 13.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "VTR": {
+   "cik": 740260,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 3872750000,
+    "2020": 3795357000,
+    "2021": 3828007000,
+    "2022": 4129193000,
+    "2023": 4497827000,
+    "2024": 4924266000,
+    "2025": 5833980000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 7.1,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "CTRE": {
+   "cik": 1590717,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 163401000,
+    "2020": 178332000,
+    "2021": 192351000,
+    "2022": 196132000,
+    "2023": 217770000,
+    "2024": 296286000,
+    "2025": 476393000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 19.5,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "OHI": {
+   "cik": 888491,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 928830000,
+    "2020": 892381000,
+    "2021": 1062809000,
+    "2022": 878244000,
+    "2023": 949740000,
+    "2024": 1051390000,
+    "2025": 1190099000
+   },
+   "operating_margin_pct": {
+    "2019": 59.4
+   },
+   "revenue_cagr_pct": 4.2,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "NHI": {
+   "cik": 877860,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 318081000,
+    "2020": 332811000,
+    "2021": 298715000,
+    "2022": 278194000,
+    "2023": 319835000,
+    "2024": 335181000,
+    "2025": 375628000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 2.8,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "SBRA": {
+   "cik": 1492298,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 661736000,
+    "2020": 598569000,
+    "2021": 569545000,
+    "2022": 624811000,
+    "2023": 647514000,
+    "2024": 703235000,
+    "2025": 774632000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 2.7,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BKD": {
+   "cik": 1332349,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 4057088000,
+    "2020": 3540195000,
+    "2021": 2758259000,
+    "2022": 2825379000,
+    "2023": 3015829000,
+    "2024": 3125487000,
+    "2025": 3194066000
+   },
+   "operating_margin_pct": {
+    "2019": -1.1,
+    "2020": -2.8,
+    "2021": -7.9,
+    "2022": -1.5,
+    "2023": 0.6,
+    "2024": 1.5,
+    "2025": 0.4
+   },
+   "revenue_cagr_pct": -3.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.5,
+   "margin_span": "CY2019-CY2025"
+  },
+  "PHM": {
+   "cik": 822416,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 10212957000,
+    "2020": 11036082000,
+    "2021": 13736995000,
+    "2022": 16002979000,
+    "2023": 16061578000,
+    "2024": 17946950000,
+    "2025": 17311953000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 9.2,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "TMHC": {
+   "cik": 1562476,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 4762059000,
+    "2020": 6129320000,
+    "2021": 7501265000,
+    "2022": 8224917000,
+    "2023": 7417831000,
+    "2024": 8168136000,
+    "2025": 8121480000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 9.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "ELS": {
+   "cik": 895417,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 1037256000,
+    "2020": 1118803000,
+    "2021": 1316403000,
+    "2022": 1447080000,
+    "2023": 1489423000,
+    "2024": 1526166000,
+    "2025": 1531382000
+   },
+   "operating_margin_pct": {
+    "2021": 20.7,
+    "2022": 20.4,
+    "2023": 21.5,
+    "2024": 24.9,
+    "2025": 25.6
+   },
+   "revenue_cagr_pct": 6.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 4.9,
+   "margin_span": "CY2021-CY2025"
+  },
+  "SUI": {
+   "cik": 912593,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 1264037000,
+    "2020": 1398300000,
+    "2021": 2272600000,
+    "2022": 2969700000,
+    "2023": 2284100000,
+    "2024": 2260500000,
+    "2025": 2306100000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 10.5,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "HD": {
+   "cik": 354950,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 110225000000,
+    "2020": 132110000000,
+    "2021": 151157000000,
+    "2022": 157403000000,
+    "2023": 152669000000,
+    "2024": 159514000000,
+    "2025": 164683000000
+   },
+   "operating_margin_pct": {
+    "2019": 14.4,
+    "2020": 13.8,
+    "2021": 15.2,
+    "2022": 15.3,
+    "2023": 14.2,
+    "2024": 13.5,
+    "2025": 12.7
+   },
+   "revenue_cagr_pct": 6.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -1.7,
+   "margin_span": "CY2019-CY2025"
+  },
+  "LOW": {
+   "cik": 60667,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 72148000000,
+    "2020": 89597000000,
+    "2021": 96250000000,
+    "2022": 97059000000,
+    "2023": 86377000000,
+    "2024": 83674000000,
+    "2025": 86286000000
+   },
+   "operating_margin_pct": {
+    "2019": 8.8,
+    "2020": 10.8,
+    "2021": 12.6,
+    "2022": 10.5,
+    "2023": 13.4,
+    "2024": 12.5,
+    "2025": 11.8
+   },
+   "revenue_cagr_pct": 3.0,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 3.0,
+   "margin_span": "CY2019-CY2025"
+  },
+  "IBP": {
+   "cik": 1580905,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 1511629000,
+    "2020": 1653225000,
+    "2021": 1968700000,
+    "2022": 2669800000,
+    "2023": 2778600000,
+    "2024": 2941300000,
+    "2025": 2970800000
+   },
+   "operating_margin_pct": {
+    "2019": 8.0,
+    "2020": 9.8,
+    "2021": 9.5,
+    "2022": 12.9,
+    "2023": 13.3,
+    "2024": 13.0,
+    "2025": 13.0
+   },
+   "revenue_cagr_pct": 11.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 5.0,
+   "margin_span": "CY2019-CY2025"
+  },
+  "FOA": {
+   "cik": 1828937,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2019": 891525000,
+    "2020": 256623000,
+    "2022": 52762000,
+    "2023": 234250000,
+    "2024": 394364000,
+    "2025": 497432000
+   },
+   "operating_margin_pct": {
+    "2019": -0.0,
+    "2020": -0.9
+   },
+   "revenue_cagr_pct": -9.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.9,
+   "margin_span": "CY2019-CY2020"
+  },
+  "LEG": {
+   "cik": 58492,
+   "vertical": "hou",
+   "limb": "H",
+   "revenue": {
+    "2020": 4329000000,
+    "2021": 5133700000,
+    "2022": 5203900000,
+    "2023": 4725300000,
+    "2024": 4383600000,
+    "2025": 4055100000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": -1.3,
+   "revenue_span": "CY2020-CY2025"
+  },
+  "VIK": {
+   "cik": 1745201,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {},
+   "operating_margin_pct": {}
+  },
+  "RCL": {
+   "cik": 884887,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 10950661000,
+    "2020": 2208805000,
+    "2021": 1532000000,
+    "2022": 8840000000,
+    "2023": 13900000000,
+    "2024": 16484000000,
+    "2025": 17935000000
+   },
+   "operating_margin_pct": {
+    "2019": 19.0,
+    "2020": -208.3,
+    "2021": -252.6,
+    "2022": -8.7,
+    "2023": 20.7,
+    "2024": 24.9,
+    "2025": 27.4
+   },
+   "revenue_cagr_pct": 8.6,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 8.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CCL": {
+   "cik": 815097,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 20825000000,
+    "2020": 5595000000,
+    "2021": 1908000000,
+    "2022": 12168000000,
+    "2023": 21593000000,
+    "2024": 25021000000,
+    "2025": 26622000000
+   },
+   "operating_margin_pct": {
+    "2019": 15.7,
+    "2020": -158.4,
+    "2021": -371.5,
+    "2022": -36.0,
+    "2023": 9.1,
+    "2024": 14.3,
+    "2025": 16.8
+   },
+   "revenue_cagr_pct": 4.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 1.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "THO": {
+   "cik": 730263,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 7864758000,
+    "2020": 8167933000,
+    "2021": 12317380000,
+    "2022": 16312525000,
+    "2023": 11121605000,
+    "2024": 10043408000,
+    "2025": 9579490000
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 3.3,
+   "revenue_span": "CY2019-CY2025"
+  },
+  "BC": {
+   "cik": 14930,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 4108400000,
+    "2020": 4347500000,
+    "2021": 5846200000,
+    "2022": 6812200000,
+    "2023": 6401400000,
+    "2024": 5237100000,
+    "2025": 5362800000
+   },
+   "operating_margin_pct": {
+    "2019": 11.5,
+    "2020": 12.4,
+    "2021": 13.9,
+    "2022": 13.9,
+    "2023": 11.5,
+    "2024": 5.9,
+    "2025": -0.8
+   },
+   "revenue_cagr_pct": 4.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -12.3,
+   "margin_span": "CY2019-CY2025"
+  },
+  "GOLF": {
+   "cik": 1672013,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 1681357000,
+    "2020": 1612169000,
+    "2021": 2147930000,
+    "2022": 2270336000,
+    "2023": 2381995000,
+    "2024": 2457091000,
+    "2025": 2558730000
+   },
+   "operating_margin_pct": {
+    "2019": 11.0,
+    "2020": 9.0,
+    "2021": 12.1,
+    "2022": 12.4,
+    "2023": 12.0,
+    "2024": 12.4,
+    "2025": 11.7
+   },
+   "revenue_cagr_pct": 7.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.7,
+   "margin_span": "CY2019-CY2025"
+  },
+  "KMB": {
+   "cik": 55785,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 18450000000,
+    "2020": 19140000000,
+    "2021": 19440000000,
+    "2022": 16952000000,
+    "2023": 17146000000,
+    "2024": 16805000000,
+    "2025": 16447000000
+   },
+   "operating_margin_pct": {
+    "2019": 16.2,
+    "2020": 16.9,
+    "2021": 13.2,
+    "2022": 13.6,
+    "2023": 11.2,
+    "2024": 16.1,
+    "2025": 14.3
+   },
+   "revenue_cagr_pct": -1.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -1.9,
+   "margin_span": "CY2019-CY2025"
+  },
+  "MCK": {
+   "cik": 927653,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 231051000000,
+    "2020": 238228000000,
+    "2021": 263966000000,
+    "2022": 276711000000,
+    "2023": 308951000000,
+    "2024": 359051000000,
+    "2025": 403430000000
+   },
+   "operating_margin_pct": {
+    "2019": 1.1,
+    "2020": -2.1,
+    "2021": 0.8,
+    "2022": 1.6,
+    "2023": 1.3,
+    "2024": 1.2,
+    "2025": 1.5
+   },
+   "revenue_cagr_pct": 9.7,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "COR": {
+   "cik": 1140859,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 179589121000,
+    "2020": 189893926000,
+    "2021": 213988843000,
+    "2022": 238587006000,
+    "2023": 262173411000,
+    "2024": 293958599000,
+    "2025": 321332819000
+   },
+   "operating_margin_pct": {
+    "2019": 0.6,
+    "2020": -2.7,
+    "2021": 1.1,
+    "2022": 1.0,
+    "2023": 0.9,
+    "2024": 0.7,
+    "2025": 0.8
+   },
+   "revenue_cagr_pct": 10.2,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 0.2,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CAH": {
+   "cik": 721371,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 145534000000,
+    "2020": 152922000000,
+    "2021": 162467000000,
+    "2022": 181326000000,
+    "2023": 204979000000,
+    "2024": 226827000000,
+    "2025": 222578000000
+   },
+   "operating_margin_pct": {
+    "2019": 1.4,
+    "2020": -2.7,
+    "2021": 0.3,
+    "2022": -0.3,
+    "2023": 0.4,
+    "2024": 0.5,
+    "2025": 1.0
+   },
+   "revenue_cagr_pct": 7.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -0.4,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CVS": {
+   "cik": 64803,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 256776000000,
+    "2020": 268706000000,
+    "2021": 292111000000,
+    "2022": 322467000000,
+    "2023": 357776000000,
+    "2024": 372809000000,
+    "2025": 402067000000
+   },
+   "operating_margin_pct": {
+    "2019": 4.7,
+    "2020": 5.2,
+    "2021": 4.6,
+    "2022": 2.5,
+    "2023": 3.8,
+    "2024": 2.3,
+    "2025": 1.2
+   },
+   "revenue_cagr_pct": 7.8,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.5,
+   "margin_span": "CY2019-CY2025"
+  },
+  "DG": {
+   "cik": 29534,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 27753973000,
+    "2020": 33746839000,
+    "2021": 34220449000,
+    "2022": 37844863000,
+    "2023": 38691609000,
+    "2024": 40612308000,
+    "2025": 42724369000
+   },
+   "operating_margin_pct": {
+    "2019": 8.3,
+    "2020": 10.5,
+    "2021": 9.4,
+    "2022": 8.8,
+    "2023": 6.3,
+    "2024": 4.2,
+    "2025": 5.2
+   },
+   "revenue_cagr_pct": 7.5,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": -3.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CHWY": {
+   "cik": 1766502,
+   "vertical": "csm",
+   "limb": "D",
+   "revenue": {
+    "2019": 4846743000,
+    "2020": 7146264000,
+    "2021": 8967407000,
+    "2022": 10119000000,
+    "2023": 11147700000,
+    "2024": 11861300000,
+    "2025": 12601500000
+   },
+   "operating_margin_pct": {
+    "2019": -5.2,
+    "2020": -1.3,
+    "2021": -0.8,
+    "2022": 0.6,
+    "2023": -0.2,
+    "2024": 0.9,
+    "2025": 2.0
+   },
+   "revenue_cagr_pct": 17.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 7.2,
+   "margin_span": "CY2019-CY2025"
+  },
+  "SCI": {
+   "cik": 89089,
+   "vertical": "eol",
+   "limb": "B",
+   "revenue": {
+    "2019": 3230785000,
+    "2020": 3511509000,
+    "2021": 4143143000,
+    "2022": 4108661000,
+    "2023": 4099778000,
+    "2024": 4186379000,
+    "2025": 4309234000
+   },
+   "operating_margin_pct": {
+    "2019": 20.6,
+    "2020": 24.0,
+    "2021": 28.7,
+    "2022": 22.6,
+    "2023": 23.0,
+    "2024": 22.2,
+    "2025": 22.7
+   },
+   "revenue_cagr_pct": 4.9,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 2.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "CSV": {
+   "cik": 1016281,
+   "vertical": "eol",
+   "limb": "B",
+   "revenue": {
+    "2019": 274107000,
+    "2020": 329448000,
+    "2021": 375886000,
+    "2022": 370174000,
+    "2023": 382520000,
+    "2024": 404198000,
+    "2025": 417440000
+   },
+   "operating_margin_pct": {
+    "2019": 17.3,
+    "2020": 17.4,
+    "2021": 24.9,
+    "2022": 21.5,
+    "2023": 21.2,
+    "2024": 20.2,
+    "2025": 23.4
+   },
+   "revenue_cagr_pct": 7.3,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 6.1,
+   "margin_span": "CY2019-CY2025"
+  },
+  "MATW": {
+   "cik": 63296,
+   "vertical": "eol",
+   "limb": "B",
+   "revenue": {
+    "2019": 1537276000,
+    "2020": 1498306000,
+    "2021": 1671030000,
+    "2022": 1762403000,
+    "2023": 1880896000,
+    "2024": 1795737000,
+    "2025": 1497689000
+   },
+   "operating_margin_pct": {
+    "2019": 0.7,
+    "2020": -4.3,
+    "2021": 2.5,
+    "2022": -2.5,
+    "2023": 4.7,
+    "2024": -0.7,
+    "2025": 5.0
+   },
+   "revenue_cagr_pct": -0.4,
+   "revenue_span": "CY2019-CY2025",
+   "margin_delta_pp": 4.3,
+   "margin_span": "CY2019-CY2025"
+  }
+ }
+}

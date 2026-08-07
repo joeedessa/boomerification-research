@@ -21,7 +21,7 @@
     "PWR",
     "MYRG",
     "AMN",
-    "ATGE",
+    "CVSA",
     "LINC",
     "UTI",
     "ROK",
@@ -164,7 +164,7 @@
    "condition": "Nursing programme places, apprenticeship completions and residency slots expanding faster than the 85+ population — the capacity gap closing rather than widening.",
    "kills": "The strongest 'why isn't this priced' mechanism in the thesis. Without it, limbs C and H lose their pricing-power argument and become ordinary cyclicals.",
    "retires": [
-    "ATGE",
+    "CVSA",
     "LOPE",
     "LINC",
     "UTI",
@@ -218,7 +218,7 @@
    "id": "f11",
    "limb": "D",
    "n": "The per-capita offset consumes the population arithmetic",
-   "sev": 3,
+   "sev": 2,
    "state": "warming",
    "condition": "Per-capita institutional utilisation continuing to decline at anything close to its 2014-2024 rate — SNF days/1k -3.6% a year, home health visits -3.8% a year — such that aggregate volume growth stays in the low single digits despite the 85+ population compounding at ~4.6% a year.",
    "kills": "Not limb D's direction, but the naive version of its magnitude. The demographic tailwind is real and the age gradient is steeper than assumed (SNF days/1k: 7.0x at 85+ versus 65-74). What it kills is the assumption that population growth passes through to volumes. Institutional operators are where that error is most expensive.",
@@ -230,14 +230,14 @@
     "elective"
    ],
    "note": "Discovered on 2026-08-07 while testing f3, and larger than the falsifier that prompted the test. This is the first genuinely unanticipated risk the sourcing programme has produced — the v1 thesis multiplied population growth straight through to care volumes and never asked whether utilisation per head was constant. It was not.",
-   "evidence": "EVIDENCE 2026-08-07: partially realised, not hypothetical. Compounding the observed -3.6% a year per-capita SNF decline against +4.6% a year 85+ population growth gives roughly +12% aggregate SNF days over 2025-2040, versus the +96% population alone implies. Hospice is the exception at +21% per capita over the decade. Caveat in both directions: the decline is partly payment-policy driven and cannot continue indefinitely (there is a floor), while MA selection and rising average age both bias the measured decline toward understatement.",
+   "evidence": "EVIDENCE 2026-08-07: partially realised, not hypothetical. Compounding the observed -3.6% a year per-capita SNF decline against +4.6% a year 85+ population growth gives roughly +12% aggregate SNF days over 2025-2040, versus the +96% population alone implies. Hospice is the exception at +21% per capita over the decade. Caveat in both directions: the decline is partly payment-policy driven and cannot continue indefinitely (there is a floor), while MA selection and rising average age both bias the measured decline toward understatement. REVISED 2026-08-07 against SEC filings: this is a market-SIZE warning, not a company-revenue prediction, and the distinction matters more than the finding. Care-delivery revenue compounded at a 9.9% median over CY2019-CY2025 — ENSG 16.4%, PNTG 18.7%, OPCH 16.1% — straight through the decade when per-capita SNF days fell 31%. The sector is fragmented enough that disciplined consolidators outgrow a shrinking per-capita market for years. Severity cut from 3 to 2, and the ENSG downgrade it triggered has been reversed.",
    "last_read": "2026-08-07"
   },
   {
    "id": "f12",
    "limb": "C",
    "n": "Skilled-trades scarcity does not show up in wages",
-   "sev": 3,
+   "sev": 2,
    "state": "warming",
    "condition": "Construction and extraction wages continuing to run at or below the all-civilian baseline. If licensed trade labour were genuinely scarce and irreplaceable, it should command a rising relative wage. It is not doing so.",
    "kills": "The contractor and trades-training sleeve — the half of limb C that is not about care labour. Does not touch the care side, which the same data confirms emphatically.",
@@ -254,7 +254,7 @@
     "openings"
    ],
    "note": "Found 2026-08-07 testing limb C's inflation claim. The claim was written as one limb; the data says it is two, and only one of them is supported. The contractor names were already froth-3 with no margin of safety on price — now the mechanism underneath them is unevidenced too.",
-   "evidence": "EVIDENCE 2026-08-07 (BLS ECI, 2019Q4-2026Q2): construction & extraction occupations +27.6% cumulative versus an all-civilian baseline of +28.3%, and the construction industry +26.7%, the slowest of ten cuts examined. Manufacturing beat both. Confound: construction demand was weak over part of the window, so this may be a demand signal rather than evidence against scarcity — that is a reason to keep the falsifier at warming rather than tripped, not a reason to dismiss it.",
+   "evidence": "EVIDENCE 2026-08-07 (BLS ECI, 2019Q4-2026Q2): construction & extraction occupations +27.6% cumulative versus an all-civilian baseline of +28.3%, and the construction industry +26.7%, the slowest of ten cuts examined. Manufacturing beat both. Confound: construction demand was weak over part of the window, so this may be a demand signal rather than evidence against scarcity — that is a reason to keep the falsifier at warming rather than tripped, not a reason to dismiss it. REVISED 2026-08-07 against SEC filings: the wage channel is still unevidenced, but the margin channel is strongly evidenced and points the other way. Contractor operating margins expanded a median 5.1pp over CY2019-CY2025 — APG +23.3pp, IESC +7.5pp, LMB +6.1pp, EME +5.1pp, FIX +4.4pp — on revenue growth of 10-42%. That is pricing power. Either the binding constraint is contractor CAPACITY rather than labour cost, or it is the construction cycle. Both readings undercut 'reduce because the mechanism is absent'. Severity cut from 3 to 2 and the reduction softened.",
    "last_read": "2026-08-07"
   }
  ]

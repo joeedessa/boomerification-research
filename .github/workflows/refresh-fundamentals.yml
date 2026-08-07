@@ -1,0 +1,46 @@
+name: Refresh fundamentals
+
+on:
+  schedule:
+    # Mondays 07:00 UTC, an hour after the reference robot so the two never
+    # race on the same push. Filings arrive quarterly; weekly is generous, but
+    # the corporate-action check is the part that earns the cadence — a rename
+    # or a delisting silently breaks the universe until something notices.
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch fundamentals
+        run: python scripts/fetch_fundamentals.py
+      - name: Validate
+        run: |
+          python - <<'EOF'
+          import json
+          d = json.load(open('data/fundamentals.json'))
+          assert d['companies'], 'no company records'
+          covered = sum(1 for r in d['companies'].values() if r.get('revenue'))
+          assert covered > 80, f'coverage collapsed to {covered} names — check SEC tagging'
+          high = {k: v for k, v in d['corporate_actions'].items() if v['severity'] == 'high'}
+          print(f'{covered} names with revenue; {len(high)} high-severity actions')
+          for k, v in high.items():
+              print(f'  ACTION NEEDED: {k} — {v["kind"]}: {v["detail"]}')
+          EOF
+      - name: Commit if changed
+        run: |
+          git config user.name "fundamentals-bot"
+          git config user.email "actions@github.com"
+          git add data/fundamentals.json
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "Weekly fundamentals refresh"
+          git pull --rebase origin main
+          git push

@@ -163,7 +163,7 @@ which evidence moved which position stays visible:
 The matrix's "care-labour cost" internal contradiction is no longer an argument;
 it is a measurement, and it is now sourced.
 
-**Next three, re-ranked:**
+**Next three, re-ranked (superseded by iteration 3):**
 1. **SEC XBRL fundamentals.** Now clearly top. Two iterations have moved six
    position groups on macro evidence alone, without once checking whether the
    companies' own filings support the calls. That gap is widening with each
@@ -176,3 +176,72 @@ it is a measurement, and it is now sourced.
    the aging-in-place book.
 
 ---
+
+## Iteration 3 — 2026-08-07 — SEC XBRL fundamentals
+
+**Why:** two iterations had moved six position groups on macro evidence without
+once checking whether the companies agreed. This is also the first of the two
+required adversarial passes — the explicit goal was to test my own calls, not to
+add supporting evidence.
+
+**Source.** SEC EDGAR XBRL frames API, keyless and unquota'd. Revenue (three
+us-gaap tags with fallback) and OperatingIncomeLoss, CY2019–CY2025, 110 of 126
+names. Sixteen names file outside the SEC and cannot be covered — a structural
+gap, now on the unsourced list.
+
+**Three tests. The thesis lost two.**
+
+*1 — the utilisation finding was over-applied.* Care-delivery revenue compounded
+at a **9.9% median** through the decade per-capita SNF days fell 31%: ENSG 16.4%,
+PNTG 18.7%, OPCH 16.1%. Consolidators outgrow fragmented shrinking markets. The
+finding is a market-**size** warning, not a company-**revenue** prediction.
+**Reversed the iteration-1 ENSG downgrade** — revenue +16.4% CAGR, margin +2.1pp.
+f11 severity 3 → 2.
+
+*2 — the wage squeeze hit the wrong row.* Operator margins did not compress
+(median **+0.3pp**; ADUS +4.3, OPCH +6.0, AVAH +7.7). The staffing agencies took
+it: **AMN −10.0pp, revenue $5.24bn peak → $2.73bn, margins now negative**; CCRN
+−6.1pp. **Reversed the iteration-2 AMN raise**, cut to conviction 1. Inverted the
+matrix's care-labour mitigation: avoid the intermediaries, not the operators.
+
+*3 — contractor margins undercut f12.* Median **+5.1pp** expansion on 10–42%
+revenue growth (APG +23.3, IESC +7.5, EME +5.1). Pricing power by a route the
+wage data doesn't capture — the constraint may be contractor capacity, not labour
+cost. f12 severity 3 → 2; reduction softened to a valuation call.
+
+**Unprompted finding:** the automation sleeve — highest carry in the book,
+explicitly priced for growth — has a **3.7% median revenue CAGR**, weakest of ten
+verticals. Six years is long enough to need evidence.
+
+**Universe hygiene — four corporate-action errors found:**
+- **BK → BNY** (rebrand). Explains why the market robot could never price it.
+- **ATGE → CVSA** (Adtalem → Covista, 10-K filed 2026-08-06). One of the
+  highest-conviction names in the book, carrying a dead ticker.
+- **AMED delisted** August 2025 on completion of its acquisition — carried as a
+  live position for a year. Removed to `excluded.json`.
+- **CCRN** filing to deregister.
+
+Two engineering notes. The naive delisting rule (any Form 25/15 in recent
+filings) produced **43 flags on 116 names** — large issuers routinely deregister
+individual bond and preferred classes, so Lilly and Morgan Stanley looked like
+they were delisting. Rewrote around ticker-absence, ticker-mismatch and filing
+staleness: 3 high-severity, 12 low. Separately, `FIX` CY2025 came through at
+$1.83bn against $7.03bn — a partial-period tagging artifact that would have shown
+a fast-growing contractor as shrinking. Terminal years collapsing below 55% of
+the prior year are now dropped and logged.
+
+**Shipped:** `scripts/fetch_fundamentals.py` + weekly workflow; filed revenue and
+margin on every company card; a corporate-action panel on Act now; a third
+repricing recording both reversals; **a new CI gate that fails the push if any
+structured ticker reference doesn't resolve to the universe** — the check that
+would have caught BK and ATGE a year ago.
+
+**Next three:**
+1. **Apprenticeship completions (DOL).** f12 is now genuinely unresolved — wages
+   say no scarcity, margins say pricing power. Completions-versus-retirements is
+   the independent third read that breaks the tie.
+2. **Medicaid personal care utilisation.** Still the untested half of the
+   aging-in-place book, and ADUS is now a bigger position in relative terms.
+3. **A non-US fundamentals route.** Sixteen names — including most of the
+   private-pay sleeve, the part that has survived every finding — have no
+   filings check at all. Company IR pages or exchange filings are free.

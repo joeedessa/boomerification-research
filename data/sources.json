@@ -56,7 +56,7 @@
    "v1": "From memory",
    "sourced": "AACN annual survey, released 7 May 2026 (998 schools, 89.5% response rate)",
    "finding": "93,000 qualified applications turned away in 2025 — 75,255 entry-level baccalaureate, ~17,000 graduate. Cited barriers: clinical placement sites, budget cuts, faculty, preceptor and classroom shortages. The graduate number is the compounding detail: faculty roles require graduate degrees, so the bottleneck reproduces itself.",
-   "affects": "Directly confirms the capacity-gap mechanism — the strongest 'why isn't this priced' argument in the thesis and the basis for the ATGE position.",
+   "affects": "Directly confirms the capacity-gap mechanism — the strongest 'why isn't this priced' argument in the thesis and the basis for the CVSA position.",
    "auto": false
   },
   {
@@ -92,7 +92,16 @@
    "v1": "Unsourced. Limb C claimed a 'structural floor under services wage inflation' without testing it.",
    "sourced": "BLS Employment Cost Index, wages and salaries, seasonally adjusted, 2019Q4-2026Q2, read from the BLS flat files (no API key, no quota). Now auto-refreshed.",
    "finding": "Split. Service occupations +37.5% cumulative (+9.2pp vs baseline, fastest cut in the index); health care & social assistance +3.3pp; installation/maintenance/repair +3.0pp. But construction & extraction occupations -0.7pp and the construction industry -1.6pp, both below baseline and behind manufacturing. The services-vs-goods aggregate actually specified by the indicator is only +1.3pp over six and a half years.",
-   "affects": "Limb C splits in two. The care half is now the best-evidenced part of the thesis; the construction-trades half is unevidenced and carried as falsifier f12. Repriced: down EME/PWR/MYRG/IESC, hold FIX/APG/LMB (maintenance-weighted), up ATGE/AMN/LOPE, down the care operators on the cost side. Also converts the matrix's 'care-labour cost' internal contradiction from an argument into a measurement.",
+   "affects": "Limb C splits in two. The care half is now the best-evidenced part of the thesis; the construction-trades half is unevidenced and carried as falsifier f12. Repriced: down EME/PWR/MYRG/IESC, hold FIX/APG/LMB (maintenance-weighted), up CVSA/AMN/LOPE, down the care operators on the cost side. Also converts the matrix's 'care-labour cost' internal contradiction from an argument into a measurement.",
+   "auto": true
+  },
+  {
+   "claim": "Company fundamentals — do the filings support the calls?",
+   "verdict": "contradicting",
+   "v1": "Never checked. Six position groups had been moved on macro evidence alone across two iterations.",
+   "sourced": "SEC EDGAR XBRL frames API (keyless, no quota), CY2019-CY2025, revenue and operating margin for 110 of 126 names. Now automated with corporate-action drift detection.",
+   "finding": "Three tests, and the thesis lost two of them. (1) Care-operator revenue compounded at a 9.9% median — ENSG 16.4% — through the decade per-capita utilisation fell, because consolidators outgrow fragmented shrinking markets. (2) The care-wage squeeze did NOT compress operator margins (median +0.3pp); it compressed the staffing agencies instead (AMN -10.0pp, revenue halved; CCRN -6.1pp). (3) Contractor margins expanded a median 5.1pp despite lagging wages, which is pricing power by another route. Separately, the run found four corporate-action errors in the universe: BK renamed to BNY, ATGE renamed to CVSA, AMED delisted on completion of its acquisition, CCRN filing to deregister.",
+   "affects": "Reversed the iteration-1 ENSG downgrade and the iteration-2 AMN raise. Softened falsifiers f11 and f12 from severity 3 to 2. Inverted the matrix's care-labour-cost mitigation — avoid the intermediaries, not the operators. Cut the automation sleeve on six years of 3.7% median revenue growth. Removed AMED from the universe.",
    "auto": true
   }
  ],
@@ -137,6 +146,11 @@
     "n": "Existing-home turnover in retirement metros",
     "why": "Limb H's inventory-release test. Needs metro-level data; the national figure averages the signal away.",
     "priority": 3
+   },
+   {
+    "n": "Non-US names have no filings-based check",
+    "priority": 2,
+    "why": "Sixteen of 126 — including most of the private-pay sleeve (SOON.SW, DEMANT.CO, ALC, STMN.SW, 8113.T) — file outside the SEC and cannot be tested the way the US names just were. Those calls remain judgment-only, and the private-pay tilt is precisely the part of the book that has survived every finding so far, which makes its untested status uncomfortable."
    }
   ]
  },

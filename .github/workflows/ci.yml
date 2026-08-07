@@ -42,6 +42,26 @@ jobs:
           assert not bad, 'referential integrity failures:\n' + '\n'.join(bad)
           print(f"{len(comp['companies'])} companies, {len(limbs)} limbs — all references resolve")
           EOF
+      - name: Check every ticker reference resolves to the universe
+        run: |
+          python - <<'EOF'
+          import json, re, glob
+          tickers = {c['ticker'] for c in json.load(open('data/companies.json'))['companies']}
+          bad = []
+          # Structured ticker lists must resolve exactly — these drive the UI's
+          # click-through, and a stale symbol there is a broken position link.
+          for r in json.load(open('data/matrix.json'))['rows']:
+              bad += [f"matrix/{r['id']}: {t}" for t in r['tickers'] if t not in tickers]
+          pf = json.load(open('data/portfolio.json'))
+          for rp in pf.get('repricings', []):
+              for mv in rp['moves']:
+                  bad += [f"repricing/{rp['title'][:24]}: {t}" for t in mv['names'] if t not in tickers]
+          for w in pf.get('entry_windows', {}).get('windows', []):
+              if w['ticker'] not in tickers:
+                  bad += [f"entry_window: {w['ticker']}"]
+          assert not bad, 'unresolved ticker references:\n' + '\n'.join(bad)
+          print(f'{len(tickers)} tickers; all structured references resolve')
+          EOF
       - name: Syntax-check dashboard JavaScript
         run: |
           python - <<'EOF'

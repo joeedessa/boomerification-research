@@ -20,7 +20,7 @@
         {"claim": "Senior housing occupancy 89.5% in Q1 2026, 19th consecutive quarterly gain; units under construction lowest since 2012; Q3 2025 starts of 1,076 units across 31 primary markets, weakest since Q2 2009.", "src": "NIC MAP", "caveat": "NIC attributes the construction shortfall primarily to capital availability rather than absent demand. The supply trough is real either way, but it is a financing constraint, which can reverse faster than a demographic one."}
       ],
       "items": [
-        {"lbl": "Nursing education capacity", "ticks": "ATGE (Chamberlain), LOPE", "why": "Schools turn away qualified applicants for lack of faculty and clinical placements. Owning accredited capacity in a capacity-constrained pipeline is pricing power independent of the cycle."},
+        {"lbl": "Nursing education capacity", "ticks": "CVSA (Chamberlain), LOPE", "why": "Schools turn away qualified applicants for lack of faculty and clinical placements. Owning accredited capacity in a capacity-constrained pipeline is pricing power independent of the cycle."},
         {"lbl": "Licensed trade labour pools", "ticks": "EME, FIX, MYRG, APG, PWR", "why": "Journeyman electricians and pipefitters take years to train and cannot be imported quickly or offshored at all. The contractor owns the scarce asset, not the project."},
         {"lbl": "Senior housing supply trough", "ticks": "WELL, VTR, BKD", "why": "Construction starts collapsed in 2020-2023 while the 80+ cohort arrives regardless. Occupancy and rate compound against a fixed stock — the cleanest cyclical setup in limb H."},
         {"lbl": "Trades training", "ticks": "LINC, UTI", "why": "Employer-pulled enrolment rather than marketing-pushed. The demand signal comes from the shortage itself."}
@@ -50,7 +50,7 @@
       "limbs": ["D", "H"],
       "thesis": "The cohort's centre of mass is crossing from go-go into slow-go now. That means businesses paid by the 65-74 band are trading against a population that peaks around 2030, while businesses paid by 75+ have a tailwind running past 2040. The market prices both as 'aging'. The whole tradable content of limb D is in that distinction — the direction is consensus, the gradient is not.",
       "items": [
-        {"lbl": "Home and community care", "ticks": "ADUS, AMED, OPCH, BTSG", "why": "The revealed preference is to stay home. Volume is the 85+ arithmetic; the constraint is caregiver labour and Medicaid rates."},
+        {"lbl": "Home and community care", "ticks": "ADUS, OPCH, BTSG", "why": "The revealed preference is to stay home. Volume is the 85+ arithmetic; the constraint is caregiver labour and Medicaid rates."},
         {"lbl": "Post-acute and rehab", "ticks": "EHC, USPH, ENSG", "why": "Stroke, hip fracture and joint recovery all track the 75+ population almost mechanically."},
         {"lbl": "Pharmacy distribution", "ticks": "MCK, COR, CAH", "why": "Scripts per capita rise steeply with age. Volume-and-mix economics with no drug-price exposure — the structural insulation limb E argues for."},
         {"lbl": "Fade: the experience economy", "ticks": "VIK, RCL, THO, BC, GOLF", "why": "Paid by the band that stops growing after 2030. Fade into strength; earnings roll over after the demography does, not with it."}

@@ -89,7 +89,7 @@
    "note": "Two separate mechanisms in one row. The pre-retirement band supplies the labour that is leaving; the no-go band consumes the care hours that create the shortage. Both directions push the same way.",
    "tickers": [
     "EME",
-    "ATGE",
+    "CVSA",
     "APG",
     "AMN",
     "MYRG"
@@ -250,7 +250,7 @@
     "id": "wage",
     "n": "Care-labour cost",
     "kind": "internal",
-    "body": "Limb C's wage inflation lands directly on limb D's and limb H's cost base. Care delivery, senior housing and skilled nursing are labour businesses — the force creating the demand compresses the margin on serving it. MEASURED 2026-08-07: BLS ECI puts service occupations — home health aides, nursing assistants, personal care — at +9.2pp above the all-civilian wage baseline since 2019, the fastest-rising cut in the index. This force is no longer an argument; it is the largest cost line in every operator on this row and it is running hot.",
+    "body": "Limb C's wage inflation lands directly on limb D's and limb H's cost base. Care delivery, senior housing and skilled nursing are labour businesses — the force creating the demand compresses the margin on serving it. MEASURED 2026-08-07: BLS ECI puts service occupations — home health aides, nursing assistants, personal care — at +9.2pp above the all-civilian wage baseline since 2019, the fastest-rising cut in the index. This force is no longer an argument; it is the largest cost line in every operator on this row and it is running hot. CORRECTED 2026-08-07 against filings: the force is real but it hit the wrong row. Care-operator margins did NOT compress — the median moved +0.3pp and ADUS (+4.3), OPCH (+6.0) and AVAH (+7.7) expanded. The squeeze landed on the labour SUPPLIERS instead: AMN -10.0pp with revenue halved from its peak, CCRN -6.1pp. Operators passed the cost through via reimbursement and acuity mix; the agencies ate it. This inverts the mitigation below.",
     "hits": {
      "care": 3,
      "hou": 3,
@@ -263,7 +263,7 @@
      "aut": 0,
      "eol": 2
     },
-    "mitigation": "Prefer asset-light, technology-levered, net-lease or private-pay exposures within care. CTRE over an operator; PRVA over an employer; ALC over a facility.",
+    "mitigation": "Prefer asset-light, technology-levered, net-lease or private-pay exposures within care — and, on the corrected evidence, avoid the staffing intermediaries rather than the operators. The pricing power sits with whoever employs the scarce labour directly, not with whoever rents it out.",
     "sourced": "BLS Employment Cost Index, 2019Q4-2026Q2"
    },
    {

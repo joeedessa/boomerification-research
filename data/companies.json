@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Boomerification investable universe — names mapped to the thesis limbs in data/thesis.json. Each record carries the limb it expresses, the age band that pays it, which retiree segment it serves, a thesis note, a conviction score and a froth score.",
-  "as_of": "2026-08-06",
+  "as_of": "2026-08-07",
   "version": "v1 — initial universe build",
   "conviction_scale": "1 = watching / on the map, 2 = engaged / would own at a price, 3 = core structural position",
   "froth_scale": "1 = insulated (thesis intact, price not extended), 2 = exposed (narrative priced, needs a pullback), 3 = high froth (crowded, priced for perfection)",
@@ -259,7 +259,7 @@
    }
   ],
   "private_note": "Large parts of this thesis — estate technology, mobility hardware, private RIAs, senior housing operators — are structurally private. Where the best expression is unlistable, the record says so rather than substituting a worse listed proxy.",
-  "coverage_note": "v1 universe. Deliberately excludes the raw-materials and AI/semiconductor chains covered by the sibling hard-assets-research and ai-hardware-research maps. Corporate actions after mid-2026 may not be reflected — verify status before acting on any record."
+  "coverage_note": "v1 universe. Deliberately excludes the raw-materials and AI/semiconductor chains covered by the sibling hard-assets-research and ai-hardware-research maps. Corporate actions are checked automatically each run by scripts/fetch_fundamentals.py against SEC EDGAR; renames and delistings surface as flags rather than as silently wrong tickers."
  },
  "companies": [
   {
@@ -707,8 +707,8 @@
    "last_touched": "2026-08-06"
   },
   {
-   "ticker": "BK",
-   "name": "BNY",
+   "ticker": "BNY",
+   "name": "BNY (Bank of New York Mellon)",
    "vertical": "wt",
    "limb": "B",
    "chain_layer": "Custody + Pershing advisor platform",
@@ -718,7 +718,7 @@
    "cust": "both",
    "conviction": 1,
    "froth": 1,
-   "thesis_note": "Pershing is the second major RIA and broker-dealer custody platform, which gives BNY the same structural position as Schwab in limb B — but it is a small part of a very large custody and markets-infrastructure business. Diluted exposure, held for the read-through on advisor-channel flows.",
+   "thesis_note": "Pershing is the second major RIA and broker-dealer custody platform, which gives BNY the same structural position as Schwab in limb B — but it is a small part of a very large custody and markets-infrastructure business. Diluted exposure, held for the read-through on advisor-channel flows. TICKER CORRECTED 2026-08-07: the company rebranded and now trades as BNY; the universe carried the stale BK symbol, which is why the market robot could not price it.",
    "themes": [
     "advisor-attrition",
     "great-transfer"
@@ -847,9 +847,9 @@
    "structure": "staffing",
    "band": "slowgo",
    "cust": "both",
-   "conviction": 2,
+   "conviction": 1,
    "froth": 1,
-   "thesis_note": "The listed proxy for the clinical labour shortage limb C describes. Travel nursing collapsed from its pandemic peak and the equity was destroyed with it, which is the setup: the cyclical bill-rate normalisation is over-extrapolated while the structural nursing pipeline problem is unchanged and the 85+ population that consumes nursing hours is about to double. The honest risk is that hospitals have permanently insourced their float pools, which would make the structural argument true and the equity still wrong.",
+   "thesis_note": "The listed proxy for the clinical labour shortage limb C describes. Travel nursing collapsed from its pandemic peak and the equity was destroyed with it, which is the setup: the cyclical bill-rate normalisation is over-extrapolated while the structural nursing pipeline problem is unchanged and the 85+ population that consumes nursing hours is about to double. The honest risk is that hospitals have permanently insourced their float pools, which would make the structural argument true and the equity still wrong. CORRECTION 2026-08-07: the iteration-2 raise was wrong and is reversed, harder than it was made. Revenue fell from a $5.24bn peak (CY2022) to $2.73bn (CY2025) and operating margin went from +12.3% to NEGATIVE, a swing of -10.0pp. The structural nursing shortage is real — ECI and AACN both confirm it — but it did not accrue to the staffing intermediary. Bill-rate normalisation destroyed the spread. 'Whoever supplies the scarce labour has pricing power' is false for agencies; the pricing power sat with the operators who employ directly. Cut to 1.",
    "themes": [
     "labor-scarcity",
     "services-inflation",
@@ -1015,8 +1015,8 @@
    "last_touched": "2026-08-06"
   },
   {
-   "ticker": "ATGE",
-   "name": "Adtalem Global Education",
+   "ticker": "CVSA",
+   "name": "Covista (formerly Adtalem Global Education)",
    "vertical": "lab",
    "limb": "C",
    "chain_layer": "Nursing & healthcare education",
@@ -1026,7 +1026,7 @@
    "cust": "both",
    "conviction": 3,
    "froth": 2,
-   "thesis_note": "Owns Chamberlain University, the largest US nursing school, plus Walden and the medical and veterinary schools. This is the cleanest way to own limb C's binding constraint rather than its symptom: the nursing shortage is not a demand problem, it is a training-capacity problem — schools turn away qualified applicants for lack of faculty and clinical placements. Whoever owns accredited capacity in a capacity-constrained pipeline has pricing power that is independent of the economic cycle, and the demand behind it is the 85+ population arithmetic. Risk is entirely regulatory: for-profit education lives at the mercy of Title IV rulemaking, and that risk is genuinely bimodal.",
+   "thesis_note": "Owns Chamberlain University, the largest US nursing school, plus Walden and the medical and veterinary schools. This is the cleanest way to own limb C's binding constraint rather than its symptom: the nursing shortage is not a demand problem, it is a training-capacity problem — schools turn away qualified applicants for lack of faculty and clinical placements. Whoever owns accredited capacity in a capacity-constrained pipeline has pricing power that is independent of the economic cycle, and the demand behind it is the 85+ population arithmetic. Risk is entirely regulatory: for-profit education lives at the mercy of Title IV rulemaking, and that risk is genuinely bimodal. TICKER CORRECTED 2026-08-07: renamed from Adtalem to Covista and now trades as CVSA (10-K filed 2026-08-06; SEC former-name chain DeVry -> Adtalem -> Covista). The universe carried ATGE. Filings support the position: revenue +9.9% CAGR CY2019-CY2025 with operating margin +3.7pp — the only one of the three care-labour names raised in iteration 2 that the numbers actually back.",
    "froth_note": "Has re-rated substantially as the market recognised the nursing-capacity story. Still the right structural asset; size for the regulatory tail.",
    "themes": [
     "labor-scarcity",
@@ -1274,9 +1274,9 @@
    "structure": "operator",
    "band": "nogo",
    "cust": "median",
-   "conviction": 2,
+   "conviction": 3,
    "froth": 2,
-   "thesis_note": "The best operator in the least-loved corner of the care universe, and the sharpest test of whether limb D can be owned profitably despite limb C. Ensign's model is decentralised acquisition of underperforming skilled nursing facilities and improvement of local operations — which is precisely a labour-management competence, in an industry where labour is the binding constraint and the cost problem. That is why it deserves the premium the market gives it. The demand side is arithmetic: skilled nursing census is driven by the 85+ population, which roughly doubles by 2040. The risk is unambiguous and concentrated: Medicaid is the dominant payor, Medicaid is a state budget line, and state budgets are limb E's problem arriving locally. REPRICED 2026-08-07: CMS data shows SNF days per 1,000 beneficiaries fell 31% over 2014-2024, so the end market grows at roughly population minus 3.6% a year rather than with the population. The operating argument is untouched and the age gradient is steeper than assumed (7.0x at 85+ versus 65-74) — but conviction moves from 3 to 2 because the magnitude of the tailwind was overstated, not because the business got worse.",
+   "thesis_note": "The best operator in the least-loved corner of the care universe, and the sharpest test of whether limb D can be owned profitably despite limb C. Ensign's model is decentralised acquisition of underperforming skilled nursing facilities and improvement of local operations — which is precisely a labour-management competence, in an industry where labour is the binding constraint and the cost problem. That is why it deserves the premium the market gives it. The demand side is arithmetic: skilled nursing census is driven by the 85+ population, which roughly doubles by 2040. The risk is unambiguous and concentrated: Medicaid is the dominant payor, Medicaid is a state budget line, and state budgets are limb E's problem arriving locally. REPRICED 2026-08-07: CMS data shows SNF days per 1,000 beneficiaries fell 31% over 2014-2024, so the end market grows at roughly population minus 3.6% a year rather than with the population. The operating argument is untouched and the age gradient is steeper than assumed (7.0x at 85+ versus 65-74) — but conviction moves from 3 to 2 because the magnitude of the tailwind was overstated, not because the business got worse. CORRECTION 2026-08-07: the iteration-1 downgrade to 2 was wrong and is reversed. SEC filings show revenue compounding 16.4% a year CY2019-CY2025 and operating margin UP 2.1pp — achieved straight through the decade when per-capita SNF days fell 31%. The utilisation finding is a market-SIZE warning, not a company-revenue prediction: in a sector this fragmented a disciplined consolidator can outgrow a shrinking per-capita market for a long time, and this one demonstrably did. Back to 3.",
    "froth_note": "Compounder multiple in a sector priced for distress — the gap is earned but leaves nothing for a reimbursement shock.",
    "themes": [
     "care-volumes",
@@ -1305,26 +1305,6 @@
     "immigration-swing",
     "reimbursement-risk",
     "median-retiree"
-   ],
-   "last_touched": "2026-08-06"
-  },
-  {
-   "ticker": "AMED",
-   "name": "Amedisys",
-   "vertical": "care",
-   "limb": "D",
-   "chain_layer": "Home health & hospice",
-   "geo": "US",
-   "structure": "operator",
-   "band": "nogo",
-   "cust": "both",
-   "conviction": 2,
-   "froth": 1,
-   "thesis_note": "Home health and hospice at national scale. The clinical and economic logic is unarguable — care at home is cheaper than care in a facility and is what patients want — which is why home health keeps winning share of the post-acute dollar. Sits under a long-running acquisition process whose outcome dominates the near-term equity, so the demographic thesis is currently secondary to a deal spread.",
-   "themes": [
-    "aging-in-place",
-    "care-volumes",
-    "end-of-life"
    ],
    "last_touched": "2026-08-06"
   },

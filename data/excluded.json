@@ -1,78 +1,128 @@
 {
-  "_meta": {
-    "description": "Names and categories deliberately not in the universe. Scope discipline made explicit — an omission recorded here is a decision, not an oversight.",
-    "as_of": "2026-08-06"
-  },
-
-  "categories": [
+ "_meta": {
+  "description": "Names and categories deliberately not in the universe. Scope discipline made explicit — an omission recorded here is a decision, not an oversight.",
+  "as_of": "2026-08-06"
+ },
+ "categories": [
+  {
+   "id": "sibling",
+   "n": "Covered by a sibling map",
+   "c": "#4F46E5",
+   "body": "Raw materials, energy, critical minerals and the AI/semiconductor chain are mapped end-to-end in the sibling repositories. Including them here would duplicate the research and blur the thesis.",
+   "items": [
     {
-      "id": "sibling",
-      "n": "Covered by a sibling map",
-      "c": "#4F46E5",
-      "body": "Raw materials, energy, critical minerals and the AI/semiconductor chain are mapped end-to-end in the sibling repositories. Including them here would duplicate the research and blur the thesis.",
-      "items": [
-        {"n": "Critical minerals, mining, energy, grid equipment", "why": "hard-assets-research covers the whole chain. The one genuine overlap is grid contractors — PWR and MYRG appear here for their labour pool, not for their end market."},
-        {"n": "Semiconductors, AI hardware, optical, robotics components", "why": "ai-hardware-research covers this end-to-end. The automation names held here (ROK, EMR, Fanuc, Keyence) are held for the labour-substitution argument specifically, and the deeper supply chain behind them lives in the sibling map."}
-      ]
+     "n": "Critical minerals, mining, energy, grid equipment",
+     "why": "hard-assets-research covers the whole chain. The one genuine overlap is grid contractors — PWR and MYRG appear here for their labour pool, not for their end market."
     },
     {
-      "id": "notdemo",
-      "n": "Aging-adjacent but not demographically driven",
-      "c": "#DC2626",
-      "body": "Businesses commonly bundled into 'the aging trade' whose actual earnings driver is something else. Including them would let a weak name borrow the thesis's credibility.",
-      "items": [
-        {"n": "Large-cap diversified pharma (PFE, MRK, JNJ, ABBV)", "why": "Patent cliffs, pipeline outcomes and pricing policy dominate. The demographic signal is real but so diluted it contributes nothing to a position decision."},
-        {"n": "Hospital systems (HCA, THC, UHS)", "why": "Volumes do rise with age, but the earnings driver is payor mix, commercial rate negotiation and labour cost. Limb C is a headwind here, not a tailwind — hospitals are on the wrong side of the wage argument."},
-        {"n": "Life insurance writers as a group", "why": "Mortality-exposed rather than longevity-exposed, so the demographic effect is the opposite sign to the rest of the thesis. RGA is included specifically because it takes longevity risk professionally on both sides; the group as a whole is not a thesis expression."},
-        {"n": "Health insurers' commercial segments", "why": "Employer-market economics have no demographic content. The pay vertical holds only the Medicare-exposed part of each name's story."}
-      ]
-    },
-    {
-      "id": "narrative",
-      "n": "Narrative-only 'silver economy' names",
-      "c": "#EF9F27",
-      "body": "Frequently cited in aging-theme lists on the strength of a story rather than a demonstrable earnings driver.",
-      "items": [
-        {"n": "Longevity biotech and anti-aging research", "why": "Speculative science with no revenue linkage to the cohort clock. If it works, it is limb D's falsifier rather than its expression — which is an argument against owning it inside this book."},
-        {"n": "Senior-focused consumer apps and social platforms", "why": "No demonstrated monetisation of an older user base at scale. Recurrent as a venture theme, absent as a listed one."},
-        {"n": "Medical alert and personal emergency response devices", "why": "Genuine demographic demand, but the category has commoditised and the listed pure plays have mostly been taken private or absorbed. Flagged as a gap in aging-in-place coverage rather than filled with a poor proxy."},
-        {"n": "Reverse-mortgage adjacent lenders generally", "why": "FOA is included as the category's dominant originator and as a monitoring instrument. The rest of the category has repeatedly failed to convert unanswerable product logic into a durable business."}
-      ]
-    },
-    {
-      "id": "structure",
-      "n": "Excluded on structure, not thesis",
-      "c": "#7C3AED",
-      "body": "The demographic exposure is right; the security is not investable in the form available.",
-      "items": [
-        {"n": "European senior care operators (Clariane, Attendo, Orpea successor entities)", "why": "The demographic exposure is textbook. The sector's governance and quality-of-care scandals, plus heavy leverage against regulated pricing, make it uninvestable on the evidence."},
-        {"n": "Chinese and Indian aging plays", "why": "Both run the same clock — China's ahead of the US in speed if not in level. Excluded for now on disclosure quality and policy risk, not on thesis grounds. A genuine future extension of the map."},
-        {"n": "Private RIA aggregators", "why": "Creative Planning, Captrust and Mariner are arguably better expressions of limb B than anything listed. Unavailable — their M&A multiples are used as the private mark for the listed comps instead."},
-        {"n": "Mobility hardware manufacturers", "why": "Permobil, Stannah and Bruno are the aging-in-place hardware layer and are almost entirely private. Recorded as a coverage gap rather than proxied through LEG, which is a furniture and automotive components business with an adjustable-bed line."}
-      ]
-    },
-    {
-      "id": "vehicle",
-      "n": "Thematic ETFs",
-      "c": "#475569",
-      "body": "Excluded as expressions, tracked as sentiment instruments.",
-      "items": [
-        {"n": "Aging / longevity thematic ETFs", "why": "Holdings are typically large-cap diversified healthcare selected by keyword rather than by demographic gradient — precisely the flattening this dashboard exists to avoid. Useful only as a crowding gauge: flows into these funds are a direct read on how consensus the trade has become."},
-        {"n": "Broad healthcare sector ETFs", "why": "No demographic selection at all. Held as a benchmark for whether the stock-level work adds anything, not as a position."}
-      ]
+     "n": "Semiconductors, AI hardware, optical, robotics components",
+     "why": "ai-hardware-research covers this end-to-end. The automation names held here (ROK, EMR, Fanuc, Keyence) are held for the labour-substitution argument specifically, and the deeper supply chain behind them lives in the sibling map."
     }
-  ],
-
-  "coverage_gaps": {
-    "title": "Known holes in v1",
-    "intro": "Stated plainly so the map's edges are visible. Each of these is a place where the thesis has an argument and the universe does not yet have an expression.",
-    "gaps": [
-      "Aging-in-place hardware — mobility, stairlifts, bathroom modification. Almost entirely private. The listed route runs through HD, LOW and IBP, all heavily diluted.",
-      "Estate planning technology — the least-penetrated part of limb B and entirely private (Vanilla, Wealth.com, Trust & Will).",
-      "Non-US expressions beyond Europe and Japan. China and India run the same clock and are absent.",
-      "Fixed income and rates expressions. The thesis has an explicit rate view (weakness w2) and the universe currently contains no instrument for it — everything here is equity.",
-      "The median-retiree segment is under-covered relative to its size. It is the largest cohort segment by headcount, the thinnest on crowding, and has only a handful of names against it.",
-      "Caregiving burden on the working-age population — the labour-supply effect of family members leaving work to provide care. A real limb C channel with no expression yet identified."
-    ]
+   ]
+  },
+  {
+   "id": "notdemo",
+   "n": "Aging-adjacent but not demographically driven",
+   "c": "#DC2626",
+   "body": "Businesses commonly bundled into 'the aging trade' whose actual earnings driver is something else. Including them would let a weak name borrow the thesis's credibility.",
+   "items": [
+    {
+     "n": "Large-cap diversified pharma (PFE, MRK, JNJ, ABBV)",
+     "why": "Patent cliffs, pipeline outcomes and pricing policy dominate. The demographic signal is real but so diluted it contributes nothing to a position decision."
+    },
+    {
+     "n": "Hospital systems (HCA, THC, UHS)",
+     "why": "Volumes do rise with age, but the earnings driver is payor mix, commercial rate negotiation and labour cost. Limb C is a headwind here, not a tailwind — hospitals are on the wrong side of the wage argument."
+    },
+    {
+     "n": "Life insurance writers as a group",
+     "why": "Mortality-exposed rather than longevity-exposed, so the demographic effect is the opposite sign to the rest of the thesis. RGA is included specifically because it takes longevity risk professionally on both sides; the group as a whole is not a thesis expression."
+    },
+    {
+     "n": "Health insurers' commercial segments",
+     "why": "Employer-market economics have no demographic content. The pay vertical holds only the Medicare-exposed part of each name's story."
+    }
+   ]
+  },
+  {
+   "id": "narrative",
+   "n": "Narrative-only 'silver economy' names",
+   "c": "#EF9F27",
+   "body": "Frequently cited in aging-theme lists on the strength of a story rather than a demonstrable earnings driver.",
+   "items": [
+    {
+     "n": "Longevity biotech and anti-aging research",
+     "why": "Speculative science with no revenue linkage to the cohort clock. If it works, it is limb D's falsifier rather than its expression — which is an argument against owning it inside this book."
+    },
+    {
+     "n": "Senior-focused consumer apps and social platforms",
+     "why": "No demonstrated monetisation of an older user base at scale. Recurrent as a venture theme, absent as a listed one."
+    },
+    {
+     "n": "Medical alert and personal emergency response devices",
+     "why": "Genuine demographic demand, but the category has commoditised and the listed pure plays have mostly been taken private or absorbed. Flagged as a gap in aging-in-place coverage rather than filled with a poor proxy."
+    },
+    {
+     "n": "Reverse-mortgage adjacent lenders generally",
+     "why": "FOA is included as the category's dominant originator and as a monitoring instrument. The rest of the category has repeatedly failed to convert unanswerable product logic into a durable business."
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "n": "Excluded on structure, not thesis",
+   "c": "#7C3AED",
+   "body": "The demographic exposure is right; the security is not investable in the form available.",
+   "items": [
+    {
+     "n": "European senior care operators (Clariane, Attendo, Orpea successor entities)",
+     "why": "The demographic exposure is textbook. The sector's governance and quality-of-care scandals, plus heavy leverage against regulated pricing, make it uninvestable on the evidence."
+    },
+    {
+     "n": "Chinese and Indian aging plays",
+     "why": "Both run the same clock — China's ahead of the US in speed if not in level. Excluded for now on disclosure quality and policy risk, not on thesis grounds. A genuine future extension of the map."
+    },
+    {
+     "n": "Private RIA aggregators",
+     "why": "Creative Planning, Captrust and Mariner are arguably better expressions of limb B than anything listed. Unavailable — their M&A multiples are used as the private mark for the listed comps instead."
+    },
+    {
+     "n": "Mobility hardware manufacturers",
+     "why": "Permobil, Stannah and Bruno are the aging-in-place hardware layer and are almost entirely private. Recorded as a coverage gap rather than proxied through LEG, which is a furniture and automotive components business with an adjustable-bed line."
+    },
+    {
+     "n": "Amedisys (AMED) — removed from the universe 2026-08-07",
+     "why": "Delisted on completion of its acquisition; SEC lists no active ticker and the last periodic filing was July 2025. It was carried as a live position for a year after it ceased to exist, which is the failure mode the new corporate-action check exists to prevent."
+    }
+   ]
+  },
+  {
+   "id": "vehicle",
+   "n": "Thematic ETFs",
+   "c": "#475569",
+   "body": "Excluded as expressions, tracked as sentiment instruments.",
+   "items": [
+    {
+     "n": "Aging / longevity thematic ETFs",
+     "why": "Holdings are typically large-cap diversified healthcare selected by keyword rather than by demographic gradient — precisely the flattening this dashboard exists to avoid. Useful only as a crowding gauge: flows into these funds are a direct read on how consensus the trade has become."
+    },
+    {
+     "n": "Broad healthcare sector ETFs",
+     "why": "No demographic selection at all. Held as a benchmark for whether the stock-level work adds anything, not as a position."
+    }
+   ]
   }
+ ],
+ "coverage_gaps": {
+  "title": "Known holes in v1",
+  "intro": "Stated plainly so the map's edges are visible. Each of these is a place where the thesis has an argument and the universe does not yet have an expression.",
+  "gaps": [
+   "Aging-in-place hardware — mobility, stairlifts, bathroom modification. Almost entirely private. The listed route runs through HD, LOW and IBP, all heavily diluted.",
+   "Estate planning technology — the least-penetrated part of limb B and entirely private (Vanilla, Wealth.com, Trust & Will).",
+   "Non-US expressions beyond Europe and Japan. China and India run the same clock and are absent.",
+   "Fixed income and rates expressions. The thesis has an explicit rate view (weakness w2) and the universe currently contains no instrument for it — everything here is equity.",
+   "The median-retiree segment is under-covered relative to its size. It is the largest cohort segment by headcount, the thinnest on crowding, and has only a handful of names against it.",
+   "Caregiving burden on the working-age population — the labour-supply effect of family members leaving work to provide care. A real limb C channel with no expression yet identified."
+  ]
+ }
 }

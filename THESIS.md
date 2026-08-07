@@ -392,8 +392,9 @@ The framing above dictates the build:
 
 ## 7. Evidence status
 
-Sourced on 2026-08-07. Seven indicators read: five confirming, **one
-contradicting, one split**. The contradicting read was found by deliberately testing the
+Sourced on 2026-08-07. Seven indicators read plus a filings pass: five
+confirming, **one contradicting, one split** — and the filings then reversed two
+of my own calls. The contradicting read was found by deliberately testing the
 item most likely to be unsupportive, and it produced the largest revision to the
 thesis so far — which is the argument for working the rest of §8 rather than the
 easy confirmations.
@@ -402,6 +403,7 @@ easy confirmations.
 |---|---|---|
 | Per-capita institutional utilisation **−18% to −32%** over 2014–2024, while ambulatory rose | CMS Geographic Variation PUF | **Contradicting** — limb D keeps its direction, loses its magnitude (see §3D, f11) |
 | Care wages **+9.2pp** above baseline since 2019; construction wages **−0.7pp** | BLS Employment Cost Index | **Split** — limb C's care half confirmed, trades half unevidenced (see §3C, f12) |
+| Care-operator revenue **+9.9%** median CAGR and margins **+0.3pp** through the utilisation decline; staffing margins **−10pp** | SEC XBRL, 110 names | **Corrects me twice** — see below |
 | SNF days/1k **634 → 1,712 → 4,460** across 65–74 / 75–84 / 85+ | CMS Program Statistics | Confirming — the age gradient is steeper than assumed |
 | 65+ labour force participation **18.7%** (Jun 2026), below the 2019 peak of 20.2% | BLS CPS | Confirming — the cohort is not working longer |
 | **93,000** qualified nursing applications turned away in 2025, ~17,000 of them graduate | AACN, May 2026 | Confirming — the capacity bottleneck reproduces itself |
@@ -413,6 +415,42 @@ Four series — population, spending, participation and wealth shares — now
 refresh weekly from Census, BLS and the Federal Reserve via
 `scripts/fetch_reference.py`, so the thesis can no longer quietly rot against
 its own premises.
+
+### The filings pass — where I was wrong
+
+SEC XBRL, CY2019–CY2025, 110 of 126 names. Three tests; the thesis lost two.
+
+**1. The utilisation finding is a market-size warning, not a company-revenue
+prediction.** Care-delivery revenue compounded at a 9.9% median — Ensign 16.4%,
+Pennant 18.7%, Option Care 16.1% — *through* the decade per-capita SNF days fell
+31%. In a sector this fragmented, disciplined consolidators outgrow a shrinking
+per-capita market for years. **The iteration-1 ENSG downgrade was wrong and is
+reversed** (revenue +16.4% CAGR, operating margin +2.1pp). Falsifier f11 cut from
+severity 3 to 2.
+
+**2. The care-wage squeeze hit the labour suppliers, not the labour buyers.**
+Operator margins did not compress — median +0.3pp, with ADUS +4.3, OPCH +6.0,
+AVAH +7.7. The agencies took it instead: **AMN −10.0pp with revenue down from a
+$5.24bn peak to $2.73bn and margins now negative**; CCRN −6.1pp. Operators passed
+the cost through via reimbursement and acuity mix. **The iteration-2 AMN raise was
+wrong and is reversed to conviction 1.** "Whoever supplies scarce labour has
+pricing power" is false for intermediaries — it sits with whoever employs
+directly. The matrix's care-labour mitigation is inverted accordingly.
+
+**3. Contractor margins argue for a moat even though wages do not.** A median
++5.1pp expansion on 10–42% revenue growth — APG +23.3pp, IESC +7.5pp, EME +5.1pp.
+That is pricing power by another route: the binding constraint may be contractor
+*capacity* rather than labour cost. f12 cut to severity 2 and the reduction
+softened to a valuation call rather than a mechanism call.
+
+**Also:** the automation sleeve — the highest-carry position in the book, priced
+for growth — has a median revenue CAGR of **3.7%**, the weakest of ten verticals.
+Six years is long enough that "the substitution capex is coming" needs evidence.
+
+**And the universe was carrying four corporate-action errors:** BK had renamed to
+**BNY**, ATGE had renamed to **CVSA** (Adtalem → Covista), **AMED was delisted** a
+year ago on completion of its acquisition and has been removed, and CCRN has filed
+to deregister. This now runs automatically against SEC EDGAR each week.
 
 ---
 

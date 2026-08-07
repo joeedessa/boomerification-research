@@ -318,7 +318,7 @@ const BASE = location.protocol === 'file:'
 
 let THESIS, CLOCK, MATRIX, COMPANIES, CO_META, THEMES, PORTFOLIO,
     INDICATORS, FALSIFIERS, POLICY, CYCLE, GLOSSARY, SOURCES, EXCLUDED;
-let QUOTES, IDX, NEWS, ALERTS, PERF, REF;
+let QUOTES, IDX, NEWS, ALERTS, PERF, REF, FUND;
 let LIMB = {}, VERT = {}, THEME_REG = {}, TICKER_MAP = {}, NAME_MAP = {}, PRIVATE_MAP = {}, TICKER_RE = null;
 let CO_STATE = {q:'', limb:null, vert:null, conv:null, theme:null, band:null, sort:'conv'};
 let GL_STATE = {q:'', cat:null};
@@ -375,6 +375,23 @@ function limbChip(id){
 }
 function sevDots(n){ return '<span class="sev">'+[1,2,3].map(i=>`<i class="${i<=n?'on':''}"></i>`).join('')+'</span>'; }
 function bar(pct,color){ return `<div class="bar"><i style="width:${Math.max(0,Math.min(100,pct))}%;background:${color}"></i></div>`; }
+/* Filed numbers next to the judgment. A conviction score with no financials
+   under it is an opinion; this is the cheapest way to keep the two adjacent. */
+function fundRow(tk){
+  const f=FUND&&FUND.companies&&FUND.companies[tk];
+  const act=FUND&&FUND.corporate_actions&&FUND.corporate_actions[tk];
+  if(!f&&!act) return '';
+  let bits=[];
+  if(f&&f.revenue_cagr_pct!=null)
+    bits.push(`<span>rev <b class="${f.revenue_cagr_pct>=0?'up':'dn'}">${f.revenue_cagr_pct>0?'+':''}${f.revenue_cagr_pct}%</b> CAGR <span style="opacity:.7">${esc(f.revenue_span||'')}</span></span>`);
+  if(f&&f.margin_delta_pp!=null)
+    bits.push(`<span>op margin <b class="${f.margin_delta_pp>=0?'up':'dn'}">${f.margin_delta_pp>0?'+':''}${f.margin_delta_pp}pp</b></span>`);
+  if(act&&act.severity==='high')
+    bits.push(`<span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)" title="${esc(act.detail)}">${esc(act.kind)}</span>`);
+  if(!bits.length) return '';
+  return `<div class="metarow" style="border-top:.5px dotted var(--color-border-tertiary);padding-top:3px;margin-top:4px">
+    <span class="sf" style="background:var(--color-background-secondary);color:var(--color-text-tertiary)">filed</span>${bits.join('')}</div>`;
+}
 function qBadge(tk){
   const q=QUOTES&&QUOTES[tk];
   if(!q) return '';
@@ -438,6 +455,30 @@ function buildBreaking(){
     ah+=`<div class="note">No alerts yet — the nightly refresh (weekdays ~21:30 UTC) has not run since this dashboard shipped, or the fetch failed. Alerts appear automatically once <b>data/alerts.json</b> is committed by the GitHub Action.</div>`;
   }
   c.innerHTML+=ah;
+
+  /* Corporate-action drift. A universe carrying a dead ticker is wrong in a way
+     that looks like missing data, so it belongs on the front page, not in a log. */
+  const CA=FUND&&FUND.corporate_actions;
+  if(CA){
+    const high=Object.entries(CA).filter(([,v])=>v.severity==='high');
+    const low=Object.entries(CA).filter(([,v])=>v.severity!=='high');
+    if(high.length){
+      c.innerHTML+=`<div class="klabel">Corporate actions — universe drift caught against SEC EDGAR</div>`;
+      let ch='<div class="grid2">';
+      high.forEach(([tk,v])=>{
+        ch+=`<div class="card" style="border-left:3px solid #B32B2A">
+          <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">${esc(v.kind)}</span>
+            <b class="co-tk">${esc(tk)}</b><span class="co-nm">${esc(v.sec_name||'')}</span></div>
+          <div class="cbody" style="margin-top:3px">${rich(v.detail)}</div>
+          ${(v.former_names||[]).length?`<div class="metarow">former: ${v.former_names.map(esc).join(' · ')}</div>`:''}</div>`;
+      });
+      ch+='</div>';
+      if(low.length) ch+=`<div class="note">${low.length} lower-severity flags — Form 25/15 filings by companies that are still
+        listed and still reporting, which is almost always a single bond or preferred class rather than the company.
+        Listed for review: ${low.map(([t])=>esc(t)).join(', ')}.</div>`;
+      c.innerHTML+=ch;
+    }
+  }
 
   /* Falsifiers not in the armed state deserve front-page treatment */
   const hot=(FALSIFIERS.falsifiers||[]).filter(f=>f.state!=='armed');
@@ -860,6 +901,7 @@ function renderCompanies(){
       </div>
       <div class="co-th">${rich(c.thesis_note)}</div>
       ${c.froth_note?`<div class="co-fn"><b>Froth.</b> ${rich(c.froth_note)}</div>`:''}
+      ${fundRow(c.ticker)}
       <div class="metarow">
         <span>paid by <b>${esc(c.band)}</b></span><span>serves <b>${esc(c.cust)}</b></span>
         <span>${(c.themes||[]).map(t=>`<span class="chip" onclick="CO_STATE.theme='${t}';renderCompanies()">${esc((THEME_REG[t]||{}).label||t)}</span>`).join(' ')}</span>
@@ -1333,9 +1375,10 @@ const BUILD={bk:buildBreaking,sh:buildStartHere,ck:buildClock,lb:buildLimbs,mx:b
 
   /* Machine data — optional, never fatal */
   const soft=n=>J(n).catch(()=>null);
-  const [q,i,n,a,p,ref]=await Promise.all([soft('quotes.json'),soft('indices.json'),soft('news.json'),
-                                           soft('alerts.json'),soft('performance.json'),soft('reference.json')]);
-  QUOTES=q&&q.quotes; IDX=i&&i.symbols; NEWS=n; ALERTS=a; PERF=p; REF=ref;
+  const [q,i,n,a,p,ref,fu]=await Promise.all([soft('quotes.json'),soft('indices.json'),soft('news.json'),
+                                              soft('alerts.json'),soft('performance.json'),soft('reference.json'),
+                                              soft('fundamentals.json')]);
+  QUOTES=q&&q.quotes; IDX=i&&i.symbols; NEWS=n; ALERTS=a; PERF=p; REF=ref; FUND=fu;
 
   /* Masthead */
   const stamp=document.getElementById('updated-stamp');
