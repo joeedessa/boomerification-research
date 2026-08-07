@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-08-07T14:18:12+00:00",
+  "as_of": "2026-08-07T14:26:12+00:00",
   "years": [
    2019,
    2020,
@@ -11,7 +11,7 @@
    2024,
    2025
   ],
-  "coverage": "110/127 universe names with revenue data",
+  "coverage": "109/126 universe names with revenue data",
   "dropped_partial_periods": [
    "FIX CY2025"
   ],
@@ -40,15 +40,6 @@
   ]
  },
  "corporate_actions": {
-  "AMED": {
-   "kind": "gone",
-   "severity": "high",
-   "detail": "SEC lists no active ticker for this filer; last periodic filing 2025-07-30",
-   "cik": 896262,
-   "sec_name": "AMEDISYS INC",
-   "current_tickers": [],
-   "former_names": []
-  },
   "APO": {
    "kind": "review",
    "severity": "low",
@@ -64,21 +55,6 @@
     "Tango Holdings, Inc."
    ]
   },
-  "ATGE": {
-   "kind": "ticker-change",
-   "severity": "high",
-   "detail": "universe carries ATGE; SEC lists CVSA",
-   "cik": 730464,
-   "sec_name": "Covista Inc.",
-   "current_tickers": [
-    "CVSA"
-   ],
-   "former_names": [
-    "Adtalem Global Education Inc.",
-    "Adtalem Global Education",
-    "DEVRY EDUCATION GROUP INC."
-   ]
-  },
   "BC": {
    "kind": "review",
    "severity": "low",
@@ -88,18 +64,6 @@
    "current_tickers": [
     "BC",
     "BC-PC"
-   ],
-   "former_names": []
-  },
-  "BK": {
-   "kind": "ticker-change",
-   "severity": "high",
-   "detail": "universe carries BK; SEC lists BNY",
-   "cik": 1390777,
-   "sec_name": "Bank of New York Mellon Corp",
-   "current_tickers": [
-    "BNY",
-    "BNY-PK"
    ],
    "former_names": []
   },
@@ -640,7 +604,7 @@
    "revenue_cagr_pct": 4.9,
    "revenue_span": "CY2019-CY2025"
   },
-  "BK": {
+  "BNY": {
    "cik": 1390777,
    "vertical": "wt",
    "limb": "B",
@@ -1010,7 +974,7 @@
    "margin_delta_pp": 6.1,
    "margin_span": "CY2019-CY2025"
   },
-  "ATGE": {
+  "CVSA": {
    "cik": 730464,
    "vertical": "lab",
    "limb": "C",
@@ -1334,25 +1298,6 @@
    "revenue_span": "CY2019-CY2025",
    "margin_delta_pp": 4.3,
    "margin_span": "CY2019-CY2025"
-  },
-  "AMED": {
-   "cik": 896262,
-   "vertical": "care",
-   "limb": "D",
-   "revenue": {
-    "2022": 2223199000,
-    "2023": 2236382000,
-    "2024": 2348324000
-   },
-   "operating_margin_pct": {
-    "2022": 8.1,
-    "2023": 7.0,
-    "2024": 4.0
-   },
-   "revenue_cagr_pct": 2.8,
-   "revenue_span": "CY2022-CY2024",
-   "margin_delta_pp": -4.1,
-   "margin_span": "CY2022-CY2024"
   },
   "AVAH": {
    "cik": 1832332,
