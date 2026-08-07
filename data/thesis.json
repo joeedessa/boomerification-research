@@ -30,9 +30,10 @@
       "id": "v2",
       "tag": "Sequence, not level",
       "consensus": "\"Aging\" is one trade: buy healthcare and senior housing, wait.",
-      "thesis": "It is a relay race. Each roughly seven-year age band has a different beneficiary set, and the handoff is calendar-predictable because the cohort's size distribution is fixed. The go-go band (65–75, travel and discretionary) is where the cohort's centre of mass has been; it is now crossing into slow-go (75–85, healthcare and home services). The timing of the handoff — not the existence of the demand — is the tradable part.",
+      "thesis": "It is a relay race. Each roughly seven-year age band has a different beneficiary set, and the handoff is calendar-predictable because the cohort's size distribution is fixed. The go-go band (65–74, travel and discretionary) is where the cohort's centre of mass has been; it is now crossing into slow-go (75–84, healthcare and home services). The timing of the handoff — not the existence of the demand — is the tradable part. Sourced, the divergence is stark but asymmetric: Census has slow-go growing 36% from 2025 to 2035 and the 85+ band growing 149% by 2050, while the go-go band peaks at 38.0M in 2030 and only drifts about 8% off that peak before recovering. So the care side compounds and the experience side plateaus. That is a relative-value call, not a short.",
       "conviction": 3,
-      "limb": "D"
+      "limb": "D",
+      "revised": "v1 implied the go-go customer base shrinks meaningfully. Census does not support that. The claim has been narrowed to 'stops growing while priced for growth' — see clock.json correction c1."
     },
     {
       "id": "v3",
@@ -84,7 +85,15 @@
       "risk": "Crowded on the 'RIA rollup' leg, and rollup economics depend on cheap financing. The transfer estimate itself is a projection stacked on asset-price assumptions.",
       "falsifier": "Retention data shows incumbents holding heir relationships at high rates. Then there is no share shift and this is simply a levered bet on AUM beta.",
       "observables": ["RIA and wirehouse net new assets; advisor headcount and average advisor age", "Custody platform net flows", "Trust and estate-services revenue; probate volumes", "Wealth-management M&A multiples and deal count", "Share of assets in fee-based vs commission accounts"],
-      "verify": [{"claim": "$80–100T transferred over roughly two decades", "why": "Widely cited range from private-bank and consultancy research; estimates vary by a factor approaching two and are sensitive to asset-price assumptions."}]
+      "sourced": [
+        {"claim": "Cerulli projects $124T transferred through 2048 — $105T to heirs, $18T to charity. Nearly $100T comes from boomers and older, 81% of the total. Gen X inherits ~$39T, millennials ~$46T, Gen Z ~$15T.", "src": "Cerulli Associates, 2025"},
+        {"claim": "More than half the total volume — $62T — comes from HNW and UHNW households, which are 2% of all households.", "src": "Cerulli Associates", "note": "This is the single most useful number in the limb. It confirms the top-decile / median-retiree split is not a nuance but the structure of the whole transfer."},
+        {"claim": "Boomer share of US household net worth peaked at 57.6% in 2016:Q3 and has fallen to 51.6% by 2026:Q1. Boomers hold 53.9% of corporate equities.", "src": "Federal Reserve Distributional Financial Accounts, 2026:Q1", "note": "The transfer is already underway and measurable, not prospective."}
+      ],
+      "dispute": {
+        "claim": "The headline transfer number is contested by a factor of roughly three.",
+        "body": "Cerulli's $124T through 2048 is the widely cited figure. Visa Business and Economic Insights puts it at roughly $36T over the next twenty years. The gap is methodological rather than arithmetic: longevity keeps assets in the hands of the wealthy longer, end-of-life and long-term care costs consume estates before they transfer (nursing home care runs near $120k a year against a US median household net worth around $193k), and the largest estimates are sensitive to asset-price assumptions compounded over two decades. The dashboard does not pick a number. It positions on the intermediation mechanics — which are driven by the count of transfer events, not their aggregate dollar value — precisely because the dollar value is this uncertain."
+      }
     },
     {
       "id": "C",
@@ -99,7 +108,12 @@
       "expression": "Structural short duration relative to a 2010s baseline. Long labour-substituting capital equipment and software. Long staffing, training and credentialling in the constrained verticals. Long the contractors who own the scarce labour pool rather than the projects. Explicit scepticism toward a mechanical 60/40 revival.",
       "risk": "This limb carries the thesis. If it is wrong, the portfolio-construction conclusion is wrong too, and what remains is a conventional healthcare-demographics book.",
       "falsifier": "A sustained immigration surge, or 65+ participation continuing to rise as people simply work longer. Either substantially neutralises this limb. Immigration policy is the single largest swing factor in the entire thesis.",
-      "observables": ["Labour force participation rate by age band, especially 65+", "Job openings and quits in healthcare and construction trades", "Apprenticeship registrations, nursing-school enrolment and completions", "Wage growth: non-tradable services vs goods", "Net immigration and visa issuance in affected categories", "Contractor backlog and bid-margin commentary"]
+      "observables": ["Labour force participation rate by age band, especially 65+", "Job openings and quits in healthcare and construction trades", "Apprenticeship registrations, nursing-school enrolment and completions", "Wage growth: non-tradable services vs goods", "Net immigration and visa issuance in affected categories", "Contractor backlog and bid-margin commentary"],
+      "sourced": [
+        {"claim": "65+ labour force participation is 18.7% (June 2026), below its 2019 annual peak of 20.2% and below the 2024 average of 19.5%. The cohort is not working longer — participation peaked before the pandemic and has not recovered.", "src": "BLS Current Population Survey, series LNU01300097", "note": "This is the highest-value single indicator in the thesis and it currently reads CONFIRMING. It tests limb C's premise and limb D's timing at once."},
+        {"claim": "Nursing schools turned away 93,000 qualified applications in 2025 — 75,255 from entry-level baccalaureate programmes and nearly 17,000 from graduate programmes. Schools cite insufficient clinical placement sites, budget cuts, and shortages of faculty, preceptors and classroom space.", "src": "AACN annual survey, released 7 May 2026; 998 schools, 89.5% response rate", "note": "The graduate figure is the compounding part: most full-time nursing faculty roles require a master's or doctorate, so turning away graduate applicants constrains the future capacity to train anyone. The bottleneck is self-reinforcing, which is exactly what 'capacity lags known demand' requires."},
+        {"claim": "The 2026 Trustees Report lowered its assumed immigration levels, contributing to a 16% widening of the 75-year deficit.", "src": "2026 Social Security Trustees Report", "note": "Limb C's main falsifier is an immigration surge. The federal actuaries have just revised their assumption the other way."}
+      ]
     },
     {
       "id": "D",
@@ -130,7 +144,11 @@
       "risk": "Policy timing is unforecastable in a way the other limbs are not. This limb is a constraint on position construction more than a source of longs.",
       "falsifier": "Meaningful entitlement reform passes early and credibly. That repaths the fiscal limb and materially changes the reimbursement risk premium embedded in limb D.",
       "observables": ["SSA Trustees report projections and revisions", "CBO long-term budget outlook", "Medicare physician fee schedule and Advantage rate notices", "10s30s curve and estimated term premium", "Worker-to-beneficiary ratio", "Entitlement legislation and commission activity"],
-      "verify": [{"claim": "OASI trust fund depletion in the mid-2030s", "why": "Moves every year with the Trustees report; must be refreshed against the current edition rather than quoted from memory."}]
+      "sourced": [
+        {"claim": "OASI trust fund reserve depletion is projected for 2032 — not the mid-2030s. Combined OASDI is 2034. After OASI depletion, incoming receipts cover 78% of scheduled benefits, falling toward 62% by 2100.", "src": "2026 Social Security Trustees Report, released 9 June 2026", "note": "This is the single largest correction to the v1 thesis. The forcing function is roughly three years nearer than assumed, which puts it inside the horizon of most positions in the book rather than beyond it."},
+        {"claim": "The 75-year actuarial deficit widened from 3.82% to 4.42% of taxable payroll in a single year — a 16% deterioration.", "src": "2026 Trustees Report / Center for Retirement Research"},
+        {"claim": "The deterioration is driven by a fertility assumption cut from 1.90 to 1.75, lower assumed immigration, and the One Big Beautiful Bill Act permanently reducing income tax revenue on benefits.", "src": "Center for Retirement Research analysis of the 2026 report", "note": "The immigration assumption cut matters beyond this limb — the government's own actuaries have moved their assumption in the direction that supports limb C."}
+      ]
     },
     {
       "id": "H",

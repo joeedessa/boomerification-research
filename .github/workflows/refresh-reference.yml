@@ -1,0 +1,48 @@
+name: Refresh reference data
+
+on:
+  schedule:
+    # Mondays 06:00 UTC. These series move annually or quarterly — weekly is generous,
+    # and it means a new Census vintage or DFA quarter shows up without anyone noticing.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch reference data
+        run: python scripts/fetch_reference.py
+      - name: Validate
+        run: |
+          python - <<'EOF'
+          import json
+          d = json.load(open('data/reference.json'))
+          for block in ('population', 'spending', 'participation', 'wealth'):
+              assert block in d, f'missing block: {block}'
+          p = d['population']
+          assert len(p['years']) == len(p['series']['gogo']), 'population series length mismatch'
+          # The shape claims the thesis rests on. If Census revises these away, the
+          # dashboard should fail loudly rather than quietly render a contradiction.
+          s = p['series']
+          assert s['slowgo'][-1] > s['slowgo'][0], 'slow-go band no longer growing — thesis needs re-reading'
+          assert s['nogo'][-1] > s['nogo'][0] * 1.5, '85+ band no longer compounding — thesis needs re-reading'
+          failed = d['_meta'].get('failed_blocks') or []
+          print('reference.json valid' + (f' (stale blocks: {failed})' if failed else ''))
+          EOF
+      - name: Commit if changed
+        run: |
+          git config user.name "reference-data-bot"
+          git config user.email "actions@github.com"
+          git add data/reference.json
+          git diff --cached --quiet && echo "no changes" && exit 0
+          git commit -m "Weekly reference data refresh"
+          git pull --rebase origin main
+          git push

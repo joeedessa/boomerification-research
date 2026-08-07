@@ -1,16 +1,16 @@
 {
   "_meta": {
-    "description": "The cohort clock — the master time axis for the whole dashboard. Age-band populations projected forward, the spending shape within each band, and which limbs each band pays. Every other panel is indexed to this.",
-    "as_of": "2026-08-06",
-    "units": "US resident population, millions",
-    "source_note": "Population figures are Census-projection-shaped estimates entered from memory and MUST be replaced with the current Census vintage before publication as fact. The SHAPE of the curve — 75-84 growing hardest through 2035, 85+ nearly doubling by 2040, 65-74 flat-to-down after 2030 — is robust to vintage and is what the thesis rests on.",
-    "verify": true
+    "description": "The cohort clock — the master time axis for the whole dashboard. Age-band definitions, the spending shape within each band, and which limbs each band pays. The population and spending SERIES themselves live in reference.json, pulled from Census and BLS by scripts/fetch_reference.py; this file holds the reading of them.",
+    "as_of": "2026-08-07",
+    "sourced": true,
+    "source_note": "Population is US Census Bureau 2023 National Population Projections, main series, Table 3 (released November 2023; 2022 is the base estimate). Spending is BLS Consumer Expenditure Survey 2024, by age of reference person. Both refresh from primary sources weekly — see data/reference.json for the live series and retrieval dates.",
+    "revision_note": "Superseded the v1 estimates on 2026-08-07. Two claims did not survive sourcing and are corrected below: the go-go band plateaus rather than declines steeply, and go-go spending is far lower relative to working life than the v1 text asserted. Both corrections are recorded in the 'corrections' block rather than quietly overwritten."
   },
 
   "now": {
     "year": 2026,
     "headline": "Median boomer is 71. The cohort's centre of mass is crossing out of go-go and into slow-go.",
-    "body": "This is the single most important sentence on the dashboard. The leading edge of the cohort turned 80 this year; the trailing edge is 62 and still working. The median sits at 71 — right at the boundary where discretionary travel and leisure spending rolls over and healthcare, home services and care spending begins its climb. The experience-economy trade has had its demographic tailwind. The care trade still has one."
+    "body": "This is the single most important sentence on the dashboard. The leading edge of the cohort turned 80 this year; the trailing edge is 62 and still working. The median sits at 71 — right at the boundary where discretionary travel and leisure spending rolls over and healthcare, home services and care spending begins its climb. The sourced data supports the direction emphatically: BLS puts average annual spending at 65–74 some 23% below the 55–64 band, with healthcare's share of the basket rising from 7.9% to 11.8% and on to 14.2% past 75."
   },
 
   "cohort_edges": [
@@ -28,72 +28,102 @@
       "ages": "55–64",
       "c": "#64748B",
       "spend_idx": 100,
-      "label": "Peak earning, peak accumulating",
-      "behaviour": "Highest household income and highest contribution rates. Catch-up contributions, mortgage payoff, last major durable purchases. Still net suppliers of capital to markets and net suppliers of labour.",
+      "spend_note": "Base for the index. BLS 2024: $84,946 average annual expenditure per consumer unit. Peak spending is actually the 45–54 band at $100,327 — 18% higher.",
+      "label": "Peak earning, still accumulating",
+      "behaviour": "High household income and high contribution rates. Catch-up contributions, mortgage payoff, last major durable purchases. Still net suppliers of capital to markets and net suppliers of labour.",
       "pays": ["A"],
-      "note": "Gen X occupies this band for the whole thesis horizon. It is what stops limb A from being a cliff."
+      "note": "Gen X occupies this band for the whole thesis horizon. But the band itself shrinks from 42.1M (2022) to 38.5M (2035) before recovering — the accumulator base contracts for the next decade, which cuts against limb A sooner than the v1 text assumed."
     },
     {
       "id": "gogo",
       "n": "Go-go",
       "ages": "65–74",
       "c": "#EF9F27",
-      "spend_idx": 93,
+      "spend_idx": 77,
+      "spend_note": "BLS 2024: $65,354 — 23% below the 55–64 band, not 'slightly below' as v1 claimed. Transportation spend falls from $15,085 to $11,414; healthcare rises to 11.8% of the basket.",
       "label": "Peak discretionary — time-rich, health-intact, asset-rich",
-      "behaviour": "Travel, cruises, RVs and boats, second homes, golf and leisure, restaurants, elective and quality-of-life procedures (joints, cataracts, dental, hearing). Spending total is only slightly below working life but the mix is radically different. Housing decisions begin — downsizing, relocation to retirement metros.",
+      "behaviour": "Travel, cruises, RVs and boats, second homes, golf and leisure, restaurants, elective and quality-of-life procedures (joints, cataracts, dental, hearing). Total spending drops materially from working life, but the discretionary and experience share within a smaller basket holds up — entertainment actually rises as a share, from 4.4% at 45–54 to 4.8% here.",
       "pays": ["D", "H"],
-      "note": "The cohort's centre of mass has been sitting here. It is leaving. Fade into strength rather than shorting — earnings roll over after the demography does."
+      "note": "The cohort's centre of mass has been sitting here. It is leaving. But see the corrections block: this band plateaus rather than collapsing, which weakens the crude version of the fade call."
     },
     {
       "id": "slowgo",
       "n": "Slow-go",
       "ages": "75–84",
       "c": "#D97706",
-      "spend_idx": 76,
+      "spend_idx": 66,
+      "spend_note": "BLS reports 75+ as a single bracket ($55,834) and does not split 75–84 from 85+. The index shown is the 75+ figure and applies to both this band and the next — treat the split between them as unmeasured.",
       "label": "Total spend falls, mix rotates hard into care",
-      "behaviour": "Travel and discretionary durables drop away. Healthcare share of the basket climbs steeply — chronic disease management, cardiology, ophthalmology, sensory aids, mobility. Home services and home modification replace DIY. First care decisions: in-home help, then possibly a move. Driving stops. This is the band with the steepest population growth through 2035.",
+      "behaviour": "Travel and discretionary durables drop away — transportation spend falls to $6,855, less than half the 55–64 level. Healthcare share of the basket climbs to 14.2%, roughly double the pre-retirement share. Home services and home modification replace DIY. First care decisions: in-home help, then possibly a move. Driving stops.",
       "pays": ["D", "H", "C"],
-      "note": "The fastest-growing band on the clock, and the one the cohort is entering now. This is where the thesis's demographic wind is strongest."
+      "note": "The fastest-growing band on the clock through 2040, and the one the cohort is entering now. 20.3M in 2025 to 27.7M in 2035 — up 36%. This is where the thesis's demographic wind is strongest."
     },
     {
       "id": "nogo",
       "n": "No-go",
       "ages": "85+",
       "c": "#DC2626",
-      "spend_idx": 62,
+      "spend_idx": 66,
+      "spend_note": "Inside the BLS 75+ bracket. Total spend is lower than the slow-go band and far more concentrated in medical and care, but the survey does not isolate it.",
       "label": "Medical and long-term care dominate; asset release becomes forced",
       "behaviour": "Spending concentrates almost entirely in medical, long-term care and housing-with-care. Care intensity rises sharply and so does its labour content. Assets are released not by choice but by care costs or by death — this is where the transfer in limb B actually executes, and where the housing stock in limb H is finally released.",
       "pays": ["D", "E", "B", "H"],
-      "note": "Nearly doubles by 2040. The most labour-intensive band to serve, which is where limb C and limb D collide directly."
+      "note": "The compounding band: 7.0M (2025) to 13.7M (2040) to 17.4M (2050) — up 96% by 2040 and 149% by 2050. The most labour-intensive band to serve, which is where limb C and limb D collide directly."
     }
   ],
 
-  "projection": {
-    "years": [2020, 2025, 2030, 2035, 2040],
-    "series": [
-      {"band": "pre",    "vals": [42.0, 41.4, 42.3, 44.0, 44.3]},
-      {"band": "gogo",   "vals": [32.9, 35.9, 36.2, 34.3, 33.1]},
-      {"band": "slowgo", "vals": [16.7, 20.9, 25.6, 28.6, 29.0]},
-      {"band": "nogo",   "vals": [6.7, 7.5, 9.5, 12.1, 14.6]}
-    ],
-    "reading": [
-      {"tag": "The core signal", "body": "Slow-go (75–84) grows by roughly a third between 2025 and 2035, and 85+ roughly doubles between 2025 and 2040. Meanwhile go-go (65–74) peaks around 2030 and then declines. The demographic wind is not 'aging' in general — it is specifically behind the two oldest bands and specifically against the youngest retired one."},
-      {"tag": "What it means for sequencing", "body": "Businesses serving 65–74 are trading against a tailwind that expires around 2030. Businesses serving 75+ have a tailwind that runs past 2040. Same 'aging' narrative, opposite gradient, and the market prices them as one theme."},
-      {"tag": "The labour arithmetic", "body": "Care hours consumed scale with the 85+ band, not with the 65+ total. A near-doubling of 85+ against a care workforce whose training pipeline is capacity-constrained is the arithmetic behind limb C — and the margin problem inside limb D."}
-    ]
+  "projection_ref": {
+    "source": "reference.json → population",
+    "note": "The chart reads its series from reference.json so the clock cannot drift from the Census vintage behind it."
   },
 
+  "reading": [
+    {"tag": "The core signal survives sourcing", "body": "Slow-go (75–84) grows 36% between 2025 and 2035 — 20.3M to 27.7M. The 85+ band grows 96% between 2025 and 2040 and 149% by 2050, reaching 17.4M. Against that, the go-go band peaks in 2030 at 38.0M. The demographic wind is emphatically behind the two oldest bands, and it is not behind the youngest retired one."},
+    {"tag": "But the fade is a plateau, not a cliff", "body": "This is the correction that matters most. Census has go-go at 38.0M in 2030, 36.9M in 2035, 35.1M in 2040 and back to 37.0M by 2050 — a drift of about 8% off the peak, then a recovery as Gen X arrives. The v1 text implied the customer base for cruise, RV and active-adult shrinks meaningfully. It does not. What actually happens is that it stops growing while those businesses are priced for growth. That is still a real and tradable divergence, but it is a relative call against a compounding care trade, not an absolute decline. Any short framed on a collapsing customer base is wrong."},
+    {"tag": "The accumulator base contracts first", "body": "The 55–64 band falls from 42.1M (2022) to 38.5M (2035) before recovering to 44.7M by 2050. v1 had this band rising throughout. The contraction arrives before the recovery, which means limb A's flow headwind — fewer contributors funding the products that depend on continuous contribution — bites in the next decade rather than the one after."},
+    {"tag": "The labour arithmetic", "body": "Care hours consumed scale with the 85+ band, not with the 65+ total. That band roughly doubles by 2040 against a care workforce whose training pipeline is capacity-constrained — AACN counted 93,000 qualified nursing applications turned away in 2025 alone. That is the arithmetic behind limb C, and the margin problem inside limb D."},
+    {"tag": "Total 65+ for scale", "body": "57.8M (2022) to 71.2M (2030) to 82.2M (2050). The aggregate is the number everyone quotes; the composition inside it is the only part that is tradable."}
+  ],
+
+  "corrections": [
+    {
+      "id": "c1",
+      "claim": "Go-go band peaks around 2030 and then declines",
+      "v1": "Implied a meaningful decline in the customer base for experience-economy and active-adult businesses.",
+      "sourced": "Census 2023 projections: 38.0M (2030) → 36.9M (2035) → 35.1M (2040) → 37.0M (2050). About 8% off peak, then recovery.",
+      "effect": "Weakens the fade call from 'the customer disappears' to 'the customer stops growing while the price assumes otherwise'. Still a relative-value trade against the care book; no longer an argument for an outright short.",
+      "affects": ["VIK", "RCL", "CCL", "THO", "BC", "GOLF", "PHM", "TMHC"]
+    },
+    {
+      "id": "c2",
+      "claim": "Go-go spending total is only slightly below working life",
+      "v1": "spend_idx 93 versus a 55–64 base of 100.",
+      "sourced": "BLS CEX 2024: $65,354 versus $84,946 — an index of 77, not 93.",
+      "effect": "The spending drop at retirement is much sharper than v1 assumed. Strengthens the rotation argument (the basket shrinks and re-weights simultaneously) and weakens any thesis that leans on aggregate retiree spending holding up.",
+      "affects": ["The limb D relay framing", "consumption-vertical sizing"]
+    },
+    {
+      "id": "c3",
+      "claim": "Pre-retirement band rises through the horizon",
+      "v1": "55–64 shown rising from 41.4M (2025) to 44.3M (2040).",
+      "sourced": "Census: 41.1M (2025) → 38.9M (2030) → 38.5M (2035) → 40.4M (2040) → 44.7M (2050). Contracts for a decade first.",
+      "effect": "Limb A's contribution-flow headwind arrives earlier than assumed. Raises conviction in the negative case (TROW as the control variable) and in the annuity-origination trade capturing a transition from a shrinking pool.",
+      "affects": ["TROW", "VOYA", "PFG", "BLK"]
+    }
+  ],
+
   "relay": [
-    {"window": "through ~2030", "band": "gogo", "n": "The go-go band is still large but has stopped growing", "beneficiaries": "Cruise, travel, RV/marine, active-adult housing, elective ortho and ophthalmic, golf and leisure", "stance": "Harvest. Fade into strength. The population supporting these businesses peaks and then turns."},
-    {"window": "2026–2035", "band": "slowgo", "n": "The slow-go band takes the growth baton", "beneficiaries": "Home health, chronic care management, sensory (hearing/vision), cardiology and structural heart, mobility, home modification, LTC pharmacy, Medicare Advantage", "stance": "Accumulate. This is the core of the book and the demographic wind is strongest here."},
-    {"window": "2030–2045", "band": "nogo", "n": "The 85+ band compounds fastest", "beneficiaries": "Skilled nursing, memory care, hospice, senior housing with care, death care, estate and trust services, the transfer itself", "stance": "Build early where valuation allows — the demand is arithmetic, the constraint is labour and reimbursement, so own the ones that survive both."}
+    {"window": "through ~2030", "band": "gogo", "n": "The go-go band peaks at 38.0M and then plateaus", "beneficiaries": "Cruise, travel, RV/marine, active-adult housing, elective ortho and ophthalmic, golf and leisure", "stance": "Harvest, don't short. The population supporting these businesses stops growing rather than shrinking — the trade is against a growth multiple, not against the customer."},
+    {"window": "2026–2035", "band": "slowgo", "n": "The slow-go band takes the growth baton — up 36%", "beneficiaries": "Home health, chronic care management, sensory (hearing/vision), cardiology and structural heart, mobility, home modification, LTC pharmacy, Medicare Advantage", "stance": "Accumulate. This is the core of the book and the demographic wind is strongest here."},
+    {"window": "2030–2050", "band": "nogo", "n": "The 85+ band compounds fastest — up 149% by 2050", "beneficiaries": "Skilled nursing, memory care, hospice, senior housing with care, death care, estate and trust services, the transfer itself", "stance": "Build early where valuation allows — the demand is arithmetic, the constraint is labour and reimbursement, so own the ones that survive both."}
   ],
 
   "wealth_split": {
-    "note": "The cohort is not one customer. Concentration within it means the top decile and the median retiree face opposite problems, and a single 'the retiree' framing produces wrong positions for one of them. Universe records are tagged with which customer they serve.",
+    "note": "The cohort is not one customer. Fed Distributional Financial Accounts (2026:Q1) put the boomer generation at 51.6% of US household net worth and 53.9% of corporate equities and mutual fund shares; households aged 55+ hold 73.9% of net worth. But Cerulli finds more than half of all projected transfer volume comes from the 2% of households that are HNW or UHNW — concentration within the cohort is severe, and a single 'the retiree' framing produces wrong positions for one of the two customers below.",
+    "boomer_share_trend": "Boomer net worth share peaked at 57.6% in 2016:Q3 and has drifted to 51.6% by 2026:Q1. The transfer is not prospective — it is already visible in the data.",
     "segments": [
-      {"id": "top", "n": "Top-decile retiree", "share_note": "Holds the large majority of cohort net worth", "problem": "Estate and tax efficiency, not income adequacy. Will not decumulate meaningfully — dies holding.", "serves": "Trust and estate services, private banking, alternatives access, luxury and legacy spending, philanthropy infrastructure", "limbs": ["B", "A"]},
-      {"id": "median", "n": "Median retiree", "share_note": "Materially under-saved relative to a full-length retirement", "problem": "Income adequacy and out-of-pocket care cost. Will decumulate, will rely on Social Security and Medicare, and is directly exposed to limb E policy risk.", "serves": "Annuities and guaranteed income, Medicare Advantage, value retail and dollar stores, generic pharmacy, reverse mortgage, subsidised and middle-market senior housing", "limbs": ["A", "E", "D"]}
+      {"id": "top", "n": "Top-decile retiree", "share_note": "Holds the large majority of cohort net worth; Cerulli attributes $62T of $124T in projected transfers to the top 2% of households", "problem": "Estate and tax efficiency, not income adequacy. Will not decumulate meaningfully — dies holding.", "serves": "Trust and estate services, private banking, alternatives access, luxury and legacy spending, philanthropy infrastructure", "limbs": ["B", "A"]},
+      {"id": "median", "n": "Median retiree", "share_note": "Materially under-saved relative to a full-length retirement; US median household net worth is roughly $193k against nursing home costs near $120k a year", "problem": "Income adequacy and out-of-pocket care cost. Will decumulate, will rely on Social Security and Medicare, and is directly exposed to limb E policy risk — the OASI trust fund depletes in 2032 with 78% of scheduled benefits payable thereafter absent legislation.", "serves": "Annuities and guaranteed income, Medicare Advantage, value retail and dollar stores, generic pharmacy, reverse mortgage, subsidised and middle-market senior housing", "limbs": ["A", "E", "D"]}
     ]
   }
 }

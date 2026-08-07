@@ -8,8 +8,9 @@ The thesis is not that the population is aging — that has been forecastable si
 
 - `index.html` — the app (single-file, no build step)
 - `THESIS.md` — the written thesis the dashboard is built from
-- `data/*.json` — the research: 127 companies across six limbs, the cohort clock, universe matrix, themes, sequencing, indicators, falsifiers, policy map, positioning, glossary, sources and exclusions — plus nightly machine data (quotes, indices, news, alerts, performance)
-- `scripts/fetch_market.py` + `.github/workflows/refresh-data.yml` — the zero-cost nightly data robot
+- `data/*.json` — the research: 127 companies across six limbs, the cohort clock, universe matrix, themes, sequencing, indicators, falsifiers, policy map, positioning, glossary, sources and exclusions — plus nightly machine data (quotes, indices, news, alerts, performance) and weekly reference data
+- `scripts/fetch_market.py` + `.github/workflows/refresh-data.yml` — the nightly market robot
+- `scripts/fetch_reference.py` + `.github/workflows/refresh-reference.yml` — the weekly reference robot: Census population projections, BLS spending and participation, Fed wealth shares
 - `.github/workflows/ci.yml` — push-time validation (data JSON, thesis referential integrity, app JS)
 - `archive/` — frozen historical snapshots
 
@@ -21,7 +22,16 @@ The **cohort clock** (`data/clock.json`) is the master time axis. Every other pa
 
 ## Status
 
-**v1 research build.** No figure in this repository has yet been pulled from a primary source by machine. Claims entered from memory are tagged `verify` in the data and rendered with a visible marker in the app; the full verification queue is in `data/sources.json` and on the Sources tab. The population figures in the cohort clock are Census-projection-shaped estimates — the *shape* of the curve is what the thesis rests on and is robust to vintage, but the levels need sourcing before they are quoted as fact.
+**Sourced as of 2026-08-07.** v1 shipped with no figure pulled from a primary source. The verification queue has since been worked in full: eight claims resolved — five confirmed, one confirmed with a material correction, one confirmed with a caveat, and **two wrong**. The resolution log is on the Sources tab and in `data/sources.json`.
+
+The two that were wrong matter:
+
+- **OASI trust fund depletion is 2032, not the mid-2030s** (2026 Trustees Report). Limb E's forcing function is three years nearer than the thesis assumed, which moves it inside the horizon of most positions rather than beyond it.
+- **Go-go spending indexes at 77, not 93** against a 55–64 base (BLS CEX 2024). Spending falls 23% at the retirement transition, far more sharply than assumed.
+
+A third claim was corrected: the go-go band **plateaus rather than declines** (Census: 38.0M in 2030 → 35.1M in 2040 → 37.0M by 2050), which narrows the fade call from "the customer disappears" to "the customer stops growing while priced for growth." Corrections are rendered in the app rather than silently overwritten.
+
+Four series — population, spending, participation and wealth shares — refresh weekly from Census, BLS and the Federal Reserve via `scripts/fetch_reference.py`, so the dashboard can no longer rot against its own premises. **What remains unsourced is listed on the Sources tab and is not small** — most importantly health utilisation per capita in the 75+ bands, which is the direct test of the morbidity-compression falsifier.
 
 ## Running it locally
 

@@ -1,6 +1,6 @@
 # Boomerification — Investment Thesis
 
-*Framing v2, 2026-08-06. No data pulled yet; figures marked ⟨verify⟩ are from memory and must be sourced before they go in the dashboard.*
+*Framing v3, 2026-08-07. The verification queue has been worked — every figure below is now sourced or explicitly flagged as contested. Three v1 claims did not survive and are corrected in place, with the correction marked rather than quietly overwritten. What remains unsourced is listed in §8.*
 
 ---
 
@@ -49,19 +49,48 @@ This is the spine of the thesis. Everything is timed off it.
 - Trailing edge (born 1964): **62 in 2026** — still working, still accumulating
 - Gen X leading edge (born 1965): **65 in 2030**
 
-Spending by age band is well-documented and non-linear:
+**Population by band** — Census 2023 National Population Projections, main
+series, millions:
 
-- **"Go-go," ~65–75** — travel, leisure, second homes, discretionary. Peak
-  experience spend. *The center of mass is leaving this band now.*
-- **"Slow-go," ~75–85** — spending falls, mix rotates hard to healthcare and
-  home services. Housing decisions begin.
-- **"No-go," ~85+** — spending concentrates almost entirely in medical and
-  long-term care; asset release is forced by care costs or death.
+| Band | 2025 | 2030 | 2035 | 2040 | 2050 |
+|---|---|---|---|---|---|
+| Pre-retirement 55–64 | 41.1 | 38.9 | 38.5 | 40.4 | 44.7 |
+| Go-go 65–74 | 35.9 | **38.0** | 36.9 | 35.1 | 37.0 |
+| Slow-go 75–84 | 20.3 | 24.6 | **27.7** | 29.5 | 27.8 |
+| No-go 85+ | 7.0 | 8.6 | 11.2 | 13.7 | **17.4** |
+
+**Spending by band** — BLS Consumer Expenditure Survey 2024, average annual
+expenditure per consumer unit, indexed to the 55–64 band:
+
+| Band | Spend | Index | Healthcare share |
+|---|---|---|---|
+| 45–54 (peak) | $100,327 | 118 | 6.7% |
+| 55–64 | $84,946 | 100 | 7.9% |
+| 65–74 | $65,354 | **77** | 11.8% |
+| 75+ | $55,834 | **66** | 14.2% |
 
 **The actionable timing insight:** the cohort's median is at 71 and its mass is
-crossing from go-go into slow-go over roughly 2026–2035. The leisure/travel trade
-has already had its run and is late-cycle. The care/health-services trade is the
-one with the demographic wind still ahead of it.
+crossing from go-go into slow-go over 2026–2035. Slow-go grows 36% from 2025 to
+2035; the 85+ band grows 96% by 2040 and 149% by 2050. The care trade has the
+demographic wind still ahead of it.
+
+> **Correction (c1).** v1 claimed the go-go band "peaks around 2030 and then
+> declines," implying a shrinking customer base for the experience economy.
+> Census does not support that: 38.0M (2030) → 35.1M (2040) → back to 37.0M by
+> 2050, about 8% off peak with a recovery as Gen X arrives. **The fade call is
+> narrowed to "the customer stops growing while the price assumes otherwise."**
+> It is a relative-value call against a compounding care trade, not a short.
+
+> **Correction (c2).** v1 put go-go spending at 93 versus a 55–64 base of 100 and
+> described it as "only slightly below working life." BLS says 77 — spending
+> falls 23% at the transition. This *strengthens* the rotation argument (the
+> basket shrinks and re-weights at once) and kills any version of the thesis
+> leaning on aggregate retiree spending holding up. Note also that BLS does not
+> split 75–84 from 85+, so the slow-go/no-go spending distinction is unmeasured.
+
+> **Correction (c3).** v1 had the 55–64 band rising throughout. It contracts to
+> 38.5M by 2035 before recovering. Limb A's contribution-flow headwind arrives a
+> decade earlier than assumed.
 
 ---
 
@@ -94,15 +123,30 @@ in flow data → the benign version is wrong and the directional bear case reviv
 
 ### B. The transfer, and who actually receives it
 
-**Mechanism.** ⟨verify: commonly cited $80–100T over ~20 years⟩. The framing
-error in most versions of this trade is the recipient. Assets pass **first to the
+**Mechanism.** The headline number is contested by a factor of roughly three.
+Cerulli projects **$124T transferred through 2048** — $105T to heirs, $18T to
+charity, ~81% of it from boomers and older. Visa Business and Economic Insights
+puts it at roughly **$36T over twenty years**. The gap is methodological:
+longevity keeps assets in wealthy hands longer, and end-of-life and long-term
+care costs consume estates before they transfer — nursing home care runs near
+$120k a year against a US median household net worth around $193k. *This
+dashboard declines to pick a number* and positions on transfer-event mechanics
+instead, which depend on the count of events rather than their aggregate value.
+
+The single most useful figure is neither headline: **$62T — more than half of
+Cerulli's total — comes from the 2% of households that are HNW or UHNW.** The
+top-decile/median-retiree split in §5 is not a nuance; it is the structure of the
+whole transfer.
+
+The framing error in most versions of this trade is the recipient. Assets pass **first to the
 surviving spouse** — typically a woman in her late 70s or 80s — and only later to
 children who are themselves in their 50s and 60s. The "millennials inherit" story
 is a 2040s story, not a 2020s one.
 
 **Why that matters commercially:** each transfer event is a moment where the
 incumbent advisor relationship breaks. Attrition at the widow step and again at
-the heir step is high ⟨verify magnitude⟩. **The fee pool moves before the assets
+the heir step is high — magnitude still unsourced, since Cerulli's channel
+retention data is paid. **The fee pool moves before the assets
 do.** Recipient generations also prefer different intermediation — fee-based,
 digital-first, indexed core, alternatives sleeve.
 
@@ -165,10 +209,22 @@ people staying healthier longer), which pushes the entire care curve right.
 ### E. Fiscal and policy — the thesis's own hedge
 
 **Mechanism.** A rising beneficiary-to-worker ratio raises mandatory spending
-against a shrinking relative tax base. OASI trust fund depletion sits in the
-mid-2030s ⟨verify current CBO/Trustees date⟩. Implications: more long-end
-issuance, upward pressure on term premium, and — the part that matters most here —
-**political pressure on healthcare pricing.**
+against a shrinking relative tax base. OASI trust fund depletion sits in
+**2032**. Implications: more long-end issuance, upward pressure on term premium,
+and — the part that matters most here — **political pressure on healthcare
+pricing.**
+
+> **Correction — the largest in the sourcing pass.** The 2026 Trustees Report
+> (9 June 2026) puts OASI reserve depletion at **Q4 2032**, combined OASDI at
+> **2034**, with **78% of scheduled benefits payable** thereafter absent
+> legislation. The 75-year deficit widened from **3.82% to 4.42% of taxable
+> payroll in a single year** — a 16% deterioration driven by a fertility
+> assumption cut from 1.90 to 1.75, **lower assumed immigration**, and the One
+> Big Beautiful Bill Act reducing tax revenue on benefits. v1 said "mid-2030s."
+> The forcing function is roughly three years nearer than assumed, which moves it
+> *inside* the horizon of most positions in this book rather than beyond it.
+> Note the immigration revision separately: it is evidence for limb C, from the
+> federal actuaries.
 
 **This is why limb E must sit in the same dashboard as limb D.** The same
 demographics that guarantee healthcare *volume* make healthcare *price* the most
@@ -228,13 +284,23 @@ State these up front; the thesis is more credible with them than without.
   bidding for income argues for demand for duration. Do not paper over this —
   **make the net rate view an explicit, dated call rather than an emergent
   property of the other limbs.**
-- **Wealth concentration cuts both ways.** ⟨verify: 55+ households hold ~70%+ of
-  US household net worth⟩ — but concentration *within* the cohort means the
-  median retiree is under-saved. Two very different customers, two different
-  trades: luxury/legacy at the top, value/safety-net at the median. The dashboard
-  should probably split them.
+- **Wealth concentration cuts both ways.** Households aged 55+ hold **73.9%** of
+  US household net worth, and boomers alone hold **51.6%** — plus **53.9% of
+  corporate equities** (Fed Distributional Financial Accounts, 2026:Q1). But
+  concentration *within* the cohort means the median retiree is under-saved:
+  Cerulli attributes $62T of $124T in projected transfers to the 2% of households
+  that are HNW/UHNW, against a US median household net worth near $193k. Two very
+  different customers, two different trades — luxury/legacy at the top,
+  value/safety-net at the median. The dashboard splits them.
 - **Consensus risk.** Healthcare-demographics is a crowded trade. The edge, if
   any, is in sequencing and in the labor limb — not in "buy aging."
+- **Confirmation risk in the evidence itself.** Five indicators were sourced and
+  all five read confirming. That is not as reassuring as it looks: the ones that
+  were cheapest to source are not a random sample, and a run of supportive
+  readings on self-selected evidence is exactly how a thesis talks itself into
+  being right. The most important unsourced series — health utilisation per
+  capita in the 75+ bands, which tests the morbidity-compression falsifier — is
+  the one most likely to be quietly unsupportive.
 
 ---
 
@@ -254,13 +320,50 @@ The framing above dictates the build:
 
 ---
 
-## 7. Open decisions
+## 7. Evidence status
 
-- Data sources: Census/CBO/SSA Trustees for the clock and fiscal limb; Fed DFA +
-  SCF for wealth by age; BLS for labor; BEA PCE for consumption; ICI for flows.
-  Which are automatable vs. manual quarterly updates?
+Sourced on 2026-08-07. Five indicators read, all five confirming — see the
+confirmation-risk caveat in §5.
+
+| Reading | Source | Verdict |
+|---|---|---|
+| 65+ labour force participation **18.7%** (Jun 2026), below the 2019 peak of 20.2% | BLS CPS | Confirming — the cohort is not working longer |
+| **93,000** qualified nursing applications turned away in 2025, ~17,000 of them graduate | AACN, May 2026 | Confirming — the capacity bottleneck reproduces itself |
+| Senior housing occupancy **89.5%**, 19th consecutive quarterly gain; construction lowest since 2012 | NIC MAP Q1 2026 | Confirming, with a caveat: NIC attributes the shortfall to *capital*, not demand |
+| Federal actuaries **cut** their immigration assumption | 2026 Trustees Report | Confirming for limb C — but an assumption, not an outturn |
+| OASI depletion **2032**, deficit 4.42% of payroll | 2026 Trustees Report | Confirming and worse than assumed |
+
+Four series — population, spending, participation and wealth shares — now
+refresh weekly from Census, BLS and the Federal Reserve via
+`scripts/fetch_reference.py`, so the thesis can no longer quietly rot against
+its own premises.
+
+---
+
+## 8. Still unsourced
+
+This list matters more than §7, for the reason given in §5.
+
+1. **Health utilisation per capita, 75+** — the direct test of the
+   morbidity-compression falsifier. The highest-value gap on the list.
+2. **Fund flows by investor age** — limb A's explicit falsifier.
+3. **Annuity sales by product type** — limb A's cleanest confirmation (LIMRA
+   detail is paid).
+4. **RIA/wirehouse channel share and advisor age** — limb B's adjudicator
+   (Cerulli is paid).
+5. **Services vs goods wage growth** — limb C's inflation claim. Available on the
+   BLS API already in use; the most easily closed gap and should be next.
+6. **Apprenticeship completions in licensed trades** — only the nursing half of
+   the capacity-gap mechanism was sourced; the contractor positions rest on the
+   untested half.
+7. **Existing-home turnover in retirement metros** — limb H's release test.
+
+---
+
+## 9. Open decisions
+
 - Is housing its own limb or a sub-limb of consumption?
-- Split the cohort into top-decile vs. median retiree as separate demand curves?
 - Horizon and rebalancing cadence — the limbs run at different speeds (fiscal is
   years, flows are quarters).
-- Dashboard form factor and stack.
+- Whether the go-go fade, now that it is a plateau rather than a decline, still
+  justifies a dedicated sleeve or should collapse into a valuation screen.

@@ -216,6 +216,7 @@ body{margin:0;padding:12px 14px;background:var(--paper);color:var(--color-text-p
 .s-armed{background:var(--color-background-secondary);color:var(--color-text-tertiary)}
 .s-warming{background:var(--fl-amber-bg);color:var(--fl-amber-fg)}
 .s-tripped{background:var(--fl-red-bg);color:var(--fl-red-fg)}
+.s-conf{background:var(--fl-green-bg);color:var(--fl-green-fg)}
 .sev{display:inline-flex;gap:2px;vertical-align:middle}
 .sev i{width:5px;height:5px;border-radius:50%;background:var(--color-border-secondary);display:inline-block}
 .sev i.on{background:#E24B4A}
@@ -303,7 +304,8 @@ footer a{color:var(--color-text-info)}
   <b>Boomerification Research</b> — personal investment research, <b>not investment advice</b>. Nothing here is a recommendation to buy or sell any security.<br>
   Sibling maps: <a href="https://github.com/joeedessa/hard-assets-research">hard-assets-research</a> · <a href="https://github.com/joeedessa/ai-hardware-research">ai-hardware-research</a>.
   Market data from free public feeds, refreshed nightly by GitHub Actions, and not guaranteed accurate.
-  Figures marked <span class="vfy">verify</span> are entered from memory and are queued for sourcing — see the Sources tab.
+  Population, spending, participation and wealth-share series are pulled weekly from Census, BLS and the Federal Reserve — see the Sources tab for the resolution log and for what remains unsourced.
+  Any figure still marked <span class="vfy">verify</span> has not been checked against a primary source.
 </footer>
 
 </div><!-- end #app -->
@@ -316,7 +318,7 @@ const BASE = location.protocol === 'file:'
 
 let THESIS, CLOCK, MATRIX, COMPANIES, CO_META, THEMES, PORTFOLIO,
     INDICATORS, FALSIFIERS, POLICY, CYCLE, GLOSSARY, SOURCES, EXCLUDED;
-let QUOTES, IDX, NEWS, ALERTS, PERF;
+let QUOTES, IDX, NEWS, ALERTS, PERF, REF;
 let LIMB = {}, VERT = {}, THEME_REG = {}, TICKER_MAP = {}, NAME_MAP = {}, PRIVATE_MAP = {}, TICKER_RE = null;
 let CO_STATE = {q:'', limb:null, vert:null, conv:null, theme:null, band:null, sort:'conv'};
 let GL_STATE = {q:'', cat:null};
@@ -490,7 +492,9 @@ function buildStartHere(){
 /* ══════════ Cohort clock ══════════ */
 function buildClock(){
   const c=document.getElementById('ck-cont');
-  let h=`<div class="note">${rich(CLOCK._meta.source_note)} ${verifyMark(CLOCK._meta.source_note)}</div>`;
+  const src=REF&&REF.population;
+  let h=`<div class="note"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">sourced</span> ${rich(CLOCK._meta.source_note)}
+    ${src?`<br><span class="q">${esc(src.source)} · retrieved ${esc(src.retrieved)}</span>`:''}</div>`;
 
   h+=`<div class="card" style="border-left:4px solid var(--accent)">
     <div class="ctitle">${esc(CLOCK.now.headline)}</div>
@@ -505,14 +509,31 @@ function buildClock(){
   h+=`</div>`;
 
   /* Projection chart */
-  h+=`<div class="klabel">Age-band population, millions ${verifyMark('Census-projection-shaped estimates entered from memory. The shape is robust; the levels are queued for sourcing.')}</div>`;
+  h+=`<div class="klabel">Age-band population${src?` — ${esc(src.units)}`:', millions'}</div>`;
   h+=`<div class="card">${clockChart()}</div>`;
 
   h+=`<div class="grid2">`;
-  CLOCK.projection.reading.forEach(r=>{
+  (CLOCK.reading||[]).forEach(r=>{
     h+=`<div class="card"><div class="ctitle" style="font-size:13px">${esc(r.tag)}</div><div class="cbody">${rich(r.body)}</div></div>`;
   });
   h+=`</div>`;
+
+  /* Corrections — what sourcing changed. Kept visible rather than silently overwritten. */
+  if((CLOCK.corrections||[]).length){
+    h+=`<div class="klabel">What sourcing changed</div>
+      <div class="note">${rich(CLOCK._meta.revision_note)}</div>`;
+    CLOCK.corrections.forEach(c=>{
+      h+=`<div class="card" style="border-left:4px solid #B32B2A">
+        <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">corrected</span>
+          <b style="font-size:13px">${esc(c.claim)}</b><span class="co-role q">${c.id}</span></div>
+        <dl class="kv">
+          <dt>v1 said</dt><dd style="color:var(--color-text-tertiary)">${rich(c.v1)}</dd>
+          <dt>Sourced</dt><dd>${rich(c.sourced)}</dd>
+          <dt>Effect</dt><dd><b>${rich(c.effect)}</b></dd>
+          <dt>Affects</dt><dd>${(c.affects||[]).map(a=>/^[A-Z0-9.]{1,12}$/.test(a)?`<span class="sf ticklink" data-tk="${a}" style="background:var(--color-background-secondary);color:var(--color-text-secondary)">${a}</span>`:`<span class="chip">${esc(a)}</span>`).join(' ')}</dd>
+        </dl></div>`;
+    });
+  }
 
   h+=`<div class="klabel">The bands</div><div class="clockwrap">`;
   CLOCK.bands.forEach(b=>{
@@ -520,6 +541,7 @@ function buildClock(){
       <div class="co-h"><span class="band-n">${esc(b.n)}</span><span class="band-ages">${esc(b.ages)}</span>
       <span class="co-role">spend idx ${b.spend_idx}</span></div>
       <div class="band-lbl">${esc(b.label)}</div>
+      ${b.spend_note?`<div class="band-b" style="color:var(--color-text-tertiary);border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:4px;margin-bottom:4px">${rich(b.spend_note)}</div>`:''}
       <div class="band-b">${rich(b.behaviour)}</div>
       <div style="margin-top:5px">${(b.pays||[]).map(limbChip).join(' ')}</div>
       <div class="band-b" style="margin-top:5px;font-style:italic">${rich(b.note)}</div></div>`;
@@ -537,7 +559,9 @@ function buildClock(){
   h+=`</div>`;
 
   h+=`<div class="klabel">Two customers, not one</div>
-    <div class="note">${rich(CLOCK.wealth_split.note)}</div><div class="grid2">`;
+    <div class="note">${rich(CLOCK.wealth_split.note)}</div>
+    ${CLOCK.wealth_split.boomer_share_trend?`<div class="card" style="border-left:4px solid #0891B2"><div class="ctitle" style="font-size:13px">The transfer is already visible</div><div class="cbody">${rich(CLOCK.wealth_split.boomer_share_trend)}</div></div>`:''}
+    <div class="grid2">`;
   CLOCK.wealth_split.segments.forEach(s=>{
     h+=`<div class="card"><div class="co-h"><b style="font-size:13px">${esc(s.n)}</b>
       <span class="co-role">${(s.limbs||[]).map(limbChip).join(' ')}</span></div>
@@ -552,9 +576,14 @@ function buildClock(){
 /* Inline SVG stacked-bar of the age-band projection. No libraries — the CSP on
    the sibling repos forbids external scripts and this keeps them consistent. */
 function clockChart(){
-  const P=CLOCK.projection, years=P.years, W=760, H=260, PADL=34, PADB=26, PADT=10;
+  const P=REF&&REF.population;
+  if(!P) return `<div class="cbody">Population series unavailable — <b>data/reference.json</b> has not been generated. Run <code>python3 scripts/fetch_reference.py</code>, or wait for the weekly refresh workflow.</div>`;
+  const years=P.years, W=760, H=260, PADL=34, PADB=26, PADT=10;
+  /* reference.json keys the series by band id; render them in clock order and
+     ignore derived aggregates like total65plus. */
   const bandsById={}; CLOCK.bands.forEach(b=>bandsById[b.id]=b);
-  const totals=years.map((_,i)=>P.series.reduce((s,ser)=>s+ser.vals[i],0));
+  const stack=CLOCK.bands.filter(b=>P.series[b.id]).map(b=>({band:b.id, vals:P.series[b.id]}));
+  const totals=years.map((_,i)=>stack.reduce((s,ser)=>s+ser.vals[i],0));
   const max=Math.ceil(Math.max(...totals)/20)*20;
   const bw=(W-PADL-10)/years.length*0.56, step=(W-PADL-10)/years.length;
   const y=v=>PADT+(H-PADT-PADB)*(1-v/max);
@@ -566,7 +595,7 @@ function clockChart(){
   years.forEach((yr,i)=>{
     const x=PADL+step*i+(step-bw)/2;
     let acc=0;
-    P.series.forEach(ser=>{
+    stack.forEach(ser=>{
       const v=ser.vals[i], b=bandsById[ser.band];
       const top=y(acc+v), bot=y(acc), hgt=Math.max(0,bot-top);
       s+=`<rect x="${x}" y="${top}" width="${bw}" height="${hgt}" fill="${b.c}" opacity="0.88">`
@@ -609,6 +638,21 @@ function buildLimbs(){
     if(l.verify) l.verify.forEach(v=>{
       h+=`<div class="note" style="margin-top:6px"><b>${esc(v.claim)}</b> ${verifyMark(v.why)} — ${esc(v.why)}</div>`;
     });
+    if(l.sourced){
+      h+=`<div class="klabel">Sourced evidence</div>`;
+      l.sourced.forEach(s=>{
+        h+=`<div class="card" style="border-left:3px solid #15803D;margin-bottom:4px">
+          <div class="cbody">${rich(s.claim)}</div>
+          <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(s.src)}</span></div>
+          ${s.note?`<div class="co-fn"><b>Read.</b> ${rich(s.note)}</div>`:''}</div>`;
+      });
+    }
+    if(l.dispute){
+      h+=`<div class="card" style="border-left:3px solid #B45309;margin-bottom:4px">
+        <div class="co-h"><span class="sf" style="background:var(--fl-amber-bg);color:var(--fl-amber-fg)">contested</span>
+          <b style="font-size:12.5px">${esc(l.dispute.claim)}</b></div>
+        <div class="cbody" style="margin-top:3px">${rich(l.dispute.body)}</div></div>`;
+    }
     h+=`</div>`;
   });
   c.innerHTML=h;
@@ -863,6 +907,7 @@ function buildFalsifiers(){
         <dt>Retires</dt><dd>${(f.retires||[]).map(r=>/^[A-Z0-9.]{1,12}$/.test(r)?`<span class="sf ticklink" data-tk="${r}" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">${r}</span>`:`<div style="margin:2px 0">${rich(r)}</div>`).join(' ')}</dd>
         <dt>Watch</dt><dd>${(f.watch||[]).map(w=>{const i=(INDICATORS.indicators||[]).find(x=>x.id===w);return `<span class="chip" onclick="goTab('in')">${esc(i?i.n:w)}</span>`;}).join(' ')}</dd>
         <dt>Note</dt><dd style="color:var(--color-text-tertiary)">${rich(f.note)}</dd>
+        ${f.evidence?`<dt>Evidence</dt><dd style="color:#15803D"><b>${rich(f.evidence)}</b><div class="metarow">last read ${esc(f.last_read||'')}</div></dd>`:''}
       </dl></div>`;
   });
   c.innerHTML=h;
@@ -888,7 +933,8 @@ function buildIndicators(){
         <td class="q">${esc(i.cadence)}</td>
         <td style="color:#15803D">${rich(i.confirms)}</td>
         <td style="color:#B32B2A">${rich(i.contradicts)}</td>
-        <td><span class="state s-armed">${esc(i.status)}</span></td></tr>`;
+        <td><span class="state ${i.status==='confirming'?'s-conf':i.status==='contradicting'?'s-tripped':'s-armed'}">${esc(i.status)}</span>
+            ${i.last_read?`<div class="metarow">read ${esc(i.last_read)}</div>`:''}</td></tr>`;
     });
     h+=`</tbody></table></div>`;
   });
@@ -905,10 +951,11 @@ function buildPolicy(){
 
   h+=`<div class="klabel">The arithmetic</div><div class="grid2">`;
   POLICY.arithmetic.forEach(a=>{
-    h+=`<div class="card"><div class="co-h"><b style="font-size:12.5px">${esc(a.n)}</b>
+    h+=`<div class="card" style="${a.src?'border-left:3px solid #15803D':''}"><div class="co-h"><b style="font-size:12.5px">${esc(a.n)}</b>
       ${a.verify?verifyMark():''}
       <span class="co-role">${esc(a.state)}</span></div>
-      <div class="cbody" style="margin-top:3px">${rich(a.body)}</div></div>`;
+      <div class="cbody" style="margin-top:3px">${rich(a.body)}</div>
+      ${a.src?`<div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(a.src)}</span></div>`:''}</div>`;
   });
   h+=`</div>`;
 
@@ -1031,14 +1078,50 @@ function buildSources(){
   const c=document.getElementById('sr-cont');
   let h=`<div class="note"><b>Honesty note.</b> ${rich(SOURCES._meta.honesty_note)}</div>`;
 
-  h+=`<div class="klabel">Verification queue — every claim currently entered from memory</div>
-    <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Claim</th><th>Current basis</th><th>Needed</th><th>P</th><th>What it affects</th></tr></thead><tbody>`;
-  [...SOURCES.verification_queue].sort((a,b)=>a.priority-b.priority).forEach(v=>{
-    h+=`<tr><td><b>${esc(v.claim)}</b></td><td style="color:var(--color-text-tertiary)">${esc(v.current)}</td>
-      <td>${esc(v.needed)}</td><td><span class="sf" style="background:${v.priority===1?'var(--fl-red-bg)':'var(--fl-amber-bg)'};color:${v.priority===1?'var(--fl-red-fg)':'var(--fl-amber-fg)'}">${v.priority}</span></td>
-      <td>${rich(v.affects)}</td></tr>`;
+  const VC={'confirmed':['#15803D','var(--fl-green-bg)','var(--fl-green-fg)'],
+            'confirmed with correction':['#B45309','var(--fl-amber-bg)','var(--fl-amber-fg)'],
+            'confirmed with caveat':['#B45309','var(--fl-amber-bg)','var(--fl-amber-fg)'],
+            'contested':['#B45309','var(--fl-amber-bg)','var(--fl-amber-fg)'],
+            'wrong':['#B32B2A','var(--fl-red-bg)','var(--fl-red-fg)']};
+  h+=`<div class="klabel">Resolution log — every claim that was originally entered from memory</div>`;
+  (SOURCES.resolution_log||[]).forEach(v=>{
+    const c=VC[v.verdict]||['#888','var(--color-background-secondary)','var(--color-text-tertiary)'];
+    h+=`<div class="card" style="border-left:4px solid ${c[0]}">
+      <div class="co-h"><span class="sf" style="background:${c[1]};color:${c[2]}">${esc(v.verdict)}</span>
+        <b style="font-size:13px">${esc(v.claim)}</b>
+        <span class="co-role">${v.auto?'<span class="sf" style="background:var(--fl-indigo-bg);color:var(--fl-indigo-fg)">auto-refreshed</span>':'<span class="sf" style="background:var(--color-background-secondary);color:var(--color-text-tertiary)">manual</span>'}</span></div>
+      <dl class="kv">
+        <dt>v1 basis</dt><dd style="color:var(--color-text-tertiary)">${rich(v.v1)}</dd>
+        <dt>Source</dt><dd>${rich(v.sourced)}</dd>
+        <dt>Finding</dt><dd>${rich(v.finding)}</dd>
+        <dt>Effect</dt><dd><b>${rich(v.affects)}</b></dd>
+      </dl></div>`;
   });
-  h+=`</tbody></table></div>`;
+
+  if((SOURCES.bonus_findings||[]).length){
+    h+=`<div class="klabel">Found along the way — not in the original queue</div><div class="grid2">`;
+    SOURCES.bonus_findings.forEach(b=>{
+      h+=`<div class="card" style="border-left:3px solid #15803D">
+        <div class="ctitle" style="font-size:13px">${esc(b.n)}</div>
+        <div class="cbody">${rich(b.detail)}</div>
+        <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(b.src)}</span></div>
+        <div class="co-fn"><b>Why it matters.</b> ${rich(b.why)}</div></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  const su=SOURCES.still_unsourced;
+  if(su){
+    h+=`<div class="klabel">Still unsourced</div>
+      <div class="card" style="border-left:4px solid #B32B2A"><div class="cbody"><b>${rich(su.note)}</b></div></div>
+      <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Gap</th><th>P</th><th>Why it matters</th></tr></thead><tbody>`;
+    [...su.items].sort((a,b)=>a.priority-b.priority).forEach(i=>{
+      h+=`<tr><td><b>${esc(i.n)}</b></td>
+        <td><span class="sf" style="background:${i.priority===1?'var(--fl-red-bg)':'var(--fl-amber-bg)'};color:${i.priority===1?'var(--fl-red-fg)':'var(--fl-amber-fg)'}">${i.priority}</span></td>
+        <td>${rich(i.why)}</td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  }
 
   h+=`<div class="klabel">Primary sources</div>
     <div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Source</th><th>Use</th><th>Cadence</th><th>Automatable</th><th>Limbs</th></tr></thead><tbody>`;
@@ -1150,14 +1233,15 @@ const BUILD={bk:buildBreaking,sh:buildStartHere,ck:buildClock,lb:buildLimbs,mx:b
 
   /* Machine data — optional, never fatal */
   const soft=n=>J(n).catch(()=>null);
-  const [q,i,n,a,p]=await Promise.all([soft('quotes.json'),soft('indices.json'),soft('news.json'),
-                                       soft('alerts.json'),soft('performance.json')]);
-  QUOTES=q&&q.quotes; IDX=i&&i.symbols; NEWS=n; ALERTS=a; PERF=p;
+  const [q,i,n,a,p,ref]=await Promise.all([soft('quotes.json'),soft('indices.json'),soft('news.json'),
+                                           soft('alerts.json'),soft('performance.json'),soft('reference.json')]);
+  QUOTES=q&&q.quotes; IDX=i&&i.symbols; NEWS=n; ALERTS=a; PERF=p; REF=ref;
 
   /* Masthead */
   const stamp=document.getElementById('updated-stamp');
   const mq=q&&q._meta?` · prices <b>${fmtTS(q._meta.as_of)}</b> (${esc(q._meta.coverage)})`:' · <b>no market data yet</b>';
-  stamp.innerHTML=`Research as of <b>${esc(THESIS._meta.as_of)}</b> · <b>${COMPANIES.length}</b> names · <b>${THESIS.limbs.length}</b> limbs${mq}`;
+  const rq=REF&&REF.population?` · demographics <b>${esc(REF.population.retrieved)}</b>`:' · <b>reference data not generated</b>';
+  stamp.innerHTML=`Research as of <b>${esc(THESIS._meta.as_of)}</b> · <b>${COMPANIES.length}</b> names · <b>${THESIS.limbs.length}</b> limbs${mq}${rq}`;
 
   const clockEl=document.getElementById('mast-clock');
   document.getElementById('mast-clock-txt').textContent=`Median boomer is ${CLOCK.cohort_edges.find(e=>e.lbl==='Median').age_2026} — crossing into slow-go`;

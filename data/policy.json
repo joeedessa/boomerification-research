@@ -1,9 +1,9 @@
 {
   "_meta": {
     "description": "Limb E in operational form. The fiscal arithmetic, the scheduled policy events, the step functions markets price late, and the reimbursement exposure map that constrains how the limb D book is built.",
-    "as_of": "2026-08-06",
-    "verify": true,
-    "verify_note": "Trust-fund dates, ratios and projections move with every Trustees report and CBO outlook. Everything in the arithmetic block is entered from memory and marked for verification — refresh against the current vintage before treating any of it as fact."
+    "as_of": "2026-08-07",
+    "sourced": true,
+    "verify_note": "Sourced against the 2026 Social Security Trustees Report (released 9 June 2026) on 2026-08-07. These figures move with every annual report — the next edition resets them. The v1 estimate of 'mid-2030s' OASI depletion was wrong by roughly three years in the direction that matters."
   },
 
   "headline": {
@@ -12,10 +12,14 @@
   },
 
   "arithmetic": [
-    {"id": "ratio", "n": "Worker-to-beneficiary ratio", "state": "Declining on a projected path", "verify": true,
-     "body": "Fewer contributing workers per beneficiary each year, mechanically, as the cohort claims and the trailing edge stops contributing. This is the cleanest arithmetic in the thesis and the least contestable — it is the same population table the cohort clock is built from, read from the fiscal side."},
-    {"id": "oasi", "n": "OASI trust fund depletion", "state": "Mid-2030s on current projections", "verify": true,
-     "body": "The forcing function. Depletion does not mean benefits stop — it means benefits become payable only from incoming receipts, which implies an automatic cut absent legislation. That is a date-certain political event inside the thesis horizon, which is exactly the kind of step function markets price late and abruptly."},
+    {"id": "ratio", "n": "Worker-to-beneficiary ratio", "state": "Declining on a projected path", "verify": false,
+     "body": "Fewer contributing workers per beneficiary each year, mechanically, as the cohort claims and the trailing edge stops contributing. This is the cleanest arithmetic in the thesis and the least contestable — it is the same population table the cohort clock is built from, read from the fiscal side. Census has 65+ going from 57.8M (2022) to 71.2M (2030) to 82.2M (2050), while the 55–64 band that feeds it contracts until 2035."},
+    {"id": "oasi", "n": "OASI trust fund depletion", "state": "2032 — three years sooner than v1 assumed", "verify": false,
+     "src": "2026 Social Security Trustees Report, 9 June 2026",
+     "body": "The forcing function, and the largest single correction to the v1 thesis. The 2026 Trustees Report puts OASI reserve depletion in 2032 (fourth quarter), with the combined OASDI funds at 2034 — not the mid-2030s quoted from memory. Depletion does not mean benefits stop: it means benefits become payable only from incoming receipts, which is 78% of scheduled benefits, declining toward 62% by 2100. That is a date-certain political event now sitting inside the horizon of most positions in this book rather than beyond it, and it is exactly the kind of step function markets price late and abruptly."},
+    {"id": "deficit", "n": "75-year actuarial deficit", "state": "4.42% of taxable payroll, up from 3.82%", "verify": false,
+     "src": "2026 Trustees Report / Center for Retirement Research",
+     "body": "A 16% deterioration in a single year, driven by three revisions: the fertility assumption cut from 1.90 to 1.75 children per woman, lower assumed immigration, and the One Big Beautiful Bill Act permanently reducing income tax revenue on Social Security benefits. In dollar terms the shortfall moved from roughly $26.1T to $30.3T. Two of those three revisions are demographic assumptions moving in the direction this thesis argues."},
     {"id": "issuance", "n": "Long-end issuance & term premium", "state": "Rising pressure", "verify": false,
      "body": "Mandatory spending growth against a shrinking relative contribution base means more borrowing, weighted long. This is where limb E collides with limb A: heavier long-end supply against a decumulating cohort's structural demand for duration. The term premium is where that argument gets settled, which is why it is on the indicator list as an arbiter rather than a position."},
     {"id": "medicare", "n": "Medicare cost growth", "state": "Enrolment growth plus cost trend", "verify": false,
