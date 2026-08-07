@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-08-07T14:26:12+00:00",
+  "as_of": "2026-08-07T15:47:33+00:00",
   "years": [
    2019,
    2020,
@@ -11,7 +11,7 @@
    2024,
    2025
   ],
-  "coverage": "109/126 universe names with revenue data",
+  "coverage": "119/126 universe names with revenue data",
   "dropped_partial_periods": [
    "FIX CY2025"
   ],
@@ -28,7 +28,19 @@
    "ESSITY-B.ST",
    "8113.T"
   ],
-  "unmapped_note": "Non-US filers have no SEC XBRL. This is a structural gap, not a fetch failure \u2014 the Japanese, Swiss, Danish, Italian, Australian, Swedish and Canadian names cannot be covered here.",
+  "unmapped_note": "Non-US filers have no SEC XBRL. Since 2026-08-07 these are covered via vendor income statements instead and carry a \"provenance\" field marking them as vendor rather than regulator data \u2014 shorter history, vendor tagging, lower trust.",
+  "non_sec_covered": [
+   "6861.T",
+   "6954.T",
+   "8113.T",
+   "AMP.MI",
+   "COH.AX",
+   "DEMANT.CO",
+   "ESSITY-B.ST",
+   "GWO.TO",
+   "SOON.SW",
+   "STMN.SW"
+  ],
   "source": "SEC EDGAR XBRL frames API (data.sec.gov), keyless",
   "caveats": [
    "Revenue tagging varies by filer; three us-gaap tags are tried in order and the first hit wins, so cross-company revenue levels are indicative rather than strictly comparable.",
@@ -2824,6 +2836,208 @@
    "revenue_span": "CY2019-CY2025",
    "margin_delta_pp": 4.3,
    "margin_span": "CY2019-CY2025"
+  },
+  "GWO.TO": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2023": 36731000000.0,
+    "2024": 34723000000.0,
+    "2025": 39104000000.0
+   },
+   "operating_margin_pct": {},
+   "revenue_cagr_pct": 3.2,
+   "revenue_span": "2023-2025",
+   "vertical": "inc",
+   "limb": "A"
+  },
+  "6861.T": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2023": 922422000000.0,
+    "2024": 967288000000.0,
+    "2025": 1059145000000.0,
+    "2026": 1169289000000.0
+   },
+   "operating_margin_pct": {
+    "2023": 54.1,
+    "2024": 51.2,
+    "2025": 51.9,
+    "2026": 51.0
+   },
+   "revenue_cagr_pct": 8.2,
+   "revenue_span": "2023-2026",
+   "margin_delta_pp": -3.1,
+   "margin_span": "2023-2026",
+   "vertical": "aut",
+   "limb": "C"
+  },
+  "6954.T": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2023": 851956000000.0,
+    "2024": 795274000000.0,
+    "2025": 797129000000.0,
+    "2026": 857831000000.0
+   },
+   "operating_margin_pct": {
+    "2023": 22.5,
+    "2024": 17.8,
+    "2025": 19.9,
+    "2026": 21.4
+   },
+   "revenue_cagr_pct": 0.2,
+   "revenue_span": "2023-2026",
+   "margin_delta_pp": -1.1,
+   "margin_span": "2023-2026",
+   "vertical": "aut",
+   "limb": "C"
+  },
+  "SOON.SW": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2023": 3738400000.0,
+    "2024": 3626900000.0,
+    "2025": 3612900000.0,
+    "2026": 3605900000.0
+   },
+   "operating_margin_pct": {
+    "2023": 20.0,
+    "2024": 18.5,
+    "2025": 19.9,
+    "2026": 18.7
+   },
+   "revenue_cagr_pct": -1.2,
+   "revenue_span": "2023-2026",
+   "margin_delta_pp": -1.3,
+   "margin_span": "2023-2026",
+   "vertical": "dev",
+   "limb": "D"
+  },
+  "DEMANT.CO": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 19705000000.0,
+    "2023": 21601000000.0,
+    "2024": 22419000000.0,
+    "2025": 22971000000.0
+   },
+   "operating_margin_pct": {
+    "2022": 15.7,
+    "2023": 20.5,
+    "2024": 19.2,
+    "2025": 17.1
+   },
+   "revenue_cagr_pct": 5.2,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": 1.4,
+   "margin_span": "2022-2025",
+   "vertical": "dev",
+   "limb": "D"
+  },
+  "AMP.MI": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 2119126000.0,
+    "2023": 2260084000.0,
+    "2024": 2409241000.0,
+    "2025": 2395705000.0
+   },
+   "operating_margin_pct": {
+    "2022": 12.6,
+    "2023": 11.1,
+    "2024": 10.5,
+    "2025": 8.5
+   },
+   "revenue_cagr_pct": 4.2,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": -4.1,
+   "margin_span": "2022-2025",
+   "vertical": "dev",
+   "limb": "D"
+  },
+  "COH.AX": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 1648300000.0,
+    "2023": 1936100000.0,
+    "2024": 2235600000.0,
+    "2025": 2343100000.0
+   },
+   "operating_margin_pct": {
+    "2022": 18.0,
+    "2023": 16.1,
+    "2024": 18.5,
+    "2025": 17.3
+   },
+   "revenue_cagr_pct": 12.4,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": -0.7,
+   "margin_span": "2022-2025",
+   "vertical": "dev",
+   "limb": "D"
+  },
+  "STMN.SW": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 2320785000.0,
+    "2023": 2276690000.0,
+    "2024": 2503900000.0,
+    "2025": 2605393000.0
+   },
+   "operating_margin_pct": {
+    "2022": 23.1,
+    "2023": 26.3,
+    "2024": 24.0,
+    "2025": 21.1
+   },
+   "revenue_cagr_pct": 3.9,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": -2.0,
+   "margin_span": "2022-2025",
+   "vertical": "dev",
+   "limb": "D"
+  },
+  "ESSITY-B.ST": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 131320000000.0,
+    "2023": 147147000000.0,
+    "2024": 145546000000.0,
+    "2025": 138494000000.0
+   },
+   "operating_margin_pct": {
+    "2022": 6.9,
+    "2023": 11.1,
+    "2024": 12.8,
+    "2025": 13.4
+   },
+   "revenue_cagr_pct": 1.8,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": 6.5,
+   "margin_span": "2022-2025",
+   "vertical": "csm",
+   "limb": "D"
+  },
+  "8113.T": {
+   "provenance": "vendor (yfinance) \u2014 not a regulator filing",
+   "revenue": {
+    "2022": 898022000000.0,
+    "2023": 941790000000.0,
+    "2024": 988981000000.0,
+    "2025": 945268000000.0
+   },
+   "operating_margin_pct": {
+    "2022": 12.8,
+    "2023": 13.9,
+    "2024": 13.6,
+    "2025": 10.8
+   },
+   "revenue_cagr_pct": 1.7,
+   "revenue_span": "2022-2025",
+   "margin_delta_pp": -2.0,
+   "margin_span": "2022-2025",
+   "vertical": "csm",
+   "limb": "D"
   }
  }
 }

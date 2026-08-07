@@ -1818,9 +1818,9 @@
    "structure": "device",
    "band": "slowgo",
    "cust": "both",
-   "conviction": 3,
+   "conviction": 2,
    "froth": 1,
-   "thesis_note": "Age-related hearing loss is nearly universal past 75, treatment penetration is low, and the product is almost entirely private-pay in most markets — which makes hearing the most reimbursement-insulated age curve available. Sonova is vertically integrated from chip to retail store, and the retail leg is what converts a hardware business into a recurring one. The two threats are real but slower than they look: over-the-counter hearing aids in the US compress the low end, and the emerging clinical link between untreated hearing loss and dementia progression could just as easily expand the market as commoditise it. Genuinely under-owned relative to how clean the demographic exposure is.",
+   "thesis_note": "Age-related hearing loss is nearly universal past 75, treatment penetration is low, and the product is almost entirely private-pay in most markets — which makes hearing the most reimbursement-insulated age curve available. Sonova is vertically integrated from chip to retail store, and the retail leg is what converts a hardware business into a recurring one. The two threats are real but slower than they look: over-the-counter hearing aids in the US compress the low end, and the emerging clinical link between untreated hearing loss and dementia progression could just as easily expand the market as commoditise it. Genuinely under-owned relative to how clean the demographic exposure is. CORRECTION 2026-08-07: cut from 3 to 2. Vendor income statements — the only free route for a Swiss filer — show revenue CAGR of -1.2% and operating margin -1.3pp over FY2023-FY2026. A conviction-3 core position is not supposed to be shrinking. Three caveats that argue against over-correcting: the window is only three years, it spans the post-COVID hearing-aid normalisation and China weakness, and Sonova reports in a strengthening Swiss franc while earning globally, which depresses translated growth. Cut to 2 rather than 1, and flagged as the single most urgent name to re-underwrite properly.",
    "themes": [
     "sensory-decline",
     "cognitive-decline",
@@ -1860,7 +1860,7 @@
    "cust": "both",
    "conviction": 2,
    "froth": 2,
-   "thesis_note": "The pure retail and audiology-service layer of the hearing market, consolidating a fragmented store base across Europe and beyond. Owns the customer relationship rather than the technology, which is the better position when the hardware commoditises but the worse one if direct-to-consumer channels disintermediate the store.",
+   "thesis_note": "The pure retail and audiology-service layer of the hearing market, consolidating a fragmented store base across Europe and beyond. Owns the customer relationship rather than the technology, which is the better position when the hardware commoditises but the worse one if direct-to-consumer channels disintermediate the store. FILED 2026-08-07: revenue +4.2% CAGR with operating margin -4.1pp (2022-2025) — the weakest margin trend in the private-pay sleeve. The retail consolidation model is not visibly earning its premium.",
    "themes": [
     "sensory-decline",
     "slow-go-rotation"
@@ -1879,7 +1879,7 @@
    "cust": "both",
    "conviction": 2,
    "froth": 3,
-   "thesis_note": "Dominant in cochlear implants, with a large and almost entirely untapped adult and elderly severe-hearing-loss population — adult penetration is a small fraction of the eligible pool. Recurring sound-processor upgrade revenue on a growing installed base is a genuine annuity. Persistently among the most expensive medtech assets anywhere.",
+   "thesis_note": "Dominant in cochlear implants, with a large and almost entirely untapped adult and elderly severe-hearing-loss population — adult penetration is a small fraction of the eligible pool. Recurring sound-processor upgrade revenue on a growing installed base is a genuine annuity. Persistently among the most expensive medtech assets anywhere. FILED 2026-08-07: +12.4% revenue CAGR, margin -0.7pp (2022-2025) — the best growth in the private-pay sleeve by a wide margin, and the one name where the demographic story is visible in the numbers. Still the most expensive.",
    "froth_note": "Quality and demographic exposure both excellent; valuation has been demanding for a decade and remains so.",
    "themes": [
     "sensory-decline",

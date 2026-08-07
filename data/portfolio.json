@@ -456,6 +456,42 @@
     }
    ],
    "unchanged": "This says nothing about the SNF operators — Medicaid rebalancing toward home care is, if anything, the other side of the institutional decline found in iteration 1."
+  },
+  {
+   "title": "Repriced 2026-08-07 (vi) — the untested sleeve tests worst",
+   "trigger": "First-ever fundamentals check on the 10 non-SEC filers. Median revenue CAGR 4.2%, median margin -1.3pp.",
+   "body": "The private-pay sleeve had survived every finding in this programme for a reason that should have been obvious earlier: no evidence had ever reached it. Sixteen names filed outside the SEC and were therefore exempt from the filings pass that corrected two calls in iteration 3. Covered now via vendor income statements — lower provenance, shorter spans — and the result is the weakest set of numbers in the book.",
+   "moves": [
+    {
+     "dir": "down",
+     "n": "Hearing — the core private-pay position",
+     "names": [
+      "SOON.SW",
+      "AMP.MI"
+     ],
+     "why": "Sonova revenue CAGR -1.2% and margin -1.3pp over FY2023-26; Amplifon +4.2% revenue but margin -4.1pp. A conviction-3 core position should not be shrinking. SOON.SW cut to 2. Caveats stated rather than leaned on: three-year window, post-COVID normalisation, and a strengthening reporting currency against global earnings."
+    },
+    {
+     "dir": "hold",
+     "n": "The one that works",
+     "names": [
+      "COH.AX",
+      "DEMANT.CO"
+     ],
+     "why": "Cochlear +12.4% revenue CAGR is the only name in the sleeve where the demographic story shows up in the numbers, and Demant is the only one with expanding margin (+1.4pp). Both were held at 2 on valuation; the numbers support the thesis, the prices still do not."
+    },
+    {
+     "dir": "down",
+     "n": "Japan template — informational, not investable",
+     "names": [
+      "8113.T",
+      "6954.T",
+      "7817.T"
+     ],
+     "why": "Unicharm +1.7% revenue with margin -2.0pp; Fanuc +0.2% and -1.1pp. These were always held more for what they reveal about the demographic transition than for their returns, and the numbers confirm that reading. Keep as instruments, not positions."
+    }
+   ],
+   "unchanged": "ALC, the largest private-pay name, files a 20-F and was already in the SEC set — its numbers are unaffected by this."
   }
  ]
 }

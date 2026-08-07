@@ -157,6 +157,73 @@ def frames(tag, year):
         return {}
 
 
+def non_sec_financials(tickers):
+    """The sixteen names that file outside the SEC.
+
+    Most of the private-pay sleeve — Sonova, Demant, Amplifon, Straumann,
+    Cochlear, Unicharm — reports to Swiss, Danish, Italian, Australian and
+    Japanese regulators, so XBRL frames cannot see them. That sleeve has survived
+    every finding in this programme, which makes it the least tested and most
+    load-bearing part of the book. yfinance exposes filed income statements for
+    them at no cost; the history is shorter and the tagging is a vendor's rather
+    than a regulator's, so these records are marked with a lower provenance.
+    """
+    try:
+        import warnings
+        warnings.filterwarnings('ignore')
+        import yfinance as yf
+    except ImportError:
+        print('  yfinance unavailable — non-SEC names skipped', file=sys.stderr)
+        return {}
+    out = {}
+    for t in tickers:
+        try:
+            df = yf.Ticker(t).income_stmt
+            if df is None or df.empty:
+                continue
+            idx = {str(i): i for i in df.index}
+            rk = idx.get('Total Revenue') or idx.get('Operating Revenue')
+            ok = idx.get('Operating Income')
+            if rk is None:
+                continue
+            rev, margin = {}, {}
+            for col in df.columns:
+                y = str(col)[:4]
+                try:
+                    r = float(df.loc[rk, col])
+                except Exception:
+                    continue
+                if r != r or r <= 0:
+                    continue
+                rev[y] = r
+                if ok is not None:
+                    try:
+                        o = float(df.loc[ok, col])
+                        if o == o:
+                            margin[y] = round(o / r * 100, 1)
+                    except Exception:
+                        pass
+            if len(rev) < 2:
+                continue
+            ys = sorted(rev)
+            span = int(ys[-1]) - int(ys[0])
+            rec = {'provenance': 'vendor (yfinance) — not a regulator filing',
+                   'revenue': {y: rev[y] for y in ys},
+                   'operating_margin_pct': {y: margin[y] for y in sorted(margin)}}
+            if span > 0:
+                rec['revenue_cagr_pct'] = round(((rev[ys[-1]] / rev[ys[0]]) ** (1 / span) - 1) * 100, 1)
+                rec['revenue_span'] = f'{ys[0]}-{ys[-1]}'
+            if len(margin) >= 2:
+                ms = sorted(margin)
+                rec['margin_delta_pp'] = round(margin[ms[-1]] - margin[ms[0]], 1)
+                rec['margin_span'] = f'{ms[0]}-{ms[-1]}'
+            out[t] = rec
+            time.sleep(0.4)
+        except Exception as e:
+            print(f'  {t}: {type(e).__name__}', file=sys.stderr)
+    return out
+
+
 def main():
     with open(os.path.join(ROOT, 'companies.json')) as f:
         comp = json.load(f)['companies']
@@ -218,6 +285,13 @@ def main():
             covered += 1
         out[tk] = rec
 
+    nonsec = non_sec_financials(unmapped)
+    for tk, rec in nonsec.items():
+        rec.update({'vertical': meta[tk]['vertical'], 'limb': meta[tk]['limb']})
+        out[tk] = rec
+        covered += 1
+    print(f'non-SEC filers covered via vendor data: {len(nonsec)}/{len(unmapped)}')
+
     payload = {
         '_meta': {
             'description': 'Company fundamentals from SEC XBRL frames — revenue and '
@@ -228,9 +302,11 @@ def main():
             'coverage': f'{covered}/{len(tickers)} universe names with revenue data',
             'dropped_partial_periods': partials,
             'unmapped': unmapped,
-            'unmapped_note': 'Non-US filers have no SEC XBRL. This is a structural gap, '
-                             'not a fetch failure — the Japanese, Swiss, Danish, Italian, '
-                             'Australian, Swedish and Canadian names cannot be covered here.',
+            'unmapped_note': 'Non-US filers have no SEC XBRL. Since 2026-08-07 these are '
+                             'covered via vendor income statements instead and carry a '
+                             '"provenance" field marking them as vendor rather than '
+                             'regulator data — shorter history, vendor tagging, lower trust.',
+            'non_sec_covered': sorted(nonsec),
             'source': 'SEC EDGAR XBRL frames API (data.sec.gov), keyless',
             'caveats': [
                 'Revenue tagging varies by filer; three us-gaap tags are tried in order '

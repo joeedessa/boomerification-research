@@ -63,9 +63,9 @@
    "n": "Private-pay age curves",
    "c": "#16A34A",
    "sub": "Demographic volume without the reimbursement risk — the rarest combination here",
-   "struct": 88,
+   "struct": 78,
    "near": 72,
-   "bc": 30,
+   "bc": 35,
    "limbs": [
     "D"
    ],
@@ -90,6 +90,14 @@
      "lbl": "Death care",
      "ticks": "SCI, CSV",
      "why": "Entirely private-pay, mathematically certain volume, preneed backlog pre-funds it. The mix shift to cremation is the only real threat."
+    }
+   ],
+   "sourced": [
+    {
+     "claim": "Tested 2026-08-07 for the first time. Median revenue CAGR across the sleeve is 4.2% with a median operating margin change of -1.3pp — against 9.9% median revenue growth in US care delivery. Sonova is outright shrinking (-1.2%); Amplifon's margin is down 4.1pp; only Cochlear (+12.4%) shows the demographic story in its numbers.",
+     "src": "Vendor income statements (yfinance) — the only free route for Swiss, Danish, Italian and Australian filers",
+     "caveat": "Provenance is a vendor, not a regulator. Spans are 3-4 years against 7 for the SEC names, they cover the post-COVID hearing-aid normalisation, and reporting currencies (CHF, DKK) strengthened over the window, which depresses translated growth. This is enough to demote the theme from 'survives everything' to 'needs re-underwriting', not enough to abandon it.",
+     "note": "This theme scored 88 structural and was repeatedly used as the hedge that survives every finding — precisely because it was the part of the book no evidence had ever touched. The first time it was measured, it came last."
     }
    ]
   },

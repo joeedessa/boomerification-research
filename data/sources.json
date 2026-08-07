@@ -121,6 +121,15 @@
    "finding": "Confirming on volume. HCBS waiver enrolment among 65+ rose 52% (686,607 to 1,043,473) against 18% growth in the eligible population, lifting penetration 8.31% to 10.66%. Managed LTSS enrolment rose 7.7% across 2023-24 while total Medicaid managed care fell 13% in the unwinding — the aged and disabled population was insulated.",
    "affects": "Closes the gap iteration 1 opened and iteration 4 widened. Confirms the ADUS/AVAH payer environment and corroborates the Medicare site-of-care finding from a separate dataset. But it measures volume only: LTSS expenditure reporting stops at FY2020 and is PDF-only, so the rate side — the actual risk — is not observable at zero cost. Recorded as a permanent limitation rather than an open task.",
    "auto": true
+  },
+  {
+   "claim": "Non-US names have no filings-based check",
+   "verdict": "contradicting",
+   "v1": "Sixteen of 126 names, including most of the private-pay sleeve, were exempt from every evidence pass.",
+   "sourced": "Vendor income statements via yfinance for 10 of 11 remaining names (7817.T Paramount Bed still unavailable). Marked with a provenance field distinguishing vendor from regulator data.",
+   "finding": "The sleeve that had survived every finding tests worst. Median revenue CAGR 4.2% and median operating margin -1.3pp, against 9.9% median revenue growth in US care delivery. Sonova, a conviction-3 core position, is shrinking at -1.2%.",
+   "affects": "SOON.SW cut 3 to 2. Private-pay theme structural score cut 88 to 78. The theme's apparent invulnerability was an artefact of never having been measured — which is the clearest single illustration of why the unsourced list matters more than the resolution log.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -159,11 +168,6 @@
     "n": "Existing-home turnover in retirement metros",
     "why": "Limb H's inventory-release test. Needs metro-level data; the national figure averages the signal away.",
     "priority": 3
-   },
-   {
-    "n": "Non-US names have no filings-based check",
-    "priority": 2,
-    "why": "Sixteen of 126 — including most of the private-pay sleeve (SOON.SW, DEMANT.CO, ALC, STMN.SW, 8113.T) — file outside the SEC and cannot be tested the way the US names just were. Those calls remain judgment-only, and the private-pay tilt is precisely the part of the book that has survived every finding so far, which makes its untested status uncomfortable."
    },
    {
     "n": "Medicaid LTSS RATES (not volumes)",

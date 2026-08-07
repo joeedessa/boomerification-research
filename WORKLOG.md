@@ -375,3 +375,36 @@ three of which reversed my own earlier calls.
 3. **Term premium / the A-vs-E rate contradiction.** Weakness w2 says the rate
    view must be an explicit dated call. It still is not one, and the Treasury
    FiscalData API is keyless.
+
+## Iteration 6 — 2026-08-07 — The untested sleeve
+
+**Why:** sixteen names filed outside the SEC and were therefore exempt from the
+filings pass that corrected two calls in iteration 3. Most of the private-pay
+sleeve sat in that gap — the part of the book that had "survived every finding",
+for a reason that should have been obvious sooner: no evidence had ever reached it.
+
+**Route.** yfinance income statements, the only free source for Swiss, Danish,
+Italian, Australian and Japanese filers. Ten of eleven covered (Paramount Bed
+still unavailable). Records carry a `provenance` field marking vendor rather than
+regulator data — shorter spans, vendor tagging, lower trust.
+
+**It tests worst in the book.** Median revenue CAGR **4.2%**, median operating
+margin **−1.3pp** — against 9.9% median revenue growth in US care delivery.
+
+| | Revenue CAGR | Margin |
+|---|---|---|
+| Cochlear | **+12.4%** | −0.7pp |
+| Demant | +5.2% | **+1.4pp** |
+| Amplifon | +4.2% | **−4.1pp** |
+| Straumann | +3.9% | −2.0pp |
+| **Sonova** | **−1.2%** | −1.3pp |
+
+**Fourth self-correction: SOON.SW cut 3 → 2.** A conviction-3 core position
+should not be shrinking. Three caveats stated rather than leaned on — the window
+is three years, it spans the post-COVID hearing-aid normalisation, and Sonova
+reports in a strengthening franc while earning globally. Cut to 2 rather than 1,
+and flagged as the most urgent name to re-underwrite.
+
+Private-pay theme structural score cut 88 → 78. Its apparent invulnerability was
+an artefact of never having been measured, which is the clearest illustration yet
+of why the unsourced list matters more than the resolution log.
