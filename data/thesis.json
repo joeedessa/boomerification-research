@@ -1,244 +1,333 @@
 {
-  "_meta": {
-    "description": "The Boomerification thesis: core claim, variant perceptions, five limbs (mechanism / observables / expression / falsifier), the why-isn't-it-priced test, and the stated weaknesses. This file is the spine — every other data file hangs off a limb id defined here.",
-    "as_of": "2026-08-06",
-    "limb_ids": "A=flows, B=transfer, C=labor, D=consumption, E=fiscal, H=housing",
-    "review_note": "Figures tagged verify:true are drawn from memory and must be sourced before they are presented as fact. The dashboard renders them with a visible caveat marker.",
-    "conviction_scale": "1 = watching, 2 = engaged, 3 = core"
+ "_meta": {
+  "description": "The Boomerification thesis: core claim, variant perceptions, five limbs (mechanism / observables / expression / falsifier), the why-isn't-it-priced test, and the stated weaknesses. This file is the spine — every other data file hangs off a limb id defined here.",
+  "as_of": "2026-08-07",
+  "limb_ids": "A=flows, B=transfer, C=labor, D=consumption, E=fiscal, H=housing",
+  "review_note": "Sourcing pass completed 2026-08-07: every claim previously tagged verify has been resolved against a primary source, and three v1 claims were corrected (see clock.json corrections and sources.json resolution log). Figures still carrying a verify marker anywhere in the data have NOT been checked.",
+  "conviction_scale": "1 = watching, 2 = engaged, 3 = core"
+ },
+ "headline": {
+  "title": "The payout phase",
+  "body": "The US is entering the payout phase of a wealth-and-age concentration that took sixty years to build. The cohort holding the majority of household net worth is converting from earners and accumulators into spenders, decumulators and bequeathers — on a schedule that is knowable to the year. The thesis is not that this happens. It is that three specific consequences of it are mispriced, and that there are structural reasons the market is slow to price them."
+ },
+ "premise_problem": {
+  "title": "Why the obvious version is not a thesis",
+  "body": "\"The wealthiest US consumers are retiring\" is true, important, and the single most-forecasted fact in finance. It has been known with near-perfect accuracy since the 1960s — birth cohorts do not surprise anyone. A fact every allocator has had four decades to price is not, by itself, an edge. So the thesis cannot be the demography. It has to be a claim about which consequences are mispriced, and why the market is structurally slow to price them. Every limb below is required to answer that second question or it is a slide, not a trade."
+ },
+ "variant": [
+  {
+   "id": "v1",
+   "tag": "Composition, not direction",
+   "consensus": "Retirees sell assets to fund retirement, so the demographic wave is a supply shock and a market headwind.",
+   "thesis": "They mostly die holding. Assets are concentrated in the top decile, which spends far below its income; RMDs force money out of tax-deferred accounts but much of it is reinvested in taxable ones rather than consumed. The real effect is a change in the composition of demand — income, duration-matched cash flow, principal protection — plus a multi-decade transfer. That is relative value, not a directional call on the index.",
+   "conviction": 3,
+   "limb": "A"
   },
-
-  "headline": {
-    "title": "The payout phase",
-    "body": "The US is entering the payout phase of a wealth-and-age concentration that took sixty years to build. The cohort holding the majority of household net worth is converting from earners and accumulators into spenders, decumulators and bequeathers — on a schedule that is knowable to the year. The thesis is not that this happens. It is that three specific consequences of it are mispriced, and that there are structural reasons the market is slow to price them."
+  {
+   "id": "v2",
+   "tag": "Sequence, not level",
+   "consensus": "\"Aging\" is one trade: buy healthcare and senior housing, wait.",
+   "thesis": "It is a relay race. Each roughly seven-year age band has a different beneficiary set, and the handoff is calendar-predictable because the cohort's size distribution is fixed. The go-go band (65–74, travel and discretionary) is where the cohort's centre of mass has been; it is now crossing into slow-go (75–84, healthcare and home services). The timing of the handoff — not the existence of the demand — is the tradable part. Sourced, the divergence is stark but asymmetric: Census has slow-go growing 36% from 2025 to 2035 and the 85+ band growing 149% by 2050, while the go-go band peaks at 38.0M in 2030 and only drifts about 8% off that peak before recovering. So the care side compounds and the experience side plateaus. That is a relative-value call, not a short.",
+   "conviction": 3,
+   "limb": "D",
+   "revised": "v1 implied the go-go customer base shrinks meaningfully. Census does not support that. The claim has been narrowed to 'stops growing while priced for growth' — see clock.json correction c1."
   },
-
-  "premise_problem": {
-    "title": "Why the obvious version is not a thesis",
-    "body": "\"The wealthiest US consumers are retiring\" is true, important, and the single most-forecasted fact in finance. It has been known with near-perfect accuracy since the 1960s — birth cohorts do not surprise anyone. A fact every allocator has had four decades to price is not, by itself, an edge. So the thesis cannot be the demography. It has to be a claim about which consequences are mispriced, and why the market is structurally slow to price them. Every limb below is required to answer that second question or it is a slide, not a trade."
+  {
+   "id": "v3",
+   "tag": "Inflationary, not deflationary",
+   "consensus": "Aging is disinflationary. Japan is the template: old societies spend less, grow slower, and drag rates down.",
+   "thesis": "The US channel runs through labour supply, not demand. The exiting cohort is the most experienced and highest-paid, and in specific non-tradable fields it is not replaceable on any short horizon. That puts a structural floor under services wage inflation, argues for a higher neutral rate than the 2010s, and — the part that matters most for portfolio construction — makes duration a less reliable equity hedge than it was in 2010–2020. Highest-conviction and least-consensus limb.",
+   "conviction": 3,
+   "limb": "C"
   },
-
-  "variant": [
+  {
+   "id": "v4",
+   "tag": "The fee pool moves before the assets",
+   "consensus": "The great wealth transfer is an AUM story: whoever holds the assets keeps them as they pass down.",
+   "thesis": "Every transfer event is a break point in the incumbent advisor relationship, and there are two of them — first to a surviving spouse, then to heirs. The recipient generation prefers different intermediation (fee-based, digital-first, indexed core, alternatives sleeve). Share shifts at each break long before the assets themselves are spent. This is a distribution and intermediation trade, not an asset-class trade.",
+   "conviction": 2,
+   "limb": "B"
+  }
+ ],
+ "codename_note": "\"Boomerification\" is the internal name, but the mechanism is not boomer-specific. Gen X begins turning 65 in 2030. This is a regime with a pipeline behind it, not a one-cohort event — the dashboard is built on age bands, not on a birth-cohort label, so it survives the name.",
+ "limbs": [
+  {
+   "id": "A",
+   "n": "Decumulation & the flow question",
+   "c": "#4F46E5",
+   "sub": "What retirees actually do with the assets — and why the crude version is wrong",
+   "conviction": 2,
+   "struct": 70,
+   "near": 55,
+   "mechanism": "Retirees stop contributing and begin drawing. Required minimum distributions force money out of tax-deferred accounts on a statutory schedule. But the crude 'asset meltdown' version — retirees sell equities, the market falls — has never survived contact with the data, for three reasons. Assets are concentrated in the top decile, which consumes far less than its income. Forced distributions are frequently reinvested in taxable accounts rather than spent. And the marginal price-setter in US equities has not been the domestic retail retiree for a long time. What is actually true is narrower and more useful: the character of the marginal buyer changes. Demand shifts from equity beta toward income, duration-matched cash flow, principal protection and annuitisation — a composition trade, not a level trade.",
+   "why_now": "The leading edge of the cohort is now well past the age at which required minimum distributions begin, and the trailing edge is inside a decade of retirement. The composition shift is no longer prospective — it shows up in product flows now.",
+   "expression": "Long income-generating and retirement-income infrastructure: annuity writers and their reinsurers, private-credit managers with insurance balance sheets, income-oriented product shelves. Underweight businesses whose economics depend on continuous contribution flows from a shrinking accumulator base.",
+   "risk": "The benign reading is a genuine assumption, not a fact. It depends on wealth concentration holding and on the top decile continuing to underspend its income.",
+   "falsifier": "Sustained, unoffset net equity outflow attributable to the 65+ cohort shows up in fund-flow data. That would revive the directional bear case and invert this limb.",
+   "observables": [
+    "ICI and Fed flow-of-funds data by vehicle",
+    "Net flows into income / dividend / covered-call and late-vintage target-date products",
+    "US annuity sales by type (FIA, RILA, SPIA)",
+    "401(k)-to-IRA rollover volumes",
+    "Household cash and T-bill balances by age band"
+   ]
+  },
+  {
+   "id": "B",
+   "n": "The transfer & who actually receives it",
+   "c": "#0891B2",
+   "sub": "A two-step handoff the standard version of this trade gets wrong",
+   "conviction": 2,
+   "struct": 78,
+   "near": 48,
+   "mechanism": "A very large multi-decade transfer of household wealth is underway. The framing error in most versions of this trade is the recipient. Assets pass first to the surviving spouse — typically a woman in her late 70s or 80s — and only later to children who are themselves in their 50s and 60s. The 'millennials inherit and change everything' story is a 2040s story, not a 2020s one. What matters commercially in this decade is that each transfer event is a moment when the incumbent advisor relationship is renegotiated, and there are two such moments per estate. Attrition at both steps is high. The receiving cohorts also prefer different intermediation: fee-based over commission, digital-first, indexed core with an alternatives sleeve, and tax and estate work bundled in.",
+   "why_now": "The widow step is happening at scale now — the leading edge of the cohort is at the age where first deaths cluster. The heir step follows on a decade-plus lag. The intermediation share shift front-runs both.",
+   "expression": "Long the platforms and RIA aggregators taking share; long trust, estate and tax-advisory infrastructure; long custody and advisory technology. Cautious on legacy full-service models carrying old client books served by old advisors — advisor age is itself a succession problem.",
+   "risk": "Crowded on the 'RIA rollup' leg, and rollup economics depend on cheap financing. The transfer estimate itself is a projection stacked on asset-price assumptions.",
+   "falsifier": "Retention data shows incumbents holding heir relationships at high rates. Then there is no share shift and this is simply a levered bet on AUM beta.",
+   "observables": [
+    "RIA and wirehouse net new assets; advisor headcount and average advisor age",
+    "Custody platform net flows",
+    "Trust and estate-services revenue; probate volumes",
+    "Wealth-management M&A multiples and deal count",
+    "Share of assets in fee-based vs commission accounts"
+   ],
+   "sourced": [
     {
-      "id": "v1",
-      "tag": "Composition, not direction",
-      "consensus": "Retirees sell assets to fund retirement, so the demographic wave is a supply shock and a market headwind.",
-      "thesis": "They mostly die holding. Assets are concentrated in the top decile, which spends far below its income; RMDs force money out of tax-deferred accounts but much of it is reinvested in taxable ones rather than consumed. The real effect is a change in the composition of demand — income, duration-matched cash flow, principal protection — plus a multi-decade transfer. That is relative value, not a directional call on the index.",
-      "conviction": 3,
-      "limb": "A"
+     "claim": "Cerulli projects $124T transferred through 2048 — $105T to heirs, $18T to charity. Nearly $100T comes from boomers and older, 81% of the total. Gen X inherits ~$39T, millennials ~$46T, Gen Z ~$15T.",
+     "src": "Cerulli Associates, 2025"
     },
     {
-      "id": "v2",
-      "tag": "Sequence, not level",
-      "consensus": "\"Aging\" is one trade: buy healthcare and senior housing, wait.",
-      "thesis": "It is a relay race. Each roughly seven-year age band has a different beneficiary set, and the handoff is calendar-predictable because the cohort's size distribution is fixed. The go-go band (65–74, travel and discretionary) is where the cohort's centre of mass has been; it is now crossing into slow-go (75–84, healthcare and home services). The timing of the handoff — not the existence of the demand — is the tradable part. Sourced, the divergence is stark but asymmetric: Census has slow-go growing 36% from 2025 to 2035 and the 85+ band growing 149% by 2050, while the go-go band peaks at 38.0M in 2030 and only drifts about 8% off that peak before recovering. So the care side compounds and the experience side plateaus. That is a relative-value call, not a short.",
-      "conviction": 3,
-      "limb": "D",
-      "revised": "v1 implied the go-go customer base shrinks meaningfully. Census does not support that. The claim has been narrowed to 'stops growing while priced for growth' — see clock.json correction c1."
+     "claim": "More than half the total volume — $62T — comes from HNW and UHNW households, which are 2% of all households.",
+     "src": "Cerulli Associates",
+     "note": "This is the single most useful number in the limb. It confirms the top-decile / median-retiree split is not a nuance but the structure of the whole transfer."
     },
     {
-      "id": "v3",
-      "tag": "Inflationary, not deflationary",
-      "consensus": "Aging is disinflationary. Japan is the template: old societies spend less, grow slower, and drag rates down.",
-      "thesis": "The US channel runs through labour supply, not demand. The exiting cohort is the most experienced and highest-paid, and in specific non-tradable fields it is not replaceable on any short horizon. That puts a structural floor under services wage inflation, argues for a higher neutral rate than the 2010s, and — the part that matters most for portfolio construction — makes duration a less reliable equity hedge than it was in 2010–2020. Highest-conviction and least-consensus limb.",
-      "conviction": 3,
-      "limb": "C"
-    },
-    {
-      "id": "v4",
-      "tag": "The fee pool moves before the assets",
-      "consensus": "The great wealth transfer is an AUM story: whoever holds the assets keeps them as they pass down.",
-      "thesis": "Every transfer event is a break point in the incumbent advisor relationship, and there are two of them — first to a surviving spouse, then to heirs. The recipient generation prefers different intermediation (fee-based, digital-first, indexed core, alternatives sleeve). Share shifts at each break long before the assets themselves are spent. This is a distribution and intermediation trade, not an asset-class trade.",
-      "conviction": 2,
-      "limb": "B"
+     "claim": "Boomer share of US household net worth peaked at 57.6% in 2016:Q3 and has fallen to 51.6% by 2026:Q1. Boomers hold 53.9% of corporate equities.",
+     "src": "Federal Reserve Distributional Financial Accounts, 2026:Q1",
+     "note": "The transfer is already underway and measurable, not prospective."
     }
-  ],
-
-  "codename_note": "\"Boomerification\" is the internal name, but the mechanism is not boomer-specific. Gen X begins turning 65 in 2030. This is a regime with a pipeline behind it, not a one-cohort event — the dashboard is built on age bands, not on a birth-cohort label, so it survives the name.",
-
-  "limbs": [
+   ],
+   "dispute": {
+    "claim": "The headline transfer number is contested by a factor of roughly three.",
+    "body": "Cerulli's $124T through 2048 is the widely cited figure. Visa Business and Economic Insights puts it at roughly $36T over the next twenty years. The gap is methodological rather than arithmetic: longevity keeps assets in the hands of the wealthy longer, end-of-life and long-term care costs consume estates before they transfer (nursing home care runs near $120k a year against a US median household net worth around $193k), and the largest estimates are sensitive to asset-price assumptions compounded over two decades. The dashboard does not pick a number. It positions on the intermediation mechanics — which are driven by the count of transfer events, not their aggregate dollar value — precisely because the dollar value is this uncertain."
+   }
+  },
+  {
+   "id": "C",
+   "n": "Labour supply — the inflation limb",
+   "c": "#DC2626",
+   "sub": "The highest-conviction, least-consensus claim in the thesis",
+   "conviction": 3,
+   "struct": 88,
+   "near": 72,
+   "mechanism": "The exiting cohort is the most experienced and highest-paid segment of the workforce, and in specific fields it cannot be replaced on any short horizon. This is emphatically not economy-wide labour scarcity — it is acute and persistent in non-tradable, non-automatable, licence-gated services: skilled trades (electrical, HVAC, welding, linework), healthcare delivery (nursing, anaesthesiology, primary care), aviation, utility and industrial engineering, and heavy-equipment and logistics operation. These roles share three properties: the training pipeline is long and capacity-constrained, the work cannot be offshored, and automation substitutes only partially. The result is a structural floor under services wage inflation in exactly the categories with the least substitution elasticity. Two consequences follow. A higher neutral rate than the 2010s baseline. And — the one that changes portfolio construction rather than sector selection — duration that hedges equity risk less reliably than it did in 2010–2020, because supply-side inflation makes stocks and bonds fall together.",
+   "why_now": "The retirement wave in the licensed trades and in nursing is arriving simultaneously with a training pipeline that did not expand to meet it. Capacity decisions made a decade ago cannot be revised in time.",
+   "expression": "Structural short duration relative to a 2010s baseline. Long labour-substituting capital equipment and software. Long staffing, training and credentialling in the constrained verticals. Long the contractors who own the scarce labour pool rather than the projects. Explicit scepticism toward a mechanical 60/40 revival.",
+   "risk": "This limb carries the thesis. If it is wrong, the portfolio-construction conclusion is wrong too, and what remains is a conventional healthcare-demographics book.",
+   "falsifier": "A sustained immigration surge, or 65+ participation continuing to rise as people simply work longer. Either substantially neutralises this limb. Immigration policy is the single largest swing factor in the entire thesis.",
+   "observables": [
+    "Labour force participation rate by age band, especially 65+",
+    "Job openings and quits in healthcare and construction trades",
+    "Apprenticeship registrations, nursing-school enrolment and completions",
+    "Wage growth: non-tradable services vs goods",
+    "Net immigration and visa issuance in affected categories",
+    "Contractor backlog and bid-margin commentary"
+   ],
+   "sourced": [
     {
-      "id": "A",
-      "n": "Decumulation & the flow question",
-      "c": "#4F46E5",
-      "sub": "What retirees actually do with the assets — and why the crude version is wrong",
-      "conviction": 2,
-      "struct": 70,
-      "near": 55,
-      "mechanism": "Retirees stop contributing and begin drawing. Required minimum distributions force money out of tax-deferred accounts on a statutory schedule. But the crude 'asset meltdown' version — retirees sell equities, the market falls — has never survived contact with the data, for three reasons. Assets are concentrated in the top decile, which consumes far less than its income. Forced distributions are frequently reinvested in taxable accounts rather than spent. And the marginal price-setter in US equities has not been the domestic retail retiree for a long time. What is actually true is narrower and more useful: the character of the marginal buyer changes. Demand shifts from equity beta toward income, duration-matched cash flow, principal protection and annuitisation — a composition trade, not a level trade.",
-      "why_now": "The leading edge of the cohort is now well past the age at which required minimum distributions begin, and the trailing edge is inside a decade of retirement. The composition shift is no longer prospective — it shows up in product flows now.",
-      "expression": "Long income-generating and retirement-income infrastructure: annuity writers and their reinsurers, private-credit managers with insurance balance sheets, income-oriented product shelves. Underweight businesses whose economics depend on continuous contribution flows from a shrinking accumulator base.",
-      "risk": "The benign reading is a genuine assumption, not a fact. It depends on wealth concentration holding and on the top decile continuing to underspend its income.",
-      "falsifier": "Sustained, unoffset net equity outflow attributable to the 65+ cohort shows up in fund-flow data. That would revive the directional bear case and invert this limb.",
-      "observables": ["ICI and Fed flow-of-funds data by vehicle", "Net flows into income / dividend / covered-call and late-vintage target-date products", "US annuity sales by type (FIA, RILA, SPIA)", "401(k)-to-IRA rollover volumes", "Household cash and T-bill balances by age band"]
+     "claim": "65+ labour force participation is 18.7% (June 2026), below its 2019 annual peak of 20.2% and below the 2024 average of 19.5%. The cohort is not working longer — participation peaked before the pandemic and has not recovered.",
+     "src": "BLS Current Population Survey, series LNU01300097",
+     "note": "This is the highest-value single indicator in the thesis and it currently reads CONFIRMING. It tests limb C's premise and limb D's timing at once."
     },
     {
-      "id": "B",
-      "n": "The transfer & who actually receives it",
-      "c": "#0891B2",
-      "sub": "A two-step handoff the standard version of this trade gets wrong",
-      "conviction": 2,
-      "struct": 78,
-      "near": 48,
-      "mechanism": "A very large multi-decade transfer of household wealth is underway. The framing error in most versions of this trade is the recipient. Assets pass first to the surviving spouse — typically a woman in her late 70s or 80s — and only later to children who are themselves in their 50s and 60s. The 'millennials inherit and change everything' story is a 2040s story, not a 2020s one. What matters commercially in this decade is that each transfer event is a moment when the incumbent advisor relationship is renegotiated, and there are two such moments per estate. Attrition at both steps is high. The receiving cohorts also prefer different intermediation: fee-based over commission, digital-first, indexed core with an alternatives sleeve, and tax and estate work bundled in.",
-      "why_now": "The widow step is happening at scale now — the leading edge of the cohort is at the age where first deaths cluster. The heir step follows on a decade-plus lag. The intermediation share shift front-runs both.",
-      "expression": "Long the platforms and RIA aggregators taking share; long trust, estate and tax-advisory infrastructure; long custody and advisory technology. Cautious on legacy full-service models carrying old client books served by old advisors — advisor age is itself a succession problem.",
-      "risk": "Crowded on the 'RIA rollup' leg, and rollup economics depend on cheap financing. The transfer estimate itself is a projection stacked on asset-price assumptions.",
-      "falsifier": "Retention data shows incumbents holding heir relationships at high rates. Then there is no share shift and this is simply a levered bet on AUM beta.",
-      "observables": ["RIA and wirehouse net new assets; advisor headcount and average advisor age", "Custody platform net flows", "Trust and estate-services revenue; probate volumes", "Wealth-management M&A multiples and deal count", "Share of assets in fee-based vs commission accounts"],
-      "sourced": [
-        {"claim": "Cerulli projects $124T transferred through 2048 — $105T to heirs, $18T to charity. Nearly $100T comes from boomers and older, 81% of the total. Gen X inherits ~$39T, millennials ~$46T, Gen Z ~$15T.", "src": "Cerulli Associates, 2025"},
-        {"claim": "More than half the total volume — $62T — comes from HNW and UHNW households, which are 2% of all households.", "src": "Cerulli Associates", "note": "This is the single most useful number in the limb. It confirms the top-decile / median-retiree split is not a nuance but the structure of the whole transfer."},
-        {"claim": "Boomer share of US household net worth peaked at 57.6% in 2016:Q3 and has fallen to 51.6% by 2026:Q1. Boomers hold 53.9% of corporate equities.", "src": "Federal Reserve Distributional Financial Accounts, 2026:Q1", "note": "The transfer is already underway and measurable, not prospective."}
-      ],
-      "dispute": {
-        "claim": "The headline transfer number is contested by a factor of roughly three.",
-        "body": "Cerulli's $124T through 2048 is the widely cited figure. Visa Business and Economic Insights puts it at roughly $36T over the next twenty years. The gap is methodological rather than arithmetic: longevity keeps assets in the hands of the wealthy longer, end-of-life and long-term care costs consume estates before they transfer (nursing home care runs near $120k a year against a US median household net worth around $193k), and the largest estimates are sensitive to asset-price assumptions compounded over two decades. The dashboard does not pick a number. It positions on the intermediation mechanics — which are driven by the count of transfer events, not their aggregate dollar value — precisely because the dollar value is this uncertain."
-      }
+     "claim": "Nursing schools turned away 93,000 qualified applications in 2025 — 75,255 from entry-level baccalaureate programmes and nearly 17,000 from graduate programmes. Schools cite insufficient clinical placement sites, budget cuts, and shortages of faculty, preceptors and classroom space.",
+     "src": "AACN annual survey, released 7 May 2026; 998 schools, 89.5% response rate",
+     "note": "The graduate figure is the compounding part: most full-time nursing faculty roles require a master's or doctorate, so turning away graduate applicants constrains the future capacity to train anyone. The bottleneck is self-reinforcing, which is exactly what 'capacity lags known demand' requires."
     },
     {
-      "id": "C",
-      "n": "Labour supply — the inflation limb",
-      "c": "#DC2626",
-      "sub": "The highest-conviction, least-consensus claim in the thesis",
-      "conviction": 3,
-      "struct": 88,
-      "near": 72,
-      "mechanism": "The exiting cohort is the most experienced and highest-paid segment of the workforce, and in specific fields it cannot be replaced on any short horizon. This is emphatically not economy-wide labour scarcity — it is acute and persistent in non-tradable, non-automatable, licence-gated services: skilled trades (electrical, HVAC, welding, linework), healthcare delivery (nursing, anaesthesiology, primary care), aviation, utility and industrial engineering, and heavy-equipment and logistics operation. These roles share three properties: the training pipeline is long and capacity-constrained, the work cannot be offshored, and automation substitutes only partially. The result is a structural floor under services wage inflation in exactly the categories with the least substitution elasticity. Two consequences follow. A higher neutral rate than the 2010s baseline. And — the one that changes portfolio construction rather than sector selection — duration that hedges equity risk less reliably than it did in 2010–2020, because supply-side inflation makes stocks and bonds fall together.",
-      "why_now": "The retirement wave in the licensed trades and in nursing is arriving simultaneously with a training pipeline that did not expand to meet it. Capacity decisions made a decade ago cannot be revised in time.",
-      "expression": "Structural short duration relative to a 2010s baseline. Long labour-substituting capital equipment and software. Long staffing, training and credentialling in the constrained verticals. Long the contractors who own the scarce labour pool rather than the projects. Explicit scepticism toward a mechanical 60/40 revival.",
-      "risk": "This limb carries the thesis. If it is wrong, the portfolio-construction conclusion is wrong too, and what remains is a conventional healthcare-demographics book.",
-      "falsifier": "A sustained immigration surge, or 65+ participation continuing to rise as people simply work longer. Either substantially neutralises this limb. Immigration policy is the single largest swing factor in the entire thesis.",
-      "observables": ["Labour force participation rate by age band, especially 65+", "Job openings and quits in healthcare and construction trades", "Apprenticeship registrations, nursing-school enrolment and completions", "Wage growth: non-tradable services vs goods", "Net immigration and visa issuance in affected categories", "Contractor backlog and bid-margin commentary"],
-      "sourced": [
-        {"claim": "65+ labour force participation is 18.7% (June 2026), below its 2019 annual peak of 20.2% and below the 2024 average of 19.5%. The cohort is not working longer — participation peaked before the pandemic and has not recovered.", "src": "BLS Current Population Survey, series LNU01300097", "note": "This is the highest-value single indicator in the thesis and it currently reads CONFIRMING. It tests limb C's premise and limb D's timing at once."},
-        {"claim": "Nursing schools turned away 93,000 qualified applications in 2025 — 75,255 from entry-level baccalaureate programmes and nearly 17,000 from graduate programmes. Schools cite insufficient clinical placement sites, budget cuts, and shortages of faculty, preceptors and classroom space.", "src": "AACN annual survey, released 7 May 2026; 998 schools, 89.5% response rate", "note": "The graduate figure is the compounding part: most full-time nursing faculty roles require a master's or doctorate, so turning away graduate applicants constrains the future capacity to train anyone. The bottleneck is self-reinforcing, which is exactly what 'capacity lags known demand' requires."},
-        {"claim": "The 2026 Trustees Report lowered its assumed immigration levels, contributing to a 16% widening of the 75-year deficit.", "src": "2026 Social Security Trustees Report", "note": "Limb C's main falsifier is an immigration surge. The federal actuaries have just revised their assumption the other way."}
-      ]
-    },
-    {
-      "id": "D",
-      "n": "Consumption mix & the age-band relay",
-      "c": "#EF9F27",
-      "sub": "Aggregate spend holds; the basket rotates on a calendar you can read",
-      "conviction": 3,
-      "struct": 85,
-      "near": 80,
-      "mechanism": "Aggregate consumption does not collapse when a cohort retires — the basket rotates. Goods give way to services; discretionary durables give way to healthcare, home services and care. This is the demand-side mirror of the labour limb, and it follows the age-band clock with a lag you can nearly calendar. The bands behave very differently. Go-go (roughly 65–75) is peak discretionary: travel, leisure, second homes, RVs and boats, elective procedures. Slow-go (roughly 75–85) sees total spend fall while the mix rotates hard into healthcare, home services and housing decisions. No-go (85+) concentrates almost entirely in medical and long-term care, and asset release becomes forced — by care costs, or by death. The tradable insight is that the cohort's centre of mass is crossing from go-go into slow-go over roughly 2026–2035. The experience-economy trade has had its demographic tailwind. The care trade still has one.",
-      "why_now": "Median cohort age is at the go-go/slow-go boundary now. The rotation is not a forecast — it is a population arithmetic that has already begun.",
-      "expression": "Long care delivery, home health, hospice, long-term-care pharmacy. Long medical devices and consumables with volume leverage rather than price leverage — orthopaedics, structural heart, sensory (hearing, vision), continence, diabetes technology. Long the aging-in-place supply chain. Fade the experience-economy trade into strength rather than shorting it outright — the demographics turn before the earnings do.",
-      "risk": "Healthcare-demographics is the most crowded expression of this entire thesis. The edge is in sequencing and in avoiding reimbursement exposure, not in the direction.",
-      "falsifier": "Compression of morbidity — health utilisation per capita flattening as people stay healthier longer — pushes the whole care curve to the right and lengthens the go-go band. GLP-1-driven changes to the elderly disease burden are the live version of this risk.",
-      "observables": ["PCE by category, normalised against age-band population", "Medicare enrolment and per-capita utilisation", "Home health, hospice and skilled-nursing admissions and census", "Travel, cruise and RV bookings by age cohort", "Elective procedure volumes: ortho, cardiac, ophthalmic", "Auto and durable-goods purchase rates by age"]
-    },
-    {
-      "id": "E",
-      "n": "Fiscal & policy — the thesis's own hedge",
-      "c": "#7C3AED",
-      "sub": "The same demographics that guarantee volume make price politically fragile",
-      "conviction": 2,
-      "struct": 80,
-      "near": 60,
-      "mechanism": "A rising beneficiary-to-worker ratio raises mandatory spending against a shrinking relative contribution base. Social Security and Medicare claim rates rise mechanically with the cohort clock; the trust fund arithmetic has a date on it. Three consequences. More long-end Treasury issuance, and upward pressure on the term premium. A political economy in which the largest and fastest-growing discretionary-in-practice line item is healthcare pricing. And a rising probability of discontinuous policy — benefit formula changes, means-testing, reimbursement resets — which markets price late and abruptly. This limb belongs in the same dashboard as limb D precisely because it is the internal hedge: the identical demographics that guarantee healthcare volume make healthcare price the most politically exposed line in the federal budget.",
-      "why_now": "Trust-fund depletion dates sit close enough that legislative action moves from hypothetical to scheduled inside the thesis horizon.",
-      "expression": "Term-premium-aware duration positioning rather than a flat rate view. Within healthcare, systematically prefer volume growth and cost-takeout over reimbursement-rate exposure — build the D-limb book so that an adverse reimbursement decision is survivable.",
-      "risk": "Policy timing is unforecastable in a way the other limbs are not. This limb is a constraint on position construction more than a source of longs.",
-      "falsifier": "Meaningful entitlement reform passes early and credibly. That repaths the fiscal limb and materially changes the reimbursement risk premium embedded in limb D.",
-      "observables": ["SSA Trustees report projections and revisions", "CBO long-term budget outlook", "Medicare physician fee schedule and Advantage rate notices", "10s30s curve and estimated term premium", "Worker-to-beneficiary ratio", "Entitlement legislation and commission activity"],
-      "sourced": [
-        {"claim": "OASI trust fund reserve depletion is projected for 2032 — not the mid-2030s. Combined OASDI is 2034. After OASI depletion, incoming receipts cover 78% of scheduled benefits, falling toward 62% by 2100.", "src": "2026 Social Security Trustees Report, released 9 June 2026", "note": "This is the single largest correction to the v1 thesis. The forcing function is roughly three years nearer than assumed, which puts it inside the horizon of most positions in the book rather than beyond it."},
-        {"claim": "The 75-year actuarial deficit widened from 3.82% to 4.42% of taxable payroll in a single year — a 16% deterioration.", "src": "2026 Trustees Report / Center for Retirement Research"},
-        {"claim": "The deterioration is driven by a fertility assumption cut from 1.90 to 1.75, lower assumed immigration, and the One Big Beautiful Bill Act permanently reducing income tax revenue on benefits.", "src": "Center for Retirement Research analysis of the 2026 report", "note": "The immigration assumption cut matters beyond this limb — the government's own actuaries have moved their assumption in the direction that supports limb C."}
-      ]
-    },
-    {
-      "id": "H",
-      "n": "Housing & the release of the stock",
-      "c": "#16A34A",
-      "sub": "Real, slow, and far more geographically uneven than the headline",
-      "conviction": 2,
-      "struct": 72,
-      "near": 45,
-      "mechanism": "The cohort holds a disproportionate share of the owner-occupied housing stock, much of it at legacy mortgage rates that make moving expensive in cash terms. Lock-in suppresses turnover. The 'silver tsunami' of released inventory is real, but it arrives slowly and unevenly — concentrated first in retirement metros and in the specific neighbourhoods where the cohort clustered, not spread evenly across the national market. Meanwhile the revealed preference is overwhelmingly to age in place, which means home modification, in-home care and home services capture more of the spend than institutional senior housing does on a volume basis. The near-term exception is worth holding both thoughts on: senior housing has the better cyclical setup precisely because construction starts collapsed in 2020–2023 while the demand cohort arrives regardless of what got built.",
-      "why_now": "Care transitions and mortality begin to override rate lock-in as the binding constraint on moving as the cohort ages through the slow-go band.",
-      "expression": "Long senior-housing operators and REITs on the supply-trough setup, sized as a cyclical rather than structural position. Long the aging-in-place supply chain: home modification, mobility, in-home care, home services. Long active-adult builders. Treat the inventory-release story as a regional and slow-burning input, not a national catalyst.",
-      "risk": "Senior housing is an operating business dressed as real estate — labour cost (limb C) is its largest input and directly compresses the margin the demographic tailwind is supposed to deliver. This is the clearest internal conflict in the thesis.",
-      "falsifier": "Turnover in retirement metros stays suppressed even as the cohort ages through the transition bands, which would mean lock-in dominates demography for longer than the thesis assumes.",
-      "observables": ["Existing-home turnover rate by metro, weighted to retirement destinations", "Senior housing occupancy, rate growth and construction starts", "Homeowner tenure by age band; mortgage rate distribution of the existing stock", "Home-improvement spend on accessibility categories", "Active-adult community absorption rates"]
+     "claim": "The 2026 Trustees Report lowered its assumed immigration levels, contributing to a 16% widening of the 75-year deficit.",
+     "src": "2026 Social Security Trustees Report",
+     "note": "Limb C's main falsifier is an immigration surge. The federal actuaries have just revised their assumption the other way."
     }
-  ],
-
-  "not_priced": [
+   ]
+  },
+  {
+   "id": "D",
+   "n": "Consumption mix & the age-band relay",
+   "c": "#EF9F27",
+   "sub": "Aggregate spend holds; the basket rotates on a calendar you can read",
+   "conviction": 3,
+   "struct": 85,
+   "near": 80,
+   "mechanism": "Aggregate consumption does not collapse when a cohort retires — the basket rotates. Goods give way to services; discretionary durables give way to healthcare, home services and care. This is the demand-side mirror of the labour limb, and it follows the age-band clock with a lag you can nearly calendar. The bands behave very differently. Go-go (roughly 65–75) is peak discretionary: travel, leisure, second homes, RVs and boats, elective procedures. Slow-go (roughly 75–85) sees total spend fall while the mix rotates hard into healthcare, home services and housing decisions. No-go (85+) concentrates almost entirely in medical and long-term care, and asset release becomes forced — by care costs, or by death. The tradable insight is that the cohort's centre of mass is crossing from go-go into slow-go over roughly 2026–2035. The experience-economy trade has had its demographic tailwind. The care trade still has one.",
+   "why_now": "Median cohort age is at the go-go/slow-go boundary now. The rotation is not a forecast — it is a population arithmetic that has already begun.",
+   "expression": "Long care delivery, home health, hospice, long-term-care pharmacy. Long medical devices and consumables with volume leverage rather than price leverage — orthopaedics, structural heart, sensory (hearing, vision), continence, diabetes technology. Long the aging-in-place supply chain. Fade the experience-economy trade into strength rather than shorting it outright — the demographics turn before the earnings do.",
+   "risk": "Healthcare-demographics is the most crowded expression of this entire thesis. The edge is in sequencing and in avoiding reimbursement exposure, not in the direction.",
+   "falsifier": "Compression of morbidity — health utilisation per capita flattening as people stay healthier longer — pushes the whole care curve to the right and lengthens the go-go band. GLP-1-driven changes to the elderly disease burden are the live version of this risk.",
+   "observables": [
+    "PCE by category, normalised against age-band population",
+    "Medicare enrolment and per-capita utilisation",
+    "Home health, hospice and skilled-nursing admissions and census",
+    "Travel, cruise and RV bookings by age cohort",
+    "Elective procedure volumes: ortho, cardiac, ophthalmic",
+    "Auto and durable-goods purchase rates by age"
+   ]
+  },
+  {
+   "id": "E",
+   "n": "Fiscal & policy — the thesis's own hedge",
+   "c": "#7C3AED",
+   "sub": "The same demographics that guarantee volume make price politically fragile",
+   "conviction": 2,
+   "struct": 80,
+   "near": 60,
+   "mechanism": "A rising beneficiary-to-worker ratio raises mandatory spending against a shrinking relative contribution base. Social Security and Medicare claim rates rise mechanically with the cohort clock; the trust fund arithmetic has a date on it. Three consequences. More long-end Treasury issuance, and upward pressure on the term premium. A political economy in which the largest and fastest-growing discretionary-in-practice line item is healthcare pricing. And a rising probability of discontinuous policy — benefit formula changes, means-testing, reimbursement resets — which markets price late and abruptly. This limb belongs in the same dashboard as limb D precisely because it is the internal hedge: the identical demographics that guarantee healthcare volume make healthcare price the most politically exposed line in the federal budget.",
+   "why_now": "Trust-fund depletion dates sit close enough that legislative action moves from hypothetical to scheduled inside the thesis horizon.",
+   "expression": "Term-premium-aware duration positioning rather than a flat rate view. Within healthcare, systematically prefer volume growth and cost-takeout over reimbursement-rate exposure — build the D-limb book so that an adverse reimbursement decision is survivable.",
+   "risk": "Policy timing is unforecastable in a way the other limbs are not. This limb is a constraint on position construction more than a source of longs.",
+   "falsifier": "Meaningful entitlement reform passes early and credibly. That repaths the fiscal limb and materially changes the reimbursement risk premium embedded in limb D.",
+   "observables": [
+    "SSA Trustees report projections and revisions",
+    "CBO long-term budget outlook",
+    "Medicare physician fee schedule and Advantage rate notices",
+    "10s30s curve and estimated term premium",
+    "Worker-to-beneficiary ratio",
+    "Entitlement legislation and commission activity"
+   ],
+   "sourced": [
     {
-      "rank": 1,
-      "id": "capacity",
-      "n": "Capacity lags known demand",
-      "trust": "strongest",
-      "body": "Supply decisions taken years ago — senior housing starts, nursing school seats, trade apprenticeship places, anaesthesiology residency slots — cannot flex to meet a demand curve that is perfectly known but arrives later. Known demand meeting fixed supply is the cleanest pricing-power setup in the thesis, and it is the mechanism behind limbs C and H specifically. It is also measurable: you can count the seats and the starts.",
-      "limbs": ["C", "H", "D"]
+     "claim": "OASI trust fund reserve depletion is projected for 2032 — not the mid-2030s. Combined OASDI is 2034. After OASI depletion, incoming receipts cover 78% of scheduled benefits, falling toward 62% by 2100.",
+     "src": "2026 Social Security Trustees Report, released 9 June 2026",
+     "note": "This is the single largest correction to the v1 thesis. The forcing function is roughly three years nearer than assumed, which puts it inside the horizon of most positions in the book rather than beyond it."
     },
     {
-      "rank": 2,
-      "id": "policy",
-      "n": "Policy discontinuities",
-      "trust": "strong",
-      "body": "Trust-fund dates, reimbursement resets and benefit formula changes are step functions. Markets price step functions late and then abruptly, because there is no gradual information release to trade against — the date is known, the content is not. This creates event risk with an identifiable calendar rather than a diffuse repricing.",
-      "limbs": ["E", "D"]
+     "claim": "The 75-year actuarial deficit widened from 3.82% to 4.42% of taxable payroll in a single year — a 16% deterioration.",
+     "src": "2026 Trustees Report / Center for Retirement Research"
     },
     {
-      "rank": 3,
-      "id": "institutional",
-      "n": "Institutional and behavioural lag",
-      "trust": "moderate",
-      "body": "Advisor books, product shelves, distribution agreements and custody relationships repaper on a multi-year lag behind the client transitions driving them. The economics change before the reported numbers do, which is exactly the window where the intermediation trade in limb B lives.",
-      "limbs": ["B", "A"]
-    },
-    {
-      "rank": 4,
-      "id": "index",
-      "n": "Index composition lag",
-      "trust": "weakest",
-      "body": "Benchmarks reflect the earnings power of the last regime and passive flows follow the benchmark. Cite this only where it is measurable — sector weights versus forward earnings contribution — otherwise it is an untestable story. Do not lean on it for any position.",
-      "limbs": ["A"]
+     "claim": "The deterioration is driven by a fertility assumption cut from 1.90 to 1.75, lower assumed immigration, and the One Big Beautiful Bill Act permanently reducing income tax revenue on benefits.",
+     "src": "Center for Retirement Research analysis of the 2026 report",
+     "note": "The immigration assumption cut matters beyond this limb — the government's own actuaries have moved their assumption in the direction that supports limb C."
     }
-  ],
-
-  "weaknesses": [
-    {
-      "id": "w1",
-      "n": "Demographics are the slowest variable in finance",
-      "body": "A correct call can lose to carry for years. Every expression needs to either pay to wait — yield, buyback, cash generation — or attach to a discrete catalyst. Positions that require the demographic curve alone to work are not positions, they are opinions.",
-      "sev": 3
-    },
-    {
-      "id": "w2",
-      "n": "The limbs contradict each other on rates",
-      "body": "Limb C (labour scarcity inflation) and limb E (heavy long-end issuance) argue for higher rates and a higher term premium. Limb A (a decumulating cohort bidding for income and duration-matched cash flow) argues for structural demand for duration. These do not net out cleanly. Do not paper over it — the rate view must be an explicit, dated, separately-argued call, not an emergent property of the other limbs.",
-      "sev": 3
-    },
-    {
-      "id": "w3",
-      "n": "Wealth concentration cuts both ways",
-      "body": "The cohort holds most of the assets, but concentration within the cohort means the median retiree is materially under-saved. These are two different customers with two different demand curves — luxury and legacy at the top, value and safety-net at the median — and a single 'the retiree' framing will produce wrong positions for at least one of them. The universe is tagged so the two can be separated.",
-      "sev": 2
-    },
-    {
-      "id": "w4",
-      "n": "Consensus risk in the obvious expression",
-      "body": "Healthcare demographics is a crowded trade with a decade of narrative behind it. Whatever edge exists is in sequencing (limb D's relay timing) and in the labour limb (C), not in 'buy aging'. Any position that could be described in three words has no edge in it.",
-      "sev": 2
-    },
-    {
-      "id": "w5",
-      "n": "Labour cost is inside the care trade, not outside it",
-      "body": "Limb C predicts wage inflation in exactly the occupations that dominate the cost base of limb D and limb H operators. Senior housing, skilled nursing and home health are labour businesses. The same force that creates the demand compresses the margin on serving it. Prefer asset-light, technology-levered or pricing-power exposures within care over pure labour arbitrage.",
-      "sev": 3
-    }
-  ],
-
-  "four_questions": [
-    {"q": "What has to be true for this to work?", "a": "That the age-band spending relay in limb D holds its historical shape, and that the labour pipeline in limb C stays capacity-constrained for longer than the market's implied adjustment period. Everything else is second order."},
-    {"q": "What would make you exit entirely?", "a": "A sustained immigration surge that visibly relieves the constrained occupations, combined with 65+ participation continuing to climb. That is a single coherent scenario and it neutralises limbs C, most of D's labour-driven pricing, and the portfolio-construction conclusion in one move."},
-    {"q": "Where is the crowd already?", "a": "Senior housing REITs and large-cap medtech — both fully narrativised. The crowd is thin in the labour and intermediation limbs, which is where the position sizing should reflect it."},
-    {"q": "What does this cost to hold?", "a": "Most expressions are cash-generative or yielding, which is deliberate — see weakness w1. The exception is the labour-substitution basket, which is priced for growth and will not pay you to wait. Size it as the highest-carry, highest-conviction sleeve rather than the largest one."}
-  ]
+   ]
+  },
+  {
+   "id": "H",
+   "n": "Housing & the release of the stock",
+   "c": "#16A34A",
+   "sub": "Real, slow, and far more geographically uneven than the headline",
+   "conviction": 2,
+   "struct": 72,
+   "near": 45,
+   "mechanism": "The cohort holds a disproportionate share of the owner-occupied housing stock, much of it at legacy mortgage rates that make moving expensive in cash terms. Lock-in suppresses turnover. The 'silver tsunami' of released inventory is real, but it arrives slowly and unevenly — concentrated first in retirement metros and in the specific neighbourhoods where the cohort clustered, not spread evenly across the national market. Meanwhile the revealed preference is overwhelmingly to age in place, which means home modification, in-home care and home services capture more of the spend than institutional senior housing does on a volume basis. The near-term exception is worth holding both thoughts on: senior housing has the better cyclical setup precisely because construction starts collapsed in 2020–2023 while the demand cohort arrives regardless of what got built.",
+   "why_now": "Care transitions and mortality begin to override rate lock-in as the binding constraint on moving as the cohort ages through the slow-go band.",
+   "expression": "Long senior-housing operators and REITs on the supply-trough setup, sized as a cyclical rather than structural position. Long the aging-in-place supply chain: home modification, mobility, in-home care, home services. Long active-adult builders. Treat the inventory-release story as a regional and slow-burning input, not a national catalyst.",
+   "risk": "Senior housing is an operating business dressed as real estate — labour cost (limb C) is its largest input and directly compresses the margin the demographic tailwind is supposed to deliver. This is the clearest internal conflict in the thesis.",
+   "falsifier": "Turnover in retirement metros stays suppressed even as the cohort ages through the transition bands, which would mean lock-in dominates demography for longer than the thesis assumes.",
+   "observables": [
+    "Existing-home turnover rate by metro, weighted to retirement destinations",
+    "Senior housing occupancy, rate growth and construction starts",
+    "Homeowner tenure by age band; mortgage rate distribution of the existing stock",
+    "Home-improvement spend on accessibility categories",
+    "Active-adult community absorption rates"
+   ]
+  }
+ ],
+ "not_priced": [
+  {
+   "rank": 1,
+   "id": "capacity",
+   "n": "Capacity lags known demand",
+   "trust": "strongest",
+   "body": "Supply decisions taken years ago — senior housing starts, nursing school seats, trade apprenticeship places, anaesthesiology residency slots — cannot flex to meet a demand curve that is perfectly known but arrives later. Known demand meeting fixed supply is the cleanest pricing-power setup in the thesis, and it is the mechanism behind limbs C and H specifically. It is also measurable: you can count the seats and the starts.",
+   "limbs": [
+    "C",
+    "H",
+    "D"
+   ]
+  },
+  {
+   "rank": 2,
+   "id": "policy",
+   "n": "Policy discontinuities",
+   "trust": "strong",
+   "body": "Trust-fund dates, reimbursement resets and benefit formula changes are step functions. Markets price step functions late and then abruptly, because there is no gradual information release to trade against — the date is known, the content is not. This creates event risk with an identifiable calendar rather than a diffuse repricing.",
+   "limbs": [
+    "E",
+    "D"
+   ]
+  },
+  {
+   "rank": 3,
+   "id": "institutional",
+   "n": "Institutional and behavioural lag",
+   "trust": "moderate",
+   "body": "Advisor books, product shelves, distribution agreements and custody relationships repaper on a multi-year lag behind the client transitions driving them. The economics change before the reported numbers do, which is exactly the window where the intermediation trade in limb B lives.",
+   "limbs": [
+    "B",
+    "A"
+   ]
+  },
+  {
+   "rank": 4,
+   "id": "index",
+   "n": "Index composition lag",
+   "trust": "weakest",
+   "body": "Benchmarks reflect the earnings power of the last regime and passive flows follow the benchmark. Cite this only where it is measurable — sector weights versus forward earnings contribution — otherwise it is an untestable story. Do not lean on it for any position.",
+   "limbs": [
+    "A"
+   ]
+  }
+ ],
+ "weaknesses": [
+  {
+   "id": "w1",
+   "n": "Demographics are the slowest variable in finance",
+   "body": "A correct call can lose to carry for years. Every expression needs to either pay to wait — yield, buyback, cash generation — or attach to a discrete catalyst. Positions that require the demographic curve alone to work are not positions, they are opinions.",
+   "sev": 3
+  },
+  {
+   "id": "w2",
+   "n": "The limbs contradict each other on rates",
+   "body": "Limb C (labour scarcity inflation) and limb E (heavy long-end issuance) argue for higher rates and a higher term premium. Limb A (a decumulating cohort bidding for income and duration-matched cash flow) argues for structural demand for duration. These do not net out cleanly. Do not paper over it — the rate view must be an explicit, dated, separately-argued call, not an emergent property of the other limbs.",
+   "sev": 3
+  },
+  {
+   "id": "w3",
+   "n": "Wealth concentration cuts both ways",
+   "body": "The cohort holds most of the assets, but concentration within the cohort means the median retiree is materially under-saved. These are two different customers with two different demand curves — luxury and legacy at the top, value and safety-net at the median — and a single 'the retiree' framing will produce wrong positions for at least one of them. The universe is tagged so the two can be separated.",
+   "sev": 2
+  },
+  {
+   "id": "w4",
+   "n": "Consensus risk in the obvious expression",
+   "body": "Healthcare demographics is a crowded trade with a decade of narrative behind it. Whatever edge exists is in sequencing (limb D's relay timing) and in the labour limb (C), not in 'buy aging'. Any position that could be described in three words has no edge in it.",
+   "sev": 2
+  },
+  {
+   "id": "w5",
+   "n": "Labour cost is inside the care trade, not outside it",
+   "body": "Limb C predicts wage inflation in exactly the occupations that dominate the cost base of limb D and limb H operators. Senior housing, skilled nursing and home health are labour businesses. The same force that creates the demand compresses the margin on serving it. Prefer asset-light, technology-levered or pricing-power exposures within care over pure labour arbitrage.",
+   "sev": 3
+  }
+ ],
+ "four_questions": [
+  {
+   "q": "What has to be true for this to work?",
+   "a": "That the age-band spending relay in limb D holds its historical shape, and that the labour pipeline in limb C stays capacity-constrained for longer than the market's implied adjustment period. Everything else is second order."
+  },
+  {
+   "q": "What would make you exit entirely?",
+   "a": "A sustained immigration surge that visibly relieves the constrained occupations, combined with 65+ participation continuing to climb. That is a single coherent scenario and it neutralises limbs C, most of D's labour-driven pricing, and the portfolio-construction conclusion in one move."
+  },
+  {
+   "q": "Where is the crowd already?",
+   "a": "Senior housing REITs and large-cap medtech — both fully narrativised. The crowd is thin in the labour and intermediation limbs, which is where the position sizing should reflect it."
+  },
+  {
+   "q": "What does this cost to hold?",
+   "a": "Most expressions are cash-generative or yielding, which is deliberate — see weakness w1. The exception is the labour-substitution basket, which is priced for growth and will not pay you to wait. Size it as the highest-carry, highest-conviction sleeve rather than the largest one."
+  }
+ ]
 }
