@@ -18,6 +18,8 @@ Writes data/reference.json:
                    Geographic Variation PUF) plus the SNF age gradient (CMS
                    Program Statistics). This is the block that tests whether
                    care demand actually scales the way limb D assumes.
+  - rates        : Treasury par yield curve and debt — the observable that
+                   arbitrates the limb A vs limb E contradiction.
   - medicaid     : Medicaid HCBS waiver and managed-LTSS enrolment — the payer
                    behind personal care, which the Medicare datasets above do
                    not touch at all.
@@ -52,6 +54,15 @@ BLS_API = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 CMS_CATALOG = 'https://data.cms.gov/data.json'
 MEDICAID_CATALOG = ('https://data.medicaid.gov/api/1/metastore/schemas/dataset/'
                     'items?show-reference-ids=true')
+# Treasury par yield curve — keyless CSV, one file per year. The 10s30s spread is
+# where limbs A and E actually settle their argument, so the dashboard should
+# read it rather than assert a rate view.
+TREASURY_YC = ('https://home.treasury.gov/resource-center/data-chart-center/interest-rates/'
+               'daily-treasury-rates.csv/{yr}/all?type=daily_treasury_yield_curve&'
+               'field_tdr_date_value={yr}&page&_format=csv')
+TREASURY_DEBT = ('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/'
+                 'accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=1')
+YC_YEARS = [2019, 2022, 2024, 2025, 2026]
 # Medicare Geographic Variation, National/State/County — the only free series that
 # gives per-capita Medicare utilisation annually over a long enough window to see
 # a trend. FFS only, which is the block's central caveat.
@@ -484,6 +495,57 @@ def wages():
     }
 
 
+def rates():
+    """The arbiter between limb A and limb E.
+
+    Limb A says a decumulating cohort creates structural demand for duration.
+    Limb E says entitlement-driven issuance widens the term premium. Weakness w2
+    has said since the first draft that these do not net out and that the rate
+    view must be an explicit dated call rather than an emergent property. This
+    block supplies the observable that settles it.
+    """
+    import csv as _csv
+    curve = {}
+    for yr in YC_YEARS:
+        try:
+            rows = list(_csv.DictReader(io.StringIO(get(TREASURY_YC.format(yr=yr)).decode())))
+        except Exception:
+            continue
+        if not rows:
+            continue
+        last = rows[0]                      # Treasury serves newest first
+
+        def f(k):
+            try:
+                return float(last[k])
+            except (KeyError, TypeError, ValueError):
+                return None
+        two, ten, thirty = f('2 Yr'), f('10 Yr'), f('30 Yr')
+        curve[str(yr)] = {
+            'date': last.get('Date'), '2Y': two, '10Y': ten, '30Y': thirty,
+            'spread_10s30s_bp': round((thirty - ten) * 100) if thirty and ten else None,
+            'spread_2s10s_bp': round((ten - two) * 100) if ten and two else None,
+        }
+    if not curve:
+        raise RuntimeError('Treasury yield curve returned nothing')
+
+    debt = {}
+    try:
+        d = json.loads(get(TREASURY_DEBT))['data'][0]
+        debt = {'record_date': d['record_date'],
+                'held_by_public_usd_tn': round(float(d['debt_held_public_amt']) / 1e12, 2),
+                'total_public_debt_usd_tn': round(float(d['tot_pub_debt_out_amt']) / 1e12, 2)}
+    except Exception:
+        pass
+
+    return {'curve': curve, 'debt': debt,
+            'reading': 'The 10s30s spread is the cleanest free read on term premium. Widening '
+                       'means limb E (issuance) is winning; flattening or inverting at the long '
+                       'end means limb A (duration demand) is.',
+            'source': 'US Treasury daily par yield curve and FiscalData debt-to-the-penny, both keyless',
+            'url': TREASURY_YC.format(yr='YYYY')}
+
+
 def medicaid():
     """Who pays for personal care, and is that payer expanding?
 
@@ -659,7 +721,7 @@ def main():
     blocks = {'population': census_population, 'spending': cex_spending,
               'participation': participation, 'wealth': dfa_wealth,
               'utilisation': utilisation, 'wages': wages,
-              'projections': projections, 'medicaid': medicaid}
+              'projections': projections, 'medicaid': medicaid, 'rates': rates}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

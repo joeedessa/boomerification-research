@@ -388,11 +388,15 @@ State these up front; the thesis is more credible with them than without.
 
 - **Demographics are slow.** Correct calls can lose to carry for years. Any
   expression needs to pay to wait, or needs a discrete catalyst.
-- **Limbs C and D partially contradict limbs A and E.** Labor-scarcity inflation
-  and heavy long-end issuance argue for higher rates; a decumulating cohort
-  bidding for income argues for demand for duration. Do not paper over this —
-  **make the net rate view an explicit, dated call rather than an emergent
-  property of the other limbs.**
+- **Limbs C and D partially contradict limbs A and E.** ~~Do not paper over
+  this — make the net rate view an explicit, dated call.~~ **Resolved
+  2026-08-07.** The 10s30s spread is the arbiter and it has widened decisively:
+  9bp end-2022 → 20bp end-2024 → 66bp end-2025 → **53bp now, with the 30-year at
+  5.22%**. Since 2019 the long end has repriced 283bp against 267bp at the front.
+  **Limb E wins; bias to a steeper long end.** Sized small, deliberately: limb
+  C's inflation channel narrowed from "non-tradable services" to "care-support
+  labour only", and one occupational group is not a macro inflation thesis.
+  Review by 2027-02-07; falsified if 10s30s compresses back below 20bp.
 - **Wealth concentration cuts both ways.** Households aged 55+ hold **73.9%** of
   US household net worth, and boomers alone hold **51.6%** — plus **53.9% of
   corporate equities** (Fed Distributional Financial Accounts, 2026:Q1). But

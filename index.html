@@ -746,6 +746,39 @@ function clockChart(){
 function buildLimbs(){
   const c=document.getElementById('lb-cont');
   let h=`<div class="note">Six limbs. Each carries a mechanism, the observables that test it, the expression, and the falsifier that retires it — the structure is deliberately also the dashboard's specification. Conviction is <b>${THESIS._meta.conviction_scale}</b>.</div>`;
+
+  /* The rate call. Weakness w2 demanded it be explicit and dated rather than an
+     emergent property of the other limbs, so it renders above them, not inside one. */
+  if(THESIS.rate_call){
+    const R=THESIS.rate_call, C=REF&&REF.rates;
+    h+=`<div class="limbcard" style="border-left-color:#7C3AED;background:var(--color-background-secondary)">
+      <div class="limb-h"><span class="sf" style="background:var(--fl-indigo-bg);color:var(--fl-indigo-fg)">dated call</span>
+        <span class="limb-n">${esc(R.title)}</span>
+        <span class="co-role">made ${esc(R.as_of)} &middot; review by ${esc(R.review_by)} &middot; conviction ${R.conviction}/3</span></div>
+      <dl class="kv">
+        <dt>The problem</dt><dd>${rich(R.problem)}</dd>
+        <dt>Evidence</dt><dd>${rich(R.evidence)}</dd>
+        <dt>The call</dt><dd><b style="font-size:13px">${rich(R.call)}</b></dd>
+        <dt>Why small</dt><dd>${rich(R.hedge)}</dd>
+        <dt>Portfolio</dt><dd>${rich(R.portfolio_implication)}</dd>
+        <dt>Falsified if</dt><dd style="color:var(--fl-red-fg)">${rich(R.falsifies_if)}</dd>
+      </dl>`;
+    if(C&&C.curve){
+      const ys=Object.keys(C.curve).sort();
+      h+=`<div style="overflow-x:auto;margin-top:6px"><table class="tbl"><thead><tr><th>As of</th><th style="text-align:right">2Y</th><th style="text-align:right">10Y</th><th style="text-align:right">30Y</th><th style="text-align:right">10s30s</th></tr></thead><tbody>`;
+      ys.forEach(y=>{
+        const v=C.curve[y];
+        h+=`<tr><td class="q">${esc(v.date||y)}</td><td style="text-align:right" class="q">${v['2Y']}</td>
+          <td style="text-align:right" class="q">${v['10Y']}</td><td style="text-align:right" class="q"><b>${v['30Y']}</b></td>
+          <td style="text-align:right"><b class="${v.spread_10s30s_bp>=40?'up':'dn'}">${v.spread_10s30s_bp}bp</b></td></tr>`;
+      });
+      h+=`</tbody></table></div>`;
+      if(C.debt&&C.debt.held_by_public_usd_tn)
+        h+=`<div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(C.source)}</span><span>debt held by public <b>$${C.debt.held_by_public_usd_tn}tn</b> (${esc(C.debt.record_date)})</span></div>`;
+    }
+    h+=`</div>`;
+  }
+
   THESIS.limbs.forEach(l=>{
     h+=`<div class="limbcard" style="border-left-color:${l.c}">
       <div class="limb-h">${limbChip(l.id)}<span class="limb-n">${esc(l.n)}</span>

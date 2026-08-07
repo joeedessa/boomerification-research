@@ -408,3 +408,33 @@ and flagged as the most urgent name to re-underwrite.
 Private-pay theme structural score cut 88 → 78. Its apparent invulnerability was
 an artefact of never having been measured, which is the clearest illustration yet
 of why the unsourced list matters more than the resolution log.
+
+## Iteration 7 — 2026-08-07 — The rate call, finally made
+
+**Why:** weakness w2 has said since the first draft that the rate view must be an
+explicit dated call rather than an emergent property of the other limbs. Six
+iterations in, it still was not one — and the contradiction monitor was item 4 on
+the original priority ladder and had never been built.
+
+**Source.** US Treasury daily par yield curve (keyless CSV, one file per year)
+and FiscalData debt-to-the-penny. Note: the FiscalData `page[size]` parameter
+must be URL-encoded or the endpoint returns HTML, which cost a first attempt.
+
+**The arbiter, read for the first time.** 10s30s: **9bp end-2022 → 20bp end-2024
+→ 66bp end-2025 → 53bp now**, with the 30-year at **5.22%**. Since 2019 the long
+end has repriced 283bp against 267bp at the front. Debt held by the public
+$32.1tn.
+
+**The call: bias to a steeper long end and a wider term premium. Limb E beats
+limb A.** Conviction 2, reviewed by 2027-02-07, falsified if 10s30s sustainably
+compresses below 20bp.
+
+**Sized small, for a reason the loop itself produced.** v1 justified a confident
+"structural short duration" on economy-wide services inflation. Iterations 2 and
+4 narrowed that channel to care-support labour alone — trades wages *and* trades
+exit rates both run below baseline. One occupational group, however hot, is not a
+macro inflation thesis. Direction stands; size does not.
+
+Within equities this changes little, and that is worth stating: the REIT sleeve
+and the spread insurers already sit on opposite sides of this. That internal
+hedge is now deliberate rather than accidental.

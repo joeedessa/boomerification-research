@@ -239,8 +239,9 @@
    "priority": 2,
    "confirms": "Term premium widening as issuance rises — the fiscal limb expressing itself in the curve.",
    "contradicts": "Term premium compressing despite deficits, which would mean limb A's duration demand is dominating limb E's supply.",
-   "status": "not-yet-read",
-   "note": "This is where the internal contradiction between limbs A and E is actually resolved. Watch it as the arbiter, not as a position."
+   "status": "confirming",
+   "note": "READ 2026-08-07 (US Treasury par yield curve, keyless). 10s30s: 9bp end-2022, 20bp end-2024, 66bp end-2025, 53bp now with the 30-year at 5.22%. Since 2019 the 30-year is up 283bp against 267bp on the 2-year — the long end has repriced harder than the front. Limb E is winning the argument against limb A's duration demand. This is the arbiter the thesis named on day one and never read until now; it is also what makes the rate call in thesis.json possible.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "ratio",

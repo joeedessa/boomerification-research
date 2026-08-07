@@ -62,7 +62,7 @@
    "mechanism": "Retirees stop contributing and begin drawing. Required minimum distributions force money out of tax-deferred accounts on a statutory schedule. But the crude 'asset meltdown' version — retirees sell equities, the market falls — has never survived contact with the data, for three reasons. Assets are concentrated in the top decile, which consumes far less than its income. Forced distributions are frequently reinvested in taxable accounts rather than spent. And the marginal price-setter in US equities has not been the domestic retail retiree for a long time. What is actually true is narrower and more useful: the character of the marginal buyer changes. Demand shifts from equity beta toward income, duration-matched cash flow, principal protection and annuitisation — a composition trade, not a level trade.",
    "why_now": "The leading edge of the cohort is now well past the age at which required minimum distributions begin, and the trailing edge is inside a decade of retirement. The composition shift is no longer prospective — it shows up in product flows now.",
    "expression": "Long income-generating and retirement-income infrastructure: annuity writers and their reinsurers, private-credit managers with insurance balance sheets, income-oriented product shelves. Underweight businesses whose economics depend on continuous contribution flows from a shrinking accumulator base.",
-   "risk": "The benign reading is a genuine assumption, not a fact. It depends on wealth concentration holding and on the top decile continuing to underspend its income.",
+   "risk": "The benign reading is a genuine assumption, not a fact. It depends on wealth concentration holding and on the top decile continuing to underspend its income. The rate contradiction with limb E is now settled as an explicit dated call — see rate_call. On the evidence, limb E wins at the long end and limb A's duration demand is not absorbing the issuance.",
    "falsifier": "Sustained, unoffset net equity outflow attributable to the 65+ cohort shows up in fund-flow data. That would revive the directional bear case and invert this limb.",
    "observables": [
     "ICI and Fed flow-of-funds data by vehicle",
@@ -331,7 +331,7 @@
   {
    "id": "w2",
    "n": "The limbs contradict each other on rates",
-   "body": "Limb C (labour scarcity inflation) and limb E (heavy long-end issuance) argue for higher rates and a higher term premium. Limb A (a decumulating cohort bidding for income and duration-matched cash flow) argues for structural demand for duration. These do not net out cleanly. Do not paper over it — the rate view must be an explicit, dated, separately-argued call, not an emergent property of the other limbs.",
+   "body": "Limb C (labour scarcity inflation) and limb E (heavy long-end issuance) argue for higher rates and a higher term premium. Limb A (a decumulating cohort bidding for income and duration-matched cash flow) argues for structural demand for duration. These do not net out cleanly. Do not paper over it — the rate view must be an explicit, dated, separately-argued call, not an emergent property of the other limbs. RESOLVED 2026-08-07: the call is now made, dated and sized — see rate_call. Direction to a steeper long end on the 10s30s evidence; size deliberately small because limb C's inflation channel narrowed to care-support labour alone.",
    "sev": 3
   },
   {
@@ -370,5 +370,21 @@
    "q": "What does this cost to hold?",
    "a": "Most expressions are cash-generative or yielding, which is deliberate — see weakness w1. The exception is the labour-substitution basket, which is priced for growth and will not pay you to wait. Size it as the highest-carry, highest-conviction sleeve rather than the largest one."
   }
- ]
+ ],
+ "rate_call": {
+  "title": "The rate call — explicit and dated, as weakness w2 demands",
+  "as_of": "2026-08-07",
+  "review_by": "2027-02-07",
+  "problem": "Limb A says a decumulating cohort creates structural demand for duration and contractual cash flow. Limb E says entitlement-driven issuance widens the term premium. Both are argued in this dashboard and they do not net out. w2 has said since the first draft that the rate view must be stated separately rather than emerging from the sum of the positions. It never was. This is it.",
+  "evidence": "The 10s30s spread is the arbiter and it has widened decisively: 9bp at end-2022, 20bp end-2024, 66bp end-2025, 53bp today with the 30-year at 5.22% — above its 2019 level by 283bp while the 2-year is up only 267bp. Debt held by the public is $32.1tn. Limb E is winning the argument at the long end.",
+  "call": "Bias to a steeper long end and a wider term premium. Limb E dominates limb A on the observable evidence.",
+  "conviction": 2,
+  "hedge": "Deliberately sized small, for a reason the last six iterations produced: limb C's inflation channel narrowed from 'non-tradable services broadly' to 'care support labour only'. Trades wages run below baseline and trades exit rates run below baseline. The economy-wide services-inflation argument that justified a confident structural short-duration position in v1 no longer holds — one occupational group, however hot, is not a macro inflation thesis. So the direction stands and the size does not.",
+  "portfolio_implication": "Downgrade v1's 'structural short duration relative to a 2010s baseline' to a long-end steepener bias held small. Within equities this changes little: the REIT sleeve (hou) and the spread insurers (inc) already sit on opposite sides of this and that internal hedge is now deliberate rather than accidental.",
+  "falsifies_if": "10s30s compressing back below 20bp on a sustained basis, or the 30-year yield falling through its 2024 level while deficits are unchanged — either would mean limb A's duration demand is absorbing the issuance after all.",
+  "watch": [
+   "termp",
+   "trustee"
+  ]
+ }
 }

@@ -847,9 +847,62 @@
   ],
   "retrieved": "2026-08-07"
  },
+ "rates": {
+  "curve": {
+   "2019": {
+    "date": "12/31/2019",
+    "2Y": 1.58,
+    "10Y": 1.92,
+    "30Y": 2.39,
+    "spread_10s30s_bp": 47,
+    "spread_2s10s_bp": 34
+   },
+   "2022": {
+    "date": "12/30/2022",
+    "2Y": 4.41,
+    "10Y": 3.88,
+    "30Y": 3.97,
+    "spread_10s30s_bp": 9,
+    "spread_2s10s_bp": -53
+   },
+   "2024": {
+    "date": "12/31/2024",
+    "2Y": 4.25,
+    "10Y": 4.58,
+    "30Y": 4.78,
+    "spread_10s30s_bp": 20,
+    "spread_2s10s_bp": 33
+   },
+   "2025": {
+    "date": "12/31/2025",
+    "2Y": 3.47,
+    "10Y": 4.18,
+    "30Y": 4.84,
+    "spread_10s30s_bp": 66,
+    "spread_2s10s_bp": 71
+   },
+   "2026": {
+    "date": "08/06/2026",
+    "2Y": 4.25,
+    "10Y": 4.69,
+    "30Y": 5.22,
+    "spread_10s30s_bp": 53,
+    "spread_2s10s_bp": 44
+   }
+  },
+  "debt": {
+   "record_date": "2026-08-05",
+   "held_by_public_usd_tn": 32.1,
+   "total_public_debt_usd_tn": 39.83
+  },
+  "reading": "The 10s30s spread is the cleanest free read on term premium. Widening means limb E (issuance) is winning; flattening or inverting at the long end means limb A (duration demand) is.",
+  "source": "US Treasury daily par yield curve and FiscalData debt-to-the-penny, both keyless",
+  "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/YYYY/all?type=daily_treasury_yield_curve&field_tdr_date_value=YYYY&page&_format=csv",
+  "retrieved": "2026-08-07"
+ },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T15:42:06+00:00",
+  "as_of": "2026-08-07T15:52:43+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }
