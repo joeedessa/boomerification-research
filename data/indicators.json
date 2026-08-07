@@ -68,8 +68,9 @@
    "priority": 2,
    "confirms": "Completions running below retirements in electrical, HVAC and linework.",
    "contradicts": "A visible surge in completions, or employers successfully de-skilling the work.",
-   "status": "not-yet-read",
-   "note": "Slow-moving but decisive for the contractor positions."
+   "status": "contradicting",
+   "note": "READ 2026-08-07 (BLS Employment Projections 2024-34). Apprenticeship completions proved not to be machine-readable — DOL's own statistics page is still on FY2021 with no data files — so the question was answered with a better instrument: BLS's projected labour force exit rate by occupation. Construction & extraction 3.1% against a 4.7% all-occupation baseline, and every individual trade below baseline. The trades are not ageing out faster than the workforce; they are ageing out slower. This is the read that tripped f12.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "openings",

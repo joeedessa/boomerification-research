@@ -211,8 +211,47 @@ changes portfolio construction, not just sector selection.
 >
 > *Confound, stated because it favours the thesis:* construction demand was soft
 > over part of this window, so weak construction wages may be a demand signal
-> rather than evidence against supply scarcity. That is why f12 sits at *warming*
-> rather than tripped — it is not a licence to dismiss the reading.
+> rather than evidence against supply scarcity.
+
+> **f12 TRIPPED, 2026-08-07 — and the limb splits three ways, not two.** BLS
+> Employment Projections publish a **labour force exit rate** by occupation: the
+> share projected to leave the workforce each year. That is the retirement
+> measure this limb is actually built on, and it settles the question.
+>
+> | Occupation | Exit rate | vs 4.7% baseline |
+> |---|---|---|
+> | Home health & personal care aides | **8.6%** | **+3.9pp** |
+> | Healthcare support (all) | 7.3% | +2.6pp |
+> | Nursing assistants | 6.6% | +1.9pp |
+> | Licensed practical nurses | 4.2% | −0.5pp |
+> | Electricians | 3.2% | −1.5pp |
+> | Construction & extraction (all) | **3.1%** | **−1.6pp** |
+> | Plumbers, pipefitters | 3.0% | −1.7pp |
+> | HVAC mechanics | 2.9% | −1.8pp |
+> | Carpenters | 2.8% | −1.9pp |
+> | **Registered nurses** | **2.8%** | **−1.9pp** |
+>
+> **Trades: refuted.** Every construction trade ages out *slower* than the
+> workforce average. Tally across three independent reads — wages say no
+> scarcity, exit rates say no ageing-out, only margins say otherwise and those
+> are equally explicable by a datacentre capex cycle. **f12 tripped; EME, PWR,
+> MYRG and IESC come out of the thesis.** They may be fine businesses; they are
+> not boomerification businesses.
+>
+> **Care support: confirmed on every read.** Aides have the highest exit rate of
+> any occupation examined, annual openings equal to **17.6% of employment**, and
+> demand growing 17% over the decade. This is the real crunch, and it is in the
+> lowest-paid, least-credentialled care work — exactly where ECI showed wages
+> running +9.2pp hot.
+>
+> **Licensed care: the surprise.** Registered nurses sit *below* baseline at 2.8%
+> with 4.9% employment growth. The "nursing shortage" is not a retirement story.
+> The education case (CVSA) is therefore **re-based from labour scarcity to
+> applicant demand** — AACN's 93,000 turned-away applicants is measured student
+> demand, and tuition is paid by students, not by the employment market.
+>
+> **Limb C cut from conviction 3 to 2.** Of three occupational groups claimed,
+> one survives.
 
 **Observables:** participation rate by age band (65+ especially); job openings and
 quits in health care and construction trades; apprenticeship and nursing-school
@@ -402,7 +441,8 @@ easy confirmations.
 | Reading | Source | Verdict |
 |---|---|---|
 | Per-capita institutional utilisation **−18% to −32%** over 2014–2024, while ambulatory rose | CMS Geographic Variation PUF | **Contradicting** — limb D keeps its direction, loses its magnitude (see §3D, f11) |
-| Care wages **+9.2pp** above baseline since 2019; construction wages **−0.7pp** | BLS Employment Cost Index | **Split** — limb C's care half confirmed, trades half unevidenced (see §3C, f12) |
+| Care wages **+9.2pp** above baseline since 2019; construction wages **−0.7pp** | BLS Employment Cost Index | **Split** — limb C's care half confirmed, trades half unevidenced |
+| Trades exit the workforce at **3.1%** vs a **4.7%** baseline; care aides at **8.6%** | BLS Employment Projections 2024–34 | **Refutes the trades premise** — f12 tripped, limb C cut to conviction 2 (see §3C) |
 | Care-operator revenue **+9.9%** median CAGR and margins **+0.3pp** through the utilisation decline; staffing margins **−10pp** | SEC XBRL, 110 names | **Corrects me twice** — see below |
 | SNF days/1k **634 → 1,712 → 4,460** across 65–74 / 75–84 / 85+ | CMS Program Statistics | Confirming — the age gradient is steeper than assumed |
 | 65+ labour force participation **18.7%** (Jun 2026), below the 2019 peak of 20.2% | BLS CPS | Confirming — the cohort is not working longer |
@@ -463,10 +503,7 @@ This list matters more than §7, for the reason given in §5.
    detail is paid).
 3. **RIA/wirehouse channel share and advisor age** — limb B's adjudicator
    (Cerulli is paid).
-4. **Apprenticeship completions in licensed trades** — only the nursing half of
-   the capacity-gap mechanism was sourced; the contractor positions rest on the
-   untested half.
-5. **Existing-home turnover in retirement metros** — limb H's release test.
+4. **Existing-home turnover in retirement metros** — limb H's release test.
 
 ---
 

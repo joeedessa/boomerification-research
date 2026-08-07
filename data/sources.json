@@ -103,6 +103,15 @@
    "finding": "Three tests, and the thesis lost two of them. (1) Care-operator revenue compounded at a 9.9% median — ENSG 16.4% — through the decade per-capita utilisation fell, because consolidators outgrow fragmented shrinking markets. (2) The care-wage squeeze did NOT compress operator margins (median +0.3pp); it compressed the staffing agencies instead (AMN -10.0pp, revenue halved; CCRN -6.1pp). (3) Contractor margins expanded a median 5.1pp despite lagging wages, which is pricing power by another route. Separately, the run found four corporate-action errors in the universe: BK renamed to BNY, ATGE renamed to CVSA, AMED delisted on completion of its acquisition, CCRN filing to deregister.",
    "affects": "Reversed the iteration-1 ENSG downgrade and the iteration-2 AMN raise. Softened falsifiers f11 and f12 from severity 3 to 2. Inverted the matrix's care-labour-cost mitigation — avoid the intermediaries, not the operators. Cut the automation sleeve on six years of 3.7% median revenue growth. Removed AMED from the universe.",
    "auto": true
+  },
+  {
+   "claim": "Apprenticeship completions in licensed trades",
+   "verdict": "contradicting",
+   "v1": "Unsourced. The contractor sleeve rested on the claim that licensed trade labour is retiring out and cannot be replaced.",
+   "sourced": "DOL apprenticeship data proved unusable — the department's own statistics page is still on FY2021 with no machine-readable files. Answered instead with BLS Employment Projections 2024-34, which publish a labour force EXIT rate by occupation: a more direct test of the actual premise than completions would have been. Keyless, now auto-refreshed.",
+   "finding": "Construction & extraction exit at 3.1% a year against a 4.7% all-occupation baseline; carpenters 2.8%, HVAC 2.9%, plumbers 3.0%, electricians 3.2%. Every trade examined ages out SLOWER than the workforce average. Meanwhile home health and personal care aides exit at 8.6% with openings equal to 17.6% of employment. Registered nurses, unexpectedly, exit at just 2.8% with 4.9% employment growth.",
+   "affects": "Tripped falsifier f12 and removed the contractor sleeve from the thesis. Split limb C three ways and cut it to conviction 2 — only care support survives. Re-based the care-education case from labour scarcity to applicant demand. Raised the aide-employing operators, whose filings show them absorbing the highest-churn occupation in the economy while expanding margins.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -136,11 +145,6 @@
     "n": "RIA / wirehouse channel share and advisor age",
     "why": "Limb B's adjudicator. Cerulli channel data is paid, and company disclosures are the fast but self-serving read.",
     "priority": 1
-   },
-   {
-    "n": "Apprenticeship completions in licensed trades",
-    "why": "The trades half of the capacity-gap mechanism. Only nursing was sourced; the contractor positions rest on the untested half.",
-    "priority": 2
    },
    {
     "n": "Existing-home turnover in retirement metros",

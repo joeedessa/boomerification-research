@@ -118,13 +118,13 @@
    "n": "Labour supply — the inflation limb",
    "c": "#DC2626",
    "sub": "The highest-conviction, least-consensus claim in the thesis",
-   "conviction": 3,
+   "conviction": 2,
    "struct": 88,
    "near": 72,
    "mechanism": "The exiting cohort is the most experienced and highest-paid segment of the workforce, and in specific fields it cannot be replaced on any short horizon. This is emphatically not economy-wide labour scarcity — it is acute and persistent in non-tradable, non-automatable, licence-gated services: skilled trades (electrical, HVAC, welding, linework), healthcare delivery (nursing, anaesthesiology, primary care), aviation, utility and industrial engineering, and heavy-equipment and logistics operation. These roles share three properties: the training pipeline is long and capacity-constrained, the work cannot be offshored, and automation substitutes only partially. The result is a structural floor under services wage inflation in exactly the categories with the least substitution elasticity. Two consequences follow. A higher neutral rate than the 2010s baseline. And — the one that changes portfolio construction rather than sector selection — duration that hedges equity risk less reliably than it did in 2010–2020, because supply-side inflation makes stocks and bonds fall together.",
    "why_now": "The retirement wave in the licensed trades and in nursing is arriving simultaneously with a training pipeline that did not expand to meet it. Capacity decisions made a decade ago cannot be revised in time.",
    "expression": "Structural short duration relative to a 2010s baseline. Long labour-substituting capital equipment and software. Long staffing, training and credentialling in the constrained verticals. Long the contractors who own the scarce labour pool rather than the projects. Explicit scepticism toward a mechanical 60/40 revival.",
-   "risk": "This limb carries the thesis. If it is wrong, the portfolio-construction conclusion is wrong too, and what remains is a conventional healthcare-demographics book. Sourced 2026-08-07: the wage evidence supports the care half of this limb and does not support the construction half. See the split in the sourced block — the contractor sleeve rests on a scarcity that ECI wages do not show.",
+   "risk": "This limb carries the thesis. If it is wrong, the portfolio-construction conclusion is wrong too, and what remains is a conventional healthcare-demographics book. Sourced 2026-08-07: the wage evidence supports the care half of this limb and does not support the construction half. See the split in the sourced block — the contractor sleeve rests on a scarcity that ECI wages do not show. Downgraded from conviction 3 to 2 on 2026-08-07: of the three occupational groups this limb claimed, only care support survives testing. That is still a real and well-evidenced claim, but it is a narrower limb than the one written.",
    "falsifier": "A sustained immigration surge, or 65+ participation continuing to rise as people simply work longer. Either substantially neutralises this limb. Immigration policy is the single largest swing factor in the entire thesis.",
    "observables": [
     "Labour force participation rate by age band, especially 65+",
@@ -159,6 +159,11 @@
      "claim": "The services-versus-goods aggregate that the thesis actually claimed is only +1.3pp over six and a half years (service-providing +28.5% vs goods-producing +27.2%).",
      "src": "Same source",
      "note": "Real but weak — far short of the 'structural floor under services wage inflation' the v1 language implied. The action is in specific occupations, not in the aggregate, which means the limb needs restating at the occupational level or it overclaims."
+    },
+    {
+     "claim": "BLS labour force exit rates, 2024-34, settle the question. All occupations: 4.7%. Home health & personal care aides 8.6% (+3.9pp) with openings equal to 17.6% of employment a year and employment projected +17.0%. Healthcare support overall 7.3%. But construction & extraction 3.1% (-1.6pp), carpenters 2.8%, HVAC 2.9%, plumbers 3.0%, electricians 3.2% — every trade BELOW baseline. And registered nurses 2.8% (-1.9pp) with employment growing just 4.9% over the decade.",
+     "src": "BLS Employment Projections, 2024-34 National Employment Matrix, Tables 1.2 and 1.10",
+     "note": "This splits the limb three ways rather than two, and only one part survives. CARE SUPPORT — aides and assistants — is the real ageing-out crisis, and it is confirmed by every read: highest exit rate, highest openings, fastest wage growth. TRADES are not ageing out at all; the premise is refuted on its own terms and f12 is tripped. LICENSED CARE is the surprise: registered nurses have a below-baseline exit rate and modest employment growth, so the 'nursing shortage' as the thesis framed it is not a retirement story either. The scarcity is concentrated in the lowest-paid, least-credentialled care work."
     }
    ]
   },

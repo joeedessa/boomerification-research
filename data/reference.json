@@ -564,9 +564,200 @@
   "url": "https://download.bls.gov/pub/time.series/ci/ci.data.0.Current",
   "retrieved": "2026-08-07"
  },
+ "projections": {
+  "horizon": "2024\u20132034",
+  "baseline_exit_rate_pct": 4.7,
+  "occupations": {
+   "All occupations": {
+    "soc": "00-0000",
+    "group": "baseline",
+    "employment_2024_k": 169956.1,
+    "employment_change_pct": 3.1,
+    "exit_rate_pct": 4.7,
+    "transfer_rate_pct": 5.9,
+    "annual_openings_k": 18863.3,
+    "openings_pct_of_employment": 11.1,
+    "exit_vs_baseline_pp": 0.0
+   },
+   "Construction & extraction (all)": {
+    "soc": "47-0000",
+    "group": "trades",
+    "employment_2024_k": 7574.7,
+    "employment_change_pct": 5.2,
+    "exit_rate_pct": 3.1,
+    "transfer_rate_pct": 4.7,
+    "annual_openings_k": 649.3,
+    "openings_pct_of_employment": 8.6,
+    "exit_vs_baseline_pp": -1.6
+   },
+   "Electricians": {
+    "soc": "47-2111",
+    "group": "trades",
+    "employment_2024_k": 818.7,
+    "employment_change_pct": 9.5,
+    "exit_rate_pct": 3.2,
+    "transfer_rate_pct": 5.4,
+    "annual_openings_k": 81.0,
+    "openings_pct_of_employment": 9.9,
+    "exit_vs_baseline_pp": -1.5
+   },
+   "Plumbers, pipefitters, steamfitters": {
+    "soc": "47-2152",
+    "group": "trades",
+    "employment_2024_k": 504.5,
+    "employment_change_pct": 4.5,
+    "exit_rate_pct": 3.0,
+    "transfer_rate_pct": 5.0,
+    "annual_openings_k": 44.0,
+    "openings_pct_of_employment": 8.7,
+    "exit_vs_baseline_pp": -1.7
+   },
+   "HVAC mechanics & installers": {
+    "soc": "49-9021",
+    "group": "trades",
+    "employment_2024_k": 425.2,
+    "employment_change_pct": 8.1,
+    "exit_rate_pct": 2.9,
+    "transfer_rate_pct": 5.4,
+    "annual_openings_k": 40.1,
+    "openings_pct_of_employment": 9.4,
+    "exit_vs_baseline_pp": -1.8
+   },
+   "Sheet metal workers": {
+    "soc": "47-2211",
+    "group": "trades",
+    "employment_2024_k": 127.0,
+    "employment_change_pct": 2.4,
+    "exit_rate_pct": 3.3,
+    "transfer_rate_pct": 4.7,
+    "annual_openings_k": 10.6,
+    "openings_pct_of_employment": 8.3,
+    "exit_vs_baseline_pp": -1.4
+   },
+   "Carpenters": {
+    "soc": "47-2031",
+    "group": "trades",
+    "employment_2024_k": 959.0,
+    "employment_change_pct": 4.5,
+    "exit_rate_pct": 2.8,
+    "transfer_rate_pct": 4.3,
+    "annual_openings_k": 74.1,
+    "openings_pct_of_employment": 7.7,
+    "exit_vs_baseline_pp": -1.9
+   },
+   "Construction first-line supervisors": {
+    "soc": "47-1011",
+    "group": "trades",
+    "employment_2024_k": 921.6,
+    "employment_change_pct": 5.3,
+    "exit_rate_pct": 3.2,
+    "transfer_rate_pct": 4.2,
+    "annual_openings_k": 74.4,
+    "openings_pct_of_employment": 8.1,
+    "exit_vs_baseline_pp": -1.5
+   },
+   "Industrial machinery mechanics": {
+    "soc": "49-9041",
+    "group": "trades",
+    "employment_2024_k": 439.6,
+    "employment_change_pct": 16.1,
+    "exit_rate_pct": 3.8,
+    "transfer_rate_pct": 4.3,
+    "annual_openings_k": 45.7,
+    "openings_pct_of_employment": 10.4,
+    "exit_vs_baseline_pp": -0.9
+   },
+   "Healthcare practitioners (all)": {
+    "soc": "29-0000",
+    "group": "care-licensed",
+    "employment_2024_k": 10067.5,
+    "employment_change_pct": 7.2,
+    "exit_rate_pct": 2.9,
+    "transfer_rate_pct": 2.5,
+    "annual_openings_k": 634.9,
+    "openings_pct_of_employment": 6.3,
+    "exit_vs_baseline_pp": -1.8
+   },
+   "Registered nurses": {
+    "soc": "29-1141",
+    "group": "care-licensed",
+    "employment_2024_k": 3391.0,
+    "employment_change_pct": 4.9,
+    "exit_rate_pct": 2.8,
+    "transfer_rate_pct": 2.1,
+    "annual_openings_k": 189.1,
+    "openings_pct_of_employment": 5.6,
+    "exit_vs_baseline_pp": -1.9
+   },
+   "Licensed practical nurses": {
+    "soc": "29-2061",
+    "group": "care-licensed",
+    "employment_2024_k": 651.4,
+    "employment_change_pct": 2.6,
+    "exit_rate_pct": 4.2,
+    "transfer_rate_pct": 3.8,
+    "annual_openings_k": 54.4,
+    "openings_pct_of_employment": 8.4,
+    "exit_vs_baseline_pp": -0.5
+   },
+   "Healthcare support (all)": {
+    "soc": "31-0000",
+    "group": "care-support",
+    "employment_2024_k": 7982.8,
+    "employment_change_pct": 12.4,
+    "exit_rate_pct": 7.3,
+    "transfer_rate_pct": 6.7,
+    "annual_openings_k": 1286.7,
+    "openings_pct_of_employment": 16.1,
+    "exit_vs_baseline_pp": 2.6
+   },
+   "Home health & personal care aides": {
+    "soc": "31-1120",
+    "group": "care-support",
+    "employment_2024_k": 4347.7,
+    "employment_change_pct": 17.0,
+    "exit_rate_pct": 8.6,
+    "transfer_rate_pct": 6.1,
+    "annual_openings_k": 765.8,
+    "openings_pct_of_employment": 17.6,
+    "exit_vs_baseline_pp": 3.9
+   },
+   "Nursing assistants": {
+    "soc": "31-1131",
+    "group": "care-support",
+    "employment_2024_k": 1441.5,
+    "employment_change_pct": 2.3,
+    "exit_rate_pct": 6.6,
+    "transfer_rate_pct": 7.2,
+    "annual_openings_k": 204.1,
+    "openings_pct_of_employment": 14.2,
+    "exit_vs_baseline_pp": 1.9
+   },
+   "Production (all)": {
+    "soc": "51-0000",
+    "group": "comparator",
+    "employment_2024_k": 9001.2,
+    "employment_change_pct": -1.1,
+    "exit_rate_pct": 4.4,
+    "transfer_rate_pct": 6.5,
+    "annual_openings_k": 963.4,
+    "openings_pct_of_employment": 10.7,
+    "exit_vs_baseline_pp": -0.3
+   }
+  },
+  "reading": "Exit rate is the share of the occupation projected to leave the labour force each year \u2014 retirement, in practice. Above the all-occupation baseline means the occupation is ageing out faster than the workforce.",
+  "caveats": [
+   "Projections, not outturns. BLS models these; they are not observations.",
+   "A low exit rate can coexist with a genuine shortage if demand is growing faster than supply \u2014 read exit rate alongside employment change and openings.",
+   "Occupational transfers (moving to a different job) are separated from labour force exits, which is what makes this a retirement measure rather than a churn one."
+  ],
+  "source": "BLS Employment Projections, 2024\u201334 National Employment Matrix, Tables 1.2 and 1.10",
+  "url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
+  "retrieved": "2026-08-07"
+ },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T12:37:20+00:00",
+  "as_of": "2026-08-07T15:23:18+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }

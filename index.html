@@ -759,6 +759,34 @@ function buildLimbs(){
         <div class="co-fn"><b>Read it carefully.</b> Service occupations — home health aides, nursing assistants, personal care — is the fastest-rising cut in the entire index. Construction is the slowest, behind manufacturing. The limb was written as one claim; the data says it is two, and only one is supported.</div>
         <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(W.source)}</span></div></div>`;
     }
+    /* Who actually retires out. The most direct test limb C has, so it sits
+       under limb C rather than in a monitoring tab. */
+    if(l.id==='C' && REF && REF.projections){
+      const P=REF.projections, occ=Object.entries(P.occupations)
+        .filter(([,v])=>v.exit_rate_pct!=null).sort((a,b)=>b[1].exit_rate_pct-a[1].exit_rate_pct);
+      const max=Math.max(...occ.map(o=>o[1].exit_rate_pct));
+      const GC={trades:'#B32B2A','care-support':'#15803D','care-licensed':'#B45309',
+                baseline:'#70757F',comparator:'#70757F'};
+      h+=`<div class="card" style="border-left:3px solid #B32B2A;margin-bottom:4px">
+        <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">refutes the trades half</span>
+          <b style="font-size:13px">Who actually ages out — projected labour force exit rate, ${esc(P.horizon)}</b></div>
+        <div class="cbody" style="margin-top:3px">${rich(P.reading)} Baseline is <b>${P.baseline_exit_rate_pct}%</b>.</div>
+        <div style="margin-top:7px">`;
+      occ.forEach(([n,v])=>{
+        const col=GC[v.group]||'#70757F', base=v.group==='baseline';
+        h+=`<div style="display:grid;grid-template-columns:1fr 128px 116px;gap:8px;align-items:center;margin-bottom:3px">
+          <span style="font-size:10.5px;${base?'font-weight:600':''}">${esc(n)}</span>
+          <div class="bar" style="height:11px"><i style="width:${v.exit_rate_pct/max*100}%;background:${col}"></i></div>
+          <span class="q"><b>${v.exit_rate_pct}%</b> <span style="color:${col}">${base?'—':(v.exit_vs_baseline_pp>0?'+':'')+v.exit_vs_baseline_pp+'pp'}</span></span>
+        </div>`;
+      });
+      h+=`</div>
+        <div class="co-fn"><b>The verdict.</b> Every construction trade ages out <i>slower</i> than the workforce average — the
+        opposite of this limb's premise, and the read that tripped falsifier f12. The genuine crunch is in care support: home health
+        and personal care aides at 8.6%, with annual openings equal to 17.6% of employment. Registered nurses, unexpectedly, sit
+        below baseline at 2.8%.</div>
+        <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(P.source)}</span></div></div>`;
+    }
     if(l.arithmetic_warning){
       h+=`<div class="card" style="border-left:3px solid #B32B2A;margin-bottom:4px;background:var(--fl-red-bg)">
         <div class="co-h"><span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">magnitude warning</span>

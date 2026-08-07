@@ -237,8 +237,8 @@
    "id": "f12",
    "limb": "C",
    "n": "Skilled-trades scarcity does not show up in wages",
-   "sev": 2,
-   "state": "warming",
+   "sev": 3,
+   "state": "tripped",
    "condition": "Construction and extraction wages continuing to run at or below the all-civilian baseline. If licensed trade labour were genuinely scarce and irreplaceable, it should command a rising relative wage. It is not doing so.",
    "kills": "The contractor and trades-training sleeve — the half of limb C that is not about care labour. Does not touch the care side, which the same data confirms emphatically.",
    "retires": [
@@ -253,8 +253,8 @@
     "trades",
     "openings"
    ],
-   "note": "Found 2026-08-07 testing limb C's inflation claim. The claim was written as one limb; the data says it is two, and only one of them is supported. The contractor names were already froth-3 with no margin of safety on price — now the mechanism underneath them is unevidenced too.",
-   "evidence": "EVIDENCE 2026-08-07 (BLS ECI, 2019Q4-2026Q2): construction & extraction occupations +27.6% cumulative versus an all-civilian baseline of +28.3%, and the construction industry +26.7%, the slowest of ten cuts examined. Manufacturing beat both. Confound: construction demand was weak over part of the window, so this may be a demand signal rather than evidence against scarcity — that is a reason to keep the falsifier at warming rather than tripped, not a reason to dismiss it. REVISED 2026-08-07 against SEC filings: the wage channel is still unevidenced, but the margin channel is strongly evidenced and points the other way. Contractor operating margins expanded a median 5.1pp over CY2019-CY2025 — APG +23.3pp, IESC +7.5pp, LMB +6.1pp, EME +5.1pp, FIX +4.4pp — on revenue growth of 10-42%. That is pricing power. Either the binding constraint is contractor CAPACITY rather than labour cost, or it is the construction cycle. Both readings undercut 'reduce because the mechanism is absent'. Severity cut from 3 to 2 and the reduction softened.",
+   "note": "Found 2026-08-07 testing limb C's inflation claim. The claim was written as one limb; the data says it is two, and only one of them is supported. The contractor names were already froth-3 with no margin of safety on price — now the mechanism underneath them is unevidenced too. State moved warming -> tripped 2026-08-07. The falsifier was written to retire the contractor sleeve if the trades-scarcity premise failed; it has failed on the measure that matters most.",
+   "evidence": "EVIDENCE 2026-08-07 (BLS ECI, 2019Q4-2026Q2): construction & extraction occupations +27.6% cumulative versus an all-civilian baseline of +28.3%, and the construction industry +26.7%, the slowest of ten cuts examined. Manufacturing beat both. Confound: construction demand was weak over part of the window, so this may be a demand signal rather than evidence against scarcity — that is a reason to keep the falsifier at warming rather than tripped, not a reason to dismiss it. REVISED 2026-08-07 against SEC filings: the wage channel is still unevidenced, but the margin channel is strongly evidenced and points the other way. Contractor operating margins expanded a median 5.1pp over CY2019-CY2025 — APG +23.3pp, IESC +7.5pp, LMB +6.1pp, EME +5.1pp, FIX +4.4pp — on revenue growth of 10-42%. That is pricing power. Either the binding constraint is contractor CAPACITY rather than labour cost, or it is the construction cycle. Both readings undercut 'reduce because the mechanism is absent'. Severity cut from 3 to 2 and the reduction softened. TRIPPED 2026-08-07 on the third and most direct read. BLS Employment Projections publish a labour force EXIT rate by occupation — the share projected to leave the workforce annually, which is the retirement measure this limb is actually built on. Construction & extraction runs 3.1% against an all-occupation baseline of 4.7%; carpenters 2.8%, HVAC 2.9%, plumbers 3.0%, electricians 3.2%. Every trade examined ages out SLOWER than the workforce average. That is the opposite of the premise. Tally now: wages say no scarcity, exit rates say no ageing-out, and only margins say otherwise — and margins are equally explicable by a construction capex cycle. Two of three independent reads against, including the one that tests the mechanism directly rather than by inference.",
    "last_read": "2026-08-07"
   }
  ]

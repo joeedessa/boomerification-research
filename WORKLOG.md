@@ -245,3 +245,76 @@ would have caught BK and ATGE a year ago.
 3. **A non-US fundamentals route.** Sixteen names — including most of the
    private-pay sleeve, the part that has survived every finding — have no
    filings check at all. Company IR pages or exchange filings are free.
+
+## Iteration 4 — 2026-08-07 — Trades scarcity: the third read
+
+**Why:** f12 was left genuinely unresolved after iteration 3 — wages said no
+scarcity, margins said pricing power. A falsifier sitting at `warming` on
+contradictory evidence is the worst state to leave one in, and the contractor
+sleeve was still carrying the top entry-window slot on the strength of it.
+
+**The intended source failed.** DOL apprenticeship data is not usable: the
+department's own statistics page is still headed *FY 2021* and carries no
+machine-readable files. Rather than approximate it, I substituted a better
+instrument — **BLS Employment Projections publish a labour force EXIT rate by
+occupation**, the share projected to leave the workforce annually. That is a more
+direct test of the premise than completions would have been, since the claim is
+about retirement rather than about intake.
+
+**The result is decisive, and it goes against the thesis.**
+
+| Occupation | Exit rate | vs 4.7% baseline |
+|---|---|---|
+| Home health & personal care aides | **8.6%** | **+3.9pp** |
+| Healthcare support (all) | 7.3% | +2.6pp |
+| Nursing assistants | 6.6% | +1.9pp |
+| Electricians | 3.2% | −1.5pp |
+| Construction & extraction (all) | **3.1%** | **−1.6pp** |
+| HVAC mechanics | 2.9% | −1.8pp |
+| Carpenters | 2.8% | −1.9pp |
+| **Registered nurses** | **2.8%** | **−1.9pp** |
+
+**f12 is TRIPPED.** Every construction trade ages out *slower* than the workforce
+average — the exact opposite of the premise. Across three independent reads: two
+against (wages, exit rates), one for (margins), and the supportive one is equally
+explicable by a datacentre capex cycle. The falsifier was written to retire the
+contractor sleeve if this premise failed. It failed. **EME, PWR, MYRG and IESC
+come out of the thesis**, EME is removed from the entry windows, and the "right
+thesis, wrong price" note is replaced with "retired, not merely expensive."
+
+**Limb C splits three ways and is cut to conviction 2.** Only care support
+survives, and it survives on every read: highest exit rate, highest openings
+(17.6% of employment annually), fastest wage growth (+9.2pp).
+
+**Third self-correction in two iterations.** Registered nurses exit *below*
+baseline at 2.8% with 4.9% employment growth over the decade — so the "nursing
+shortage" is not the retirement story the thesis told, and the CVSA position
+raised hours earlier rests on the wrong mechanism. Re-based rather than cut: the
+AACN 93,000 turned-away figure is measured **applicant** demand and tuition is
+paid by students, not by the employment market. Held at 3 with the reasoning
+rewritten and RN employment growth added as the thing that would break it.
+
+**Raised instead:** ADUS, AVAH, PNTG. They employ the single highest-churn
+occupation in the US economy, and the filings show them expanding margins anyway
+(ADUS +4.3pp, AVAH +7.7pp). Cost risk confirmed severe and demonstrably managed —
+a competence signal rather than a warning.
+
+**Shipped:** `projections` as a seventh auto-refreshed reference block; an exit-
+rate panel under limb C; the fourth repricing; f12 rendered as the first tripped
+falsifier on the board.
+
+**Scoreboard after four iterations.** Eight indicators read: four confirming, two
+contradicting, one split, one mixed. One falsifier tripped, two warming. Four
+position groups reversed or retired, three of them reversals of my own earlier
+calls. The dashboard is materially less confident than it was on Wednesday, which
+is the point.
+
+**Next three:**
+1. **Medicaid personal care utilisation.** Now the most important open item by
+   some distance — ADUS and AVAH have just been raised into the highest-churn
+   labour market in the country, and their reimbursement side is still untested.
+2. **A non-US fundamentals route.** Sixteen names, including most of the
+   private-pay sleeve — the only part of the book that has survived every single
+   finding, which makes its untested status the most uncomfortable gap left.
+3. **Fund flows by investor age.** Limb A is now the least-tested limb; every
+   iteration so far has hit C and D.

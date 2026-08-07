@@ -18,6 +18,9 @@ Writes data/reference.json:
                    Geographic Variation PUF) plus the SNF age gradient (CMS
                    Program Statistics). This is the block that tests whether
                    care demand actually scales the way limb D assumes.
+  - projections  : BLS Employment Projections — labour force EXIT rate by
+                   occupation, which is the most direct free test of limb C's
+                   premise that specific trades are ageing out.
   - wages        : Employment Cost Index by industry and occupation, from the
                    BLS flat files rather than the API — the API caps at 25
                    queries a day and this needs none of them. Tests limb C's
@@ -85,6 +88,30 @@ ECI_SERIES = {
     'CIS2020000510000I': ('Production (occupation)', 'occupation'),
 }
 ECI_BASE = (2019, 'Q04')   # pre-pandemic anchor
+
+# BLS Employment Projections, National Employment Matrix. Table 1.10 carries a
+# "labor force exit rate" by occupation — BLS's own projection of who retires
+# out. That is the single most direct measure of limb C's central premise, and
+# it is free.
+EP_FILE = 'https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx'
+EP_OCCS = {
+    '00-0000': ('All occupations', 'baseline'),
+    '47-0000': ('Construction & extraction (all)', 'trades'),
+    '47-2111': ('Electricians', 'trades'),
+    '47-2152': ('Plumbers, pipefitters, steamfitters', 'trades'),
+    '49-9021': ('HVAC mechanics & installers', 'trades'),
+    '47-2211': ('Sheet metal workers', 'trades'),
+    '47-2031': ('Carpenters', 'trades'),
+    '47-1011': ('Construction first-line supervisors', 'trades'),
+    '49-9041': ('Industrial machinery mechanics', 'trades'),
+    '29-0000': ('Healthcare practitioners (all)', 'care-licensed'),
+    '29-1141': ('Registered nurses', 'care-licensed'),
+    '29-2061': ('Licensed practical nurses', 'care-licensed'),
+    '31-0000': ('Healthcare support (all)', 'care-support'),
+    '31-1120': ('Home health & personal care aides', 'care-support'),
+    '31-1131': ('Nursing assistants', 'care-support'),
+    '51-0000': ('Production (all)', 'comparator'),
+}
 
 # Bands are defined once here and everywhere else in the dashboard refers to them.
 BANDS = {
@@ -452,6 +479,88 @@ def wages():
     }
 
 
+def projections():
+    """Who actually retires out, by occupation.
+
+    Limb C's premise is that the exiting cohort is concentrated in licensed,
+    hard-to-replace work. BLS projects a labour force exit rate per occupation,
+    which tests that premise directly rather than by inference from wages.
+    """
+    blob = get(EP_FILE)
+    NS = '{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
+    z = zipfile.ZipFile(io.BytesIO(blob))
+    shared = [''.join(t.text or '' for t in si.iter(NS + 't'))
+              for si in ET.fromstring(z.read('xl/sharedStrings.xml')).findall(NS + 'si')]
+    wb = ET.fromstring(z.read('xl/workbook.xml'))
+    rid = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id'
+    rels = {r.get('Id'): r.get('Target')
+            for r in ET.fromstring(z.read('xl/_rels/workbook.xml.rels'))}
+    sheet_of = {s.get('name'): rels[s.get(rid)].split('/')[-1] for s in wb.iter(NS + 'sheet')}
+
+    def rows(sheet):
+        root = ET.fromstring(z.read('xl/worksheets/' + sheet_of[sheet]))
+        for row in root.iter(NS + 'row'):
+            cells = []
+            for c in row.findall(NS + 'c'):
+                v = c.find(NS + 'v')
+                cells.append('' if v is None else
+                             (shared[int(v.text)] if c.get('t') == 's' else v.text))
+            yield cells
+
+    sep = {r[1]: r for r in rows('Table 1.10') if len(r) > 8}
+    proj = {r[1]: r for r in rows('Table 1.2') if len(r) > 10}
+    if '00-0000' not in sep:
+        raise RuntimeError('EP table shape changed — total row missing')
+
+    def num(v):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return None
+
+    occs, base = {}, None
+    for soc, (label, group) in EP_OCCS.items():
+        s = sep.get(soc)
+        if not s:
+            continue
+        emp = num(s[3])
+        opn = num(proj[soc][10]) if soc in proj and len(proj[soc]) > 10 else None
+        occs[label] = {
+            'soc': soc, 'group': group,
+            'employment_2024_k': emp,
+            'employment_change_pct': num(s[6]),
+            'exit_rate_pct': num(s[7]),
+            'transfer_rate_pct': num(s[8]),
+            'annual_openings_k': round(opn, 1) if opn else None,
+            'openings_pct_of_employment': round(opn / emp * 100, 1) if opn and emp else None,
+        }
+        if group == 'baseline':
+            base = occs[label]['exit_rate_pct']
+    if base:
+        for v in occs.values():
+            if v['exit_rate_pct'] is not None:
+                v['exit_vs_baseline_pp'] = round(v['exit_rate_pct'] - base, 1)
+
+    return {
+        'horizon': '2024–2034',
+        'baseline_exit_rate_pct': base,
+        'occupations': occs,
+        'reading': 'Exit rate is the share of the occupation projected to leave the labour '
+                   'force each year — retirement, in practice. Above the all-occupation '
+                   'baseline means the occupation is ageing out faster than the workforce.',
+        'caveats': [
+            'Projections, not outturns. BLS models these; they are not observations.',
+            'A low exit rate can coexist with a genuine shortage if demand is growing '
+            'faster than supply — read exit rate alongside employment change and openings.',
+            'Occupational transfers (moving to a different job) are separated from labour '
+            'force exits, which is what makes this a retirement measure rather than a churn one.',
+        ],
+        'source': 'BLS Employment Projections, 2024–34 National Employment Matrix, '
+                  'Tables 1.2 and 1.10',
+        'url': EP_FILE,
+    }
+
+
 def main():
     prev = {}
     if os.path.exists(OUT):
@@ -460,7 +569,8 @@ def main():
 
     blocks = {'population': census_population, 'spending': cex_spending,
               'participation': participation, 'wealth': dfa_wealth,
-              'utilisation': utilisation, 'wages': wages}
+              'utilisation': utilisation, 'wages': wages,
+              'projections': projections}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

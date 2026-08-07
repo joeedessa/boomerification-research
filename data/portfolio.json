@@ -107,38 +107,31 @@
  },
  "entry_windows": {
   "as_of": "2026-08-07",
-  "intro": "Where the thesis is right and the price is not. Ranked by the gap between structural conviction and current crowding. These are watch conditions, not orders — the nightly robot flags when a drawdown threshold is crossed. Revised 2026-08-07: AMN removed after the filings showed revenue halved from peak and operating margin negative — a name cut to conviction 1 cannot simultaneously be an entry candidate.",
+  "intro": "Where the thesis is right and the price is not. Ranked by the gap between structural conviction and current crowding. These are watch conditions, not orders — the nightly robot flags when a drawdown threshold is crossed. Revised 2026-08-07: AMN removed after the filings showed revenue halved from peak and operating margin negative — a name cut to conviction 1 cannot simultaneously be an entry candidate. EME removed 2026-08-07 when falsifier f12 tripped — a sleeve the thesis has retired cannot head its entry list.",
   "windows": [
    {
     "rank": 1,
-    "ticker": "EME",
-    "setup": "Margins say pricing power — +5.1pp over CY2019-CY2025 on 10.8% revenue growth — even though ECI wages show no construction-trades scarcity. The moat looks like contractor capacity rather than labour cost.",
-    "watch": "A datacentre capex scare that takes the whole contractor complex down together.",
-    "risk": "Two mechanisms are now entangled: a genuine capacity moat and a datacentre construction cycle. The filings cannot separate them, and the price assumes both persist."
-   },
-   {
-    "rank": 2,
     "ticker": "WELL",
     "setup": "Best asset in the supply-trough trade, permanently expensive.",
     "watch": "A rate back-up that hits REITs indiscriminately, or a labour-cost quarter that spooks the operating-portfolio structure.",
     "risk": "It may simply never get cheap. The quality is real."
    },
    {
-    "rank": 3,
+    "rank": 2,
     "ticker": "CVSA",
-    "setup": "Owns the binding constraint in limb C; has already re-rated on recognition of it.",
-    "watch": "Title IV or for-profit-education regulatory headlines, which are bimodal and recurrent.",
+    "setup": "Owns accredited nursing capacity against 93,000 qualified applicants turned away in 2025. Re-based 2026-08-07: this is an APPLICANT-demand story, not a retirement-shortage one — BLS puts RN exit rates below baseline and employment growth at 4.9% a decade. Tuition is paid by students, and the filings back it (+9.9% revenue, +3.7pp margin).",
+    "watch": "Title IV and for-profit-education regulatory headlines, which are bimodal and recurrent — plus RN employment growth, now the thing that could soften applicant demand.",
     "risk": "The regulatory tail is genuinely fat — size for it rather than hoping around it."
    },
    {
-    "rank": 4,
+    "rank": 3,
     "ticker": "SOON.SW",
     "setup": "Cleanest private-pay age curve available; under-owned relative to reimbursed medtech.",
     "watch": "An OTC hearing-aid scare that hits the whole complex, which has historically overshot.",
     "risk": "Low-end commoditisation is a real long-run threat, not just a headline."
    },
    {
-    "rank": 5,
+    "rank": 4,
     "ticker": "ZBH",
     "setup": "Cheapest way to own joint-replacement volume, discounted for genuine reasons.",
     "watch": "Evidence that volume growth is finally outrunning price erosion, or a credible share stabilisation.",
@@ -146,8 +139,8 @@
    }
   ],
   "avoid": {
-   "title": "Not a window",
-   "body": "FIX, PWR and IESC are all high-quality expressions of limb C trading at prices that assume the construction cycle does not roll over. The thesis is intact in all three; there is no margin of safety in any of them. A drawdown in these names would be a cycle event, not a thesis event — which is exactly what makes it the entry, and exactly why it has not happened yet."
+   "title": "Retired, not merely expensive",
+   "body": "FIX, PWR, IESC and MYRG were previously held here as 'right thesis, wrong price'. As of 2026-08-07 that is no longer the position: falsifier f12 has tripped and the demographic premise under the contractor sleeve is refuted. They may well be good businesses — margins say they have pricing power — but this dashboard no longer has a claim on them, and holding them here would be borrowing the thesis's credibility for a bet it is not making."
   }
  },
  "catalyst_table": [
@@ -397,6 +390,44 @@
     }
    ],
    "unchanged": "Private-pay again untouched — but note that most of that sleeve (SOON.SW, DEMANT.CO, ALC, STMN.SW) files outside the US and therefore cannot be tested this way at all. Sixteen names have no SEC filings; their calls remain judgment-only."
+  },
+  {
+   "title": "Repriced 2026-08-07 (iv) — f12 tripped, and the care scarcity relocates",
+   "trigger": "BLS labour force exit rates by occupation. Trades exit BELOW the all-occupation baseline; care aides exit far above it. Falsifier f12 moved warming -> tripped.",
+   "body": "A falsifier written in advance has tripped, so the positions it named come off — that is the whole point of writing it down before the money was at risk. But the same data relocates the care-labour scarcity to a different occupation than the thesis assumed, which changes two other calls.",
+   "moves": [
+    {
+     "dir": "down",
+     "n": "f12 TRIPPED — construction contractors",
+     "names": [
+      "EME",
+      "PWR",
+      "MYRG",
+      "IESC"
+     ],
+     "why": "Three independent reads now. Wages: construction below the all-civilian baseline. Exit rates: 2.8-3.2% against a 4.7% baseline, so the trades are ageing out SLOWER than the workforce. Margins: expanding — the one supportive read, and equally explicable by a datacentre construction cycle. The demographic premise under this sleeve is refuted on the measure that tests it most directly. These may still be good businesses; they are no longer boomerification businesses, and this dashboard has no claim on them."
+    },
+    {
+     "dir": "up",
+     "n": "The real care-labour crunch — aide-employing operators",
+     "names": [
+      "ADUS",
+      "AVAH",
+      "PNTG"
+     ],
+     "why": "Home health and personal care aides have an 8.6% annual exit rate — the highest of any occupation examined, nearly double the baseline — with annual openings equal to 17.6% of employment and demand growing 17% over the decade. That is the single most acute labour scarcity in the thesis and these companies sit directly in it. Crucially the filings show they are handling it: ADUS margin +4.3pp and AVAH +7.7pp over CY2019-CY2025 while employing the highest-churn occupation in the economy. The cost risk is real and demonstrably managed, which is a competence signal rather than a warning."
+    },
+    {
+     "dir": "hold",
+     "n": "Care education — re-based, not removed",
+     "names": [
+      "CVSA",
+      "LOPE"
+     ],
+     "why": "An awkward finding for a position raised only hours ago. BLS puts registered-nurse employment growth at 4.9% over the decade with a below-baseline 2.8% exit rate — so the 'nursing shortage' is not the retirement story the thesis told. The education case survives on a different footing: AACN's 93,000 turned-away applicants is measured APPLICANT demand, and tuition is paid by students, not by the employment market. CVSA's filings back it (+9.9% revenue, +3.7pp margin). Holding at 3, but the reasoning is re-based from labour scarcity to applicant demand, and if RN employment growth stays this modest, tuition demand is the thing to watch."
+    }
+   ],
+   "unchanged": "Nothing in limbs A, B, D, E or H is touched. This is a limb C event, and limb C is now conviction 2 rather than 3 — of the three occupational groups it claimed, only care support survives testing."
   }
  ]
 }
