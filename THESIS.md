@@ -498,6 +498,34 @@ to deregister. This now runs automatically against SEC EDGAR each week.
 
 ---
 
+## 7b. Evidence grade — where the testing actually landed
+
+Conviction is what I believe. Grade is how much evidence supports it. Kept
+separate, because conflating them is how a thesis stays confident about the parts
+nobody has looked at.
+
+| Limb | Grade | Conviction | Names | Indicators read | Reads |
+|---|---|---|---|---|---|
+| C Labour supply | **A** | 2 | 22 | 5/6 | 3 confirming, 1 contradicting, 1 mixed, **1 tripped** |
+| D Consumption mix | **B** | 3 | 50 | 2/5 | 1 confirming, 1 contradicting, 2 warming |
+| E Fiscal & policy | **B** | 2 | 5 | 2/4 | 2 confirming |
+| B The transfer | **C** | 2 | 17 | **0/3** | — |
+| H Housing | **C** | 2 | 16 | 1/3 | 1 confirming |
+| **A Decumulation** | **D** | 2 | 16 | **0/3** | — |
+
+**Seven iterations of evidence have landed almost entirely on limbs C and D.**
+Limb A carries 16 names at conviction 2 with zero indicators read and zero
+sourced claims. Limb B carries 17 more with zero read. That is **33 of 126 names
+— a quarter of the universe — resting on assertions nobody has checked.** The
+programme has been testing where testing was interesting rather than where
+exposure was largest.
+
+Neither limb has its conviction cut on these grounds: absence of evidence is not
+evidence of absence. But neither should be read as validated, and the grade now
+says so on the face of the dashboard.
+
+---
+
 ## 8. Still unsourced
 
 This list matters more than §7, for the reason given in §5.

@@ -438,3 +438,33 @@ macro inflation thesis. Direction stands; size does not.
 Within equities this changes little, and that is worth stating: the REIT sleeve
 and the spread insurers already sit on opposite sides of this. That internal
 hedge is now deliberate rather than accidental.
+
+## Iteration 8 — 2026-08-07 — Scoring the framework
+
+**Why:** item 5 on the original ladder, and overdue. Six iterations had produced
+six repricings and five reversals, but nothing measured whether the *framework*
+was being applied evenly. It was not.
+
+**Built:** an `evidence_score` block grading each limb on indicators read,
+sourced claims and falsifier status — deliberately **separate from conviction**.
+Conviction is belief; grade is testing. Conflating them is exactly how a thesis
+stays confident about the parts nobody has looked at.
+
+| Limb | Grade | Conviction | Names | Read |
+|---|---|---|---|---|
+| C Labour | **A** | 2 | 22 | 5/6 |
+| D Consumption | **B** | 3 | 50 | 2/5 |
+| E Fiscal | **B** | 2 | 5 | 2/4 |
+| B Transfer | **C** | 2 | 17 | **0/3** |
+| H Housing | **C** | 2 | 16 | 1/3 |
+| **A Decumulation** | **D** | 2 | 16 | **0/3** |
+
+**The finding is about me, not the market.** Seven iterations of evidence landed
+almost entirely on C and D. **Limb A is graded D — 16 names, conviction 2, zero
+indicators read, zero sourced claims. Limb B has 17 more names and zero reads.
+33 of 126 names, a quarter of the universe, never checked.** I have been testing
+where testing was interesting rather than where exposure was largest.
+
+Conviction is not cut on these grounds — absence of evidence is not evidence of
+absence — but the grade now says so on the face of the dashboard, and limbs A and
+B are the next two iterations regardless of what looks more interesting.

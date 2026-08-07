@@ -1086,7 +1086,43 @@ function buildCycle(){
 /* ══════════ Why not priced ══════════ */
 function buildNotPriced(){
   const c=document.getElementById('np-cont');
-  let h=`<div class="card" style="border-left:4px solid var(--accent)">
+  let h='';
+  /* Evidence grade first. Conviction is belief; grade is testing. Showing them
+     together is the only thing that stops a thesis staying confident about the
+     parts nobody has looked at. */
+  if(THESIS.evidence_score){
+    const E=THESIS.evidence_score;
+    const GC={A:['#15803D','var(--fl-green-bg)','var(--fl-green-fg)'],
+              B:['#639922','var(--fl-green-bg)','var(--fl-green-fg)'],
+              C:['#B45309','var(--fl-amber-bg)','var(--fl-amber-fg)'],
+              D:['#B32B2A','var(--fl-red-bg)','var(--fl-red-fg)']};
+    h+=`<div class="card" style="border-left:4px solid #B32B2A">
+      <div class="ctitle">${esc(E.title)}</div>
+      <div class="cbody">${rich(E.why)}</div>
+      <div class="metarow"><span class="q">${esc(E.rubric)}</span></div>
+      <div style="overflow-x:auto;margin-top:7px"><table class="tbl"><thead><tr>
+        <th>Limb</th><th>Grade</th><th style="text-align:right">Conviction</th><th style="text-align:right">Names</th>
+        <th style="text-align:right">Indicators read</th><th style="text-align:right">Sourced</th><th>Reads</th></tr></thead><tbody>`;
+    E.limbs.forEach(l=>{
+      const g=GC[l.grade]||GC.C;
+      const reads=[l.confirming?`<span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">${l.confirming} conf</span>`:'',
+                   l.contradicting?`<span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">${l.contradicting} contra</span>`:'',
+                   l.mixed?`<span class="sf" style="background:var(--fl-amber-bg);color:var(--fl-amber-fg)">${l.mixed} mixed</span>`:'',
+                   l.falsifiers_tripped?`<span class="sf" style="background:var(--fl-red-bg);color:var(--fl-red-fg)">${l.falsifiers_tripped} tripped</span>`:''
+                  ].filter(Boolean).join(' ')||'<span style="color:var(--color-text-tertiary)">—</span>';
+      h+=`<tr><td>${limbChip(l.id)} <b>${esc(l.n)}</b></td>
+        <td><span class="sf" style="background:${g[1]};color:${g[2]};font-size:12px;font-weight:700">${l.grade}</span></td>
+        <td style="text-align:right" class="q">${l.conviction}/3</td>
+        <td style="text-align:right" class="q">${l.names}</td>
+        <td style="text-align:right" class="q">${l.indicators_read}/${l.indicators_defined}</td>
+        <td style="text-align:right" class="q">${l.sourced_claims}</td>
+        <td>${reads}</td></tr>`;
+    });
+    h+=`</tbody></table></div>
+      <div class="co-fn"><b>What this says.</b> ${rich(E.finding)}</div>
+      <div class="co-fn"><b>What happens next.</b> ${rich(E.action)}</div></div>`;
+  }
+  h+=`<div class="card" style="border-left:4px solid var(--accent)">
     <div class="ctitle">The test every limb has to pass</div>
     <div class="cbody">Demographics are the most forecastable variable in finance. A thesis built on them is only investable if it can say why the market has not already priced a fact it has had forty years to price. Four candidate mechanisms, ranked by how much they are worth trusting. <b>If none of these hold for a given limb, that limb is a slide, not a trade.</b></div></div>`;
   THESIS.not_priced.forEach(n=>{

@@ -386,5 +386,105 @@
    "termp",
    "trustee"
   ]
+ },
+ "evidence_score": {
+  "title": "Evidence grade — how much testing actually supports each limb",
+  "as_of": "2026-08-07",
+  "why": "Conviction is what I believe. Grade is how much evidence supports it. Conflating the two is how a thesis stays confident about the parts nobody has looked at, so they are scored separately and shown together. A grade of D means the limb has never been tested — not that it is wrong.",
+  "rubric": "A = most indicators read and four or more sourced claims. B = partially tested. C = minimal. D = untested.",
+  "limbs": [
+   {
+    "id": "A",
+    "n": "Decumulation & the flow question",
+    "conviction": 2,
+    "grade": "D",
+    "names": 16,
+    "indicators_defined": 3,
+    "indicators_read": 0,
+    "confirming": 0,
+    "contradicting": 0,
+    "mixed": 0,
+    "sourced_claims": 0,
+    "falsifiers_tripped": 0,
+    "falsifiers_warming": 0
+   },
+   {
+    "id": "B",
+    "n": "The transfer & who actually receives it",
+    "conviction": 2,
+    "grade": "C",
+    "names": 17,
+    "indicators_defined": 3,
+    "indicators_read": 0,
+    "confirming": 0,
+    "contradicting": 0,
+    "mixed": 0,
+    "sourced_claims": 3,
+    "falsifiers_tripped": 0,
+    "falsifiers_warming": 0
+   },
+   {
+    "id": "C",
+    "n": "Labour supply — the inflation limb",
+    "conviction": 2,
+    "grade": "A",
+    "names": 22,
+    "indicators_defined": 6,
+    "indicators_read": 5,
+    "confirming": 3,
+    "contradicting": 1,
+    "mixed": 1,
+    "sourced_claims": 6,
+    "falsifiers_tripped": 1,
+    "falsifiers_warming": 0
+   },
+   {
+    "id": "D",
+    "n": "Consumption mix & the age-band relay",
+    "conviction": 3,
+    "grade": "B",
+    "names": 50,
+    "indicators_defined": 5,
+    "indicators_read": 2,
+    "confirming": 1,
+    "contradicting": 1,
+    "mixed": 0,
+    "sourced_claims": 4,
+    "falsifiers_tripped": 0,
+    "falsifiers_warming": 2
+   },
+   {
+    "id": "E",
+    "n": "Fiscal & policy — the thesis's own hedge",
+    "conviction": 2,
+    "grade": "B",
+    "names": 5,
+    "indicators_defined": 4,
+    "indicators_read": 2,
+    "confirming": 2,
+    "contradicting": 0,
+    "mixed": 0,
+    "sourced_claims": 3,
+    "falsifiers_tripped": 0,
+    "falsifiers_warming": 0
+   },
+   {
+    "id": "H",
+    "n": "Housing & the release of the stock",
+    "conviction": 2,
+    "grade": "C",
+    "names": 16,
+    "indicators_defined": 3,
+    "indicators_read": 1,
+    "confirming": 1,
+    "contradicting": 0,
+    "mixed": 0,
+    "sourced_claims": 0,
+    "falsifiers_tripped": 0,
+    "falsifiers_warming": 0
+   }
+  ],
+  "finding": "Seven iterations of evidence have landed almost entirely on limbs C and D. Limb A carries 16 names at conviction 2 with ZERO indicators read and zero sourced claims — grade D. Limb B carries 17 names with zero indicators read. Between them that is 33 of 126 names, a quarter of the universe, resting on assertions that have never been checked. The programme has been testing where testing was interesting rather than where exposure was largest, and this scorecard exists to stop that being invisible.",
+  "action": "Limbs A and B are the next two iterations regardless of what looks interesting. Neither limb has its conviction cut on these grounds — absence of evidence is not evidence of absence — but neither should be read as validated, and the grade now says so on the face of the dashboard."
  }
 }
