@@ -318,3 +318,60 @@ is the point.
    finding, which makes its untested status the most uncomfortable gap left.
 3. **Fund flows by investor age.** Limb A is now the least-tested limb; every
    iteration so far has hit C and D.
+
+## Iteration 5 — 2026-08-07 — Medicaid personal care
+
+**Why:** iteration 4 raised ADUS, AVAH and PNTG into the highest-churn labour
+market in the country without having tested who pays them. The Medicare datasets
+used in iterations 1 and 3 do not touch Medicaid personal care at all.
+
+**Source hunt.** DOL-style dead end first: the Medicaid catalogue's metadata is
+poor (the 1915(c) dataset's description is about well-child visits) and
+distributions carry no download URLs unless you request reference IDs. Two usable
+series once resolved, both keyless, both now discovered from the catalogue at run
+time rather than hardcoded.
+
+**Confirming, and from a completely separate dataset to iteration 1.**
+
+*Medicaid is rebalancing toward home care.* 1915(c) HCBS waiver enrolment among
+65+ went **686,607 (2020) → 1,043,473 (2022), +52%**, against 18% growth in the
+65+ Medicaid population. Penetration **8.31% → 10.66%** — waiver enrolment grew
+nearly three times faster than eligibility.
+
+*And it survived the unwinding.* Managed LTSS enrolment rose **399,031 → 429,894
+across 2023–24 (+7.7%)** while total Medicaid managed care **fell 13%**, from
+85.0M to 73.7M. The aged and disabled LTSS population is categorically eligible
+and was insulated from the disenrolment that removed millions of working-age
+adults. That was the blind spot I expected to have to declare, and the MLTSS
+series closed it.
+
+**But it measures volume, not rate — and rate is the actual risk.** Medicaid LTSS
+expenditure reporting stops at **FY2020** and is PDF only. The payer's price
+behaviour is not observable at zero cost. Recorded as a permanent limitation
+rather than an open task: any route to it runs through state budget documents one
+at a time, which is real work, not a fetch.
+
+**Shipped:** `medicaid` as an eighth reference block; a new P1 indicator (`hcbs`)
+read on arrival; sourced evidence on the aging-in-place theme, plus a themes
+renderer that actually displays `sourced` blocks — it had been silently ignoring
+them; the fifth repricing, deliberately split into a "confirmed" move and a
+"but the rate side is blind" hold on the same names.
+
+**Also, unprompted:** added a favicon. All three research dashboards were
+identical default globes in a tab bar. This one is the cohort clock at 16px — the
+four age bands in the dashboard's own palette. The siblings should take their own
+marks in the same style rather than reusing it.
+
+**Scoreboard after five.** Nine indicators read: six confirming, two
+contradicting, one mixed. One falsifier tripped, two warming. Five repricings,
+three of which reversed my own earlier calls.
+
+**Next three:**
+1. **A non-US fundamentals route.** Sixteen names, including most of the
+   private-pay sleeve — the only part of the book that has survived every single
+   finding. Its untested status is now the most uncomfortable gap left.
+2. **Fund flows by investor age.** Limb A remains the least-tested limb; five
+   iterations have hit C and D almost exclusively.
+3. **Term premium / the A-vs-E rate contradiction.** Weakness w2 says the rate
+   view must be an explicit dated call. It still is not one, and the Treasury
+   FiscalData API is keyless.

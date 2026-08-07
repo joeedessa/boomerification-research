@@ -290,6 +290,19 @@
    "contradicts": "Tenure shortening, which would accelerate the inventory release and the senior housing move-in rate.",
    "status": "not-yet-read",
    "note": "Cuts both ways deliberately: the same reading that supports the aging-in-place trade undermines the inventory-release trade."
+  },
+  {
+   "id": "hcbs",
+   "limb": "D",
+   "n": "Medicaid HCBS waiver and managed-LTSS enrolment",
+   "source": "CMS Medicaid open data (data.medicaid.gov)",
+   "cadence": "annual",
+   "priority": 1,
+   "confirms": "Waiver penetration among 65+ Medicaid enrollees rising, and LTSS enrolment holding through the unwinding — the payer is rebalancing toward home care.",
+   "contradicts": "Penetration flat or falling, or LTSS enrolment shrinking with the wider Medicaid rolls.",
+   "status": "confirming",
+   "last_read": "2026-08-07",
+   "note": "READ 2026-08-07. Two series, both confirming. 1915(c) HCBS waiver enrolment among 65+ went 686,607 (2020) to 1,043,473 (2022), +52%, while the 65+ Medicaid population grew 18% — so PENETRATION rose 8.31% to 10.66%. Waiver enrolment grew nearly three times faster than eligibility. And managed LTSS enrolment rose 399,031 to 429,894 across 2023-24 (+7.7%) while total Medicaid managed care FELL 13% from 85.0M to 73.7M during the unwinding — the LTSS population was insulated, which is what you would expect of a categorically-eligible aged and disabled group. Critical limitation: this measures VOLUME. Medicaid LTSS expenditure reports — the RATE side, which is the actual risk to ADUS and AVAH — stop at FY2020 and are PDF only."
   }
  ]
 }

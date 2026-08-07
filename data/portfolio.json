@@ -428,6 +428,34 @@
     }
    ],
    "unchanged": "Nothing in limbs A, B, D, E or H is touched. This is a limb C event, and limb C is now conviction 2 rather than 3 — of the three occupational groups it claimed, only care support survives testing."
+  },
+  {
+   "title": "Repriced 2026-08-07 (v) — the personal-care payer confirms, on volume only",
+   "trigger": "CMS Medicaid data. HCBS waiver penetration among 65+ rose 8.31% to 10.66% in two years, and LTSS enrolment grew through the unwinding while total Medicaid fell 13%.",
+   "body": "Iteration 4 raised ADUS and AVAH into the highest-churn labour market in the country without having tested who pays them. That gap is now closed on the demand side and it closes favourably — but only on the demand side, and the distinction is the whole point of this entry.",
+   "moves": [
+    {
+     "dir": "up",
+     "n": "Confirmed — Medicaid is rebalancing toward home care",
+     "names": [
+      "ADUS",
+      "AVAH",
+      "BTSG",
+      "PNTG"
+     ],
+     "why": "Waiver enrolment among 65+ grew nearly three times faster than eligibility, and LTSS enrolment ROSE 7.7% across 2023-24 while total Medicaid managed care fell 13%. The aged and disabled LTSS population is categorically eligible and was insulated from the unwinding that removed millions of working-age adults. This is the payer moving deliberately toward the service these companies sell, and it corroborates the site-of-care shift found in the Medicare data from an entirely separate dataset."
+    },
+    {
+     "dir": "hold",
+     "n": "But the rate side is unobservable",
+     "names": [
+      "ADUS",
+      "AVAH"
+     ],
+     "why": "Everything above measures VOLUME. Medicaid LTSS expenditure reporting — the rate side — stops at FY2020 and is published as PDF. Rates have always been the real risk to these operators, not volumes, and at zero cost that risk cannot be tracked. The position is confirmed on the half that is observable and blind on the half that matters more. Sized accordingly rather than raised further."
+    }
+   ],
+   "unchanged": "This says nothing about the SNF operators — Medicaid rebalancing toward home care is, if anything, the other side of the institutional decline found in iteration 1."
   }
  ]
 }

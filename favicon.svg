@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Boomerification">
+  <!-- The cohort clock in miniature: four age bands, ascending, in the exact
+       palette the dashboard uses for pre-retirement / go-go / slow-go / no-go.
+       Dark tile so it holds contrast against both light and dark tab bars. -->
+  <rect width="64" height="64" rx="14" fill="#16181D"/>
+  <rect x="7"  y="42" width="8" height="15" rx="2" fill="#64748B"/>
+  <rect x="21" y="33" width="8" height="24" rx="2" fill="#EF9F27"/>
+  <rect x="35" y="24" width="8" height="33" rx="2" fill="#D97706"/>
+  <rect x="49" y="13" width="8" height="44" rx="2" fill="#DC2626"/>
+</svg>

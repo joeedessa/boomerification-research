@@ -112,6 +112,15 @@
    "finding": "Construction & extraction exit at 3.1% a year against a 4.7% all-occupation baseline; carpenters 2.8%, HVAC 2.9%, plumbers 3.0%, electricians 3.2%. Every trade examined ages out SLOWER than the workforce average. Meanwhile home health and personal care aides exit at 8.6% with openings equal to 17.6% of employment. Registered nurses, unexpectedly, exit at just 2.8% with 4.9% employment growth.",
    "affects": "Tripped falsifier f12 and removed the contractor sleeve from the thesis. Split limb C three ways and cut it to conviction 2 — only care support survives. Re-based the care-education case from labour scarcity to applicant demand. Raised the aide-employing operators, whose filings show them absorbing the highest-churn occupation in the economy while expanding margins.",
    "auto": true
+  },
+  {
+   "claim": "Medicaid-funded personal care utilisation",
+   "verdict": "confirmed with caveat",
+   "v1": "Unsourced. Flagged in iteration 1 as the gap the Medicare data could not reach, and it widened when iteration 4 raised ADUS and AVAH.",
+   "sourced": "CMS Medicaid open data (data.medicaid.gov), keyless — 1915(c) waiver participants 2020-2022 and managed LTSS enrolment 2016-2024. Now auto-refreshed with both source files discovered from the catalogue rather than hardcoded.",
+   "finding": "Confirming on volume. HCBS waiver enrolment among 65+ rose 52% (686,607 to 1,043,473) against 18% growth in the eligible population, lifting penetration 8.31% to 10.66%. Managed LTSS enrolment rose 7.7% across 2023-24 while total Medicaid managed care fell 13% in the unwinding — the aged and disabled population was insulated.",
+   "affects": "Closes the gap iteration 1 opened and iteration 4 widened. Confirms the ADUS/AVAH payer environment and corroborates the Medicare site-of-care finding from a separate dataset. But it measures volume only: LTSS expenditure reporting stops at FY2020 and is PDF-only, so the rate side — the actual risk — is not observable at zero cost. Recorded as a permanent limitation rather than an open task.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -155,6 +164,11 @@
     "n": "Non-US names have no filings-based check",
     "priority": 2,
     "why": "Sixteen of 126 — including most of the private-pay sleeve (SOON.SW, DEMANT.CO, ALC, STMN.SW, 8113.T) — file outside the SEC and cannot be tested the way the US names just were. Those calls remain judgment-only, and the private-pay tilt is precisely the part of the book that has survived every finding so far, which makes its untested status uncomfortable."
+   },
+   {
+    "n": "Medicaid LTSS RATES (not volumes)",
+    "priority": 1,
+    "why": "Structurally blocked at zero cost, not merely unreached. CMS stopped publishing machine-readable LTSS expenditure data after FY2020; the reports are PDF and five years stale. Rates are the principal risk to ADUS and AVAH and cannot be tracked. Any future route runs through state budget documents one at a time, which is real work rather than a fetch."
    }
   ]
  },

@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boomerification Research</title>
+<!-- Ascending age-band bars — the cohort clock at 16px. The three research
+     dashboards were previously indistinguishable in a tab bar; this one is the
+     demographic wave, so hard-assets and ai-hardware should take their own marks
+     in the same style rather than reusing this. PNG fallback for Safari, which
+     still ignores SVG favicons in some versions. -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#16181D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Fraunces:ital,opsz,wght@0,9..144,500..600;1,9..144,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -606,6 +615,37 @@ function buildClock(){
     }
   }
 
+  /* The other payer. Medicare data cannot see personal care at all, so the
+     Medicaid series sits alongside it rather than in a separate tab. */
+  const M=REF&&REF.medicaid;
+  if(M&&M.hcbs_waiver){
+    const w=M.hcbs_waiver.series&&M.hcbs_waiver.series['Ages 65 and older']||{};
+    const ys=Object.keys(w).sort(), L=M.managed_ltss&&M.managed_ltss.series||{};
+    const ls=Object.keys(L).sort();
+    h+=`<div class="card" style="border-left:4px solid #15803D">
+      <div class="co-h"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">confirms</span>
+        <b style="font-size:13px">The other payer — Medicaid is rebalancing toward home care</b></div>
+      <div class="cbody" style="margin-top:3px">Medicare data cannot see personal care at all. This is the payer behind aging in place, and it is moving deliberately toward it.</div>
+      <div style="overflow-x:auto;margin-top:6px"><table class="tbl"><thead><tr><th>Year</th><th style="text-align:right">65+ on HCBS waiver</th><th style="text-align:right">65+ Medicaid pop</th><th style="text-align:right">Penetration</th></tr></thead><tbody>`;
+    ys.forEach(y=>{
+      const v=w[y];
+      h+=`<tr><td class="q">${esc(y)}</td><td style="text-align:right" class="q">${v.on_waiver.toLocaleString()}</td>
+        <td style="text-align:right" class="q">${v.medicaid_pop.toLocaleString()}</td>
+        <td style="text-align:right"><b class="up">${v.penetration_pct}%</b></td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+    if(ls.length){
+      const a=L[ls[ls.length-2]], b=L[ls[ls.length-1]];
+      const dL=((b.mltss_only/a.mltss_only-1)*100).toFixed(1), dT=((b.any_managed_care/a.any_managed_care-1)*100).toFixed(1);
+      h+=`<div class="co-fn"><b>And it survived the unwinding.</b> Across ${esc(ls[ls.length-2])}–${esc(ls[ls.length-1])} managed LTSS enrolment moved
+        <b class="up">${dL>0?'+':''}${dL}%</b> while total Medicaid managed care moved <b class="dn">${dT}%</b>. The aged and disabled LTSS
+        population is categorically eligible and was insulated from the disenrolment that removed millions of working-age adults.</div>`;
+    }
+    h+=`<div class="klabel">Caveats</div><ul style="margin:0;padding-left:17px">`;
+    (M.caveats||[]).forEach(x=>{ h+=`<li class="cbody" style="margin-bottom:3px;color:var(--color-text-tertiary)">${rich(x)}</li>`; });
+    h+=`</ul></div>`;
+  }
+
   /* Corrections — what sourcing changed. Kept visible rather than silently overwritten. */
   if((CLOCK.corrections||[]).length){
     h+=`<div class="klabel">What sourcing changed</div>
@@ -955,8 +995,15 @@ function buildThemes(){
         <div style="flex:1 1 130px"><div class="klabel">Near-term ${t.near}</div>${bar(t.near,t.c)}</div>
         <div style="flex:1 1 130px"><div class="klabel">Crowding ${t.bc}</div>${bar(t.bc,'#B32B2A')}</div>
       </div>
-      <div class="cbody">${rich(t.thesis)}</div>
-      <table class="tbl" style="margin-top:7px"><thead><tr><th>Expression</th><th>Names</th><th>Why</th></tr></thead><tbody>`;
+      <div class="cbody">${rich(t.thesis)}</div>`;
+    (t.sourced||[]).forEach(s=>{
+      h+=`<div class="card" style="border-left:3px solid #15803D;margin:5px 0 0">
+        <div class="cbody">${rich(s.claim)}</div>
+        <div class="metarow"><span class="sf" style="background:var(--fl-green-bg);color:var(--fl-green-fg)">source</span><span>${esc(s.src)}</span>${s.caveat?`<span class="sf" style="background:var(--fl-amber-bg);color:var(--fl-amber-fg)">caveat</span>`:''}</div>
+        ${s.note?`<div class="co-fn">${rich(s.note)}</div>`:''}
+        ${s.caveat?`<div class="co-fn" style="border-left-color:var(--fl-amber-bg)">${rich(s.caveat)}</div>`:''}</div>`;
+    });
+    h+=`<table class="tbl" style="margin-top:7px"><thead><tr><th>Expression</th><th>Names</th><th>Why</th></tr></thead><tbody>`;
     t.items.forEach(i=>{
       h+=`<tr><td><b>${esc(i.lbl)}</b></td><td class="q">${rich(i.ticks)}</td><td>${rich(i.why)}</td></tr>`;
     });

@@ -1,165 +1,398 @@
 {
-  "_meta": {
-    "description": "Demand themes — the tradable expressions that cut across limbs. Each theme carries a structural score (how durable the driver is), a near-term score (how much is happening now), and a bandwagon score (how crowded it is). The gap between structural and bandwagon is where the work is.",
-    "as_of": "2026-08-06",
-    "score_fields": {"struct": "Structural durability of the demand driver, 0-100", "near": "Near-term intensity — is it happening now, 0-100", "bc": "Bandwagon / crowding, 0-100. High bc with high struct means right thesis, wrong price."},
-    "read_note": "Rank by struct minus bc. A theme scoring 85 structural and 25 crowded is the reason this dashboard exists; a theme scoring 85 and 85 is a well-known fact you will pay full price for."
+ "_meta": {
+  "description": "Demand themes — the tradable expressions that cut across limbs. Each theme carries a structural score (how durable the driver is), a near-term score (how much is happening now), and a bandwagon score (how crowded it is). The gap between structural and bandwagon is where the work is.",
+  "as_of": "2026-08-06",
+  "score_fields": {
+   "struct": "Structural durability of the demand driver, 0-100",
+   "near": "Near-term intensity — is it happening now, 0-100",
+   "bc": "Bandwagon / crowding, 0-100. High bc with high struct means right thesis, wrong price."
   },
-
-  "themes": [
+  "read_note": "Rank by struct minus bc. A theme scoring 85 structural and 25 crowded is the reason this dashboard exists; a theme scoring 85 and 85 is a well-known fact you will pay full price for."
+ },
+ "themes": [
+  {
+   "id": "capacity-gap",
+   "n": "Known demand meeting fixed supply",
+   "c": "#DC2626",
+   "sub": "The strongest mechanism in the thesis — count the seats, count the starts",
+   "struct": 92,
+   "near": 78,
+   "bc": 35,
+   "limbs": [
+    "C",
+    "H",
+    "D"
+   ],
+   "thesis": "Capacity decisions taken years ago cannot flex to meet a demand curve that is perfectly forecastable but arrives later. Nursing school places, trade apprenticeships, anaesthesiology residencies and senior housing starts were all set against a smaller population than the one now arriving. This is the cleanest pricing-power setup available and — crucially — it is measurable rather than narrative. You can count the seats, and as of 2026 the count is emphatic: AACN reports 93,000 qualified nursing applications turned away in 2025, and senior housing units under construction at their lowest level since 2012 with inventory growing a record-low 0.4% a year while occupancy has risen for nineteen consecutive quarters.",
+   "sourced": [
     {
-      "id": "capacity-gap",
-      "n": "Known demand meeting fixed supply",
-      "c": "#DC2626",
-      "sub": "The strongest mechanism in the thesis — count the seats, count the starts",
-      "struct": 92, "near": 78, "bc": 35,
-      "limbs": ["C", "H", "D"],
-      "thesis": "Capacity decisions taken years ago cannot flex to meet a demand curve that is perfectly forecastable but arrives later. Nursing school places, trade apprenticeships, anaesthesiology residencies and senior housing starts were all set against a smaller population than the one now arriving. This is the cleanest pricing-power setup available and — crucially — it is measurable rather than narrative. You can count the seats, and as of 2026 the count is emphatic: AACN reports 93,000 qualified nursing applications turned away in 2025, and senior housing units under construction at their lowest level since 2012 with inventory growing a record-low 0.4% a year while occupancy has risen for nineteen consecutive quarters.",
-      "sourced": [
-        {"claim": "93,000 qualified nursing applications turned away in 2025 — 75,255 entry-level baccalaureate, ~17,000 graduate. Barriers cited: clinical placement sites, budget cuts, faculty and preceptor shortages.", "src": "AACN annual survey, 7 May 2026 (998 schools, 89.5% response)"},
-        {"claim": "Senior housing occupancy 89.5% in Q1 2026, 19th consecutive quarterly gain; units under construction lowest since 2012; Q3 2025 starts of 1,076 units across 31 primary markets, weakest since Q2 2009.", "src": "NIC MAP", "caveat": "NIC attributes the construction shortfall primarily to capital availability rather than absent demand. The supply trough is real either way, but it is a financing constraint, which can reverse faster than a demographic one."}
-      ],
-      "items": [
-        {"lbl": "Nursing education capacity", "ticks": "CVSA (Chamberlain), LOPE", "why": "Schools turn away qualified applicants for lack of faculty and clinical placements. Owning accredited capacity in a capacity-constrained pipeline is pricing power independent of the cycle."},
-        {"lbl": "Licensed trade labour pools", "ticks": "EME, FIX, MYRG, APG, PWR", "why": "Journeyman electricians and pipefitters take years to train and cannot be imported quickly or offshored at all. The contractor owns the scarce asset, not the project."},
-        {"lbl": "Senior housing supply trough", "ticks": "WELL, VTR, BKD", "why": "Construction starts collapsed in 2020-2023 while the 80+ cohort arrives regardless. Occupancy and rate compound against a fixed stock — the cleanest cyclical setup in limb H."},
-        {"lbl": "Trades training", "ticks": "LINC, UTI", "why": "Employer-pulled enrolment rather than marketing-pushed. The demand signal comes from the shortage itself."}
-      ]
+     "claim": "93,000 qualified nursing applications turned away in 2025 — 75,255 entry-level baccalaureate, ~17,000 graduate. Barriers cited: clinical placement sites, budget cuts, faculty and preceptor shortages.",
+     "src": "AACN annual survey, 7 May 2026 (998 schools, 89.5% response)"
     },
     {
-      "id": "private-pay",
-      "n": "Private-pay age curves",
-      "c": "#16A34A",
-      "sub": "Demographic volume without the reimbursement risk — the rarest combination here",
-      "struct": 88, "near": 72, "bc": 30,
-      "limbs": ["D"],
-      "thesis": "Limb E says any healthcare earnings stream dependent on a government-set rate is politically exposed precisely because limb D guarantees the volume. The escape is categories where the patient pays directly: hearing aids, premium intraocular lenses, dental implants, death care. These have the biological inevitability of the care trade and none of the reimbursement risk, and they are systematically under-owned relative to reimbursed medtech because they lack the coverage and the index membership.",
-      "items": [
-        {"lbl": "Hearing", "ticks": "SOON.SW, DEMANT.CO, AMP.MI, COH.AX", "why": "Near-universal past 75, low treatment penetration, almost entirely private-pay in most markets. The emerging hearing-loss/dementia link could expand the market rather than commoditise it."},
-        {"lbl": "Premium ophthalmics", "ticks": "ALC, BLCO", "why": "Cataract is biologically inevitable; the premium presbyopia-correcting lens is patient-paid on top of the reimbursed base. Volume certainty plus a private-pay premium layer."},
-        {"lbl": "Dental implants", "ticks": "STMN.SW, XRAY", "why": "Private-pay and age-driven, but genuinely discretionary — this is the go-go band's wallet, so it behaves like a consumer-confidence asset."},
-        {"lbl": "Death care", "ticks": "SCI, CSV", "why": "Entirely private-pay, mathematically certain volume, preneed backlog pre-funds it. The mix shift to cremation is the only real threat."}
-      ]
-    },
-    {
-      "id": "slowgo-relay",
-      "n": "The slow-go handoff",
-      "c": "#EF9F27",
-      "sub": "The timing call: the 75-84 band takes the growth baton through 2035",
-      "struct": 90, "near": 85, "bc": 55,
-      "limbs": ["D", "H"],
-      "thesis": "The cohort's centre of mass is crossing from go-go into slow-go now. That means businesses paid by the 65-74 band are trading against a population that peaks around 2030, while businesses paid by 75+ have a tailwind running past 2040. The market prices both as 'aging'. The whole tradable content of limb D is in that distinction — the direction is consensus, the gradient is not.",
-      "items": [
-        {"lbl": "Home and community care", "ticks": "ADUS, OPCH, BTSG", "why": "The revealed preference is to stay home. Volume is the 85+ arithmetic; the constraint is caregiver labour and Medicaid rates."},
-        {"lbl": "Post-acute and rehab", "ticks": "EHC, USPH, ENSG", "why": "Stroke, hip fracture and joint recovery all track the 75+ population almost mechanically."},
-        {"lbl": "Pharmacy distribution", "ticks": "MCK, COR, CAH", "why": "Scripts per capita rise steeply with age. Volume-and-mix economics with no drug-price exposure — the structural insulation limb E argues for."},
-        {"lbl": "Fade: the experience economy", "ticks": "VIK, RCL, THO, BC, GOLF", "why": "Paid by the band that stops growing after 2030. Fade into strength; earnings roll over after the demography does, not with it."}
-      ]
-    },
-    {
-      "id": "income-manufacturing",
-      "n": "Income manufacturing",
-      "c": "#4F46E5",
-      "sub": "Retiree money does not leave the system — it changes wrapper, and the wrapper owner takes the spread",
-      "struct": 82, "near": 80, "bc": 60,
-      "limbs": ["A"],
-      "thesis": "The crude decumulation story — retirees sell, the market falls — has never survived the data. What is true is narrower: the marginal buyer's character changes, from equity beta to contractual cash flow, principal protection and annuitisation. That is a manufacturing opportunity. The businesses that originate retirement liabilities and invest them at a spread are the structural winners, and the flow they harvest is the cohort clock expressing itself as a product choice.",
-      "items": [
-        {"lbl": "Annuity origination", "ticks": "EQH, CRBG, JXN, APO", "why": "RILA and fixed-indexed sales are the behavioural shift made visible. Growing from a small base against a very large 55-64 pool."},
-        {"lbl": "The insurance-plus-credit flywheel", "ticks": "APO, KKR, ARES, OWL", "why": "Origination of liabilities on one side, private credit on the other. Not a levered market bet — a manufacturing business whose raw material is retirement demand."},
-        {"lbl": "Yielding care real estate", "ticks": "OHI, SBRA, CTRE", "why": "Answers weakness w1 directly — it pays you to wait while the demographic curve arrives. Tenant credit is the risk you are being paid for."},
-        {"lbl": "The negative case", "ticks": "TROW", "why": "Held as the control variable. A business dependent on continuous contributions from a shrinking accumulator base is what limb A looks like from the wrong side."}
-      ]
-    },
-    {
-      "id": "intermediation-shift",
-      "n": "The fee pool moves first",
-      "c": "#0891B2",
-      "sub": "Two break points per estate, and the advisor is retiring too",
-      "struct": 78, "near": 62, "bc": 45,
-      "limbs": ["B"],
-      "thesis": "Every transfer event renegotiates the advice relationship, and there are two per estate — first to the surviving spouse, then to the heirs. The recipient cohorts prefer different intermediation: fee-based, digital-first, indexed core with an alternatives sleeve, tax and estate bundled. Meanwhile the advisor population is itself aging, so books change hands for a second, independent reason. The share shift front-runs the asset movement by years, which is the window.",
-      "items": [
-        {"lbl": "Independent platforms", "ticks": "LPLA, RJF, SF", "why": "Recruit advisors away from wirehouses; levered to both the client break point and the advisor's own affiliation decision."},
-        {"lbl": "Scaled wealth franchises", "ticks": "MS, AMP, SCHW", "why": "Meet the heir in whichever channel they arrive through. Morgan Stanley's workplace stock-plan business acquires the next-generation client years before the inheritance."},
-        {"lbl": "Trust and estate execution", "ticks": "NTRS, TRI, SEIC", "why": "The work that happens when an estate settles, rather than the marketing around it. Volume-driven rather than asset-price-driven."},
-        {"lbl": "Mostly private", "ticks": "Addepar, Orion, Vanilla, Wealth.com (all private)", "why": "The estate-planning software layer is the least-penetrated part of limb B and has almost no listed expression. Flagged rather than proxied."}
-      ]
-    },
-    {
-      "id": "labour-substitution",
-      "n": "Capital replacing the retiring worker",
-      "c": "#E11D48",
-      "sub": "The highest-carry sleeve in the book — will not pay you to wait",
-      "struct": 80, "near": 55, "bc": 65,
-      "limbs": ["C"],
-      "thesis": "If limb C is right that experienced labour becomes structurally scarce in non-offshorable work, employers substitute capital. Japan is the evidence rather than the analogy: its manufacturers automated in direct response to a shrinking working-age population, and its automation suppliers were the beneficiaries. The weakness is timing — automation orders have been reliably cyclical whenever tested, so the structural argument keeps getting overwritten by the capex cycle.",
-      "items": [
-        {"lbl": "Industrial automation", "ticks": "ROK, EMR, 6954.T, 6861.T", "why": "Direct substitution plus knowledge capture as veteran process operators retire and their judgment has to be encoded."},
-        {"lbl": "Clinical productivity", "ticks": "ISRG, RDNT", "why": "Extends the output of scarce surgeons and radiologists. Sits in limbs C and D at once — rare and valuable, and fully priced."},
-        {"lbl": "Frontline productivity", "ticks": "ZBRA, SYM", "why": "The incremental version, which is the version that actually gets bought during a shortage rather than the wholesale replacement."},
-        {"lbl": "Carry warning", "ticks": "—", "why": "This is the only sleeve in the book priced for growth rather than cash generation. Size it as the highest-conviction, not the largest, position — see weakness w1."}
-      ]
-    },
-    {
-      "id": "aging-in-place",
-      "n": "Aging in place",
-      "c": "#22C55E",
-      "sub": "What the cohort actually chooses, and where the listed expression is weakest",
-      "struct": 85, "near": 70, "bc": 40,
-      "limbs": ["H", "D"],
-      "thesis": "The overwhelming revealed preference is to stay in the existing home, which redirects spend from institutional senior housing to home modification, in-home care and home services. The awkward fact for an equity investor is that the best expressions are private — mobility hardware, stairlifts, home-modification contractors — so the listed route runs through diluted proxies. Where the pure play does not exist, the record says so rather than substituting a worse one.",
-      "items": [
-        {"lbl": "In-home care", "ticks": "ADUS, AVAH, BTSG, OPCH", "why": "The core of the spend. Also the position most exposed to immigration policy and Medicaid rates simultaneously."},
-        {"lbl": "Home modification", "ticks": "HD, LOW, IBP", "why": "Grab bars, walk-in showers, ramps, single-floor conversions — real demand, heavily diluted inside a housing-cycle business."},
-        {"lbl": "Hardware", "ticks": "Permobil, Stannah, Bruno (all private); LEG", "why": "Mobility and stairlift manufacturing is almost entirely private. Flagged as a gap, not proxied."},
-        {"lbl": "Equity extraction", "ticks": "FOA", "why": "The median retiree is asset-rich in a house and cash-poor. The product logic is unanswerable; the industry's record of executing it is bad."}
-      ]
-    },
-    {
-      "id": "cognitive",
-      "n": "Cognitive decline",
-      "c": "#7C3AED",
-      "sub": "The largest unmet cost in the no-go band",
-      "struct": 86, "near": 48, "bc": 40,
-      "limbs": ["D"],
-      "thesis": "Dementia prevalence rises steeply past 80 and the 85+ band roughly doubles by 2040. It is the single largest driver of long-term care cost, family caregiving burden and memory-care demand. Therapeutics have arrived but uptake is throttled by diagnostic and infusion capacity and by neurologist availability — limb C constraining limb D in an unusually literal way. The care and diagnostic infrastructure may prove the better exposure than the drugs.",
-      "items": [
-        {"lbl": "Therapeutics", "ticks": "LLY, BIIB, 4523.T", "why": "Direct exposure to the largest cost pool in the no-go band, with genuinely uncertain commercial trajectories."},
-        {"lbl": "The capacity bottleneck", "ticks": "RDNT, LH, DGX", "why": "Diagnosis requires imaging and biomarker testing at a scale that does not currently exist. The bottleneck is the opportunity."},
-        {"lbl": "Memory care", "ticks": "WELL, BKD, ENSG", "why": "Highest acuity, highest labour intensity, highest revenue per bed — and therefore the sharpest limb C margin exposure."},
-        {"lbl": "The hearing link", "ticks": "SOON.SW, COH.AX", "why": "Emerging clinical evidence connects untreated hearing loss to dementia progression. If it holds, it reframes hearing aids from consumer device to medical intervention."}
-      ]
-    },
-    {
-      "id": "median-retiree",
-      "n": "The under-saved majority",
-      "c": "#64748B",
-      "sub": "The customer the thesis's own headline ignores",
-      "struct": 80, "near": 65, "bc": 20,
-      "limbs": ["A", "D", "E", "H"],
-      "thesis": "The cohort is not one customer. Concentration means the top decile holds most of the assets and will not decumulate, while the median retiree is materially under-saved, dependent on Social Security and Medicare, and directly exposed to limb E's policy risk. These are opposite demand curves and a single 'wealthy boomer' framing produces wrong positions for one of them. The median retiree is far larger by headcount, served by fewer scaled operators, and almost entirely absent from the consensus version of this trade — which is why the crowding score here is the lowest on the board.",
-      "items": [
-        {"lbl": "Middle-market senior insurance", "ticks": "CNO", "why": "Life, supplemental health and annuity to the 55+ middle-income household. Real coverage gaps Medicare does not fill, and almost no scaled competition."},
-        {"lbl": "Affordable retirement housing", "ticks": "ELS, SUI, UMH", "why": "Ground-lease communities in retirement destinations. Residents own the home and cannot move it — exceptional pricing power over a fixed-income tenant."},
-        {"lbl": "Value retail and pharmacy", "ticks": "DG, WBA, CVS", "why": "Fixed-income consumption. Grows in headcount and gets poorer in real terms if limb E bites."},
-        {"lbl": "Medicaid-funded care", "ticks": "ENSG, ADUS, OHI", "why": "This is who skilled nursing and personal care actually serve. The reimbursement risk in those names is the median retiree's policy risk restated."}
-      ]
-    },
-    {
-      "id": "japan-template",
-      "n": "The Japan template",
-      "c": "#DB2777",
-      "sub": "The experiment already ran, thirty years early",
-      "struct": 75, "near": 60, "bc": 25,
-      "limbs": ["C", "D"],
-      "thesis": "Japan reached this demographic structure decades before the US and is the only real out-of-sample evidence available. Two lessons matter and they point in opposite directions. Consumer baskets rotate further and faster than forecast — Unicharm's adult incontinence sales surpassed its baby nappy sales in Japan in 2011, and adult products are now roughly a third of its Japanese net sales against an estimated quarter in 2018, on a category growing 6–10% a year at price points up to 2.5x infant equivalents. But Japan also delivered persistent deflation, not the services inflation limb C predicts, because its labour market adjusted through participation and wage suppression rather than through wage inflation. The US differs in immigration, wage-setting institutions and the tradability of its service sector — but that difference is an assumption in this thesis, and the Japan case is the standing challenge to it.",
-      "items": [
-        {"lbl": "The consumer crossover", "ticks": "8113.T, ESSITY-B.ST, KMB", "why": "The most vivid available proof of what the transition does to a consumer basket. Watch Unicharm's domestic mix as the leading indicator for the US."},
-        {"lbl": "Automation response", "ticks": "6954.T, 6861.T", "why": "Japanese manufacturers automated in direct response to a shrinking workforce. The clearest evidence that capital substitution follows labour scarcity rather than merely coinciding with it."},
-        {"lbl": "Care infrastructure", "ticks": "7817.T", "why": "The physical infrastructure of the no-go band, in the market that got there first. Informational value as much as financial."},
-        {"lbl": "The counter-lesson", "ticks": "—", "why": "Japan aged and deflated. Limb C says the US will age and inflate. That divergence rests on immigration and wage-setting institutions — if it is wrong, limb C is wrong."}
-      ]
+     "claim": "Senior housing occupancy 89.5% in Q1 2026, 19th consecutive quarterly gain; units under construction lowest since 2012; Q3 2025 starts of 1,076 units across 31 primary markets, weakest since Q2 2009.",
+     "src": "NIC MAP",
+     "caveat": "NIC attributes the construction shortfall primarily to capital availability rather than absent demand. The supply trough is real either way, but it is a financing constraint, which can reverse faster than a demographic one."
     }
-  ]
+   ],
+   "items": [
+    {
+     "lbl": "Nursing education capacity",
+     "ticks": "CVSA (Chamberlain), LOPE",
+     "why": "Schools turn away qualified applicants for lack of faculty and clinical placements. Owning accredited capacity in a capacity-constrained pipeline is pricing power independent of the cycle."
+    },
+    {
+     "lbl": "Licensed trade labour pools",
+     "ticks": "EME, FIX, MYRG, APG, PWR",
+     "why": "Journeyman electricians and pipefitters take years to train and cannot be imported quickly or offshored at all. The contractor owns the scarce asset, not the project."
+    },
+    {
+     "lbl": "Senior housing supply trough",
+     "ticks": "WELL, VTR, BKD",
+     "why": "Construction starts collapsed in 2020-2023 while the 80+ cohort arrives regardless. Occupancy and rate compound against a fixed stock — the cleanest cyclical setup in limb H."
+    },
+    {
+     "lbl": "Trades training",
+     "ticks": "LINC, UTI",
+     "why": "Employer-pulled enrolment rather than marketing-pushed. The demand signal comes from the shortage itself."
+    }
+   ]
+  },
+  {
+   "id": "private-pay",
+   "n": "Private-pay age curves",
+   "c": "#16A34A",
+   "sub": "Demographic volume without the reimbursement risk — the rarest combination here",
+   "struct": 88,
+   "near": 72,
+   "bc": 30,
+   "limbs": [
+    "D"
+   ],
+   "thesis": "Limb E says any healthcare earnings stream dependent on a government-set rate is politically exposed precisely because limb D guarantees the volume. The escape is categories where the patient pays directly: hearing aids, premium intraocular lenses, dental implants, death care. These have the biological inevitability of the care trade and none of the reimbursement risk, and they are systematically under-owned relative to reimbursed medtech because they lack the coverage and the index membership.",
+   "items": [
+    {
+     "lbl": "Hearing",
+     "ticks": "SOON.SW, DEMANT.CO, AMP.MI, COH.AX",
+     "why": "Near-universal past 75, low treatment penetration, almost entirely private-pay in most markets. The emerging hearing-loss/dementia link could expand the market rather than commoditise it."
+    },
+    {
+     "lbl": "Premium ophthalmics",
+     "ticks": "ALC, BLCO",
+     "why": "Cataract is biologically inevitable; the premium presbyopia-correcting lens is patient-paid on top of the reimbursed base. Volume certainty plus a private-pay premium layer."
+    },
+    {
+     "lbl": "Dental implants",
+     "ticks": "STMN.SW, XRAY",
+     "why": "Private-pay and age-driven, but genuinely discretionary — this is the go-go band's wallet, so it behaves like a consumer-confidence asset."
+    },
+    {
+     "lbl": "Death care",
+     "ticks": "SCI, CSV",
+     "why": "Entirely private-pay, mathematically certain volume, preneed backlog pre-funds it. The mix shift to cremation is the only real threat."
+    }
+   ]
+  },
+  {
+   "id": "slowgo-relay",
+   "n": "The slow-go handoff",
+   "c": "#EF9F27",
+   "sub": "The timing call: the 75-84 band takes the growth baton through 2035",
+   "struct": 90,
+   "near": 85,
+   "bc": 55,
+   "limbs": [
+    "D",
+    "H"
+   ],
+   "thesis": "The cohort's centre of mass is crossing from go-go into slow-go now. That means businesses paid by the 65-74 band are trading against a population that peaks around 2030, while businesses paid by 75+ have a tailwind running past 2040. The market prices both as 'aging'. The whole tradable content of limb D is in that distinction — the direction is consensus, the gradient is not.",
+   "items": [
+    {
+     "lbl": "Home and community care",
+     "ticks": "ADUS, OPCH, BTSG",
+     "why": "The revealed preference is to stay home. Volume is the 85+ arithmetic; the constraint is caregiver labour and Medicaid rates."
+    },
+    {
+     "lbl": "Post-acute and rehab",
+     "ticks": "EHC, USPH, ENSG",
+     "why": "Stroke, hip fracture and joint recovery all track the 75+ population almost mechanically."
+    },
+    {
+     "lbl": "Pharmacy distribution",
+     "ticks": "MCK, COR, CAH",
+     "why": "Scripts per capita rise steeply with age. Volume-and-mix economics with no drug-price exposure — the structural insulation limb E argues for."
+    },
+    {
+     "lbl": "Fade: the experience economy",
+     "ticks": "VIK, RCL, THO, BC, GOLF",
+     "why": "Paid by the band that stops growing after 2030. Fade into strength; earnings roll over after the demography does, not with it."
+    }
+   ]
+  },
+  {
+   "id": "income-manufacturing",
+   "n": "Income manufacturing",
+   "c": "#4F46E5",
+   "sub": "Retiree money does not leave the system — it changes wrapper, and the wrapper owner takes the spread",
+   "struct": 82,
+   "near": 80,
+   "bc": 60,
+   "limbs": [
+    "A"
+   ],
+   "thesis": "The crude decumulation story — retirees sell, the market falls — has never survived the data. What is true is narrower: the marginal buyer's character changes, from equity beta to contractual cash flow, principal protection and annuitisation. That is a manufacturing opportunity. The businesses that originate retirement liabilities and invest them at a spread are the structural winners, and the flow they harvest is the cohort clock expressing itself as a product choice.",
+   "items": [
+    {
+     "lbl": "Annuity origination",
+     "ticks": "EQH, CRBG, JXN, APO",
+     "why": "RILA and fixed-indexed sales are the behavioural shift made visible. Growing from a small base against a very large 55-64 pool."
+    },
+    {
+     "lbl": "The insurance-plus-credit flywheel",
+     "ticks": "APO, KKR, ARES, OWL",
+     "why": "Origination of liabilities on one side, private credit on the other. Not a levered market bet — a manufacturing business whose raw material is retirement demand."
+    },
+    {
+     "lbl": "Yielding care real estate",
+     "ticks": "OHI, SBRA, CTRE",
+     "why": "Answers weakness w1 directly — it pays you to wait while the demographic curve arrives. Tenant credit is the risk you are being paid for."
+    },
+    {
+     "lbl": "The negative case",
+     "ticks": "TROW",
+     "why": "Held as the control variable. A business dependent on continuous contributions from a shrinking accumulator base is what limb A looks like from the wrong side."
+    }
+   ]
+  },
+  {
+   "id": "intermediation-shift",
+   "n": "The fee pool moves first",
+   "c": "#0891B2",
+   "sub": "Two break points per estate, and the advisor is retiring too",
+   "struct": 78,
+   "near": 62,
+   "bc": 45,
+   "limbs": [
+    "B"
+   ],
+   "thesis": "Every transfer event renegotiates the advice relationship, and there are two per estate — first to the surviving spouse, then to the heirs. The recipient cohorts prefer different intermediation: fee-based, digital-first, indexed core with an alternatives sleeve, tax and estate bundled. Meanwhile the advisor population is itself aging, so books change hands for a second, independent reason. The share shift front-runs the asset movement by years, which is the window.",
+   "items": [
+    {
+     "lbl": "Independent platforms",
+     "ticks": "LPLA, RJF, SF",
+     "why": "Recruit advisors away from wirehouses; levered to both the client break point and the advisor's own affiliation decision."
+    },
+    {
+     "lbl": "Scaled wealth franchises",
+     "ticks": "MS, AMP, SCHW",
+     "why": "Meet the heir in whichever channel they arrive through. Morgan Stanley's workplace stock-plan business acquires the next-generation client years before the inheritance."
+    },
+    {
+     "lbl": "Trust and estate execution",
+     "ticks": "NTRS, TRI, SEIC",
+     "why": "The work that happens when an estate settles, rather than the marketing around it. Volume-driven rather than asset-price-driven."
+    },
+    {
+     "lbl": "Mostly private",
+     "ticks": "Addepar, Orion, Vanilla, Wealth.com (all private)",
+     "why": "The estate-planning software layer is the least-penetrated part of limb B and has almost no listed expression. Flagged rather than proxied."
+    }
+   ]
+  },
+  {
+   "id": "labour-substitution",
+   "n": "Capital replacing the retiring worker",
+   "c": "#E11D48",
+   "sub": "The highest-carry sleeve in the book — will not pay you to wait",
+   "struct": 80,
+   "near": 55,
+   "bc": 65,
+   "limbs": [
+    "C"
+   ],
+   "thesis": "If limb C is right that experienced labour becomes structurally scarce in non-offshorable work, employers substitute capital. Japan is the evidence rather than the analogy: its manufacturers automated in direct response to a shrinking working-age population, and its automation suppliers were the beneficiaries. The weakness is timing — automation orders have been reliably cyclical whenever tested, so the structural argument keeps getting overwritten by the capex cycle.",
+   "items": [
+    {
+     "lbl": "Industrial automation",
+     "ticks": "ROK, EMR, 6954.T, 6861.T",
+     "why": "Direct substitution plus knowledge capture as veteran process operators retire and their judgment has to be encoded."
+    },
+    {
+     "lbl": "Clinical productivity",
+     "ticks": "ISRG, RDNT",
+     "why": "Extends the output of scarce surgeons and radiologists. Sits in limbs C and D at once — rare and valuable, and fully priced."
+    },
+    {
+     "lbl": "Frontline productivity",
+     "ticks": "ZBRA, SYM",
+     "why": "The incremental version, which is the version that actually gets bought during a shortage rather than the wholesale replacement."
+    },
+    {
+     "lbl": "Carry warning",
+     "ticks": "—",
+     "why": "This is the only sleeve in the book priced for growth rather than cash generation. Size it as the highest-conviction, not the largest, position — see weakness w1."
+    }
+   ]
+  },
+  {
+   "id": "aging-in-place",
+   "n": "Aging in place",
+   "c": "#22C55E",
+   "sub": "What the cohort actually chooses, and where the listed expression is weakest",
+   "struct": 85,
+   "near": 78,
+   "bc": 40,
+   "limbs": [
+    "H",
+    "D"
+   ],
+   "thesis": "The overwhelming revealed preference is to stay in the existing home, which redirects spend from institutional senior housing to home modification, in-home care and home services. The awkward fact for an equity investor is that the best expressions are private — mobility hardware, stairlifts, home-modification contractors — so the listed route runs through diluted proxies. Where the pure play does not exist, the record says so rather than substituting a worse one.",
+   "items": [
+    {
+     "lbl": "In-home care",
+     "ticks": "ADUS, AVAH, BTSG, OPCH",
+     "why": "The core of the spend. Also the position most exposed to immigration policy and Medicaid rates simultaneously."
+    },
+    {
+     "lbl": "Home modification",
+     "ticks": "HD, LOW, IBP",
+     "why": "Grab bars, walk-in showers, ramps, single-floor conversions — real demand, heavily diluted inside a housing-cycle business."
+    },
+    {
+     "lbl": "Hardware",
+     "ticks": "Permobil, Stannah, Bruno (all private); LEG",
+     "why": "Mobility and stairlift manufacturing is almost entirely private. Flagged as a gap, not proxied."
+    },
+    {
+     "lbl": "Equity extraction",
+     "ticks": "FOA",
+     "why": "The median retiree is asset-rich in a house and cash-poor. The product logic is unanswerable; the industry's record of executing it is bad."
+    }
+   ],
+   "sourced": [
+    {
+     "claim": "Medicaid is actively rebalancing toward home care. 1915(c) HCBS waiver enrolment among 65+ rose 52% between 2020 and 2022 — 686,607 to 1,043,473 — against 18% growth in the 65+ Medicaid population, lifting penetration from 8.31% to 10.66%.",
+     "src": "CMS Medicaid open data, 1915(c) waiver participants"
+    },
+    {
+     "claim": "And the population proved insulated from the unwinding: managed LTSS enrolment rose 7.7% across 2023-24 while total Medicaid managed care fell 13%.",
+     "src": "CMS Medicaid MLTSS enrolment table, 2016-2024",
+     "note": "The unwinding removed millions of working-age adults from Medicaid. It did not remove the aged and disabled LTSS population, which is categorically eligible. That asymmetry is the single most reassuring fact about this theme's payer."
+    },
+    {
+     "claim": "What remains unmeasurable: the rate side. Medicaid LTSS expenditure reporting stops at FY2020 and is PDF only, so the payer's PRICE behaviour is not observable at zero cost — and price, not volume, has always been the risk here.",
+     "src": "medicaid.gov LTSS expenditure reports"
+    }
+   ]
+  },
+  {
+   "id": "cognitive",
+   "n": "Cognitive decline",
+   "c": "#7C3AED",
+   "sub": "The largest unmet cost in the no-go band",
+   "struct": 86,
+   "near": 48,
+   "bc": 40,
+   "limbs": [
+    "D"
+   ],
+   "thesis": "Dementia prevalence rises steeply past 80 and the 85+ band roughly doubles by 2040. It is the single largest driver of long-term care cost, family caregiving burden and memory-care demand. Therapeutics have arrived but uptake is throttled by diagnostic and infusion capacity and by neurologist availability — limb C constraining limb D in an unusually literal way. The care and diagnostic infrastructure may prove the better exposure than the drugs.",
+   "items": [
+    {
+     "lbl": "Therapeutics",
+     "ticks": "LLY, BIIB, 4523.T",
+     "why": "Direct exposure to the largest cost pool in the no-go band, with genuinely uncertain commercial trajectories."
+    },
+    {
+     "lbl": "The capacity bottleneck",
+     "ticks": "RDNT, LH, DGX",
+     "why": "Diagnosis requires imaging and biomarker testing at a scale that does not currently exist. The bottleneck is the opportunity."
+    },
+    {
+     "lbl": "Memory care",
+     "ticks": "WELL, BKD, ENSG",
+     "why": "Highest acuity, highest labour intensity, highest revenue per bed — and therefore the sharpest limb C margin exposure."
+    },
+    {
+     "lbl": "The hearing link",
+     "ticks": "SOON.SW, COH.AX",
+     "why": "Emerging clinical evidence connects untreated hearing loss to dementia progression. If it holds, it reframes hearing aids from consumer device to medical intervention."
+    }
+   ]
+  },
+  {
+   "id": "median-retiree",
+   "n": "The under-saved majority",
+   "c": "#64748B",
+   "sub": "The customer the thesis's own headline ignores",
+   "struct": 80,
+   "near": 65,
+   "bc": 20,
+   "limbs": [
+    "A",
+    "D",
+    "E",
+    "H"
+   ],
+   "thesis": "The cohort is not one customer. Concentration means the top decile holds most of the assets and will not decumulate, while the median retiree is materially under-saved, dependent on Social Security and Medicare, and directly exposed to limb E's policy risk. These are opposite demand curves and a single 'wealthy boomer' framing produces wrong positions for one of them. The median retiree is far larger by headcount, served by fewer scaled operators, and almost entirely absent from the consensus version of this trade — which is why the crowding score here is the lowest on the board.",
+   "items": [
+    {
+     "lbl": "Middle-market senior insurance",
+     "ticks": "CNO",
+     "why": "Life, supplemental health and annuity to the 55+ middle-income household. Real coverage gaps Medicare does not fill, and almost no scaled competition."
+    },
+    {
+     "lbl": "Affordable retirement housing",
+     "ticks": "ELS, SUI, UMH",
+     "why": "Ground-lease communities in retirement destinations. Residents own the home and cannot move it — exceptional pricing power over a fixed-income tenant."
+    },
+    {
+     "lbl": "Value retail and pharmacy",
+     "ticks": "DG, WBA, CVS",
+     "why": "Fixed-income consumption. Grows in headcount and gets poorer in real terms if limb E bites."
+    },
+    {
+     "lbl": "Medicaid-funded care",
+     "ticks": "ENSG, ADUS, OHI",
+     "why": "This is who skilled nursing and personal care actually serve. The reimbursement risk in those names is the median retiree's policy risk restated."
+    }
+   ]
+  },
+  {
+   "id": "japan-template",
+   "n": "The Japan template",
+   "c": "#DB2777",
+   "sub": "The experiment already ran, thirty years early",
+   "struct": 75,
+   "near": 60,
+   "bc": 25,
+   "limbs": [
+    "C",
+    "D"
+   ],
+   "thesis": "Japan reached this demographic structure decades before the US and is the only real out-of-sample evidence available. Two lessons matter and they point in opposite directions. Consumer baskets rotate further and faster than forecast — Unicharm's adult incontinence sales surpassed its baby nappy sales in Japan in 2011, and adult products are now roughly a third of its Japanese net sales against an estimated quarter in 2018, on a category growing 6–10% a year at price points up to 2.5x infant equivalents. But Japan also delivered persistent deflation, not the services inflation limb C predicts, because its labour market adjusted through participation and wage suppression rather than through wage inflation. The US differs in immigration, wage-setting institutions and the tradability of its service sector — but that difference is an assumption in this thesis, and the Japan case is the standing challenge to it.",
+   "items": [
+    {
+     "lbl": "The consumer crossover",
+     "ticks": "8113.T, ESSITY-B.ST, KMB",
+     "why": "The most vivid available proof of what the transition does to a consumer basket. Watch Unicharm's domestic mix as the leading indicator for the US."
+    },
+    {
+     "lbl": "Automation response",
+     "ticks": "6954.T, 6861.T",
+     "why": "Japanese manufacturers automated in direct response to a shrinking workforce. The clearest evidence that capital substitution follows labour scarcity rather than merely coinciding with it."
+    },
+    {
+     "lbl": "Care infrastructure",
+     "ticks": "7817.T",
+     "why": "The physical infrastructure of the no-go band, in the market that got there first. Informational value as much as financial."
+    },
+    {
+     "lbl": "The counter-lesson",
+     "ticks": "—",
+     "why": "Japan aged and deflated. Limb C says the US will age and inflate. That divergence rests on immigration and wage-setting institutions — if it is wrong, limb C is wrong."
+    }
+   ]
+  }
+ ]
 }

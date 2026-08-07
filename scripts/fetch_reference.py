@@ -18,6 +18,9 @@ Writes data/reference.json:
                    Geographic Variation PUF) plus the SNF age gradient (CMS
                    Program Statistics). This is the block that tests whether
                    care demand actually scales the way limb D assumes.
+  - medicaid     : Medicaid HCBS waiver and managed-LTSS enrolment — the payer
+                   behind personal care, which the Medicare datasets above do
+                   not touch at all.
   - projections  : BLS Employment Projections — labour force EXIT rate by
                    occupation, which is the most direct free test of limb C's
                    premise that specific trades are ageing out.
@@ -47,6 +50,8 @@ CENSUS_T3 = ('https://www2.census.gov/programs-surveys/popproj/tables/2023/'
 DFA_ZIP = 'https://www.federalreserve.gov/releases/z1/dataviz/download/zips/dfa.zip'
 BLS_API = 'https://api.bls.gov/publicAPI/v2/timeseries/data/'
 CMS_CATALOG = 'https://data.cms.gov/data.json'
+MEDICAID_CATALOG = ('https://data.medicaid.gov/api/1/metastore/schemas/dataset/'
+                    'items?show-reference-ids=true')
 # Medicare Geographic Variation, National/State/County — the only free series that
 # gives per-capita Medicare utilisation annually over a long enough window to see
 # a trend. FFS only, which is the block's central caveat.
@@ -479,6 +484,90 @@ def wages():
     }
 
 
+def medicaid():
+    """Who pays for personal care, and is that payer expanding?
+
+    ADUS and AVAH sell into Medicaid home- and community-based services, which
+    the Medicare datasets used elsewhere in this file do not touch at all. Two
+    series, discovered from the Medicaid catalogue rather than hardcoded:
+    1915(c) waiver enrolment (the rebalancing measure, 65+ specifically) and
+    managed LTSS enrolment (the only LTSS series that runs past 2022).
+    """
+    cat = json.loads(get(MEDICAID_CATALOG))
+
+    def find(pattern):
+        for ds in cat:
+            if re.search(pattern, ds.get('title', ''), re.I):
+                for dist in ds.get('distribution', []):
+                    url = (dist.get('data') or {}).get('downloadURL', '')
+                    if url.endswith('.csv'):
+                        return url
+        return None
+
+    def csv_rows(url):
+        import csv as _csv
+        return list(_csv.DictReader(io.StringIO(get(url).decode('utf-8-sig', 'replace'))))
+
+    def num(v):
+        try:
+            return int(str(v).replace(',', '').strip())
+        except (TypeError, ValueError):
+            return None
+
+    out = {}
+
+    url = find(r'1915\(c\) waiver')
+    if url:
+        rows = [r for r in csv_rows(url) if r.get('Geography') in ('United States', 'National')]
+        waiver = {}
+        for grp in ('Ages 65 and older', 'Ages 45-64'):
+            for yr in sorted({r['Year'] for r in rows}):
+                sel = [r for r in rows if r['Year'] == yr and r['Subpopulation'] == grp]
+                on = next((r for r in sel if r['Category'] == 'Enrolled in 1915(c) waiver'), None)
+                off = next((r for r in sel if r['Category'] == 'Not enrolled in 1915(c) waiver'), None)
+                if not on:
+                    continue
+                a = num(on['Count of enrollees'])
+                pop = (a or 0) + (num(off['Count of enrollees']) if off else 0)
+                waiver.setdefault(grp, {})[yr] = {
+                    'on_waiver': a, 'medicaid_pop': pop,
+                    'penetration_pct': round(a / pop * 100, 2) if pop else None}
+        out['hcbs_waiver'] = {'series': waiver, 'source_url': url,
+                              'measure': '1915(c) home- and community-based waiver enrolment, national'}
+
+    url = find(r'Managed Long Term Services')
+    if url:
+        tot = [r for r in csv_rows(url) if (r.get('State') or '').strip().upper() == 'TOTALS']
+        mltss = {}
+        for r in tot:
+            y = (r.get('Year') or '').strip()
+            if not y:
+                continue
+            mltss[y] = {'mltss_only': num(r.get('Managed LTSS Only Enrollees')),
+                        'any_managed_care': num(r.get('Total Any Managed Care Enrollees'))}
+        out['managed_ltss'] = {'series': dict(sorted(mltss.items())), 'source_url': url,
+                               'measure': 'Managed long-term services and supports enrolment, national totals'}
+
+    if not out:
+        raise RuntimeError('Medicaid catalogue returned neither series')
+
+    out.update({
+        'source': 'CMS Medicaid open data (data.medicaid.gov), keyless',
+        'caveats': [
+            '2020-2022 spans the pandemic continuous-enrolment period, when Medicaid could '
+            'not disenrol anyone. That inflates both numerator and denominator; penetration '
+            'is the more honest measure because it partly controls for it.',
+            'The managed-LTSS series is the only one running past 2022, which is why it is '
+            'here — it is the only free read on what the 2023-24 unwinding did to this population.',
+            'This measures VOLUME, not RATE. Medicaid LTSS expenditure reports — the rate '
+            'side, and the actual risk to these operators — stop at FY2020 and are PDF only. '
+            'The payer\'s price behaviour is not observable at zero cost.',
+            'Managed LTSS is a subset of all LTSS; states without managed LTSS report zero.',
+        ],
+    })
+    return out
+
+
 def projections():
     """Who actually retires out, by occupation.
 
@@ -570,7 +659,7 @@ def main():
     blocks = {'population': census_population, 'spending': cex_spending,
               'participation': participation, 'wealth': dfa_wealth,
               'utilisation': utilisation, 'wages': wages,
-              'projections': projections}
+              'projections': projections, 'medicaid': medicaid}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

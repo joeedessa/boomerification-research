@@ -755,9 +755,101 @@
   "url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
   "retrieved": "2026-08-07"
  },
+ "medicaid": {
+  "hcbs_waiver": {
+   "series": {
+    "Ages 65 and older": {
+     "2020": {
+      "on_waiver": 686607,
+      "medicaid_pop": 8266394,
+      "penetration_pct": 8.31
+     },
+     "2021": {
+      "on_waiver": 799198,
+      "medicaid_pop": 8873339,
+      "penetration_pct": 9.01
+     },
+     "2022": {
+      "on_waiver": 1043473,
+      "medicaid_pop": 9788275,
+      "penetration_pct": 10.66
+     }
+    },
+    "Ages 45-64": {
+     "2020": {
+      "on_waiver": 380936,
+      "medicaid_pop": 13962064,
+      "penetration_pct": 2.73
+     },
+     "2021": {
+      "on_waiver": 448720,
+      "medicaid_pop": 15262193,
+      "penetration_pct": 2.94
+     },
+     "2022": {
+      "on_waiver": 533002,
+      "medicaid_pop": 16646226,
+      "penetration_pct": 3.2
+     }
+    }
+   },
+   "source_url": "https://download.medicaid.gov/data/1915c-waiver-2020-2022-01162025.csv",
+   "measure": "1915(c) home- and community-based waiver enrolment, national"
+  },
+  "managed_ltss": {
+   "series": {
+    "2016": {
+     "mltss_only": 352986,
+     "any_managed_care": 65034032
+    },
+    "2017": {
+     "mltss_only": 347011,
+     "any_managed_care": 65796338
+    },
+    "2018": {
+     "mltss_only": 278891,
+     "any_managed_care": 66163611
+    },
+    "2019": {
+     "mltss_only": 299888,
+     "any_managed_care": 65745133
+    },
+    "2020": {
+     "mltss_only": 319537,
+     "any_managed_care": 67836622
+    },
+    "2021": {
+     "mltss_only": 377475,
+     "any_managed_care": 77211654
+    },
+    "2022": {
+     "mltss_only": 365552,
+     "any_managed_care": 83331189
+    },
+    "2023": {
+     "mltss_only": 399031,
+     "any_managed_care": 85047388
+    },
+    "2024": {
+     "mltss_only": 429894,
+     "any_managed_care": 73670122
+    }
+   },
+   "source_url": "https://download.medicaid.gov/data/managed-long-term-services-and-supports-mltss-enrollees2024-table6.csv",
+   "measure": "Managed long-term services and supports enrolment, national totals"
+  },
+  "source": "CMS Medicaid open data (data.medicaid.gov), keyless",
+  "caveats": [
+   "2020-2022 spans the pandemic continuous-enrolment period, when Medicaid could not disenrol anyone. That inflates both numerator and denominator; penetration is the more honest measure because it partly controls for it.",
+   "The managed-LTSS series is the only one running past 2022, which is why it is here \u2014 it is the only free read on what the 2023-24 unwinding did to this population.",
+   "This measures VOLUME, not RATE. Medicaid LTSS expenditure reports \u2014 the rate side, and the actual risk to these operators \u2014 stop at FY2020 and are PDF only. The payer's price behaviour is not observable at zero cost.",
+   "Managed LTSS is a subset of all LTSS; states without managed LTSS report zero."
+  ],
+  "retrieved": "2026-08-07"
+ },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T15:27:45+00:00",
+  "as_of": "2026-08-07T15:36:33+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }
