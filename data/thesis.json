@@ -100,7 +100,7 @@
    "mechanism": "A very large multi-decade transfer of household wealth is underway. The framing error in most versions of this trade is the recipient. Assets pass first to the surviving spouse — typically a woman in her late 70s or 80s — and only later to children who are themselves in their 50s and 60s. The 'millennials inherit and change everything' story is a 2040s story, not a 2020s one. What matters commercially in this decade is that each transfer event is a moment when the incumbent advisor relationship is renegotiated, and there are two such moments per estate. Attrition at both steps is high. The receiving cohorts also prefer different intermediation: fee-based over commission, digital-first, indexed core with an alternatives sleeve, and tax and estate work bundled in.",
    "why_now": "The widow step is happening at scale now — the leading edge of the cohort is at the age where first deaths cluster. The heir step follows on a decade-plus lag. The intermediation share shift front-runs both.",
    "expression": "Long the platforms and RIA aggregators taking share; long trust, estate and tax-advisory infrastructure; long custody and advisory technology. Cautious on legacy full-service models carrying old client books served by old advisors — advisor age is itself a succession problem.",
-   "risk": "Crowded on the 'RIA rollup' leg, and rollup economics depend on cheap financing. The transfer estimate itself is a projection stacked on asset-price assumptions.",
+   "risk": "Crowded on the 'RIA rollup' leg, and rollup economics depend on cheap financing. The transfer estimate itself is a projection stacked on asset-price assumptions. Testability limit found 2026-08-07: Form ADV covers RIAs only. Broker-dealers and wirehouses do not file it, so the channel SHARE SHIFT that is this limb's central claim cannot be measured at zero cost — only the shape of one side of it. Cerulli, the adjudicator, is paywalled. This limb is structurally half-testable and should be read as such.",
    "falsifier": "Retention data shows incumbents holding heir relationships at high rates. Then there is no share shift and this is simply a levered bet on AUM beta.",
    "observables": [
     "RIA and wirehouse net new assets; advisor headcount and average advisor age",
@@ -123,6 +123,11 @@
      "claim": "Boomer share of US household net worth peaked at 57.6% in 2016:Q3 and has fallen to 51.6% by 2026:Q1. Boomers hold 53.9% of corporate equities.",
      "src": "Federal Reserve Distributional Financial Accounts, 2026:Q1",
      "note": "The transfer is already underway and measurable, not prospective."
+    },
+    {
+     "claim": "SEC Form ADV, August 2026: 23,621 registered advisers. Within individual clients, high-net-worth households are 16.2% of clients but hold 67.7% of the assets — an average HNW account of $1.90m.",
+     "src": "SEC Form ADV firm compilation feed, keyless",
+     "note": "This corroborates the Cerulli concentration finding from a completely independent source: the intermediation trade is a top-decile trade, not a mass-market one. It also explains why the widow-then-heir sequence matters commercially — the assets worth competing for sit in a sixth of the relationships."
     }
    ],
    "dispute": {
@@ -429,14 +434,14 @@
     "id": "B",
     "n": "The transfer & who actually receives it",
     "conviction": 2,
-    "grade": "C",
+    "grade": "B",
     "names": 17,
     "indicators_defined": 3,
-    "indicators_read": 0,
+    "indicators_read": 1,
     "confirming": 0,
     "contradicting": 0,
-    "mixed": 0,
-    "sourced_claims": 3,
+    "mixed": 1,
+    "sourced_claims": 4,
     "falsifiers_tripped": 0,
     "falsifiers_warming": 0
    },
@@ -501,7 +506,7 @@
     "falsifiers_warming": 0
    }
   ],
-  "finding": "Updated after iteration 9. Limb A has moved from grade D to B: boomer equity share fell only 1.0pp over the decade while holdings rose 173%, which confirms the \"dies holding\" claim directly. Limb B is now the sole untested limb — 17 names, zero indicators read. Coverage is no longer wildly lopsided, but it is not yet even.",
-  "action": "Limb B is the last blind spot: the transfer mechanics rest on advisor-attrition and channel-share claims whose adjudicating data (Cerulli) is paywalled. Any test has to be built from free proxies rather than fetched, and that constraint should be stated on the dashboard rather than left as a silent gap."
+  "finding": "Final state after ten iterations. Every limb has now been tested at least once — the grade-D blind spot is closed. Two limits are structural rather than temporary: limb B's channel-share claim needs data only Cerulli has, and limb D's Medicaid rate exposure stopped being published in machine-readable form after FY2020. Those are recorded as permanent constraints of a zero-cost dashboard, not as open tasks.",
+  "action": "The programme has moved from testing what is interesting to testing what carries exposure. What remains is mostly re-reading indicators on their release cadence rather than finding new sources — the point at which a research dashboard stops being built and starts being run."
  }
 }

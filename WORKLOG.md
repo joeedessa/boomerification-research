@@ -503,3 +503,54 @@ literally written — net outflow in fund-flow data — cannot be tested at zero
 cost. This is a strong proxy, not the thing itself, and the indicator says so.
 
 **Limb A moves D → B.** Limb B is now the sole untested limb.
+
+## Iteration 10 — 2026-08-07 — Limb B, and the end of the free data
+
+**Why:** the last untested limb, and the scorecard said go there.
+
+**Source.** SEC Form ADV firm compilation feed — every registered investment
+adviser with AUM and client mix, keyless, 7MB gzipped XML.
+
+**Half the question answers; the other half turns out to be unanswerable.**
+
+23,621 registered advisers. Within individual clients, **high-net-worth
+households are 16.2% of clients but hold 67.7% of the assets** — average account
+$1.90m. That corroborates the Cerulli concentration finding ($62T of $124T from
+2% of households) from a completely independent source, and it explains why the
+widow-then-heir sequence matters commercially: the assets worth competing for sit
+in a sixth of the relationships.
+
+**But Form ADV covers RIAs only.** Broker-dealers and wirehouses file nothing
+comparable. Measuring a share *shift* needs both sides, and the only source with
+both is Cerulli, which is paid. **Limb B's central claim is structurally
+untestable under a zero-cost constraint** — recorded plainly rather than left as
+a silent gap.
+
+---
+
+# Loop closed — ten iterations
+
+**Evidence.** Ten reference blocks auto-refreshing from Census, BLS (three ways),
+the Fed, CMS, Medicaid, Treasury and SEC. Eleven indicators read: eight
+confirming, two contradicting, one mixed. One falsifier tripped, two warming.
+
+**What it cost the thesis.** Six repricings, **five of which reversed my own
+earlier calls**:
+- ENSG cut, then restored when the filings showed 16.4% revenue CAGR
+- AMN raised, then cut to 1 when revenue had halved and margins gone negative
+- f12 tripped: the trades-scarcity premise refuted on wages *and* exit rates;
+  EME, PWR, MYRG, IESC out of the thesis entirely
+- SOON.SW cut when the private-pay sleeve — the part that had "survived
+  everything" — turned out never to have been measured, and tested worst
+- Limb C cut 3→2, limb D's magnitude gutted, AMED found delisted for a year
+
+**What survived.** The age gradient (7.0x at 85+). Care-support labour scarcity,
+confirmed on wages, exit rates and openings. Medicaid rebalancing toward home
+care. Hospice as the only care category with rising per-capita use. And limb A's
+central claim — they die holding — confirmed at last.
+
+**What is structurally out of reach at zero cost:** Medicaid LTSS rates, the
+RIA/wirehouse share shift, and true fund flows by age. Named, not hidden.
+
+The dashboard is materially less confident than it was ten iterations ago, and
+considerably harder to fool.

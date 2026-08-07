@@ -130,8 +130,9 @@
    "priority": 1,
    "confirms": "Independent and RIA channels taking persistent share of net new assets and of advisors.",
    "contradicts": "Wirehouse retention improving and independent recruitment slowing — the share shift stalls and limb B collapses to an AUM beta trade.",
-   "status": "not-yet-read",
-   "note": "LPLA and RJF recruiting disclosures are the fastest read. Cerulli gives the honest denominator."
+   "status": "mixed",
+   "note": "READ 2026-08-07, partially. SEC Form ADV gives 23,621 registered advisers with HNW households at 16.2% of individual clients holding 67.7% of individual AUM — confirming the concentration half of limb B from a source entirely independent of Cerulli. But ADV covers RIAs ONLY: broker-dealers and wirehouses do not file it, so the channel share SHIFT this indicator specifies cannot be measured. Status is mixed because half the question is answered and the other half is structurally unanswerable at zero cost, not merely unreached.",
+   "last_read": "2026-08-07"
   },
   {
    "id": "advage",

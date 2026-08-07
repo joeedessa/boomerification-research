@@ -63,6 +63,12 @@ TREASURY_YC = ('https://home.treasury.gov/resource-center/data-chart-center/inte
 TREASURY_DEBT = ('https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/'
                  'accounting/od/debt_to_penny?sort=-record_date&page%5Bsize%5D=1')
 YC_YEARS = [2019, 2022, 2024, 2025, 2026]
+# SEC Form ADV firm feed — every registered investment adviser with AUM and
+# client mix. The only free window onto limb B's channel, and a partial one:
+# it sees RIAs and cannot see wirehouses, so it measures concentration but not
+# the share SHIFT between channels that limb B actually claims.
+ADV_FEED = ('https://reports.adviserinfo.sec.gov/reports/CompilationReports/'
+            'IA_FIRM_SEC_Feed_{mm}_01_{yyyy}.xml.gz')
 # Medicare Geographic Variation, National/State/County — the only free series that
 # gives per-capita Medicare utilisation annually over a long enough window to see
 # a trend. FFS only, which is the block's central caveat.
@@ -517,6 +523,80 @@ def wages():
     }
 
 
+def advisers():
+    """Limb B's channel, as far as free data can see it.
+
+    Form ADV gives every SEC-registered adviser's AUM and client mix. What it
+    confirms is concentration; what it cannot do is compare RIAs against the
+    wirehouses they are supposed to be taking share from, because broker-dealers
+    do not file this form. Limb B's central claim is therefore only half-testable
+    at zero cost, and that is recorded rather than papered over.
+    """
+    import gzip
+    now = datetime.now(timezone.utc)
+    blob = None
+    for back in range(0, 4):                    # walk back if this month is not yet posted
+        m = now.month - back or 12
+        y = now.year - (1 if now.month - back <= 0 else 0)
+        try:
+            blob = get(ADV_FEED.format(mm=f'{m:02d}', yyyy=y), timeout=240)
+        except Exception:
+            blob = None
+        if blob:
+            asof = f'{y}-{m:02d}'
+            break
+    if not blob:
+        raise RuntimeError('Form ADV feed unavailable')
+
+    n = 0; aum = 0.0
+    ind_n = ind_aum = hnw_n = hnw_aum = 0
+    ctx = ET.iterparse(io.BytesIO(gzip.decompress(blob)), events=('end',))
+    for _, el in ctx:
+        if el.tag != 'Firm':
+            continue
+        n += 1
+        f = el.find('.//Item5F')
+        if f is not None:
+            try:
+                aum += float(f.get('Q5F2C') or 0)
+            except (TypeError, ValueError):
+                pass
+        d = el.find('.//Item5D')
+        if d is not None:
+            def g(k):
+                try:
+                    return int(float(d.get(k) or 0))
+                except (TypeError, ValueError):
+                    return 0
+            ind_n += g('Q5DA1'); ind_aum += g('Q5DA3')      # A = individuals, non-HNW
+            hnw_n += g('Q5DB1'); hnw_aum += g('Q5DB3')      # B = high net worth
+        el.clear()
+
+    tot = ind_aum + hnw_aum
+    return {
+        'as_of': asof,
+        'advisers': n,
+        'total_regulatory_aum_usd_tn': round(aum / 1e12, 2),
+        'individual_clients': ind_n,
+        'individual_aum_usd_tn': round(ind_aum / 1e12, 2),
+        'hnw_clients': hnw_n,
+        'hnw_aum_usd_tn': round(hnw_aum / 1e12, 2),
+        'hnw_share_of_individual_aum_pct': round(hnw_aum / tot * 100, 1) if tot else None,
+        'hnw_share_of_individual_clients_pct': round(hnw_n / (hnw_n + ind_n) * 100, 1) if (hnw_n + ind_n) else None,
+        'avg_hnw_account_usd_k': round(hnw_aum / hnw_n / 1e3) if hnw_n else None,
+        'caveats': [
+            'Regulatory AUM double-counts sub-advisory relationships, so the headline total '
+            'overstates assets under advice. The client-mix ratios are unaffected.',
+            'RIAs only. Broker-dealers and wirehouses do not file Form ADV, so this cannot '
+            'measure the channel SHARE SHIFT that limb B actually claims — only the shape of '
+            'one side of it. That half of the limb is not testable at zero cost.',
+            'Single snapshot. Historical feeds exist monthly but parsing a multi-year series '
+            'is real work rather than a fetch.',
+        ],
+        'source': 'SEC Form ADV firm compilation feed (reports.adviserinfo.sec.gov), keyless',
+    }
+
+
 def rates():
     """The arbiter between limb A and limb E.
 
@@ -743,7 +823,8 @@ def main():
     blocks = {'population': census_population, 'spending': cex_spending,
               'participation': participation, 'wealth': dfa_wealth,
               'utilisation': utilisation, 'wages': wages,
-              'projections': projections, 'medicaid': medicaid, 'rates': rates}
+              'projections': projections, 'medicaid': medicaid, 'rates': rates,
+              'advisers': advisers}
     out, failed = {}, []
     for name, fn in blocks.items():
         try:

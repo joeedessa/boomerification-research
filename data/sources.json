@@ -139,6 +139,15 @@
    "finding": "Boomers are not selling. Equity share 54.9% to 53.9% over the decade against a 173% rise in absolute holdings; 2.7pp off a 2020 peak. The Silent generation's completed cycle ran 83.9% to 15.0% over 36 years — about 2pp a year, via mortality and transfer rather than selling. DC pension entitlements grew 27% while taxable equities grew 173%, which is the RMD-reinvestment mechanism made visible.",
    "affects": "Limb A's central claim — that the cohort dies holding rather than decumulating — is confirmed, and falsifier f4 moves further from tripping. Limb A's evidence grade rises from D. Caveat: DFA cannot separate flows from valuation, so the fund-flow test as specified remains impossible at zero cost; this is a strong proxy, not the thing itself.",
    "auto": true
+  },
+  {
+   "claim": "RIA / wirehouse channel share and advisor age",
+   "verdict": "contested",
+   "v1": "Limb B's adjudicator, listed as blocked because Cerulli is paywalled.",
+   "sourced": "SEC Form ADV firm compilation feed — every registered investment adviser with AUM and client mix, keyless.",
+   "finding": "Half the question is now answered and the other half turns out to be structurally unanswerable free. 23,621 advisers; HNW households are 16.2% of individual clients but hold 67.7% of individual AUM, average account $1.90m — independent corroboration of the Cerulli concentration finding. But Form ADV covers RIAs only; broker-dealers do not file it, so the share SHIFT between channels cannot be measured at any price short of Cerulli.",
+   "affects": "Limb B moves from untested to half-tested. Its concentration premise is confirmed from an independent source; its share-shift premise is recorded as structurally untestable at zero cost rather than merely unreached.",
+   "auto": true
   }
  ],
  "bonus_findings": [
@@ -164,11 +173,6 @@
     "priority": 1
    },
    {
-    "n": "RIA / wirehouse channel share and advisor age",
-    "why": "Limb B's adjudicator. Cerulli channel data is paid, and company disclosures are the fast but self-serving read.",
-    "priority": 1
-   },
-   {
     "n": "Existing-home turnover in retirement metros",
     "why": "Limb H's inventory-release test. Needs metro-level data; the national figure averages the signal away.",
     "priority": 3
@@ -177,6 +181,11 @@
     "n": "Medicaid LTSS RATES (not volumes)",
     "priority": 1,
     "why": "Structurally blocked at zero cost, not merely unreached. CMS stopped publishing machine-readable LTSS expenditure data after FY2020; the reports are PDF and five years stale. Rates are the principal risk to ADUS and AVAH and cannot be tracked. Any future route runs through state budget documents one at a time, which is real work rather than a fetch."
+   },
+   {
+    "n": "Channel share SHIFT between RIAs and wirehouses",
+    "priority": 1,
+    "why": "Structurally blocked, not merely unreached. Form ADV sees RIAs; broker-dealers file nothing comparable. Measuring a shift needs both sides, and the only source with both is Cerulli, which is paid. Limb B's central claim will remain an assertion under this dashboard's zero-cost constraint — which is worth stating plainly rather than leaving as a silent gap."
    }
   ]
  },
