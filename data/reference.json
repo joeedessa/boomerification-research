@@ -60,7 +60,7 @@
   "source": "US Census Bureau, 2023 National Population Projections, Main Series, Table 3",
   "url": "https://www2.census.gov/programs-surveys/popproj/tables/2023/2023-summary-tables/np2023-t3.xlsx",
   "vintage": "2023 (released November 2023; 2022 is the base estimate)",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "spending": {
   "year": "2024",
@@ -105,7 +105,7 @@
   },
   "source": "BLS Consumer Expenditure Survey, age of reference person",
   "url": "https://www.bls.gov/cex/",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "participation": {
   "series_id": "LNU01300097",
@@ -129,7 +129,7 @@
   },
   "source": "BLS Current Population Survey \u2014 labour force participation rate, 65 years and over (NSA)",
   "url": "https://www.bls.gov/cps/",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "wealth": {
   "by_generation": {
@@ -219,7 +219,7 @@
   "share_55plus": 73.9,
   "source": "Federal Reserve Distributional Financial Accounts (Z.1)",
   "url": "https://www.federalreserve.gov/releases/z1/dataviz/dfa/",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "utilisation": {
   "years": [
@@ -512,7 +512,7 @@
   "source": "CMS Medicare Geographic Variation PUF (national, FFS 65+) and CMS Program Statistics \u2014 Medicare Skilled Nursing Facility",
   "url": "https://data.cms.gov/data-api/v1/dataset/6219697b-8f6c-4164-bed4-cd9317c58ebc/data",
   "gradient_url": "https://data.cms.gov/sites/default/files/2026-01/7fb9cae0-38c4-4062-9915-ce7c6e9788da/MDCR%20SNF_CPS06USN_2023.zip",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "wages": {
   "measure": "Employment Cost Index, wages and salaries, current-dollar index, seasonally adjusted",
@@ -597,7 +597,7 @@
   ],
   "source": "BLS Employment Cost Index (flat files, no API key or quota)",
   "url": "https://download.bls.gov/pub/time.series/ci/ci.data.0.Current",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "projections": {
   "horizon": "2024\u20132034",
@@ -788,7 +788,7 @@
   ],
   "source": "BLS Employment Projections, 2024\u201334 National Employment Matrix, Tables 1.2 and 1.10",
   "url": "https://www.bls.gov/emp/ind-occ-matrix/occupation.xlsx",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "medicaid": {
   "hcbs_waiver": {
@@ -880,7 +880,7 @@
    "This measures VOLUME, not RATE. Medicaid LTSS expenditure reports \u2014 the rate side, and the actual risk to these operators \u2014 stop at FY2020 and are PDF only. The payer's price behaviour is not observable at zero cost.",
    "Managed LTSS is a subset of all LTSS; states without managed LTSS report zero."
   ],
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "rates": {
   "curve": {
@@ -917,23 +917,23 @@
     "spread_2s10s_bp": 71
    },
    "2026": {
-    "date": "08/06/2026",
-    "2Y": 4.25,
-    "10Y": 4.69,
-    "30Y": 5.22,
-    "spread_10s30s_bp": 53,
-    "spread_2s10s_bp": 44
+    "date": "08/07/2026",
+    "2Y": 4.19,
+    "10Y": 4.65,
+    "30Y": 5.19,
+    "spread_10s30s_bp": 54,
+    "spread_2s10s_bp": 46
    }
   },
   "debt": {
-   "record_date": "2026-08-05",
-   "held_by_public_usd_tn": 32.1,
-   "total_public_debt_usd_tn": 39.83
+   "record_date": "2026-08-06",
+   "held_by_public_usd_tn": 32.15,
+   "total_public_debt_usd_tn": 39.89
   },
   "reading": "The 10s30s spread is the cleanest free read on term premium. Widening means limb E (issuance) is winning; flattening or inverting at the long end means limb A (duration demand) is.",
   "source": "US Treasury daily par yield curve and FiscalData debt-to-the-penny, both keyless",
   "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/YYYY/all?type=daily_treasury_yield_curve&field_tdr_date_value=YYYY&page&_format=csv",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "advisers": {
   "as_of": "2026-08",
@@ -952,11 +952,11 @@
    "Single snapshot. Historical feeds exist monthly but parsing a multi-year series is real work rather than a fetch."
   ],
   "source": "SEC Form ADV firm compilation feed (reports.adviserinfo.sec.gov), keyless",
-  "retrieved": "2026-08-07"
+  "retrieved": "2026-08-10"
  },
  "_meta": {
   "description": "Machine-sourced reference data \u2014 the facts the thesis rests on, pulled from primary sources rather than entered by hand.",
-  "as_of": "2026-08-07T16:07:27+00:00",
+  "as_of": "2026-08-10T07:08:58+00:00",
   "failed_blocks": [],
   "note": "Refreshed weekly by .github/workflows/refresh-reference.yml. These series move annually or quarterly; a stale block keeps its previous values and its own retrieved date rather than writing a hole."
  }
