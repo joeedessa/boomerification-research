@@ -8,11 +8,14 @@ The thesis is not that the population is aging — that has been forecastable si
 
 - `index.html` — the app (single-file, no build step)
 - `THESIS.md` — the written thesis the dashboard is built from
-- `data/*.json` — the research: 127 companies across six limbs, the cohort clock, universe matrix, themes, sequencing, indicators, falsifiers, policy map, positioning, glossary, sources and exclusions — plus nightly machine data (quotes, indices, news, alerts, performance) and weekly reference data
+- `data/*.json` — the research: 126 companies across six limbs, the cohort clock, universe matrix, themes, sequencing, indicators, falsifiers, policy map, positioning, glossary, sources and exclusions — plus nightly machine data (quotes, indices, news, alerts, performance) and weekly reference data
 - `scripts/fetch_market.py` + `.github/workflows/refresh-data.yml` — the nightly market robot
-- `scripts/fetch_reference.py` + `.github/workflows/refresh-reference.yml` — the weekly reference robot: Census population projections, BLS spending and participation, Fed wealth shares
-- `.github/workflows/ci.yml` — push-time validation (data JSON, thesis referential integrity, app JS)
+- `scripts/fetch_reference.py` + `.github/workflows/refresh-reference.yml` — the weekly reference robot: ten blocks — Census projections, BLS spending/participation/wages/employment-projections, Fed wealth shares, CMS utilisation, Medicaid HCBS, Treasury rates, SEC adviser data
+- `scripts/fetch_fundamentals.py` + `.github/workflows/refresh-fundamentals.yml` — SEC XBRL fundamentals and **corporate-action drift detection**
+- `.github/workflows/ci.yml` — push-time validation (data JSON, referential integrity, ticker resolution, app JS)
 - `archive/` — frozen historical snapshots
+- `WORKLOG.md` — the improvement loop's memory: what each iteration tested, found and changed
+- `ENGINEERING-LOG.md` — **every bug, data-source trap and analytical error hit while building this, with what fixed it.** Read it before touching a fetch script: most entries are undocumented behaviours of government data sources, not bugs in this repo.
 
 ## Structure
 
@@ -22,16 +25,24 @@ The **cohort clock** (`data/clock.json`) is the master time axis. Every other pa
 
 ## Status
 
-**Sourced as of 2026-08-07.** v1 shipped with no figure pulled from a primary source. The verification queue has since been worked in full: eight claims resolved — five confirmed, one confirmed with a material correction, one confirmed with a caveat, and **two wrong**. The resolution log is on the Sources tab and in `data/sources.json`.
+**Ten evidence iterations completed 2026-08-07.** v1 shipped with no figure pulled from a primary source. Since then the whole verification queue has been worked, and the thesis is materially less confident than it started — which is the point.
 
-The two that were wrong matter:
+**Ten reference blocks now auto-refresh** from Census, BLS (three separate routes), the Federal Reserve, CMS, Medicaid, Treasury and SEC. Eleven indicators read: **eight confirming, two contradicting, one mixed.** One falsifier tripped, two warming.
 
-- **OASI trust fund depletion is 2032, not the mid-2030s** (2026 Trustees Report). Limb E's forcing function is three years nearer than the thesis assumed, which moves it inside the horizon of most positions rather than beyond it.
-- **Go-go spending indexes at 77, not 93** against a 55–64 base (BLS CEX 2024). Spending falls 23% at the retirement transition, far more sharply than assumed.
+**Six repricings, five of which reversed my own earlier calls:**
 
-A third claim was corrected: the go-go band **plateaus rather than declines** (Census: 38.0M in 2030 → 35.1M in 2040 → 37.0M by 2050), which narrows the fade call from "the customer disappears" to "the customer stops growing while priced for growth." Corrections are rendered in the app rather than silently overwritten.
+- **f12 tripped** — the skilled-trades scarcity premise is refuted on wages *and* on BLS labour-force exit rates (construction ages out *slower* than the workforce average). EME, PWR, MYRG and IESC are out of the thesis entirely.
+- **Limb D keeps its direction and loses its magnitude** — per-capita institutional utilisation fell 18–32% over 2014–24 while the 85+ population grew. But the ENSG downgrade that triggered was then **reversed** when the filings showed 16.4% revenue CAGR straight through it: a market-size finding is not a company-revenue prediction.
+- **AMN raised, then cut to 1** — the care-labour shortage is real but accrued to the employers, not the staffing intermediaries.
+- **SOON.SW cut** — the private-pay sleeve "survived every finding" only because sixteen non-SEC filers were structurally exempt from every evidence pass. First time measured, it tested worst.
+- **OASI depletion is 2032, not the mid-2030s**; **go-go spending indexes at 77, not 93.** Both were wrong from memory.
+- **Four corporate-action errors found** — BK→BNY, ATGE→CVSA, AMED delisted for a year, CCRN deregistering. A CI gate now fails the push if any ticker reference doesn't resolve.
 
-Four series — population, spending, participation and wealth shares — refresh weekly from Census, BLS and the Federal Reserve via `scripts/fetch_reference.py`, so the dashboard can no longer rot against its own premises. **What remains unsourced is listed on the Sources tab and is not small** — most importantly health utilisation per capita in the 75+ bands, which is the direct test of the morbidity-compression falsifier.
+**The rate call is finally made, dated and sized** (10s30s widened 9bp → 53bp; limb E beats limb A; small, because limb C's inflation channel narrowed to care-support labour alone).
+
+**Three things are structurally unavailable at zero cost** and are named as permanent limits rather than open tasks: Medicaid LTSS *rates*, the RIA/wirehouse *channel share shift*, and true *fund flows by age*.
+
+Full iteration history in `WORKLOG.md`; every bug and data-source trap in `ENGINEERING-LOG.md`.
 
 ## Running it locally
 
@@ -43,6 +54,6 @@ Then open `http://localhost:8000`. Opening `index.html` directly from the filesy
 
 ## License & disclaimer
 
-© 2026 Joe Edessa. All rights reserved. This repository is public for personal-hosting convenience — **no license is granted** for republication or commercial reuse of the research content or code. Personal investment research, **not investment advice**. Nothing here is a recommendation to buy or sell any security. Market data comes from free public feeds and is not guaranteed accurate. Corporate actions after mid-2026 may not be reflected in the universe.
+© 2026 Joe Edessa. All rights reserved. This repository is public for personal-hosting convenience — **no license is granted** for republication or commercial reuse of the research content or code. Personal investment research, **not investment advice**. Nothing here is a recommendation to buy or sell any security. Market data comes from free public feeds and is not guaranteed accurate. Corporate actions are checked weekly against SEC EDGAR.
 
 Sibling maps: [hard-assets-research](https://github.com/joeedessa/hard-assets-research) · [ai-hardware-research](https://github.com/joeedessa/ai-hardware-research)

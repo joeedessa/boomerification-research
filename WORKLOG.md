@@ -4,6 +4,10 @@ The loop's memory. Each iteration: read this file and `data/sources.json`
 (`still_unsourced`), pick the single highest-value open item, do it completely,
 verify, push, then append here.
 
+Bugs, data-source traps and analytical errors go in **`ENGINEERING-LOG.md`**,
+not here — this file records what was *tested*, that one records what *broke* and
+why. Append to it whenever something new surfaces.
+
 Hard constraint throughout: **zero cost**. Keyless public sources only. No paid
 data, no subscriptions, no API keys of any kind — including free ones requiring
 registration.
