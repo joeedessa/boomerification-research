@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-08-10T08:46:15+00:00",
+  "as_of": "2026-08-17T07:57:13+00:00",
   "years": [
    2019,
    2020,
@@ -45,7 +45,7 @@
   "APO": {
    "kind": "review",
    "severity": "low",
-   "detail": "25-NSE filed 2026-07-31 while still listed \u2014 usually a single security class, worth a look",
+   "detail": "15-12G filed 2026-08-11 while still listed \u2014 usually a single security class, worth a look",
    "cik": 1858681,
    "sec_name": "Apollo Global Management, Inc.",
    "current_tickers": [
