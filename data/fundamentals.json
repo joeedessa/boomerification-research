@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-09-07T13:27:52+00:00",
+  "as_of": "2026-09-14T13:52:09+00:00",
   "years": [
    2019,
    2020,
@@ -11,7 +11,7 @@
    2024,
    2025
   ],
-  "coverage": "108/126 universe names with revenue data",
+  "coverage": "107/126 universe names with revenue data",
   "dropped_partial_periods": [
    "FIX CY2025"
   ],
@@ -26,6 +26,7 @@
    "STMN.SW",
    "7817.T",
    "TMHC",
+   "LEG",
    "ESSITY-B.ST",
    "8113.T"
   ],
@@ -89,17 +90,6 @@
    "sec_name": "EMERSON ELECTRIC CO",
    "current_tickers": [
     "EMR"
-   ],
-   "former_names": []
-  },
-  "LEG": {
-   "kind": "review",
-   "severity": "low",
-   "detail": "25-NSE filed 2026-08-27 while still listed \u2014 usually a single security class, worth a look",
-   "cik": 58492,
-   "sec_name": "LEGGETT & PLATT INC",
-   "current_tickers": [
-    "LEG"
    ],
    "former_names": []
   },
@@ -2390,22 +2380,6 @@
    "revenue_span": "CY2019-CY2025",
    "margin_delta_pp": -0.9,
    "margin_span": "CY2019-CY2020"
-  },
-  "LEG": {
-   "cik": 58492,
-   "vertical": "hou",
-   "limb": "H",
-   "revenue": {
-    "2020": 4329000000,
-    "2021": 5133700000,
-    "2022": 5203900000,
-    "2023": 4725300000,
-    "2024": 4383600000,
-    "2025": 4055100000
-   },
-   "operating_margin_pct": {},
-   "revenue_cagr_pct": -1.3,
-   "revenue_span": "CY2020-CY2025"
   },
   "VIK": {
    "cik": 1745201,
