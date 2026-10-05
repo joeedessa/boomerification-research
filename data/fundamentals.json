@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-09-28T15:16:32+00:00",
+  "as_of": "2026-10-05T15:51:14+00:00",
   "years": [
    2019,
    2020,
@@ -70,14 +70,12 @@
    "former_names": []
   },
   "CCRN": {
-   "kind": "review",
-   "severity": "low",
-   "detail": "15-12G filed 2026-07-27 while still listed \u2014 usually a single security class, worth a look",
+   "kind": "gone",
+   "severity": "high",
+   "detail": "SEC lists no active ticker for this filer; last periodic filing 2026-05-08",
    "cik": 1141103,
    "sec_name": "CROSS COUNTRY HEALTHCARE INC",
-   "current_tickers": [
-    "CCRN"
-   ],
+   "current_tickers": [],
    "former_names": [
     "CROSS COUNTRY INC"
    ]
@@ -178,6 +176,18 @@
    "sec_name": "RAYMOND JAMES FINANCIAL INC",
    "current_tickers": [
     "RJF"
+   ],
+   "former_names": []
+  },
+  "SNN": {
+   "kind": "review",
+   "severity": "low",
+   "detail": "25-NSE filed 2026-10-05 while still listed \u2014 usually a single security class, worth a look",
+   "cik": 845982,
+   "sec_name": "SMITH & NEPHEW PLC",
+   "current_tickers": [
+    "SNN",
+    "SNNUF"
    ],
    "former_names": []
   },
