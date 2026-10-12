@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-10-05T15:51:14+00:00",
+  "as_of": "2026-10-12T16:40:13+00:00",
   "years": [
    2019,
    2020,
