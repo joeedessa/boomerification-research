@@ -1,7 +1,7 @@
 {
  "_meta": {
   "description": "Company fundamentals from SEC XBRL frames \u2014 revenue and operating margin, used to test the utilisation and wage findings against filed numbers rather than sector narrative.",
-  "as_of": "2026-10-12T16:40:13+00:00",
+  "as_of": "2026-10-19T14:33:56+00:00",
   "years": [
    2019,
    2020,
@@ -80,17 +80,6 @@
     "CROSS COUNTRY INC"
    ]
   },
-  "EMR": {
-   "kind": "review",
-   "severity": "low",
-   "detail": "25-NSE filed 2025-10-15 while still listed \u2014 usually a single security class, worth a look",
-   "cik": 32604,
-   "sec_name": "EMERSON ELECTRIC CO",
-   "current_tickers": [
-    "EMR"
-   ],
-   "former_names": []
-  },
   "LLY": {
    "kind": "review",
    "severity": "low",
@@ -116,20 +105,6 @@
    ],
    "former_names": [
     "MCKESSON HBOC INC"
-   ]
-  },
-  "MDT": {
-   "kind": "review",
-   "severity": "low",
-   "detail": "25-NSE filed 2025-10-15 while still listed \u2014 usually a single security class, worth a look",
-   "cik": 1613103,
-   "sec_name": "Medtronic plc",
-   "current_tickers": [
-    "MDT"
-   ],
-   "former_names": [
-    "Medtronic Ltd",
-    "Medtronic Holdings Ltd"
    ]
   },
   "MS": {
